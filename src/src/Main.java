@@ -9,8 +9,9 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
 		Setting jugar = new Setting();
 		jugar.leerAventura();
-		//jugar.mostrarItems();
+		jugar.mostrarItems();
 		//jugar.mostrarNpcs();
-		jugar.mostrarEndGames();
+		//jugar.mostrarEndGames();
+		jugar.mostrarLocations();
 	}
 }

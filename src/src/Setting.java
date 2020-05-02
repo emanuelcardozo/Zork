@@ -36,30 +36,40 @@ public class Setting {
 		welcome = (String) setting.get("welcome");
 		character = (String) setting.get("character");
 		JSONArray locations = (JSONArray) jsonObject.get("locations");
-		// for (Object obLocation : locations) {
-		JSONObject ob = (JSONObject) locations.get(0);
-		location = new Location((String) ob.get("name"), (String) ob.get("gender"), (String) ob.get("number"),
-				(String) ob.get("description"));
-		JSONArray places = (JSONArray) ob.get("places");
-		for (Object obPlace : places) {
-			JSONObject obP = (JSONObject) obPlace;
-			place = new Place((String) obP.get("name"), (String) obP.get("gender"), (String) ob.get("number"));
-			location.getPlaces().add(place);
-			JSONArray items = (JSONArray) obP.get("items");
-			for (Object obItem : items) {
-				location.getItems().add((String) obItem);
+		for (Object obLocation : locations) {
+			JSONObject ob = (JSONObject) obLocation;
+			location = new Location((String) ob.get("name"), (String) ob.get("gender"), (String) ob.get("number"),
+					(String) ob.get("description"));
+			if (ob.containsKey("places")) {
+				JSONArray places = (JSONArray) ob.get("places");
+				for (Object obPlace : places) {
+					JSONObject obP = (JSONObject) obPlace;
+					place = new Place((String) obP.get("name"), (String) obP.get("gender"), (String) ob.get("number"));
+					location.getPlaces().add(place);
+					if (obP.containsKey("items")) {
+						JSONArray items = (JSONArray) obP.get("items");
+						for (Object obItem : items) {
+							location.getItems().add((String) obItem);
+						}
+					}
+				}
 			}
-			JSONArray npcs = (JSONArray) ob.get("npcs");
-			for (Object obNpcs : npcs) {
-				location.getNpcs().add((String) obNpcs);
+			if (ob.containsKey("npcs")) {
+				JSONArray npcs = (JSONArray) ob.get("npcs");
+				for (Object obNpcs : npcs) {
+					location.getNpcs().add((String) obNpcs);
+				}
 			}
-			JSONArray connections = (JSONArray) ob.get("connections");
-			for (Object obConnection : connections) {
-				JSONObject obConnect = (JSONObject) obConnection;
-				connection = new Connection((String) obConnect.get("direction"), (String) obConnect.get("location"),
-						(String) obConnect.get("obstacles"));
-				location.getConnections().add(connection);
+			if (ob.containsKey("connections")) {
+				JSONArray connections = (JSONArray) ob.get("connections");
+				for (Object obConnection : connections) {
+					JSONObject obConnect = (JSONObject) obConnection;
+					connection = new Connection((String) obConnect.get("direction"), (String) obConnect.get("location"),
+							(String) obConnect.get("obstacles"));
+					location.getConnections().add(connection);
+				}
 			}
+			this.locations.add(location);
 		}
 		JSONArray npcs_part = (JSONArray) jsonObject.get("npcs");
 		for (Object npcsP : npcs_part) {
@@ -67,12 +77,14 @@ public class Setting {
 			npcs_nuevo = new Npcs((String) npcs_partid.get("name"), (String) npcs_partid.get("gender"),
 					(String) npcs_partid.get("number"), (String) npcs_partid.get("description"),
 					(String) npcs_partid.get("talk"));
-			JSONArray triggers = (JSONArray) npcs_partid.get("triggers");
-			for (Object triger : triggers) {
-				JSONObject trigger_part = (JSONObject) triger;
-				trigger = new Trigger((String) trigger_part.get("type"), (String) trigger_part.get("thing"),
-						(String) trigger_part.get("on_trigger"), (String) trigger_part.get("after_trigger"));
-				npcs_nuevo.getTriggers().add(trigger);
+			if (npcs_partid.containsKey("triggers")) {
+				JSONArray triggers = (JSONArray) npcs_partid.get("triggers");
+				for (Object triger : triggers) {
+					JSONObject trigger_part = (JSONObject) triger;
+					trigger = new Trigger((String) trigger_part.get("type"), (String) trigger_part.get("thing"),
+							(String) trigger_part.get("on_trigger"), (String) trigger_part.get("after_trigger"));
+					npcs_nuevo.getTriggers().add(trigger);
+				}
 			}
 			this.npcs.add(npcs_nuevo);
 		}
@@ -81,13 +93,17 @@ public class Setting {
 			JSONObject items_partida = (JSONObject) itemPart;
 			item = new Item((String) items_partida.get("name"), (String) items_partida.get("gender"),
 					(String) items_partida.get("number"));
-			JSONArray actions_item = (JSONArray) items_partida.get("actions");
-			for (Object actionsItem : actions_item) {
-				item.getActions().add((String) actionsItem);
+			if (items_partida.containsKey("actions")) {
+				JSONArray actions_item = (JSONArray) items_partida.get("actions");
+				for (Object actionsItem : actions_item) {
+					item.getActions().add((String) actionsItem);
+				}
 			}
-			JSONArray effects_over_item = (JSONArray) items_partida.get("effects_over");
-			for (Object effectsOverItem : effects_over_item) {
-				item.getEffects_over().add((String) effectsOverItem);
+			if (items_partida.containsKey("effects_over")) {
+				JSONArray effects_over_item = (JSONArray) items_partida.get("effects_over");
+				for (Object effectsOverItem : effects_over_item) {
+					item.getEffects_over().add((String) effectsOverItem);
+				}
 			}
 
 			this.items.add(item);
@@ -103,6 +119,7 @@ public class Setting {
 					(String) end_game.get("thing"), (String) end_game.get("description"));
 			this.endGames.add(endGame);
 		}
+		System.out.println();
 
 	}
 
@@ -119,6 +136,11 @@ public class Setting {
 	public void mostrarEndGames() {
 		for (EndGame eg : this.endGames)
 			System.out.println(eg);
+	}
+
+	public void mostrarLocations() {
+		for (Location lc : this.locations)
+			System.out.println(lc);
 	}
 
 	@Override
