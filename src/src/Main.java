@@ -13,5 +13,7 @@ public class Main {
 		//jugar.mostrarNpcs();
 		//jugar.mostrarEndGames();
 		jugar.mostrarLocations();
+		
+		//PROBADO POR MYRIAM
 	}
 }
