@@ -11,6 +11,24 @@ public class Connection {
 		this.obstacle = obstacle;
 	}
 
+	public String getDirection() {
+		return direction;
+	}
+
+
+
+	public String getLocation() {
+		return location;
+	}
+
+
+
+	public String getObstacle() {
+		return obstacle;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Connection [direction=" + direction + ", location=" + location + ", obstacle=" + obstacle + "]";

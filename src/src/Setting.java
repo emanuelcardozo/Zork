@@ -20,6 +20,14 @@ public class Setting {
 	private ArrayList<Npcs> npcs = new ArrayList<Npcs>();
 	private ArrayList<String> inventario = new ArrayList<String>();
 	private ArrayList<EndGame> endGames = new ArrayList<EndGame>();
+	private String path;
+
+	public Setting(String path) throws FileNotFoundException, IOException, ParseException {
+		this.path = path;
+		leerAventura();
+		mostrarBienvenida();
+
+	}
 
 	public void leerAventura() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
@@ -30,11 +38,11 @@ public class Setting {
 		Connection connection;
 		Item item;
 		EndGame endGame;
-		Object obj = parser.parse(new FileReader("escenario1.json"));
+		Object obj = parser.parse(new FileReader(path));
 		JSONObject jsonObject = (JSONObject) obj;
 		JSONObject setting = (JSONObject) jsonObject.get("settings");
-		welcome = (String) setting.get("welcome");
-		character = (String) setting.get("character");
+		this.welcome = (String) setting.get("welcome");
+		this.character = (String) setting.get("character");
 		JSONArray locations = (JSONArray) jsonObject.get("locations");
 		for (Object obLocation : locations) {
 			JSONObject ob = (JSONObject) obLocation;
@@ -108,10 +116,7 @@ public class Setting {
 
 			this.items.add(item);
 		}
-		/*
-		 * JSONArray inventory_part = (JSONArray) jsonObject.get("inventory"); for
-		 * (Object itemPart : inventory_part) { System.out.println(); }
-		 */
+
 		JSONArray end_games = (JSONArray) jsonObject.get("endgames");
 		for (Object endGames : end_games) {
 			JSONObject end_game = (JSONObject) endGames;
@@ -119,8 +124,6 @@ public class Setting {
 					(String) end_game.get("thing"), (String) end_game.get("description"));
 			this.endGames.add(endGame);
 		}
-		System.out.println();
-
 	}
 
 	public void mostrarItems() {
@@ -140,12 +143,37 @@ public class Setting {
 
 	public void mostrarLocations() {
 		for (Location lc : this.locations)
-			System.out.println(lc);
+			System.out.println(lc.getName());
+	}
+	
+	public void mostrarBienvenida() {
+		System.out.println(this.welcome);
+	}
+
+	public String getWelcome() {
+		return welcome;
+	}
+
+	public String getCharacter() {
+		return character;
+	}
+
+	public void mostrarSettting() {
+		System.out.println(this);
+	}
+
+	public ArrayList<Location> getLocations() {
+		return locations;
+	}
+
+	public ArrayList<String> getInventario() {
+		return inventario;
 	}
 
 	@Override
 	public String toString() {
 		return "Setting [welcome=" + welcome + ", character=" + character + ", locations=" + locations + ", items="
-				+ items + ", npcs=" + npcs + "]";
+				+ items + ", npcs=" + npcs + ", inventario=" + inventario + ", endGames=" + endGames + "]";
 	}
+
 }
