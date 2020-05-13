@@ -56,28 +56,11 @@ public class Setting {
 			this.npcs.add(new NPC(npcJSON));
 		}
 
-		JSONArray items_part = (JSONArray) jsonObject.get("items");
+		JSONArray itemsJSON = (JSONArray) jsonObject.get("items");
 
-		for (Object itemPart : items_part) {
-			JSONObject items_partida = (JSONObject) itemPart;
-			item = new Item((String) items_partida.get("name"), (String) items_partida.get("gender"),
-					(String) items_partida.get("number"));
-
-			if (items_partida.containsKey("actions")) {
-				JSONArray actions_item = (JSONArray) items_partida.get("actions");
-				for (Object actionsItem : actions_item) {
-					item.getActions().add((String) actionsItem);
-				}
-			}
-
-			if (items_partida.containsKey("effects_over")) {
-				JSONArray effects_over_item = (JSONArray) items_partida.get("effects_over");
-				for (Object effectsOverItem : effects_over_item) {
-					item.getEffects_over().add((String) effectsOverItem);
-				}
-			}
-
-			this.items.add(item);
+		for (Object itemObj : itemsJSON) {
+			JSONObject itemJSON = (JSONObject) itemObj;
+			this.items.add(new Item(itemJSON));
 		}
 
 		JSONArray end_games = (JSONArray) jsonObject.get("endgames");
