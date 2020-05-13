@@ -19,8 +19,10 @@ public class Location extends Noun {
 
 		if (locationJSON.containsKey("places"))
 			buildPlaces((JSONArray) locationJSON.get("places"));
+
 		if (locationJSON.containsKey("npcs"))
 			buildNPCs((JSONArray) locationJSON.get("npcs"));
+
 		if (locationJSON.containsKey("connections"))
 			buildConnections((JSONArray) locationJSON.get("connections"));
 	}
@@ -28,8 +30,7 @@ public class Location extends Noun {
 	private void buildConnections(JSONArray connectionsJSON) {
 		for (Object connectionObj : connectionsJSON) {
 			JSONObject connectionJSON = (JSONObject) connectionObj;
-			Connection connection = new Connection(connectionJSON);
-			connections.add(connection);
+			connections.add(new Connection(connectionJSON));
 		}
 	}
 
@@ -84,11 +85,32 @@ public class Location extends Noun {
 	}
 
 	public String listarItems() {
-		String item = "";
-		for (String s : items) {
-			item += s + ",";
+		String lista = "", cantidad, unidor = ", ";
+		int anteUltimoItem = items.size() - 2;
+
+		for (String item : items) {
+			if (esFemenino(item))
+				cantidad = "una ";
+			else
+				cantidad = "un ";
+
+			if (item.equals(items.get(anteUltimoItem)))
+				unidor = " y ";
+			else if (item.equals(items.get(anteUltimoItem + 1)))
+				unidor = "";
+
+			lista += cantidad + item + unidor;
 		}
-		return item;
+
+		return lista;
+	}
+
+	private boolean esFemenino(String item) {
+
+		String palabra = item.split(" ")[0];
+		char ultimaLetra = palabra.charAt(palabra.length() - 1);
+
+		return ultimaLetra == 'a' || ultimaLetra == 'A';
 	}
 
 	public String listarNpcs() {

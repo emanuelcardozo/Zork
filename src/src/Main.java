@@ -6,9 +6,9 @@ import java.text.ParseException;
 
 public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
-		Setting jugar;
+
 		try {
-			jugar = new Setting("escenario1.json");
+			Setting jugar = new Setting("escenario1.json");
 			Character character = new Character(jugar);
 			System.out.println("-----MIRAR-----");
 			System.out.println(character.mirar());
