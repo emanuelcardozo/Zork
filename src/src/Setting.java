@@ -28,34 +28,34 @@ public class Setting {
 	}
 
 	public void construirAventura() throws FileNotFoundException, IOException, ParseException {
-		JSONParser parser = new JSONParser();
-		Object obj = parser.parse(new FileReader(path));
-		JSONObject jsonObject = (JSONObject) obj;
-		JSONObject setting = (JSONObject) jsonObject.get("settings");
-		this.welcome = (String) setting.get("welcome");
-		this.character = (String) setting.get("character");
-		JSONArray locations = (JSONArray) jsonObject.get("locations");
+		JSONParser parserJSON = new JSONParser();
+		JSONObject archivoJSON = (JSONObject) parserJSON.parse(new FileReader(path));
+		JSONObject settingJSON = (JSONObject) archivoJSON.get("settings");
+		this.welcome = (String) settingJSON.get("welcome");
+		this.character = (String) settingJSON.get("character");
+
+		JSONArray locations = (JSONArray) archivoJSON.get("locations");
 
 		for (Object locationObj : locations) {
 			JSONObject locationJSON = (JSONObject) locationObj;
 			this.locations.add(new Location(locationJSON));
 		}
 
-		JSONArray npcsJSON = (JSONArray) jsonObject.get("npcs");
+		JSONArray npcsJSON = (JSONArray) archivoJSON.get("npcs");
 
 		for (Object npcObj : npcsJSON) {
 			JSONObject npcJSON = (JSONObject) npcObj;
 			this.npcs.add(new NPC(npcJSON));
 		}
 
-		JSONArray itemsJSON = (JSONArray) jsonObject.get("items");
+		JSONArray itemsJSON = (JSONArray) archivoJSON.get("items");
 
 		for (Object itemObj : itemsJSON) {
 			JSONObject itemJSON = (JSONObject) itemObj;
 			this.items.add(new Item(itemJSON));
 		}
 
-		JSONArray endsGameJSON = (JSONArray) jsonObject.get("endgames");
+		JSONArray endsGameJSON = (JSONArray) archivoJSON.get("endgames");
 
 		for (Object endGameObj : endsGameJSON) {
 			JSONObject endGameJSON = (JSONObject) endGameObj;
