@@ -2,12 +2,57 @@ package src;
 
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 public class Location extends Noun {
 	private String description;
 	private ArrayList<Place> places = new ArrayList<Place>();
 	private ArrayList<String> items = new ArrayList<String>();
 	private ArrayList<String> npcs = new ArrayList<String>();
 	private ArrayList<Connection> connections = new ArrayList<Connection>();
+
+	public Location(JSONObject locationJSON) {
+		super((String) locationJSON.get("name"), (String) locationJSON.get("gender"),
+				(String) locationJSON.get("number"));
+		description = (String) locationJSON.get("description");
+
+		if (locationJSON.containsKey("places"))
+			buildPlaces((JSONArray) locationJSON.get("places"));
+		if (locationJSON.containsKey("npcs"))
+			buildNPCs((JSONArray) locationJSON.get("npcs"));
+		if (locationJSON.containsKey("connections"))
+			buildConnections((JSONArray) locationJSON.get("connections"));
+	}
+
+	private void buildConnections(JSONArray connectionsJSON) {
+		for (Object connectionObj : connectionsJSON) {
+			JSONObject connectionJSON = (JSONObject) connectionObj;
+			Connection connection = new Connection(connectionJSON);
+			connections.add(connection);
+		}
+	}
+
+	private void buildNPCs(JSONArray npcsJSON) {
+		for (Object npcObj : npcsJSON) {
+			npcs.add((String) npcObj);
+		}
+	}
+
+	private void buildPlaces(JSONArray placesJSON) {
+		for (Object placeObj : placesJSON) {
+			JSONObject placeJSON = (JSONObject) placeObj;
+			places.add(new Place(placeJSON));
+
+			if (placeJSON.containsKey("items")) {
+				JSONArray itemsJSON = (JSONArray) placeJSON.get("items");
+				for (Object obItem : itemsJSON) {
+					items.add((String) obItem);
+				}
+			} // items pertenecen a un place, hay que moverlo a esa clase
+		}
+
+	}
 
 	public Location(String name, String gender, String number, String description) {
 		super(name, gender, number);
@@ -18,8 +63,16 @@ public class Location extends Noun {
 		return places;
 	}
 
+	public void addPlace(Place place) {
+		places.add(place);
+	}
+
 	public ArrayList<String> getItems() {
 		return items;
+	}
+
+	public void addItem(String item) {
+		items.add(item);
 	}
 
 	public ArrayList<String> getNpcs() {

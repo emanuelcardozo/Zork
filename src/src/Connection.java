@@ -1,5 +1,7 @@
 package src;
 
+import org.json.simple.JSONObject;
+
 public class Connection {
 	private String direction;
 	private String location;
@@ -11,23 +13,23 @@ public class Connection {
 		this.obstacle = obstacle;
 	}
 
+	public Connection(JSONObject connectionJSON) {
+		direction = (String) connectionJSON.get("direction");
+		location = (String) connectionJSON.get("location");
+		obstacle = (String) connectionJSON.get("obstacles");
+	}
+
 	public String getDirection() {
 		return direction;
 	}
-
-
 
 	public String getLocation() {
 		return location;
 	}
 
-
-
 	public String getObstacle() {
 		return obstacle;
 	}
-
-
 
 	@Override
 	public String toString() {
