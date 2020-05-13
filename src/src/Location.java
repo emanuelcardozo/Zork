@@ -49,7 +49,7 @@ public class Location extends Noun {
 				for (Object obItem : itemsJSON) {
 					items.add((String) obItem);
 				}
-			} // items pertenecen a un place, hay que moverlo a esa clase
+			} // TODO: items pertenecen a un place, hay que moverlo a esa clase
 		}
 
 	}
