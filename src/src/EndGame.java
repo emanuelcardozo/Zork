@@ -1,5 +1,7 @@
 package src;
 
+import org.json.simple.JSONObject;
+
 public class EndGame {
 	private String condition;
 	private String action;
@@ -11,6 +13,13 @@ public class EndGame {
 		this.action = action;
 		this.thing = thing;
 		this.description = description;
+	}
+
+	public EndGame(JSONObject endGameJSON) {
+		condition = (String) endGameJSON.get("condition");
+		action = (String) endGameJSON.get("action");
+		thing = (String) endGameJSON.get("thing");
+		description = (String) endGameJSON.get("description");
 	}
 
 	@Override

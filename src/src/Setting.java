@@ -29,14 +29,6 @@ public class Setting {
 
 	public void construirAventura() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
-		Location location;
-		Place place;
-		NPC npcs_nuevo;
-		Trigger trigger;
-		Connection connection;
-		Item item;
-		EndGame endGame;
-
 		Object obj = parser.parse(new FileReader(path));
 		JSONObject jsonObject = (JSONObject) obj;
 		JSONObject setting = (JSONObject) jsonObject.get("settings");
@@ -63,13 +55,11 @@ public class Setting {
 			this.items.add(new Item(itemJSON));
 		}
 
-		JSONArray end_games = (JSONArray) jsonObject.get("endgames");
+		JSONArray endsGameJSON = (JSONArray) jsonObject.get("endgames");
 
-		for (Object endGames : end_games) {
-			JSONObject end_game = (JSONObject) endGames;
-			endGame = new EndGame((String) end_game.get("condition"), (String) end_game.get("action"),
-					(String) end_game.get("thing"), (String) end_game.get("description"));
-			this.endGames.add(endGame);
+		for (Object endGameObj : endsGameJSON) {
+			JSONObject endGameJSON = (JSONObject) endGameObj;
+			this.endGames.add(new EndGame(endGameJSON));
 		}
 	}
 
