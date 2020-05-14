@@ -49,7 +49,7 @@
       "name": "pirata fantasma",
       "gender": "male",
       "number": "singular",
-      "description": "- '¡No puedes pasar!' El pirata fantasma no te dejará pasar",
+      "description": "¡No puedes pasar!' El pirata fantasma no te dejará pasar",
       "talk": "¡No hay nada que me digas que me haga cambiar de opinión!",
       "triggers": [
         {

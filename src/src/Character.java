@@ -52,23 +52,14 @@ public class Character {
 			}
 		} else
 			System.out.println("No es posible moverse a esa posicion");
-
 	}
-
-	public Connection hayConexion(String direccion) {
-
-		for (Connection c : posicion.getConnections())
-			if (c.getDirection().equals(direccion))
-				return c;
-
-		return null;
-	}
-
-	public Location buscarLocalizacion(String name) {
-		for (Location l : partida.getLocations())
-			if (l.getName().equals(name))
-				return l;
-		return null;
+	
+	public void hablarCon(String name) {
+		NPC npc = buscarNPC(name);
+		if (npc != null) {
+			System.out.println(npc.getTalk());
+		} else
+			System.out.println("No hay nadie con quien hablar");
 	}
 
 	public void agarrarItem(String item) {
@@ -77,11 +68,26 @@ public class Character {
 				inventario.add(i);
 	}
 	
-	public NPC buscarNPC(String npc) {
+	private NPC buscarNPC(String npc) {
 		for(NPC np : partida.getNpcs()) {
 			if(np.name.equals(npc))
 				return np;
 		}
+		return null;
+	}
+	
+	private Connection hayConexion(String direccion) {
+		for (Connection c : posicion.getConnections())
+			if (c.getDirection().equals(direccion))
+				return c;
+
+		return null;
+	}
+
+	private Location buscarLocalizacion(String name) {
+		for (Location l : partida.getLocations())
+			if (l.getName().equals(name))
+				return l;
 		return null;
 	}
 }

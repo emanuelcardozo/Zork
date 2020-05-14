@@ -17,6 +17,7 @@ public class Main {
 			character.agarrarItem("rociador con cerveza de raiz");
 			System.out.println(character.inventario());
 			character.mirar();
+			character.hablarCon("pirata fantasma");
 
 		} catch (FileNotFoundException e) {
 			System.out.println("No se encontro el archivo Settings");
