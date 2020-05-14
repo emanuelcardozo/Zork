@@ -3,6 +3,10 @@ package src;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -34,33 +38,56 @@ public class Setting {
 		this.welcome = (String) settingJSON.get("welcome");
 		this.character = (String) settingJSON.get("character");
 
-		JSONArray locations = (JSONArray) archivoJSON.get("locations");
-
-		for (Object locationObj : locations) {
-			JSONObject locationJSON = (JSONObject) locationObj;
-			this.locations.add(new Location(locationJSON));
-		}
+		JSONArray locationsJSON = (JSONArray) archivoJSON.get("locations");
+		seteoGenericoDeLista("locations", locationsJSON);
 
 		JSONArray npcsJSON = (JSONArray) archivoJSON.get("npcs");
-
-		for (Object npcObj : npcsJSON) {
-			JSONObject npcJSON = (JSONObject) npcObj;
-			this.npcs.add(new NPC(npcJSON));
-		}
+		seteoGenericoDeLista("npcs", npcsJSON);
 
 		JSONArray itemsJSON = (JSONArray) archivoJSON.get("items");
-
-		for (Object itemObj : itemsJSON) {
-			JSONObject itemJSON = (JSONObject) itemObj;
-			this.items.add(new Item(itemJSON));
-		}
+		seteoGenericoDeLista("items", itemsJSON);
 
 		JSONArray endsGameJSON = (JSONArray) archivoJSON.get("endgames");
+		seteoGenericoDeLista("endGames", endsGameJSON);
+	}
 
-		for (Object endGameObj : endsGameJSON) {
-			JSONObject endGameJSON = (JSONObject) endGameObj;
-			this.endGames.add(new EndGame(endGameJSON));
+	// Este metodo recibe un array de JSON y el nombre de la lista a asignarla
+	// creando los objetos correctos dependiendo la clase
+	private void seteoGenericoDeLista(String fieldName, JSONArray jsonArray) {
+		try {
+			Field field = this.getClass().getDeclaredField(fieldName);
+			Method add = ArrayList.class.getDeclaredMethod("add", Object.class);
+
+			ParameterizedType fieldType = (ParameterizedType) field.getGenericType();
+			Class<?> fieldTypeClass = (Class<?>) fieldType.getActualTypeArguments()[0];
+
+			for (Object obj : jsonArray) {
+				add.invoke(field.get(this),
+						fieldTypeClass.getConstructor(JSONObject.class).newInstance((JSONObject) obj));
+			}
+		} catch (NoSuchFieldException e) {
+			System.out.println("No encontro el atributo.");
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			System.out.println("No encontro el metodo.");
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			System.out.println("Argumentos incorrectos.");
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}
 
 	public void mostrarItems() {
