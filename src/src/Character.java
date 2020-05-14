@@ -55,11 +55,11 @@ public class Character {
 	}
 	
 	public void hablarCon(String name) {
-		NPC npc = buscarNPC(name);
+		NPC npc = existeNPC(name);
 		if (npc != null) {
 			System.out.println(npc.getTalk());
 		} else
-			System.out.println("No hay nadie con quien hablar");
+			System.out.println("No existe el personaje con quien queres hablar.");
 	}
 
 	public void agarrarItem(String item) {
@@ -67,15 +67,7 @@ public class Character {
 			if (i.equals(item))
 				inventario.add(i);
 	}
-	
-	private NPC buscarNPC(String npc) {
-		for(NPC np : partida.getNpcs()) {
-			if(np.name.equals(npc))
-				return np;
-		}
-		return null;
-	}
-	
+
 	private Connection hayConexion(String direccion) {
 		for (Connection c : posicion.getConnections())
 			if (c.getDirection().equals(direccion))
@@ -88,6 +80,25 @@ public class Character {
 		for (Location l : partida.getLocations())
 			if (l.getName().equals(name))
 				return l;
+		return null;
+	}
+	
+	private NPC buscarNPC(String npc) {
+		for(NPC np : partida.getNpcs()) {
+			if(np.name.equals(npc))
+				return np;
+		}
+		return null;
+	}
+	
+	private NPC existeNPC(String name) {
+		NPC npc = buscarNPC(name);
+		if (npc != null) {
+			for (String np : posicion.getNpcs()) {
+				if (np.equals(npc.name))
+					return npc;
+			}
+		}
 		return null;
 	}
 }
