@@ -40,12 +40,19 @@ public class Character {
 
 	public void mover(String direccion) {
 		Connection c = hayConexion(direccion);
-
 		if (c != null) {
-			posicion = buscarLocalizacion(c.getLocation());
-			System.out.println("Usted esta en " + posicion.getName());
+			if (!c.getObstacle().isEmpty()) {
+				NPC np;
+				np = buscarNPC(c.getObstacle());
+				System.out.println(np.getDescription());
+			}
+			else {
+				posicion = buscarLocalizacion(c.getLocation());
+				System.out.println("Usted esta en " + posicion.getName());
+			}
 		} else
 			System.out.println("No es posible moverse a esa posicion");
+
 	}
 
 	public Connection hayConexion(String direccion) {
@@ -69,5 +76,12 @@ public class Character {
 			if (i.equals(item))
 				inventario.add(i);
 	}
-
+	
+	public NPC buscarNPC(String npc) {
+		for(NPC np : partida.getNpcs()) {
+			if(np.name.equals(npc))
+				return np;
+		}
+		return null;
+	}
 }

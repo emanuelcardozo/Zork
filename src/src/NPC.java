@@ -39,6 +39,14 @@ public class NPC extends Noun {
 		return triggers;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public String getTalk() {
+		return talk;
+	}
+
 	@Override
 	public String toString() {
 		return "Npcs [name=" + name + ", gender=" + gender + ", number=" + number + " + description=" + description

@@ -8,6 +8,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -133,11 +135,20 @@ public class Setting {
 	public ArrayList<String> getInventario() {
 		return inventario;
 	}
+	
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+	
+	public ArrayList<NPC> getNpcs() {
+		return npcs;
+	}
 
 	@Override
 	public String toString() {
 		return "Setting [welcome=" + welcome + ", character=" + character + ", locations=" + locations + ", items="
 				+ items + ", npcs=" + npcs + ", inventario=" + inventario + ", endGames=" + endGames + "]";
 	}
+	
 
 }
