@@ -20,7 +20,7 @@ public class Connection {
 	}
 
 	public String getDirection() {
-		return direction;
+		return this.changeDirection();
 	}
 
 	public String getLocation() {
@@ -31,6 +31,21 @@ public class Connection {
 		return obstacle;
 	}
 
+	private String changeDirection() {
+		switch(direction)
+		{
+			case "south": 
+				return "sur";
+			case "north":
+				return "norte";
+			case "east":
+				return "este";
+			case "west":
+				return "oeste";
+		}
+		return direction;
+	}
+	
 	@Override
 	public String toString() {
 		return "Connection [direction=" + direction + ", location=" + location + ", obstacle=" + obstacle + "]";
