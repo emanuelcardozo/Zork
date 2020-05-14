@@ -123,7 +123,7 @@ public class Location extends Noun {
 	public String listarConexiones() {
 		String connect = "";
 		for (Connection cn : connections)
-			connect = "Al " + cn.getDirection() + " se puede ir hacia una " + cn.getLocation();
+			connect = "Al " + cn.getDirectionChanged() + " se puede ir hacia una " + cn.getLocation();
 		return connect;
 	}
 

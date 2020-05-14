@@ -18,8 +18,11 @@ public class Connection {
 		location = (String) connectionJSON.get("location");
 		obstacle = (String) connectionJSON.get("obstacles");
 	}
-
 	public String getDirection() {
+		return direction;
+	}
+
+	public String getDirectionChanged() {
 		return this.changeDirection();
 	}
 
