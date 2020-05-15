@@ -44,31 +44,30 @@ public class Character {
 
 	// Si hay conexion con la direccion indicada deja pasar al personaje a la otra.
 	// localizacion salvo que haya un obstaculo.
-	public void mover(String direccion) {
+	public String mover(String direccion) {
 		Connection c = hayConexion(direccion);
 		if (c != null) {
 			if (!c.getObstacle().isEmpty() && existeNPC(c.getObstacle())) {
 				NPC np;
 				np = buscarNPC(c.getObstacle());
-				System.out.println(np.getDescription());
-			}
-			else {
+				return np.getDescription();
+			} else {
 				posicion = buscarLocalizacion(c.getLocation());
-				System.out.println("Usted esta en " + posicion.getName());
+				return "Usted esta en " + posicion.getName();
 			}
 		} else
-			System.out.println("No es posible moverse a esa posicion");
+			return "No es posible moverse a esa posicion";
 	}
 	
 	//Si este personaje se encuentra en la localizacion del personaje retorna su talk.
-	public void hablarCon(String name) {
+	public String hablarCon(String name) {
 		if (existeNPC(name)) {
 			NPC npc = buscarNPC(name);
 			if (npc != null) {
-				System.out.println(npc.getTalk());
+				return npc.getTalk();
 			}
-		} else
-			System.out.println("No existe el personaje con quien queres hablar.");
+		}
+		return "No existe el personaje con quien queres hablar.";
 	}
 
 	//Agrega al inventario el item si este se encuentra en la localizacion del personaje.
