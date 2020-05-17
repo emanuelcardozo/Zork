@@ -79,6 +79,24 @@ public class Character {
 			if (i.equals(item))
 				inventario.add(i);
 	}
+	
+	// Deberia poder usar un elemento del inventario contra un NPC y ver si le hace
+		// efecto o no.
+		// Si logra eliminarlo al NPC con este elemento deberia retornar el on_trigger.
+		// Sino deberia retornar una leyenda de "Eso no ha servido de nada".
+		public String usarEn(String elemento, String npc) {
+			String respuesta = "";
+			if (existeItemEnInventario(elemento) && existeNPC(npc)) {
+				//Aca se debe implementar la funcion del trigger para que devuelva los dialogos correspondientes.
+				posicion.getNpcs().remove(npc);
+				respuesta = "Has vencido al " + npc+".";
+			} else if (!existeNPC(npc)) {
+				respuesta = "No existe nadie con ese nombre.";
+			} else if (!existeItemEnInventario(elemento))
+				respuesta = "No posees ese item en tu inventario.";
+			return respuesta;
+		}
+
 
 	// Retorna una conexion si en esa direccion indicada se puede ir hacia algun
 	// lado.
@@ -118,20 +136,13 @@ public class Character {
 		return false;
 	}
 
-	// Deberia poder usar un elemento del inventario contra un NPC y ver si le hace
-	// efecto o no.
-	// Si logra eliminarlo al NPC con este elemento deberia retornar el on_trigger.
-	// Sino deberia retornar una leyenda de "Eso no ha servido de nada".
-	public void usarEn(String elemento, String npc) {
-		if (existeNPC(npc)) {
-			posicion.getNpcs().remove(0);
-//			System.out.println(posicion.getNpcs());
-//			System.out.println("->" + buscarNPC(npc));
+	//Retorna true si existe el item en el inventario del personaje.
+	private boolean existeItemEnInventario(String elemento) {
+		for(String e:inventario) {
+			if(e.equals(elemento))
+			return true;
 		}
-	}
-
-	public Location getPosicion() {
-		return posicion;
+		return false;
 	}
 
 }
