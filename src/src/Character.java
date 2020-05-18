@@ -130,6 +130,7 @@ public class Character {
 	// Retorna true si el NPC existe en la posicion actual del personaje.
 	private boolean existeNPC(String name) {
 		for (String i : posicion.getNpcs()) {
+		//	System.out.println(i);
 			if (i.equals(name))
 				return true;
 		}

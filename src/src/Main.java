@@ -21,8 +21,14 @@ public class Main {
 			character.agarrarItem("espejo");
 			System.out.println(character.inventario());
 			//System.out.println(character.mirar());
-			System.out.println(character.hablarCon("pirata fantasma"));
-			character.hablarCon("pirata fantasma");
+			System.out.println("Te encuentras con:");
+			NPC npc = new NPC("pirata fantasma", "masculino", "singular", "Pirata Fantasma Borracho y coqueto", "Italiano");
+			System.out.println(npc.name +" [ " + npc.getDescription() + "]");
+			
+			System.out.println("Pirata Fantasma: " + character.hablarCon("pirata fantasma"));
+			System.out.println("Usas de tu inventario " + "espejo" );
+			System.out.println(character.usarEn("espejo", "pirata fantasma"));
+			//character.hablarCon("pirata fantasma");
 			
 
 		} catch (FileNotFoundException e) {
