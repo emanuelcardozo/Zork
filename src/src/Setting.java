@@ -110,9 +110,9 @@ public class Setting {
 	}
 
 	public void mostrarBienvenida() {
+		System.out.println("BIENVENIDO A ZORK: " + this.character);
 		System.out.println(this.welcome);
 	}
-
 	public String getWelcome() {
 		return welcome;
 	}

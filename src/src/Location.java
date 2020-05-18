@@ -86,20 +86,22 @@ public class Location extends Noun {
 
 	public String listarItems() {
 		String lista = "", cantidad, unidor = ", ";
-		int anteUltimoItem = items.size() - 2;
+		if (!items.isEmpty()) {
+			int anteUltimoItem = items.size() - 2;
 
-		for (String item : items) {
-			if (esFemenino(item))
-				cantidad = "una ";
-			else
-				cantidad = "un ";
+			for (String item : items) {
+				if (esFemenino(item))
+					cantidad = "una ";
+				else
+					cantidad = "un ";
 
-			if (item.equals(items.get(anteUltimoItem)))
-				unidor = " y ";
-			else if (item.equals(items.get(anteUltimoItem + 1)))
-				unidor = "";
+				if (item.equals(items.get(anteUltimoItem)))
+					unidor = " y ";
+				else if (item.equals(items.get(anteUltimoItem + 1)))
+					unidor = "";
 
-			lista += cantidad + item + unidor;
+				lista += cantidad + item + unidor;
+			}
 		}
 
 		return lista;

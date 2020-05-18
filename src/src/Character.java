@@ -14,32 +14,40 @@ public class Character {
 		this.inventario = j.getInventario();
 		this.partida = j;
 	}
-
-	// Retorna un String con la localizacion y los items al alcance del personaje.
+	
 	public String mirar() {
-		return "Estas en un " + posicion.getName() + ". " + "En el suelo hay " + posicion.listarItems() + ". "
-				+ "Hay un " + posicion.listarNpcs() + posicion.listarConexiones() + ". ";
+		String respuesta ="";
+		respuesta += "Estas en un " + posicion.getName() +".";
+		if(!posicion.getItems().isEmpty())
+			respuesta+="En el suelo hay " + posicion.listarItems()+".";
+		if(!posicion.getNpcs().isEmpty()) {
+			respuesta +="Hay un " + posicion.listarNpcs();
+			respuesta+=".";
+		}
+		if(!posicion.getConnections().isEmpty())
+			respuesta += posicion.listarConexiones() +". ";
+		return respuesta;
 	}
-
-	// Retorna el nombre del personaje.
-	public String name() {
-		return "Tu nombre es " + name;
-	}
-
+	
 	// Retorna un String con tu inventario actual.
-	// (Falta arreglar la salida)
+	// (Falta arreglar la salida, [Respuesta actual:Tienes barreta en tu inventario] )
 	public String inventario() {
 
 		if (inventario.isEmpty())
-			return "No hay elementos en tu inventario";
+			return "No hay elementos en tu inventario.";
 
 		String inventary = "Tienes ";
 
 		for (String s : inventario)
 			inventary += s.toString() + " ";
-		inventary += "en tu inventario";
+		inventary += "en tu inventario.";
 
 		return inventary;
+	}
+
+	// Retorna el nombre del personaje.
+	public String name() {
+		return "Tu nombre es " + name;
 	}
 
 	// Si hay conexion con la direccion indicada deja pasar al personaje a la otra.

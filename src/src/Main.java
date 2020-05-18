@@ -10,15 +10,22 @@ public class Main {
 			throws FileNotFoundException, IOException, ParseException {
 
 		try {
+			System.out.println(("(INICIO)"));
 			Setting jugar = new Setting("escenario1.json");
 			Character character = new Character(jugar);
-			System.out.println("-----MIRAR-----");
-			System.out.println(character.name());
+			System.out.println(("(MIRAR ALREDEDOR)"));
 			System.out.println(character.mirar());
+			System.out.println("(MOVER ESTE)");
+			System.out.println(character.mover("east"));
+			System.out.println(("(MOVER SUR)"));
 			System.out.println(character.mover("south"));
+			System.out.println(("(HABLAR CON PIRATA FANTASMA)"));
 			System.out.println(character.hablarCon("pirata fantasma"));
-			//System.out.println(character.inventario());
-			//System.out.println(character.hablarCon("pirata fantama"));
+			System.out.println("(VER INVENTARIO)");
+			System.out.println(character.inventario());
+			System.out.println(("(RECOGER BARRETA)"));
+			character.agarrarItem("barreta");
+			System.out.println(character.inventario());
 			character.usarEn("barreta", "pirata fantasma");
 			character.mover("south");
 			System.out.println(character.mirar());
