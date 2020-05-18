@@ -5,20 +5,25 @@ import java.io.IOException;
 import java.text.ParseException;
 
 public class Main {
-	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
+	
+	public static void main(String[] args)
+			throws FileNotFoundException, IOException, ParseException {
 
 		try {
 			Setting jugar = new Setting("escenario1.json");
 			Character character = new Character(jugar);
 			System.out.println("-----MIRAR-----");
+			System.out.println(character.name);
 			System.out.println(character.mirar());
 			character.mover("south");
 			character.agarrarItem("barreta");
 			character.agarrarItem("rociador con cerveza de raiz");
+			character.agarrarItem("espejo");
 			System.out.println(character.inventario());
-			character.mirar();
-			character.hablarCon("pirata fantasm");
+			//System.out.println(character.mirar());
+			System.out.println(character.hablarCon("pirata fantasma"));
 			character.hablarCon("pirata fantasma");
+			
 
 		} catch (FileNotFoundException e) {
 			System.out.println("No se encontro el archivo Settings");
@@ -30,9 +35,10 @@ public class Main {
 			System.out.println("Hay problemas parseando el archivo Settings");
 			e.printStackTrace();
 		}
-
-//		System.out.println(c.name());
+//Character c= new Character(jugar);
+//System.out.println(c.name());
 //		System.out.println(c.inventario(jugar));
 //		jugar.mostrarLocations();
 	}
 }
+

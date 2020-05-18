@@ -28,8 +28,11 @@ public class Setting {
 		this.path = path;
 		construirAventura();
 		mostrarBienvenida();
+		//mostrarPersonaje();
 
 	}
+
+	
 
 	public void construirAventura() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parserJSON = new JSONParser();
@@ -111,12 +114,16 @@ public class Setting {
 	}
 
 	public void mostrarBienvenida() {
+		System.out.println("BIENVENIDO A ZORK   " +this.character);
 		System.out.println(this.welcome);
 	}
 
 	public String getWelcome() {
 		return welcome;
 	}
+	private void mostrarPersonaje() {
+		System.out.println(this.character);
+			}
 
 	public String getCharacter() {
 		return character;

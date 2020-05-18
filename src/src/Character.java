@@ -3,7 +3,7 @@ package src;
 import java.util.ArrayList;
 
 public class Character {
-	private String name;
+	public String name;
 	private ArrayList<String> inventario;
 	private Location posicion;
 	private Setting partida;
@@ -33,11 +33,11 @@ public class Character {
 		if (inventario.isEmpty())
 			return "No hay elementos en tu inventario";
 
-		String inventary = "Tienes ";
+		String inventary = "Tienes: ";
 
 		for (String s : inventario)
-			inventary += s.toString() + " ";
-		inventary += "en tu inventario";
+			inventary += "(x)" +s.toString() + " ";
+		inventary += ". En tu inventario";
 
 		return inventary;
 	}
