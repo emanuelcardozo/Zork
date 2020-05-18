@@ -53,7 +53,6 @@ public class Character {
 				return np.getDescription();
 			} else {
 				posicion = buscarLocalizacion(c.getLocation());
-				System.out.println(posicion.getName());
 				return "Usted esta en " + posicion.getName();
 			}
 		} else

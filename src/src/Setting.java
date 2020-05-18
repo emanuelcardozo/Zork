@@ -28,7 +28,6 @@ public class Setting {
 		this.path = path;
 		construirAventura();
 		mostrarBienvenida();
-
 	}
 
 	public void construirAventura() throws FileNotFoundException, IOException, ParseException {
