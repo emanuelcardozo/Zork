@@ -12,11 +12,8 @@ public class Main {
 		try {
 			Setting jugar = new Setting("escenario1.json");
 			Character character = new Character(jugar);
-<<<<<<< HEAD
-=======
 			System.out.println("-----MIRAR-----");
-			System.out.println(character.name);
->>>>>>> 358e7628f20d6fe06b358460f37d8e177b69b20a
+			System.out.println(character.name());
 			System.out.println(character.mirar());
 			System.out.println(character.mover("south"));
 			System.out.println(character.hablarCon("pirata fantasma"));
@@ -24,7 +21,6 @@ public class Main {
 			//System.out.println(character.hablarCon("pirata fantama"));
 			character.usarEn("barreta", "pirata fantasma");
 			character.mover("south");
-<<<<<<< HEAD
 			System.out.println(character.mirar());
 			//System.out.println(character.mover("south"));
 			//System.out.println(character.mirar());
@@ -47,10 +43,6 @@ public class Main {
 			//character.hablarCon("pirata fantasma");
 //			character.usarEn("barreta", "pirata fantasma");
 //			character.mover("south");
-=======
-		
-			
->>>>>>> 358e7628f20d6fe06b358460f37d8e177b69b20a
 
 		} catch (FileNotFoundException e) {
 			System.out.println("No se encontro el archivo Settings");
@@ -62,13 +54,10 @@ public class Main {
 			System.out.println("Hay problemas parseando el archivo Settings");
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-=======
 //Character c= new Character(jugar);
 //System.out.println(c.name());
 //		System.out.println(c.inventario(jugar));
 //		jugar.mostrarLocations();
->>>>>>> 358e7628f20d6fe06b358460f37d8e177b69b20a
 	}
 }
 
