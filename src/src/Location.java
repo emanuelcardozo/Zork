@@ -114,6 +114,15 @@ public class Location extends Noun {
 
 		return ultimaLetra == 'a' || ultimaLetra == 'A';
 	}
+	
+	public String retornarConectorGenero() {
+		String conector = "";
+		if (this.gender.equals("female"))
+			conector = "una";
+		else if(this.gender.equals("male"))
+			conector = "un";
+		return conector;
+	}
 
 	public String listarNpcs() {
 		String np = "";
@@ -125,7 +134,7 @@ public class Location extends Noun {
 	public String listarConexiones() {
 		String connect = "";
 		for (Connection cn : connections)
-			connect = "Al " + cn.getDirectionChanged() + " se puede ir hacia una " + cn.getLocation();
+			connect = "Al " + cn.getDirectionChanged() + " se puede ir hacia "+cn.generoConnection()+" "+ cn.getLocation();
 		return connect;
 	}
 

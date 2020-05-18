@@ -17,7 +17,7 @@ public class Character {
 	
 	public String mirar() {
 		String respuesta ="";
-		respuesta += "Estas en un " + posicion.getName() +".";
+		respuesta += "Estas en "+posicion.retornarConectorGenero()+" "+posicion.getName() +".";
 		if(!posicion.getItems().isEmpty())
 			respuesta+="En el suelo hay " + posicion.listarItems()+".";
 		if(!posicion.getNpcs().isEmpty()) {
@@ -61,7 +61,7 @@ public class Character {
 				return np.getDescription();
 			} else {
 				posicion = buscarLocalizacion(c.getLocation());
-				return "Usted esta en " + posicion.getName();
+				return "Usted esta en "+posicion.retornarConectorGenero()+" "+ posicion.getName()+".";
 			}
 		} else
 			return "No es posible moverse a esa posicion";

@@ -49,6 +49,14 @@ public class Connection {
 		return direction;
 	}
 	
+	public String generoConnection() {
+		String conector ="";
+		if(this.location.charAt(this.location.length()-1) == 'a')
+			conector = "una";
+		else conector = "un";
+		return conector;
+	}
+	
 	@Override
 	public String toString() {
 		return "Connection [direction=" + direction + ", location=" + location + ", obstacle=" + obstacle + "]";
