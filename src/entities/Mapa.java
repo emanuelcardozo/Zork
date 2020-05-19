@@ -2,7 +2,7 @@ package entities;
 
 import java.util.Map;
 
-import src.Location;
+import entities.Location;
 
 public class Mapa {
 

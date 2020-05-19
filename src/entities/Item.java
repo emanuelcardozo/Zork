@@ -46,10 +46,4 @@ public class Item extends Noun {
 	public ArrayList<String> getEffects_over() {
 		return effects_over;
 	}
-
-	@Override
-	public String toString() {
-		return "Item [name=" + name + ", gender=" + gender + ", number=" + number + " actions= " + actions
-				+ " effects_over: " + effects_over + "]";
-	}
 }
