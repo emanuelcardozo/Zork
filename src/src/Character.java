@@ -1,38 +1,37 @@
 package src;
 
-import java.util.ArrayList;
-
 import entities.NPC;
 
 public class Character {
 	private String name;
-	private ArrayList<String> inventario;
+	private Inventario inventario;
 	private Location posicion;
 	private Setting partida;
 
 	public Character(Setting j) {
 		this.posicion = j.getLocations().get(0);
 		this.name = j.getCharacter();
-		this.inventario = j.getInventario();
+		this.inventario = new Inventario();
 		this.partida = j;
 	}
-	
+
 	public String mirar() {
-		String respuesta ="";
-		respuesta += "Estas en "+posicion.retornarConectorGenero()+" "+posicion.getName() +".";
-		if(!posicion.getItems().isEmpty())
-			respuesta+="En el suelo hay " + posicion.listarItems()+".";
-		if(!posicion.getNpcs().isEmpty()) {
-			respuesta +="Hay un " + posicion.listarNpcs();
-			respuesta+=".";
+		String respuesta = "";
+		respuesta += "Estas en " + posicion.retornarConectorGenero() + " " + posicion.getName() + ".";
+		if (!posicion.getItems().isEmpty())
+			respuesta += "En el suelo hay " + posicion.listarItems() + ".";
+		if (!posicion.getNpcs().isEmpty()) {
+			respuesta += "Hay un " + posicion.listarNpcs();
+			respuesta += ".";
 		}
-		if(!posicion.getConnections().isEmpty())
-			respuesta += posicion.listarConexiones() +". ";
+		if (!posicion.getConnections().isEmpty())
+			respuesta += posicion.listarConexiones() + ". ";
 		return respuesta;
 	}
-	
+
 	// Retorna un String con tu inventario actual.
-	// (Falta arreglar la salida, [Respuesta actual:Tienes barreta en tu inventario] )
+	// (Falta arreglar la salida, [Respuesta actual:Tienes barreta en tu inventario]
+	// )
 	public String inventario() {
 
 		if (inventario.isEmpty())
@@ -63,7 +62,7 @@ public class Character {
 				return np.getDescription();
 			} else {
 				posicion = buscarLocalizacion(c.getLocation());
-				return "Usted esta en "+posicion.retornarConectorGenero()+" "+ posicion.getName()+".";
+				return "Usted esta en " + posicion.retornarConectorGenero() + " " + posicion.getName() + ".";
 			}
 		} else
 			return "No es posible moverse a esa posicion";
