@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,14 +11,16 @@ import entities.Place;
 
 public class Location extends Noun {
 	private String description;
-	private HashMap<String, Place> placesMap = new HashMap<String, Place>();
-	private HashMap<String, NPC> npcsMap = new HashMap<String, NPC>();
+	private Map<String, Place> placesMap = new HashMap<String, Place>();
+	private Map<String, NPC> npcsMap = new HashMap<String, NPC>();
+	private ArrayList<Connection> connectionsArray = new ArrayList<Connection>();
 	
-	public Location(String name, String gender, String number, String description, HashMap<String, Place> places, HashMap<String, NPC> npcs) {
+	public Location(String name, String gender, String number, String description, HashMap<String, Place> places, HashMap<String, NPC> npcs, ArrayList<Connection> connections) {
 		super(name, gender, number);
 		this.description = description;
 		this.placesMap = places;
 		this.npcsMap = npcs;
+		this.connectionsArray = connections;
 	}
 
 	public Location(JSONObject locationJSON, HashMap<String, Item> items , Map<String, NPC> npcs) {
@@ -29,6 +32,10 @@ public class Location extends Noun {
 
 		if (locationJSON.containsKey("npcs"))
 			buildNPCS((JSONArray) locationJSON.get("npcs"), npcs);
+		
+		if (locationJSON.containsKey("connections"))
+			buildConnections((JSONArray) locationJSON.get("connections"));
+			
 	}
 
 	private void buildPlaces(JSONArray placesJson, Map<String, Item> items) {
@@ -46,6 +53,13 @@ public class Location extends Noun {
 			npcsMap.put(npcName, npcs.get(npcName));
 		}
 	}
+	
+	private void buildConnections(JSONArray jsonConnections) {
+		for (Object connectionObject : jsonConnections) {
+			JSONObject connection = (JSONObject) connectionObject;
+			connectionsArray.add(new Connection(connection));
+		}
+	}
 
 	public String getDescription() {
 		return description;
@@ -55,19 +69,27 @@ public class Location extends Noun {
 		this.description = description;
 	}
 
-	public HashMap<String, Place> getPlacesMap() {
+	public Map<String, Place> getPlacesMap() {
 		return placesMap;
 	}
 
-	public void setPlacesMap(HashMap<String, Place> placesMap) {
+	public void setPlacesMap(Map<String, Place> placesMap) {
 		this.placesMap = placesMap;
 	}
 
-	public HashMap<String, NPC> getNpcsMap() {
+	public Map<String, NPC> getNpcsMap() {
 		return npcsMap;
 	}
 
-	public void setNpcsMap(HashMap<String, NPC> npcsMap) {
+	public void setNpcsMap(Map<String, NPC> npcsMap) {
 		this.npcsMap = npcsMap;
+	}
+
+	public ArrayList<Connection> getConnectionsArray() {
+		return connectionsArray;
+	}
+
+	public void setConnectionsArray(ArrayList<Connection> connectionsArray) {
+		this.connectionsArray = connectionsArray;
 	}
 }

@@ -2,6 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
+import entities.Connection;
 import entities.Location;
 import entities.NPC;
 

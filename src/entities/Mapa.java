@@ -2,7 +2,7 @@ package entities;
 
 import java.util.ArrayList;
 
-import src.Location;
+import entities.Location;
 
 public class Mapa {
 
