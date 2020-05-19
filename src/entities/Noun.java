@@ -1,20 +1,20 @@
 package entities;
 
 public class Noun {
-	private String name;
-	private String gender;
-	private String number;
+	protected String name;
+	protected String gender;
+	protected String number;
 
 	public Noun(String name, String gender, String number) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getGender() {
 		return gender;
 	}
@@ -33,6 +33,28 @@ public class Noun {
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	public boolean esFemenino() {
+		return gender.equalsIgnoreCase("Femenino");
+	}
+
+	public boolean esSingular() {
+		return gender.equalsIgnoreCase("Singular");
+	}
+
+	public String getArticulo() {
+		if (esSingular())
+			return esFemenino() ? "la" : "el";
+
+		return esFemenino() ? "las" : "los";
+	}
+
+	public String getCantidad() {
+		if (esSingular())
+			return esFemenino() ? "una" : "un";
+
+		return esFemenino() ? "unas" : "unos";
 	}
 
 	@Override

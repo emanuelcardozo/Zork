@@ -6,8 +6,6 @@ import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import src.Noun;
-
 public class Place extends Noun {
 	private Map<String, Item> itemsMap = new HashMap<String, Item>();
 

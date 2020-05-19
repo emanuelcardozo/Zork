@@ -47,10 +47,6 @@ public class Item extends Noun {
 		return effects_over;
 	}
 
-	public boolean esFemenino() {
-		return this.gender.equals("femenino");
-	}
-
 	@Override
 	public String toString() {
 		return "Item [name=" + name + ", gender=" + gender + ", number=" + number + " actions= " + actions
