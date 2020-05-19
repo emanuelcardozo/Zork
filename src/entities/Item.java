@@ -1,11 +1,9 @@
-package src;
+package entities;
 
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
-import entities.Noun;
 
 public class Item extends Noun {
 	private ArrayList<String> actions = new ArrayList<String>();
@@ -48,10 +46,11 @@ public class Item extends Noun {
 	public ArrayList<String> getEffects_over() {
 		return effects_over;
 	}
-	
+
 	public boolean esFemenino() {
 		return this.gender.equals("femenino");
 	}
+
 	@Override
 	public String toString() {
 		return "Item [name=" + name + ", gender=" + gender + ", number=" + number + " actions= " + actions
