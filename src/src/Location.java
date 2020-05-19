@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import entities.Noun;
+
 public class Location extends Noun {
 	private String description;
 	private ArrayList<Place> places = new ArrayList<Place>();

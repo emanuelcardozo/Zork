@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import entities.Noun;
+
 public class Item extends Noun {
 	private ArrayList<String> actions = new ArrayList<String>();
 	private ArrayList<String> effects_over = new ArrayList<String>();

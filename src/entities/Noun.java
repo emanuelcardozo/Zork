@@ -1,9 +1,9 @@
-package src;
+package entities;
 
 public class Noun {
-	protected String name;
-	protected String gender;
-	protected String number;
+	private String name;
+	private String gender;
+	private String number;
 
 	public Noun(String name, String gender, String number) {
 		this.name = name;
@@ -21,6 +21,18 @@ public class Noun {
 
 	public String getNumber() {
 		return number;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 	@Override
