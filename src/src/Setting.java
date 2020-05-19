@@ -14,6 +14,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import entities.NPC;
+
 public class Setting {
 	private String welcome;
 	private String character;

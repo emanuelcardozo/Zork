@@ -1,4 +1,4 @@
-package src;
+package entities;
 
 import java.util.ArrayList;
 
@@ -25,14 +25,24 @@ public class NPC extends Noun {
 			buildTriggers((JSONArray) npcJSON.get("triggers"));
 		}
 	}
-
+	
 	private void buildTriggers(JSONArray triggersJSON) {
 		for (Object triggerObj : triggersJSON) {
-
 			JSONObject triggerJSON = (JSONObject) triggerObj;
 			triggers.add(new Trigger(triggerJSON));
 		}
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
+	public void setTalk(String talk) {
+		this.talk = talk;
+	}
+
+	public void setTriggers(ArrayList<Trigger> triggers) {
+		this.triggers = triggers;
 	}
 
 	public ArrayList<Trigger> getTriggers() {
@@ -46,11 +56,4 @@ public class NPC extends Noun {
 	public String getTalk() {
 		return talk;
 	}
-
-	@Override
-	public String toString() {
-		return "Npcs [name=" + name + ", gender=" + gender + ", number=" + number + " + description=" + description
-				+ " talk= " + talk + " triggers= " + triggers + "]";
-	}
-
 }

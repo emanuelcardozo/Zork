@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.json.simple.JSONObject;
 
+import entities.Noun;
+
 public class Place extends Noun {
 	private ArrayList<String> items = new ArrayList<String>();
 

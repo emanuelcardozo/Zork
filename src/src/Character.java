@@ -2,6 +2,8 @@ package src;
 
 import java.util.ArrayList;
 
+import entities.NPC;
+
 public class Character {
 	private String name;
 	private ArrayList<String> inventario;
