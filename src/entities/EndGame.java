@@ -1,4 +1,4 @@
-package src;
+package entities;
 
 import org.json.simple.JSONObject;
 
@@ -22,10 +22,41 @@ public class EndGame {
 		description = (String) endGameJSON.get("description");
 	}
 
+	public String getCondition() {
+		return condition;
+	}
+
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+	public String getThing() {
+		return thing;
+	}
+
+	public void setThing(String thing) {
+		this.thing = thing;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
 		return "EndGame [condition=" + condition + ", action=" + action + ", thing=" + thing + ", description="
 				+ description + "]";
 	}
-
 }
