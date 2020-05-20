@@ -1,6 +1,7 @@
 package entities;
 
-import src.Inventory;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Player {
 	private String name;
@@ -58,5 +59,25 @@ public class Player {
 
 		return message;
 	}
+	
+	public String agarrarItem(String itemName) {
+		Item item = null;
+		Map<String, Place> places = posicionActual.getPlacesMap();
+		
+		for (String key : places.keySet()) {
+		    Place place = places.get(key);
+		    item = place.extractItem(itemName);
+		}
+		
+		if(item != null) {
+			inventario.agregarItem(item);
+			return inventario.listarInventario();
+		}
+		
+		return "No puedo - necesito mas mana!";
+	}
 
+	public String listarInventario() {
+		return inventario.listarInventario();
+	}
 }

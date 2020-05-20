@@ -98,8 +98,10 @@ public class Location extends Noun {
 
 		for (Map.Entry<String, Place> entry : placesMap.entrySet()) {
 			sitio = entry.getValue();
-			descripcion += "En " + sitio.getArticulo() + " " + sitio.getName() + " hay ";
-			descripcion += sitio.listarItems();
+			if (sitio.getItemsInPlace() > 0) {
+				descripcion += "En " + sitio.getArticulo() + " " + sitio.getName() + " hay ";
+				descripcion += sitio.listarItems();
+			}
 		}
 
 		return descripcion;
@@ -166,6 +168,10 @@ public class Location extends Noun {
 		obstaculo = npcsMap.get(connection.getObstacle());
 
 		return "'¡No puedes pasar!' " + obstaculo.getArticulo() + " " + obstaculo.getName() + " no te dejará pasar";
+	}
+
+	public Map<String, Place> getPlacesMap() {
+		return placesMap;
 	}
 
 }
