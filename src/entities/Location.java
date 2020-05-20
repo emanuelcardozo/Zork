@@ -149,7 +149,7 @@ public class Location extends Noun {
 			connection = connectionByLocationMap.get(where);
 		}
 
-		return connection != null; // && connection.getObstacle() == null;
+		return connection != null && connection.getObstacle() == null;
 	}
 
 	public String porqueNoPuedoIrHacia(String where) {
@@ -166,7 +166,7 @@ public class Location extends Noun {
 
 		obstaculo = npcsMap.get(connection.getObstacle());
 
-		return "'¡No puedes pasar!' " + obstaculo.getArticulo() + " " + obstaculo.getName() + " no te dejará pasar";
+		return obstaculo.getDescription();
 	}
 
 	public Map<String, Place> getPlacesMap() {

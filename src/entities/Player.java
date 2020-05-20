@@ -73,7 +73,7 @@ public class Player {
 			return inventario.listarInventario();
 		}
 
-		return "No tengo ese item!";
+		return "No existe ese item!";
 	}
 
 	public String listarInventario() {
