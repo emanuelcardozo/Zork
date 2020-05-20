@@ -13,8 +13,16 @@ public class Location extends Noun {
 	private Map<String, NPC> npcsMap = new HashMap<String, NPC>();
 	private Map<String, Connection> connectionByDirectionMap = new HashMap<String, Connection>();
 	private Map<String, Connection> connectionByLocationMap = new HashMap<String, Connection>();
-
+	private EndGame endGame;
 	private ArrayList<Connection> connectionsArray = new ArrayList<Connection>();
+
+	public EndGame getEndGame() {
+		return endGame;
+	}
+
+	public void setEndGame(EndGame endGame) {
+		this.endGame = endGame;
+	}
 
 	public Location(String name, String gender, String number, String description, HashMap<String, Place> places,
 			HashMap<String, NPC> npcs, ArrayList<Connection> connections) {
@@ -61,7 +69,6 @@ public class Location extends Noun {
 		Connection connection;
 		for (Object connectionObj : connectionsJSON) {
 			JSONObject connectionJSON = (JSONObject) connectionObj;
-//			connectionsArray.add(new Connection(connectionJSON));
 			connection = new Connection(connectionJSON);
 			connectionByDirectionMap.put(connection.getDirection(), connection);
 			connectionByLocationMap.put(connection.getLocation(), connection);
@@ -76,28 +83,8 @@ public class Location extends Noun {
 		this.description = description;
 	}
 
-	public Map<String, Place> getPlacesMap() {
-		return placesMap;
-	}
-
-	public void setPlacesMap(Map<String, Place> placesMap) {
-		this.placesMap = placesMap;
-	}
-
-	public Map<String, NPC> getNpcsMap() {
-		return npcsMap;
-	}
-
-	public void setNpcsMap(Map<String, NPC> npcsMap) {
-		this.npcsMap = npcsMap;
-	}
-
-	public ArrayList<Connection> getConnectionsArray() {
-		return connectionsArray;
-	}
-
-	public void setConnectionsArray(ArrayList<Connection> connectionsArray) {
-		this.connectionsArray = connectionsArray;
+	public Place getPlace(String placeNmae) {
+		return placesMap.get(placeNmae);
 	}
 
 	@Override
@@ -161,7 +148,7 @@ public class Location extends Noun {
 			connection = connectionByLocationMap.get(where);
 		}
 
-		return connection != null && connection.getObstacle() == null;
+		return connection != null; // && connection.getObstacle() == null;
 	}
 
 	public String porqueNoPuedoIrHacia(String where) {

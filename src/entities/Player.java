@@ -47,7 +47,11 @@ public class Player {
 		if (posicionActual.sePuedeMoverHacia(where)) {
 			locationName = posicionActual.moverHacia(where);
 			posicionActual = mundo.getLocation(locationName);
-			message = posicionActual.getDescription();
+
+			if (posicionActual.getEndGame() != null)
+				message = posicionActual.getEndGame().getDescription();
+			else
+				message = posicionActual.getDescription();
 		} else {
 			message = posicionActual.porqueNoPuedoIrHacia(where);
 		}

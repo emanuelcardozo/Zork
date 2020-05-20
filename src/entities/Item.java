@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 public class Item extends Noun {
 	private ArrayList<String> actions = new ArrayList<String>();
 	private ArrayList<String> effects_over = new ArrayList<String>();
+	private EndGame endGame;
 
 	public Item(String name, String gender, String number) {
 		super(name, gender, number);
@@ -17,6 +18,8 @@ public class Item extends Noun {
 	public Item(JSONObject itemJSON) {
 		super((String) itemJSON.get("name"), (String) itemJSON.get("gender"), (String) itemJSON.get("number"));
 
+		this.endGame = endGame;
+
 		if (itemJSON.containsKey("actions")) {
 			buildActions((JSONArray) itemJSON.get("actions"));
 		}
@@ -24,6 +27,14 @@ public class Item extends Noun {
 		if (itemJSON.containsKey("effects_over")) {
 			buildEffectsOver((JSONArray) itemJSON.get("effects_over"));
 		}
+	}
+
+	public EndGame getEndGame() {
+		return endGame;
+	}
+
+	public void setEndGame(EndGame endGame) {
+		this.endGame = endGame;
 	}
 
 	private void buildEffectsOver(JSONArray effectsJSON) {

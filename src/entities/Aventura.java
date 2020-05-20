@@ -19,6 +19,7 @@ public class Aventura {
 
 	private Map<String, Item> itemsMap;
 	private Map<String, NPC> npcsMap;
+	private Map<String, EndGame> endGameByThingMap;
 
 	public Aventura(String path) {
 		try {
@@ -43,13 +44,12 @@ public class Aventura {
 
 		JSONArray npcsJSON = (JSONArray) archivoJSON.get("npcs");
 		JSONArray itemsJSON = (JSONArray) archivoJSON.get("items");
-
-//		JSONArray endsGameJSON = (JSONArray) archivoJSON.get("endgames");
-//		seteoGenericoDeLista("endGames", endsGameJSON);
+		JSONArray endsGameJSON = (JSONArray) archivoJSON.get("endgames");
 
 		JSONArray locationsJSON = (JSONArray) archivoJSON.get("locations");
 		String inicio = (String) ((JSONObject) locationsJSON.get(0)).get("name");
 
+		crearFinales(endsGameJSON);
 		crearItemMap(itemsJSON);
 		crearNPCMap(npcsJSON);
 		Map<String, Location> mapaLocation = crearLocationMap(locationsJSON);
@@ -58,12 +58,27 @@ public class Aventura {
 		this.jugador = new Player(name, new Mundo(inicio, mapaLocation));
 	}
 
+	private void crearFinales(JSONArray endsGameJSON) {
+		endGameByThingMap = new HashMap<String, EndGame>();
+		EndGame end;
+
+		for (Object endGameObj : endsGameJSON) {
+			end = new EndGame((JSONObject) endGameObj);
+			endGameByThingMap.put(end.getThing(), end);
+		}
+	}
+
 	private void crearItemMap(JSONArray itemsJSON) {
 		this.itemsMap = new HashMap<String, Item>();
 		Item item;
+		EndGame end;
 
 		for (Object itemObj : itemsJSON) {
 			item = new Item((JSONObject) itemObj);
+
+			if (endGameByThingMap.containsKey(item.getName()))
+				item.setEndGame(endGameByThingMap.get(item.getName()));
+
 			itemsMap.put(item.getName(), item);
 		}
 	}
@@ -84,6 +99,10 @@ public class Aventura {
 
 		for (Object locationObj : locationsJSON) {
 			location = new Location((JSONObject) locationObj, itemsMap, npcsMap);
+
+			if (endGameByThingMap.containsKey(location.getName()))
+				location.setEndGame(endGameByThingMap.get(location.getName()));
+
 			mapa.put(location.getName(), location);
 		}
 
