@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import entities.Noun;
 
 public class Place extends Noun {
 	private Map<String, Item> itemsMap = new HashMap<String, Item>();
@@ -38,5 +37,18 @@ public class Place extends Noun {
 		itemsMap.remove(name);
 
 		return item;
+	}
+
+	public String listarItems() {
+		String[] palabras = new String[itemsMap.keySet().size()];
+		Item item;
+		int index = 0;
+
+		for (Map.Entry<String, Item> entry : itemsMap.entrySet()) {
+			item = entry.getValue();
+			palabras[index++] = item.getCantidad() + " " + item.getName();
+		}
+
+		return listarPalabras(palabras);
 	}
 }
