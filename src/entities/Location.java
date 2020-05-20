@@ -1,6 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +13,6 @@ public class Location extends Noun {
 	private Map<String, Connection> connectionByDirectionMap = new HashMap<String, Connection>();
 	private Map<String, Connection> connectionByLocationMap = new HashMap<String, Connection>();
 	private EndGame endGame;
-	private ArrayList<Connection> connectionsArray = new ArrayList<Connection>();
 
 	public EndGame getEndGame() {
 		return endGame;
@@ -25,13 +23,12 @@ public class Location extends Noun {
 	}
 
 	public Location(String name, String gender, String number, String description, HashMap<String, Place> places,
-			HashMap<String, NPC> npcs, ArrayList<Connection> connections) {
+			HashMap<String, NPC> npcs) {
 		super(name, gender, number);
 
 		this.description = description;
 		this.placesMap = places;
 		this.npcsMap = npcs;
-		this.connectionsArray = connections;
 	}
 
 	public Location(JSONObject locationJSON, Map<String, Item> itemsMap, Map<String, NPC> npcsMap) {
@@ -121,10 +118,12 @@ public class Location extends Noun {
 	}
 
 	public String describirConnections() {
-		String[] palabras = new String[connectionsArray.size()];
+		String[] palabras = new String[connectionByDirectionMap.size()];
+		Connection connection;
 		int index = 0;
 
-		for (Connection connection : connectionsArray) {
+		for (Map.Entry<String, Connection> entry : connectionByDirectionMap.entrySet()) {
+			connection = entry.getValue();
 			palabras[index++] = "Al " + connection.getDirection() + " se puede ir hacia " + connection.getLocation();
 		}
 
