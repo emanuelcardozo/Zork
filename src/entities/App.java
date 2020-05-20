@@ -22,6 +22,9 @@ public class App {
 		System.out.println("(AGARRAR ESPEJO)");
 		System.out.println(jugador.agarrarItem("espejo"));
 
+		System.out.println("(AGARRAR BANANA)");
+		System.out.println(jugador.agarrarItem("banana"));
+
 		System.out.println("(MIRAR ALREDEDOR)");
 		System.out.println(jugador.mirar());
 
