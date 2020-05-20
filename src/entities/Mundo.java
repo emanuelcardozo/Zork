@@ -24,5 +24,6 @@ public class Mundo {
 	public Location getLocation(String locationName) {
 		return locations.get(locationName);
 	}
-
+	
+	
 }

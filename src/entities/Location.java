@@ -108,11 +108,13 @@ public class Location extends Noun {
 	public String describirLugaresConItems() {
 		String descripcion = "";
 		Place sitio;
-
+		
 		for (Map.Entry<String, Place> entry : placesMap.entrySet()) {
 			sitio = entry.getValue();
-			descripcion += "En " + sitio.getArticulo() + " " + sitio.getName() + " hay ";
-			descripcion += sitio.listarItems();
+			if(sitio.getItemsInPlace() > 0) {
+				descripcion += "En " + sitio.getArticulo() + " " + sitio.getName() + " hay ";
+				descripcion += sitio.listarItems();
+			}	
 		}
 
 		return descripcion;

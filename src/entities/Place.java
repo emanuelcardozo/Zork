@@ -32,12 +32,27 @@ public class Place extends Noun {
 		itemsMap.put(item.getName(), item);
 	}
 
+	public Map<String, Item> getItemsMap() {
+		return itemsMap;
+	}
+
+	public void setItemsMap(Map<String, Item> itemsMap) {
+		this.itemsMap = itemsMap;
+	}
+	
+	public int getItemsInPlace() {
+		return itemsMap.size();
+	}
+
 	public Item extractItem(String name) {
 		Item item = itemsMap.get(name);
-		itemsMap.remove(name);
+		
+		if(item != null)
+			itemsMap.remove(name);
 
 		return item;
 	}
+	
 
 	public String listarItems() {
 		String[] palabras = new String[itemsMap.keySet().size()];
