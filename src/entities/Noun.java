@@ -36,11 +36,11 @@ public class Noun {
 	}
 
 	public boolean esFemenino() {
-		return gender.equalsIgnoreCase("Femenino");
+		return gender.equalsIgnoreCase("female");
 	}
 
 	public boolean esSingular() {
-		return gender.equalsIgnoreCase("Singular");
+		return number.equalsIgnoreCase("Singular");
 	}
 
 	public String getArticulo() {
@@ -55,6 +55,25 @@ public class Noun {
 			return esFemenino() ? "una" : "un";
 
 		return esFemenino() ? "unas" : "unos";
+	}
+
+	public String listarPalabras(String[] palabras) {
+		String listado = "";
+
+		if (palabras.length == 0)
+			return listado;
+
+		if (palabras.length == 1)
+			return palabras[0] + ".";
+
+		for (String palabra : palabras) {
+			listado += palabra + ", ";
+		}
+
+		listado = listado.substring(0, listado.length() - 2);
+		int ultimaComa = listado.lastIndexOf(',');
+
+		return listado.substring(0, ultimaComa) + " y" + listado.substring(ultimaComa + 1) + ".";
 	}
 
 	@Override
