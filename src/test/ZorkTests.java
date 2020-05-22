@@ -24,7 +24,7 @@ public class ZorkTests {
 		assertEquals("Estas en un muelle. En el suelo hay un rociador con cerveza de raiz, una barreta y un espejo. Hay un pirata fantasma. Al sur se puede ir hacia taberna.",jugador.mirar());
 		// Inventario vacio inicialmente.
 		assertEquals("No tienes objetos en tu inventario.", jugador.listarInventario());
-		// Agarra un item.
+			// Agarra un item.
 		assertEquals("Tienes una barreta", jugador.agarrarItem("barreta"));
 		// Lista inventario
 		assertEquals("Tienes una barreta", jugador.listarInventario());
@@ -67,12 +67,22 @@ public class ZorkTests {
 	
 	@Test
 	public void testAgarrar() {
+		
+		// Intento agarrar un item que no está en listado-tipea mal
+		assertEquals("No existe ese item!.", jugador.agarrarItem("barra"));
 		// Agarra un item.
 		assertEquals("Tienes una barreta", jugador.agarrarItem("barreta"));
 		// Intento agarrar el item nuevamente. Pero ya no existe debido a que ya lo agarro antes.
 		assertEquals("No existe ese item!.", jugador.agarrarItem("barreta"));
 		// Intento agarrar un item que no existe.
 		assertEquals("No existe ese item!.", jugador.agarrarItem("espada"));
+		//agarra espejo 		
+		assertEquals("Tienes una barreta y un espejo.", jugador.agarrarItem("espejo")); // no deberia tener barreta la agarro antes
+		//agarra barreta
+		//assertEquals("Tienes una barreta", jugador.agarrarItem("barreta")); //falla porque la tomo antes !!!!Mirar aqui
+		//Listo inventario
+		assertEquals("Tienes una barreta y un espejo.", jugador.listarInventario());
+				
 	}
 	
 	@Test
