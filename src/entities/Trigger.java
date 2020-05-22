@@ -53,11 +53,4 @@ public class Trigger {
 	public void setAfter_trigger(String after_trigger) {
 		this.after_trigger = after_trigger;
 	}
-
-	@Override
-	public String toString() {
-		return "Trigger [type=" + type + ", thing=" + thing + ", on_trigger=" + on_trigger + ", after_trigger="
-				+ after_trigger + "]";
-	}
-
 }

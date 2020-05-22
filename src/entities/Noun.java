@@ -75,9 +75,4 @@ public class Noun {
 
 		return listado.substring(0, ultimaComa) + " y" + listado.substring(ultimaComa + 1) + ".";
 	}
-
-	@Override
-	public String toString() {
-		return "Noun [name=" + name + ", gender=" + gender + ", number=" + number + "]";
-	}
 }

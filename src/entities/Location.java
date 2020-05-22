@@ -14,14 +14,6 @@ public class Location extends Noun {
 	private Map<String, Connection> connectionByLocationMap = new HashMap<String, Connection>();
 	private EndGame endGame;
 
-	public EndGame getEndGame() {
-		return endGame;
-	}
-
-	public void setEndGame(EndGame endGame) {
-		this.endGame = endGame;
-	}
-
 	public Location(String name, String gender, String number, String description, HashMap<String, Place> places,
 			HashMap<String, NPC> npcs) {
 		super(name, gender, number);
@@ -90,6 +82,14 @@ public class Location extends Noun {
 
 	public boolean contieneNPC(String NPCname) {
 		return npcsMap.containsKey(NPCname);
+	}
+
+	public EndGame getEndGame() {
+		return endGame;
+	}
+
+	public void setEndGame(EndGame endGame) {
+		this.endGame = endGame;
 	}
 
 	@Override

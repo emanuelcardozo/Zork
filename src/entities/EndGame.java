@@ -53,10 +53,4 @@ public class EndGame {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	@Override
-	public String toString() {
-		return "EndGame [condition=" + condition + ", action=" + action + ", thing=" + thing + ", description="
-				+ description + "]";
-	}
 }
