@@ -100,14 +100,17 @@ public class ZorkTests {
 	}
 	
 	@Test
-	public void testEndGames() {
+	public void testEndGameEspejo() {
 		jugador.agarrarItem("espejo");
 		// Detecta final al mirar espejo.
 		assertEquals("Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!",jugador.usarItem("espejo", "mi"));
+	}
+	
+	@Test
+	public void testEndGameTaberna() {
 		// Detecta final a llegar a la taberna.
 		jugador.agarrarItem("rociador con cerveza de raiz");
 		jugador.usarItem("rociador con cerveza de raiz", "pirata fantasma");
 		assertEquals("Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.",jugador.moverHacia("sur"));
 	}
-	
 }
