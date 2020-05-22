@@ -73,7 +73,7 @@ public class Player {
 			return inventario.listarInventario();
 		}
 
-		return "No existe ese item!";
+		return "No existe ese item!.";
 	}
 
 	public String listarInventario() {
@@ -97,7 +97,7 @@ public class Player {
 		}
 
 		if (!posicionActual.contieneNPC(where))
-			return "No hay " + where + " en " + posicionActual.getName();
+			return "No hay " + where + " en " + posicionActual.getName()+".";
 
 		acciones = item.usarEnNPC(posicionActual.getNPC(where));
 
@@ -110,7 +110,7 @@ public class Player {
 
 	public String hablarCon(String objectName) {
 		NPC npc = posicionActual.getNPC(objectName);
-		String message = "No se puede hablar con " + objectName;
+		String message = "No se puede hablar con " + objectName+".";
 
 		return npc != null ? npc.hablar() : message;
 	}

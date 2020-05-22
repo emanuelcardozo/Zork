@@ -10,6 +10,8 @@ public class App {
 		System.out.println("\n(VER INVENTARIO)");
 		System.out.println(jugador.listarInventario());
 
+		System.out.println("->"+jugador.getPosicionActual());
+		
 		System.out.println("\n(MIRAR ALREDEDOR)");
 		System.out.println(jugador.mirar());
 
@@ -22,6 +24,9 @@ public class App {
 		System.out.println("\n(AGARRAR BARRETA)");
 		System.out.println(jugador.agarrarItem("barreta"));
 
+		System.out.println("\n(MIRAR ALREDEDOR)");
+		System.out.println(jugador.mirar());
+		
 		System.out.println("\n(MIRAR ALREDEDOR)");
 		System.out.println(jugador.mirar());
 
@@ -66,6 +71,10 @@ public class App {
 
 		System.out.println("\n(IR AL SUR - TABERNA)");
 		System.out.println(jugador.moverHacia("sur"));
+		
+		System.out.println(jugador.getPosicionActual());
+		
+		
 
 	}
 
