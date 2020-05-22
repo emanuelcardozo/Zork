@@ -77,4 +77,8 @@ public class NPC extends Noun {
 
 		return response;
 	}
+
+	public String hablar() {
+		return getTalk();
+	}
 }

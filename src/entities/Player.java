@@ -107,4 +107,11 @@ public class Player {
 
 		return acciones[0];
 	}
+
+	public String hablarCon(String objectName) {
+		NPC npc = posicionActual.getNPC(objectName);
+		String message = "No se puede hablar con " + objectName;
+
+		return npc != null ? npc.hablar() : message;
+	}
 }

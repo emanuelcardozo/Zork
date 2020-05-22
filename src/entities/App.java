@@ -34,6 +34,12 @@ public class App {
 		System.out.println("\n(MIRAR ALREDEDOR)");
 		System.out.println(jugador.mirar());
 
+		System.out.println("\n(HABLAR CON PIRATA)");
+		System.out.println(jugador.hablarCon("pirata fantasma"));
+
+		System.out.println("\n(HABLAR CON MARINERO)");
+		System.out.println(jugador.hablarCon("marinero"));
+
 		System.out.println("\n(AGARRAR ROCIADOR)");
 		System.out.println(jugador.agarrarItem("rociador con cerveza de raiz"));
 
