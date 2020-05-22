@@ -34,7 +34,7 @@ public class Inventory {
 		}
 
 		if (palabras.length == 0) {
-			return "No tienen objetos en tu inventario.";
+			return "No tienes objetos en tu inventario.";
 		} else if (palabras.length == 1) {
 			return listado += palabras[0];
 		}
