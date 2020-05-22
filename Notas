@@ -1,0 +1,20 @@
+@Test
+	public void testAgarrar() {
+		
+		// Intento agarrar un item que no está en listado-tipea mal
+		assertEquals("No existe ese item!.", jugador.agarrarItem("barra"));
+		// Agarra un item.
+		assertEquals("Tienes una barreta", jugador.agarrarItem("barreta"));
+		// Intento agarrar el item nuevamente. Pero ya no existe debido a que ya lo agarro antes.
+		assertEquals("No existe ese item!.", jugador.agarrarItem("barreta"));
+		// Intento agarrar un item que no existe.
+		assertEquals("No existe ese item!.", jugador.agarrarItem("espada"));
+		//agarra espejo 		
+		assertEquals("Tienes una barreta y un espejo.", jugador.agarrarItem("espejo")); // no deberia tener barreta la agarro antes
+		//agarra barreta antes decia que no existe pero en listado la tiene
+		//assertEquals("Tienes una barreta", jugador.agarrarItem("barreta")); //falla porque la tomo antes !!!!Mirar aqui
+		//Listo inventario
+		assertEquals("Tienes una barreta y un espejo.", jugador.listarInventario());
+				
+	}
+	
