@@ -29,6 +29,10 @@ public class Item extends Noun {
 		}
 	}
 
+	public boolean afectaA(String targetName) {
+		return effects_over.contains(targetName);
+	}
+
 	public EndGame getEndGame() {
 		return endGame;
 	}
@@ -56,5 +60,27 @@ public class Item extends Noun {
 
 	public ArrayList<String> getEffects_over() {
 		return effects_over;
+	}
+
+	public String[] usarEnNPC(NPC npc) {
+		if (afectaA("npcs") && npc.reaccionaConItem(getName())) {
+			return npc.ejecutarTrigger(getName());
+		} // else if (item.getEffects_over().contains("items")) {
+			// TO DO
+			// } else
+		String[] message = { "Eso no ha servido de nada. " };
+
+		return message;
+
+	}
+
+	public String[] usarEnMi() {
+		String[] message = { "Eso no ha servido de nada. " };
+
+		if (afectaA("self")) {
+			message[0] = getEndGame().getDescription();
+		}
+
+		return message;
 	}
 }

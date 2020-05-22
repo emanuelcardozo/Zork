@@ -40,6 +40,24 @@ public class App {
 		System.out.println("\n(MIRAR ALREDEDOR)");
 		System.out.println(jugador.mirar());
 
+		System.out.println("\n(USAR BARRETA EN PIRATA)");
+		System.out.println(jugador.usarItem("barreta", "pirata fantasma"));
+
+		System.out.println("\n(USAR ESPEJO EN PIRATA)");
+		System.out.println(jugador.usarItem("espejo", "pirata fantasma"));
+
+		System.out.println("\n(USAR PIEDRA EN PIRATA)");
+		System.out.println(jugador.usarItem("piedra", "pirata fantasma"));
+
+		System.out.println("\n(USAR ESPEJO EN CONEJO)");
+		System.out.println(jugador.usarItem("espejo", "conejo"));
+
+		System.out.println("\n(USAR ESPEJO EN MI)");
+		System.out.println(jugador.usarItem("espejo", "mi"));
+
+		System.out.println("\n(USAR ROCIADOR EN PIRATA)");
+		System.out.println(jugador.usarItem("rociador con cerveza de raiz", "pirata fantasma"));
+
 		System.out.println("\n(IR AL SUR - TABERNA)");
 		System.out.println(jugador.moverHacia("sur"));
 

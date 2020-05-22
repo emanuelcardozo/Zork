@@ -84,6 +84,14 @@ public class Location extends Noun {
 		return placesMap.get(placeNmae);
 	}
 
+	public NPC getNPC(String NPCname) {
+		return npcsMap.get(NPCname);
+	}
+
+	public boolean contieneNPC(String NPCname) {
+		return npcsMap.containsKey(NPCname);
+	}
+
 	@Override
 	public String toString() {
 		return getCantidad() + " " + getName();
@@ -143,13 +151,30 @@ public class Location extends Noun {
 
 	public boolean sePuedeMoverHacia(String where) {
 
+		Connection connection = buscarConnection(where);
+
+		if (connection != null)
+			return !esCaminoBloqueado(connection);
+
+		return false;
+	}
+
+	private boolean esCaminoBloqueado(Connection connection) {
+		return existeNPC(connection.getObstacle());
+	}
+
+	private Connection buscarConnection(String where) {
 		Connection connection = connectionByDirectionMap.get(where);
 
 		if (connection == null) {
 			connection = connectionByLocationMap.get(where);
 		}
 
-		return connection != null && connection.getObstacle() == null;
+		return connection;
+	}
+
+	private boolean existeNPC(String npcName) {
+		return npcsMap.get(npcName) != null;
 	}
 
 	public String porqueNoPuedoIrHacia(String where) {
@@ -171,6 +196,10 @@ public class Location extends Noun {
 
 	public Map<String, Place> getPlacesMap() {
 		return placesMap;
+	}
+
+	public void eliminarObstaculo(String npcName) {
+		npcsMap.remove(npcName);
 	}
 
 }

@@ -47,4 +47,8 @@ public class Inventory {
 
 		return listado.substring(0, ultimaComa) + " y" + listado.substring(ultimaComa + 1) + ".";
 	}
+	
+	public Item getItem(String itemName) {
+		return items.get(itemName);
+	}
 }

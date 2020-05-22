@@ -79,4 +79,32 @@ public class Player {
 	public String listarInventario() {
 		return inventario.listarInventario();
 	}
+
+	public Item getItem(String itemName) {
+		return inventario.getItem(itemName);
+	}
+
+	public String usarItem(String itemName, String where) {
+		Item item = inventario.getItem(itemName);
+		String[] acciones;
+
+		if (item == null)
+			return "No se encontro " + itemName + " en tu inventario.";
+
+		if (where == "mi") {
+			acciones = item.usarEnMi();
+			return acciones[0];
+		}
+
+		if (!posicionActual.contieneNPC(where))
+			return "No hay " + where + " en " + posicionActual.getName();
+
+		acciones = item.usarEnNPC(posicionActual.getNPC(where));
+
+		if (acciones.length > 1 && acciones[1].equals("remove")) {
+			posicionActual.eliminarObstaculo(where);
+		}
+
+		return acciones[0];
+	}
 }
