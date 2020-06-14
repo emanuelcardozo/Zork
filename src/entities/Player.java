@@ -36,7 +36,7 @@ public class Player {
 		observacion += " " + posicionActual.describirLugaresConItems();
 		observacion += " " + posicionActual.describirNPCs();
 		observacion += " " + posicionActual.describirConnections();
-
+System.out.println("mio" +posicionActual.describirLugaresConItems());
 		return observacion;
 	}
 
