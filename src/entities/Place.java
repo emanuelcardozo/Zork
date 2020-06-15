@@ -44,13 +44,14 @@ public class Place extends Noun {
 		return itemsMap.size();
 	}
 
-	public Item extractItem(String name) {
-		Item item = itemsMap.get(name);
-		
-		if(item != null)
-			itemsMap.remove(name);
-
-		return item;
+	//Modificado
+	public Item extractItem(Item item) {
+		Item itemExtraido = null;
+		if (itemsMap.containsKey(item.name)) {
+			itemExtraido = item;
+			itemsMap.remove(item.name);
+		}
+		return itemExtraido;
 	}
 	
 

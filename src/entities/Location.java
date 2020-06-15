@@ -17,7 +17,6 @@ public class Location extends Noun {
 	public Location(String name, String gender, String number, String description, HashMap<String, Place> places,
 			HashMap<String, NPC> npcs) {
 		super(name, gender, number);
-
 		this.description = description;
 		this.placesMap = places;
 		this.npcsMap = npcs;
@@ -59,7 +58,7 @@ public class Location extends Noun {
 		for (Object connectionObj : connectionsJSON) {
 			JSONObject connectionJSON = (JSONObject) connectionObj;
 			connection = new Connection(connectionJSON);
-			connectionByDirectionMap.put(connection.getDirection(), connection);
+			connectionByDirectionMap.put(connection.getDirection().name().toLowerCase(), connection);
 			connectionByLocationMap.put(connection.getLocation(), connection);
 		}
 	}
@@ -138,18 +137,18 @@ public class Location extends Noun {
 		return listarPalabras(palabras);
 	}
 
-	public String moverHacia(String where) {
+	public String moverHacia(Direccion where) {
 
-		Connection connection = connectionByDirectionMap.get(where);
+		Connection connection = connectionByDirectionMap.get(where.name().toLowerCase());
 
 		if (connection == null) {
-			connection = connectionByLocationMap.get(where);
+			connection = connectionByLocationMap.get(where.name().toLowerCase());
 		}
 
 		return connection.getLocation();
 	}
 
-	public boolean sePuedeMoverHacia(String where) {
+	public boolean sePuedeMoverHacia(Direccion where) {
 
 		Connection connection = buscarConnection(where);
 
@@ -163,27 +162,23 @@ public class Location extends Noun {
 		return existeNPC(connection.getObstacle());
 	}
 
-	private Connection buscarConnection(String where) {
-		Connection connection = connectionByDirectionMap.get(where);
+	private Connection buscarConnection(Direccion where) {
+		Connection connection = connectionByDirectionMap.get(where.name().toLowerCase());
 
 		if (connection == null) {
-			connection = connectionByLocationMap.get(where);
+			connection = connectionByLocationMap.get(where.name().toLowerCase());
 		}
 
 		return connection;
 	}
 
-	private boolean existeNPC(String npcName) {
-		return npcsMap.get(npcName) != null;
-	}
+	public String porqueNoPuedoIrHacia(Direccion where) {
 
-	public String porqueNoPuedoIrHacia(String where) {
-
-		Connection connection = connectionByDirectionMap.get(where);
+		Connection connection = connectionByDirectionMap.get(where.name().toLowerCase());
 		NPC obstaculo;
 
 		if (connection == null) {
-			connection = connectionByLocationMap.get(where);
+			connection = connectionByLocationMap.get(where.name().toLowerCase());
 		}
 
 		if (connection == null)
@@ -198,6 +193,10 @@ public class Location extends Noun {
 		return placesMap;
 	}
 
+	private boolean existeNPC(String npcName) {
+		return npcsMap.get(npcName) != null;
+	}
+	
 	public void eliminarObstaculo(String npcName) {
 		npcsMap.remove(npcName);
 	}

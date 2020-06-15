@@ -15,34 +15,10 @@ public class Noun {
 		return name;
 	}
 
-//	public String getGender() {
-//		return gender;
-//	}
-//
-//	public String getNumber() {
-//		return number;
-//	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
-//	public void setGender(String gender) {
-//		this.gender = gender;
-//	}
-//
-//	public void setNumber(String number) {
-//		this.number = number;
-//	}
-//
-//	public boolean esFemenino() {
-//		return gender.equalsIgnoreCase("female");
-//	}
-//
-//	public boolean esSingular() {
-//		return number.equalsIgnoreCase("Singular");
-//	}
-//
 	public String getArticulo() {
 		if (this.numero.name().equals("SINGULAR"))
 			return this.genero.name().equals("FEMALE") ? "la" : "el";
