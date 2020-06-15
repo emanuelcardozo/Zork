@@ -14,7 +14,7 @@ public class ZorkTests {
 
 	@Before
 	public void config() {
-		miAventura = new Aventura("escenario2.json");
+		miAventura = new Aventura("Aventuras/escenario1.json");
 		jugador = miAventura.getJugador();
 	}
 
