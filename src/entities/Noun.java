@@ -2,59 +2,59 @@ package entities;
 
 public class Noun {
 	protected String name;
-	protected String gender;
-	protected String number;
+	Genero genero;
+	Numero numero;
 
-	public Noun(String name, String gender, String number) {
+	public Noun(String name, String genero, String numero) {
 		this.name = name;
-		this.gender = gender;
-		this.number = number;
+		this.genero = Enum.valueOf(Genero.class, genero.toUpperCase());
+		this.numero = Enum.valueOf(Numero.class, numero.toUpperCase());
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public String getNumber() {
-		return number;
-	}
+//	public String getGender() {
+//		return gender;
+//	}
+//
+//	public String getNumber() {
+//		return number;
+//	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
-	public boolean esFemenino() {
-		return gender.equalsIgnoreCase("female");
-	}
-
-	public boolean esSingular() {
-		return number.equalsIgnoreCase("Singular");
-	}
-
+//	public void setGender(String gender) {
+//		this.gender = gender;
+//	}
+//
+//	public void setNumber(String number) {
+//		this.number = number;
+//	}
+//
+//	public boolean esFemenino() {
+//		return gender.equalsIgnoreCase("female");
+//	}
+//
+//	public boolean esSingular() {
+//		return number.equalsIgnoreCase("Singular");
+//	}
+//
 	public String getArticulo() {
-		if (esSingular())
-			return esFemenino() ? "la" : "el";
+		if (this.numero.name().equals("SINGULAR"))
+			return this.genero.name().equals("FEMALE") ? "la" : "el";
 
-		return esFemenino() ? "las" : "los";
+		return this.genero.name().equals("FEMALE") ? "las" : "los";
 	}
 
 	public String getCantidad() {
-		if (esSingular())
-			return esFemenino() ? "una" : "un";
+		if (this.numero.name().equals("SINGULAR"))
+			return this.genero.name().equals("FEMALE") ? "una" : "un";
 
-		return esFemenino() ? "unas" : "unos";
+		return this.genero.name().equals("FEMALE") ? "unas" : "unos";
 	}
 
 	public String listarPalabras(String[] palabras) {
