@@ -14,15 +14,15 @@ public class Connection {
 	}
 
 	public Connection(JSONObject connectionJSON) {
-		this.direction =(String)connectionJSON.get("direction");
+		this.direction = (String) connectionJSON.get("direction");
 		this.location = (String) connectionJSON.get("location");
 
 		if (connectionJSON.containsKey("obstacles"))
 			this.obstacle = (String) connectionJSON.get("obstacles");
 	}
 
-	public String getDirection(String direc) {
-		switch (direc.toLowerCase()) {
+	public String getDirection() {
+		switch (direction.toLowerCase()) {
 		case "north":
 			return "norte";
 		case "east":
@@ -35,8 +35,8 @@ public class Connection {
 
 	}
 
-	public String getDirection() {
-		return direction;
+	public void setDirection(String direction) {
+		this.direction = direction;
 	}
 
 	public String getLocation() {

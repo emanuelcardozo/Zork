@@ -17,6 +17,7 @@ public class Location extends Noun {
 	public Location(String name, String gender, String number, String description, HashMap<String, Place> places,
 			HashMap<String, NPC> npcs) {
 		super(name, gender, number);
+
 		this.description = description;
 		this.placesMap = places;
 		this.npcsMap = npcs;
@@ -172,6 +173,10 @@ public class Location extends Noun {
 		return connection;
 	}
 
+	private boolean existeNPC(String npcName) {
+		return npcsMap.get(npcName) != null;
+	}
+
 	public String porqueNoPuedoIrHacia(String where) {
 
 		Connection connection = connectionByDirectionMap.get(where);
@@ -193,10 +198,6 @@ public class Location extends Noun {
 		return placesMap;
 	}
 
-	private boolean existeNPC(String npcName) {
-		return npcsMap.get(npcName) != null;
-	}
-	
 	public void eliminarObstaculo(String npcName) {
 		npcsMap.remove(npcName);
 	}

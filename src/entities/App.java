@@ -4,12 +4,10 @@ import org.junit.Before;
 
 public class App {
 		public static void main(String[] args) {
-		String[] a = "agarrar pete".split(" ");
-		//String[] m = "mirar pete".split(" ");
-		String mo = "mover norte";
-		//ejecutarCommand(a);
-		//ejecutarCommand(m[0]);
-		ejecutarCommand(mo);
+		Aventura miAventura = new Aventura("Aventuras/escenario1.json");
+		Player jugador =  miAventura.getJugador();
+		System.out.println(jugador.moverHacia("sur"));
+
 	
 	}
 	public static void ejecutarCommand(String accion) {
