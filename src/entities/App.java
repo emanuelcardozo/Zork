@@ -33,7 +33,7 @@ public class App {
 			broker.takeOrder(takeOrder);
 			break;
 		case "mirar":
-			Mirar seeOrder = new Mirar(ac);
+			Mirar seeOrder = new Mirar(ac, a[1]);
 			broker.takeOrder(seeOrder);
 			break;
 		case "mover":

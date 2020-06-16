@@ -10,7 +10,8 @@ public class Accion {
 	}
 	
 	public void mirar() {
-		System.out.println(jugador.mirarAlrededor());
+		if(where.equals("alrededor")) System.out.println(jugador.mirarAlrededor());
+		else if(where.equals("inventario")) System.out.println(jugador.listarInventario());
 	}
 
 	public void agarrar() {
