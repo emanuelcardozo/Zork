@@ -1,20 +1,23 @@
 package entities;
 
-import org.junit.Before;
-
 public class App {
 		public static void main(String[] args) {
+		Aventura miAventura = new Aventura("Aventuras/escenario1.json");
+		Player jugador =  miAventura.getJugador();
 		//ejecutarCommand("mover sur");
 		//ejecutarCommand("agarrar barreta");
-		ejecutarCommand("agarrar barreta");
-		ejecutarCommand("mover este");
-		ejecutarCommand("usar barreta pirata");
+		ejecutarCommand(jugador,"agarrar barreta");
+		//ejecutarCommand(jugador,"mover este");
+		//ejecutarCommand(jugador,"usar barreta pirata");
+		ejecutarCommand(jugador,"agarrar barreta");
+		ejecutarCommand(jugador,"usar espejo pirata");
+		ejecutarCommand(jugador, "mirar alrededor");
 
-	
 	}
-	public static void ejecutarCommand(String accion) {
+		
+	public static void ejecutarCommand(Player player, String accion) {
 		String[] a = accion.split(" ");
-		Accion ac = new Accion();
+		Accion ac = new Accion(player);
 		Broker broker = new Broker();
 		switch (a[0]) {
 		case "agarrar":
