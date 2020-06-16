@@ -4,9 +4,11 @@ import org.junit.Before;
 
 public class App {
 		public static void main(String[] args) {
-		Aventura miAventura = new Aventura("Aventuras/escenario1.json");
-		Player jugador =  miAventura.getJugador();
-		System.out.println(jugador.moverHacia("sur"));
+		//ejecutarCommand("mover sur");
+		//ejecutarCommand("agarrar barreta");
+		ejecutarCommand("agarrar barreta");
+		ejecutarCommand("mover este");
+		ejecutarCommand("usar barreta pirata");
 
 	
 	}
@@ -16,7 +18,7 @@ public class App {
 		Broker broker = new Broker();
 		switch (a[0]) {
 		case "agarrar":
-			Agarrar takeOrder = new Agarrar(ac);
+			Agarrar takeOrder = new Agarrar(ac, a[1]);
 			broker.takeOrder(takeOrder);
 			break;
 		case "mirar":
@@ -26,6 +28,10 @@ public class App {
 		case "mover":
 			Mover moveOrder = new Mover(ac, a[1]);
 			broker.takeOrder(moveOrder);
+			break;
+		case "usar":
+			Usar useOrder = new Usar(ac, a[1], a[2]);
+			broker.takeOrder(useOrder);
 			break;
 		}
 		broker.placeOrders();

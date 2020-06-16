@@ -41,13 +41,13 @@ public class Player {
 		return message;
 	}
 
-	public String agarrarItem(Item itemAgarrar) {
+	public String agarrarItem(String itemName) {
 		Item item = null;
 		Map<String, Place> places = posicionActual.getPlacesMap();
 
 		for (String key : places.keySet()) {
 			Place place = places.get(key);
-			item = place.extractItem(itemAgarrar);
+			item = place.extractItem(itemName);
 		}
 
 		if (item != null) {
@@ -62,29 +62,34 @@ public class Player {
 		return inventario.listarInventario();
 	}
 
-	public Item getItem(Item item) {
-		return inventario.getItem(item.getName());
+	public Item getItem(String item) {
+		return inventario.getItem(item);
 	}
 
-	public String usarItem(Item itemUsado, String receptor) {
-		Item item = inventario.getItem(itemUsado.getName());
+	public Item buscarItemInventario(String name) {
+		Item item = inventario.getItem(name);
+		return item;
+	}
+	
+	public String usarItem(Item item, String where) {
+		
 		String[] acciones;
 
 		if (item == null)
-			return "No se encontro " + itemUsado.getName() + " en tu inventario.";
+			return "No se encontro el item en tu inventario.";
 
-		if (receptor == "mi") {
+		if (where == "mi") {
 			acciones = item.usarEnMi();
 			return acciones[0];
 		}
 
-		if (!posicionActual.contieneNPC(receptor))
-			return "No hay " + receptor + " en " + posicionActual.getName() + ".";
+		if (!posicionActual.contieneNPC(where))
+			return "No hay " + where + " en " + posicionActual.getName()+".";
 
-		acciones = item.usarEnNPC(posicionActual.getNPC(receptor));
+		acciones = item.usarEnNPC(posicionActual.getNPC(where));
 
 		if (acciones.length > 1 && acciones[1].equals("remove")) {
-			posicionActual.eliminarObstaculo(receptor);
+			posicionActual.eliminarObstaculo(where);
 		}
 
 		return acciones[0];
