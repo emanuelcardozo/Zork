@@ -21,7 +21,7 @@ public class ZorkTests {
 	public void testCreacion() {
 		config();
 		System.out.println(miAventura.getJugador().toString());
-		System.out.println(jugador.mirar());
+		//System.out.println(jugador.mirar());
 	}
 }
 
