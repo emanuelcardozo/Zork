@@ -78,7 +78,7 @@ public class Player {
 		if (item == null)
 			return "No se encontro el item en tu inventario.";
 
-		if (where == "mi") {
+		if (where.equals("mi")) {
 			acciones = item.usarEnMi();
 			return acciones[0];
 		}
