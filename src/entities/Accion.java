@@ -12,6 +12,7 @@ public class Accion {
 	public void mirar() {
 		if(where.equals("alrededor")) System.out.println(jugador.mirarAlrededor());
 		else if(where.equals("inventario")) System.out.println(jugador.listarInventario());
+		else System.out.println("No entiendo esa instruccion.");
 	}
 
 	public void agarrar() {
@@ -28,6 +29,10 @@ public class Accion {
 		System.out.println(jugador.usarItem(item, where2));
 	}
 
+	public void defaultAccion() {
+		System.out.println("No entiendo esa instruccion.");
+	}
+	
 	public void setWhere(String where) {
 		this.where = where;
 	}

@@ -52,7 +52,7 @@ public class Player {
 
 		if (item != null) {
 			inventario.agregarItem(item);
-			return inventario.listarInventario();
+			return "Item agregado a tu inventario!";
 		}
 
 		return "No existe ese item!.";
