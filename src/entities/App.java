@@ -1,18 +1,26 @@
 package entities;
 
-public class App {
-		public static void main(String[] args) {
-		Aventura miAventura = new Aventura("Aventuras/escenario1.json");
-		Player jugador =  miAventura.getJugador();
-		//ejecutarCommand("mover sur");
-		//ejecutarCommand("agarrar barreta");
-		ejecutarCommand(jugador,"agarrar barreta");
-		//ejecutarCommand(jugador,"mover este");
-		//ejecutarCommand(jugador,"usar barreta pirata");
-		ejecutarCommand(jugador,"agarrar barreta");
-		ejecutarCommand(jugador,"usar espejo pirata");
-		ejecutarCommand(jugador, "mirar alrededor");
+import java.util.Scanner;
 
+public class App {
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		String comando;
+		Aventura miAventura = new Aventura("Aventuras/escenario1.json");
+		Player jugador = miAventura.getJugador();
+		while (true) {
+			comando = teclado.nextLine();
+			ejecutarCommand(jugador, comando);
+		}
+		// ejecutarCommand("mover sur");
+		// ejecutarCommand("agarrar barreta");
+		// ejecutarCommand(jugador,"agarrar barreta");
+		// ejecutarCommand(jugador,"mover este");
+		// ejecutarCommand(jugador,"usar barreta pirata");
+		// ejecutarCommand(jugador,"agarrar barreta");
+		// ejecutarCommand(jugador,"usar espejo pirata");
+		// ejecutarCommand(jugador, "mirar alrededor");
+		// ejecutarCommand(jugador,"mirar alrededor");
 	}
 		
 	public static void ejecutarCommand(Player player, String accion) {
