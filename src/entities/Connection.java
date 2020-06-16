@@ -3,18 +3,18 @@ package entities;
 import org.json.simple.JSONObject;
 
 public class Connection {
-	private Direccion direction;
+	private String direction;
 	private String location;
 	private String obstacle;
 
 	public Connection(String direction, String location, String obstacle) {
-		this.direction = Enum.valueOf(Direccion.class, getDirection(direction).toUpperCase());
+		this.direction = direction;
 		this.location = location;
 		this.obstacle = obstacle;
 	}
 
 	public Connection(JSONObject connectionJSON) {
-		this.direction = Enum.valueOf(Direccion.class, (getDirection((String)connectionJSON.get("direction"))).toUpperCase());
+		this.direction =(String)connectionJSON.get("direction");
 		this.location = (String) connectionJSON.get("location");
 
 		if (connectionJSON.containsKey("obstacles"))
@@ -35,7 +35,7 @@ public class Connection {
 
 	}
 
-	public Direccion getDirection() {
+	public String getDirection() {
 		return direction;
 	}
 

@@ -58,7 +58,7 @@ public class Location extends Noun {
 		for (Object connectionObj : connectionsJSON) {
 			JSONObject connectionJSON = (JSONObject) connectionObj;
 			connection = new Connection(connectionJSON);
-			connectionByDirectionMap.put(connection.getDirection().name().toLowerCase(), connection);
+			connectionByDirectionMap.put(connection.getDirection(), connection);
 			connectionByLocationMap.put(connection.getLocation(), connection);
 		}
 	}
@@ -137,18 +137,18 @@ public class Location extends Noun {
 		return listarPalabras(palabras);
 	}
 
-	public String moverHacia(Direccion where) {
+	public String moverHacia(String where) {
 
-		Connection connection = connectionByDirectionMap.get(where.name().toLowerCase());
+		Connection connection = connectionByDirectionMap.get(where);
 
 		if (connection == null) {
-			connection = connectionByLocationMap.get(where.name().toLowerCase());
+			connection = connectionByLocationMap.get(where);
 		}
 
 		return connection.getLocation();
 	}
 
-	public boolean sePuedeMoverHacia(Direccion where) {
+	public boolean sePuedeMoverHacia(String where) {
 
 		Connection connection = buscarConnection(where);
 
@@ -162,23 +162,23 @@ public class Location extends Noun {
 		return existeNPC(connection.getObstacle());
 	}
 
-	private Connection buscarConnection(Direccion where) {
-		Connection connection = connectionByDirectionMap.get(where.name().toLowerCase());
+	private Connection buscarConnection(String where) {
+		Connection connection = connectionByDirectionMap.get(where);
 
 		if (connection == null) {
-			connection = connectionByLocationMap.get(where.name().toLowerCase());
+			connection = connectionByLocationMap.get(where);
 		}
 
 		return connection;
 	}
 
-	public String porqueNoPuedoIrHacia(Direccion where) {
+	public String porqueNoPuedoIrHacia(String where) {
 
-		Connection connection = connectionByDirectionMap.get(where.name().toLowerCase());
+		Connection connection = connectionByDirectionMap.get(where);
 		NPC obstaculo;
 
 		if (connection == null) {
-			connection = connectionByLocationMap.get(where.name().toLowerCase());
+			connection = connectionByLocationMap.get(where);
 		}
 
 		if (connection == null)

@@ -15,7 +15,7 @@ public class Player {
 		this.inventario = new Inventory();
 	}
 	
-	public String mirar() {
+	public String mirarAlrededor() {
 		String observacion = posicionActual.getDescription() + ".";
 		observacion += " " + posicionActual.describirLugaresConItems();
 		observacion += " " + posicionActual.describirNPCs();
@@ -23,7 +23,7 @@ public class Player {
 		return observacion;
 	}
 
-	public String moverHacia(Direccion where) {
+	public String moverHacia(String where) {
 		String locationName;
 		String message = null;
 
