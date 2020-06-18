@@ -2,7 +2,6 @@ package entities;
 
 public class Mirar implements Order {
 	private Accion ac;
-	private String where;
 
 	public Mirar(Accion st, String where) {
 		this.ac = st;

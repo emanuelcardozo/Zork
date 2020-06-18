@@ -54,6 +54,14 @@ public class App {
 			broker.takeOrder(useOrder);
 			}
 			break;
+		case "hablar":
+			if(a.length < 3) {
+				System.out.println("Con quien quieres hablar?(HABLAR CON PIRATA FANTASMA)");
+			}else {
+				Hablar talkOrder = new Hablar(ac, a[2]);
+			broker.takeOrder(talkOrder);
+			}
+			break;
 		default:
 			DefaultAction useDefault = new DefaultAction(ac);
 			broker.takeOrder(useDefault);

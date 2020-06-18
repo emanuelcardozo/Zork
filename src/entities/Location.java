@@ -187,7 +187,7 @@ public class Location extends Noun {
 		}
 
 		if (connection == null)
-			return "No existe esa ubicacion.";
+			return "No puedes moverte hacia esa ubicación.";
 
 		obstaculo = npcsMap.get(connection.getObstacle());
 

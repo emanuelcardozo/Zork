@@ -95,9 +95,13 @@ public class Player {
 		return acciones[0];
 	}
 
+	public NPC buscarNpc(String objectName) {
+		NPC npc = posicionActual.getNPC(objectName);
+		return npc;
+	}
 	public String hablarCon(NPC objectName) {
-		NPC npc = posicionActual.getNPC(objectName.getName());
-		String message = "No se puede hablar con " + objectName + ".";
+		NPC npc = objectName;
+		String message = "No existe ese NPC con el que quieres hablar.";
 		return npc != null ? npc.hablar() : message;
 	}
 	

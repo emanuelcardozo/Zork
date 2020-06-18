@@ -29,6 +29,11 @@ public class Accion {
 		System.out.println(jugador.usarItem(item, where2));
 	}
 
+	public void hablar() {
+		NPC np = jugador.buscarNpc(where);
+		System.out.println(jugador.hablarCon(np));
+	}
+	
 	public void defaultAccion() {
 		System.out.println("No entiendo esa instruccion.");
 	}
@@ -40,4 +45,5 @@ public class Accion {
 	public void setWhere2(String where2) {
 		this.where2 = where2;
 	}
+
 }
