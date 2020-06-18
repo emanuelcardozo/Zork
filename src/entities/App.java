@@ -56,7 +56,7 @@ public class App {
 			break;
 		case "hablar":
 			if(a.length < 3) {
-				System.out.println("Con quien quieres hablar?(HABLAR CON PIRATA FANTASMA)");
+				System.out.println("Con quien quieres hablar?(COMANDO: HABLAR CON PIRATA FANTASMA)");
 			}else {
 				Hablar talkOrder = new Hablar(ac, a[2]);
 			broker.takeOrder(talkOrder);
