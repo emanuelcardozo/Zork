@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,7 +24,15 @@ public class Aventura {
 
 	public Aventura(String path) {
 		try {
+			System.out.println("Ingrese su nombre por favor:");
+			 String entradaTeclado = "";
+			 Scanner entradaEscaner = new Scanner (System.in);
+			 entradaTeclado = entradaEscaner.nextLine ();
+			 System.out.println("Bienvenido a Zork "+entradaTeclado+"!");
 			construirAventura(path);
+			 jugador.setName(entradaTeclado);
+			 entradaEscaner.close();
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("ERROR: No se pudo encontrar el archivo.");
 			e.printStackTrace();
