@@ -1,4 +1,8 @@
-package entities;
+package motorDeInstrucciones.actions;
+
+import entities.Item;
+import entities.NPC;
+import entities.Player;
 
 public class Accion {
 	private Player jugador;

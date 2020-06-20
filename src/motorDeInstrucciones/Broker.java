@@ -1,4 +1,4 @@
-package entities;
+package motorDeInstrucciones;
 import java.util.ArrayList;
 import java.util.List;
 

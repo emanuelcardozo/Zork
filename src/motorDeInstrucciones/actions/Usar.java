@@ -1,4 +1,6 @@
-package entities;
+package motorDeInstrucciones.actions;
+
+import motorDeInstrucciones.Order;
 
 public class Usar implements Order{
 	private Accion ac;
