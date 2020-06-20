@@ -34,7 +34,8 @@
          "number":"singular",
          "description":"Estas en el living. Hay muchas personas dentro de la casa con quien interactuar.",
 		 "npcs":["colega", "vecino"],
-		 "places": [],
+		 "places": [
+      ],
          "connections":[
             {
                "direction":"south",
@@ -79,6 +80,32 @@
          "number":"singular",
          "npcs":["policia"],
          "description":"Estas dentro de la ducha.",
+		 "places": [
+        {
+          "name": "tina",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "casetera"
+          ]
+        },
+		 {
+          "name": "suelo",
+          "gender": "male",
+          "number": "singular",
+          "items": [
+            "papel"
+          ]
+        },
+		{
+          "name": "pared",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "manchas"
+          ]
+        }
+      ],
          "connections":[
             {
                "direction":"east",
@@ -186,21 +213,14 @@
                "thing": "llave",
                "on_trigger": "La puerta esta abierta.",
 			   "after_trigger": "remove"
-           },
-		   {
-               "condition": "action",
-			   "action": "golpear",
-               "thing": "puerta",
-               "on_trigger": "No creo que nadie te escuche. Deben estar muy ocupados."
-           },
-		   
+           },   
          ]
       },
 	      {
          "name":"perro",
          "gender":"male",
          "number":"singular",
-         "description":"El es Goofi el perro policia que trabaja con nosotros.",
+         "description":"Es Goofi el perro policia que trabaja con nosotros.",
          "talk":"Guaf Guaf!",
          "triggers":[
          ]
@@ -254,7 +274,17 @@
       "number": "plural",
       "actions": [
       ],
-	  }
+	},
+	{
+      "name": "casetera",
+      "gender": "female",
+      "number": "singular",
+      "actions": [
+        "usar"
+      ],
+	   "effects_over": [
+      ]
+	 }
    ],
    "inventory":[],
    "endgames":[
