@@ -57,7 +57,7 @@ public class Aventura {
 	}
 
 	private void saludar() {
-		System.out.println("Bienvenido a Zork " + jugador.getName() + "!\n");
+		System.out.println("Bienvenido a Zork " + jugador.getName() + "!");
 		System.out.println(welcome);
 	}
 	
