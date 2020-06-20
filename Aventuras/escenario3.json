@@ -184,13 +184,14 @@
          "triggers":[
          ]
       },
-	  
       {
          "name":"victima",
          "gender":"female",
          "number":"singular",
-         "decription":"El anciano se encuentra pálido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
-         "talk":"El anciano esta muerto!"
+         "description":"El anciano se encuentra palido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
+         "talk":"El anciano esta muerto!",
+		 "triggers":[
+         ]
       },
 	    {
          "name":"anciana",
