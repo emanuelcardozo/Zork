@@ -82,4 +82,8 @@ public class NPC extends Noun {
 		return getTalk();
 	}
 	
+	public String mirar() {
+		return getDescription();
+	}
+	
 }

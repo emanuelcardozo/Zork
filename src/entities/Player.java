@@ -119,6 +119,13 @@ public class Player {
 		return npc != null ? npc.hablar() : message;
 	}
 	
+	public String mirarNpc(NPC objectName) {
+		NPC npc = objectName;
+		String message = "No existe ese NPC con el que quieres hablar.";
+		return npc != null ? npc.mirar() : message;
+	}
+	
+	
 	public String golpear(NPC np) {
 		return name;
 	}

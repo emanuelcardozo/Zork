@@ -14,9 +14,15 @@ public class Accion {
 	}
 	
 	public void mirar() {
+		NPC np = jugador.buscarNpc(where);
 		if(where.equals("alrededor")) System.out.println(jugador.mirarAlrededor());
 		else if(where.equals("inventario")) System.out.println(jugador.listarInventario());
-		else System.out.println("No entiendo esa instruccion.");
+		else if(np != null)
+			System.out.println(jugador.mirarNpc(np));
+		else
+			System.out.println("No existe lo que quieres mirar");
+			
+		
 	}
 
 	public void agarrar() {
