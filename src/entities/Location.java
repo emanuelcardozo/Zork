@@ -114,14 +114,17 @@ public class Location extends Noun {
 	public String describirNPCs() {
 		String[] palabras = new String[npcsMap.keySet().size()];
 		NPC npc;
+		String frase;
 		int index = 0;
 
 		for (Map.Entry<String, NPC> entry : npcsMap.entrySet()) {
 			npc = entry.getValue();
 			palabras[index++] = npc.getCantidad() + " " + npc.getName();
 		}
-
-		return "Hay " + listarPalabras(palabras);
+		frase = "Hay " + listarPalabras(palabras);
+		if(frase.equals("Hay ")) {
+			return "";
+		}else return frase;
 	}
 
 	public String describirConnections() {

@@ -1,0 +1,268 @@
+{
+   "settings":{
+      "welcome": "Te encuentras en el frente de la casa. Las demas personas ya comenzaron su trabajo dentro.",
+      "character":" "
+   },
+   "locations":[
+      {
+         "name":"frente",
+         "gender":"male",
+         "number":"singular",
+         "description":"Estas frente a la casa.",
+		 "places": [],
+         "connections":[
+            {
+               "direction":"north",
+               "location":"living",
+			   "obstacles": "puerta"
+            }
+         ]
+      },
+      {
+         "name":"living",
+         "gender":"male",
+         "number":"singular",
+         "description":"Estas en el centro living, parado frente a una mesa. Esta tiene un cuchillo apoyado encima con manchas rojas. Ademas tiene una hoja de papel con la frase 'Yo soy Alpharius' escrito con tinta negra",
+		 "npcs":["mujer"],
+		 "places": [],
+         "connections":[
+            {
+               "direction":"south",
+               "location":"frente",
+			   "obstacles": ""
+            },
+			{
+               "direction":"north",
+               "location":"cocina",
+			   "obstacles": ""
+            },
+            {
+               "direction":"east",
+               "location":"sala",
+			   "obstacles": ""
+            },
+            {
+               "direction":"west",
+               "location":"ducha",
+			   "obstacles": ""
+            }
+         ]
+      },
+      {
+         "name":"sala",
+         "gender":"female",
+         "number":"singular",
+		 "places": [],
+         "npcs":["detective"],
+         "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente",
+         "connections":[
+            {
+               "direction":"west",
+               "location":"living",
+			   "obstacles": ""
+            }
+         ]
+      },
+      {
+         "name":"ducha",
+         "gender":"female",
+         "number":"singular",
+         "npcs":["policia"],
+         "description":"Estas dentro de la ducha.",
+         "connections":[
+            {
+               "direction":"east",
+               "location":"living",
+			    "obstacles": ""
+            }
+         ]
+      },
+      {
+         "name":"cocina",
+         "gender":"female",
+         "number":"singular",
+         "description":"Estas en la cocina.",
+         "places":[
+            {
+               "name":"heladera",
+               "gender":"female",
+               "number":"singular",
+               "items":[
+                  "frasco de membrillo",
+                  "frasco de pastillas"
+               ]
+            }
+         ],
+         "connections":[
+            {
+               "direction":"south",
+               "location":"living",
+			    "obstacles": ""
+            }
+         ]
+      }
+   ],
+   "npcs":[
+      {
+         "name":"mujer",
+         "gender":"female",
+         "number":"singular",
+         "description":"Este asesino si que hizo bien las cosas.. Debemos encontrar alguna pista!",
+         "talk":"Este asesino si que hizo bien las cosas.. Debemos encontrar alguna pista!",
+         "triggers":[
+            {
+               "type":"location",
+               "action":"move",
+               "thing":"east",
+               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
+            },
+            {
+               "type":"action",
+               "action":"responder si",
+               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
+            },
+            {
+               "type":"action",
+               "action":"responder no",
+               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
+            }
+         ]
+      },
+	     {
+         "name":"detective",
+         "gender":"male",
+         "number":"singular",
+         "description":"Este es un caso muy raro no? Sigamos investigando!",
+         "talk":"Este es un caso muy raro no? Sigamos investigando!",
+         "triggers":[
+            {
+               "type":"location",
+               "action":"move",
+               "thing":"east",
+               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
+            },
+            {
+               "type":"action",
+               "action":"responder si",
+               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
+            },
+            {
+               "type":"action",
+               "action":"responder no",
+               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
+            }
+         ]
+      },
+	   {
+         "name":"policia",
+         "gender":"male",
+         "number":"singular",
+         "description":"Este es un caso muy raro no? Sigamos investigando!",
+         "talk":"Esto me esta dando miedo..espero que resolvamos esto rapido!",
+         "triggers":[
+            {
+               "type":"location",
+               "action":"move",
+               "thing":"east",
+               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
+            },
+            {
+               "type":"action",
+               "action":"responder si",
+               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
+            },
+            {
+               "type":"action",
+               "action":"responder no",
+               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
+            }
+         ]
+      },
+	  
+      {
+         "name":"victima",
+         "gender":"female",
+         "number":"singular",
+         "decription":"El anciano se encuentra pálido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
+         "talk":"El anciano no responde"
+      }
+   ],
+   "items":[
+      {
+         "name":"control remoto",
+         "gender":"male",
+         "number":"singular",
+         "actions":[
+            "usar"
+         ],
+         "effects_over":[
+            "npcs"
+         ]
+      },
+      {
+         "name":"cuchillo",
+         "gender":"male",
+         "number":"singular",
+         "actions":[
+            "usar"
+         ],
+         "effects_over":[
+            "npcs",
+            "self",
+            "items"
+         ]
+      },
+      {
+         "name":"frasco de membrillo",
+         "gender":"male",
+         "number":"singular",
+         "effects_over":[
+            "items"
+         ]
+      },
+      {
+         "name":"frasada",
+         "gender":"female",
+         "number":"singular"
+      },
+      {
+         "name":"frasco de pastillas",
+         "gender":"male",
+         "number":"singular",
+         "actions":[
+            "revisar"
+         ],
+         "effects_over":[
+            "self"
+         ]
+      },
+      {
+         "name":"cuaderno",
+         "gender":"male",
+         "number":"singular",
+         "actions":[
+            "leer",
+            "usar"
+         ],
+         "effects_over":[
+            "self"
+         ]
+      },
+      {
+         "name":"hoja de papel",
+         "gender":"male",
+         "number":"singular",
+         "actions":[
+            "leer",
+            "usar"
+         ],
+         "effects_over":[
+            "self"
+         ]
+      }
+   ],
+   "inventory":[],
+   "endgames":[
+
+   ]
+}

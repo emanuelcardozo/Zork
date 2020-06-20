@@ -16,13 +16,26 @@ public class Player {
 	}
 	
 	public String mirarAlrededor() {
-		String observacion = posicionActual.getDescription() + ".";
-		observacion += " " + posicionActual.describirLugaresConItems();
-		observacion += " " + posicionActual.describirNPCs();
+		String observacion = "";
+		boolean hay = false;
+		if(!posicionActual.describirLugaresConItems().equals("")) {
+			observacion += 	posicionActual.describirLugaresConItems();
+			hay = true;
+		}
+		if(!posicionActual.describirNPCs().equals("")) {
+			if(hay)
+			observacion += " " + posicionActual.describirNPCs();
+			else
+				observacion += posicionActual.describirNPCs();
+			hay = true;
+		}
+		if(hay)
 		observacion += " " + posicionActual.describirConnections();
+		else
+			observacion += posicionActual.describirConnections();
 		return observacion;
 	}
-
+	
 	public String moverHacia(String where) {
 		String locationName;
 		String message = null;
