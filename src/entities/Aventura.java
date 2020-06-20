@@ -26,25 +26,17 @@ public class Aventura {
 	private Map<String, NPC> npcsMap;
 	private Map<String, EndGame> endGameByThingMap;
 
-	public Aventura(String path) {
-		try {						
-			construirAventura(path);
-			pedirNombreUsuario();
-			saludar();
-			motorInstrucciones = new Motor(jugador);
-			motorInstrucciones.start();
-			despedir();
-			
-		} catch (FileNotFoundException e) {
-			System.out.println("ERROR: No se pudo encontrar el archivo.");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.println("ERROR: Error con el archivo.");
-			e.printStackTrace();
-		} catch (ParseException e) {
-			System.out.println("ERROR: No se pudo parsear correctamente el archivo.");
-			e.printStackTrace();
-		}
+	public Aventura(String path) {				
+		initialize(path);
+	}
+	
+	private void initialize(String path){
+		construirAventura(path);
+		pedirNombreUsuario();
+		saludar();
+		motorInstrucciones = new Motor(jugador);
+		motorInstrucciones.start();
+		despedir();
 	}
 
 	private void pedirNombreUsuario() {
@@ -65,26 +57,38 @@ public class Aventura {
 		System.out.println("Gracias por jugar a Zork " + jugador.getName() + ", hasta luego!");
 	}
 
-	public void construirAventura(String path) throws FileNotFoundException, IOException, ParseException {
-		JSONParser parserJSON = new JSONParser();
-		JSONObject archivoJSON = (JSONObject) parserJSON.parse(new FileReader(path));
-		JSONObject settingJSON = (JSONObject) archivoJSON.get("settings");
-		this.welcome = (String) settingJSON.get("welcome");
-
-		JSONArray npcsJSON = (JSONArray) archivoJSON.get("npcs");
-		JSONArray itemsJSON = (JSONArray) archivoJSON.get("items");
-		JSONArray endsGameJSON = (JSONArray) archivoJSON.get("endgames");
-
-		JSONArray locationsJSON = (JSONArray) archivoJSON.get("locations");
-		String inicio = (String) ((JSONObject) locationsJSON.get(0)).get("name");
-
-		crearFinales(endsGameJSON);
-		crearItemMap(itemsJSON);
-		crearNPCMap(npcsJSON);
-		Map<String, Location> mapaLocation = crearLocationMap(locationsJSON);
-
-		String name = (String) settingJSON.get("character");
-		this.jugador = new Player(name, new Mundo(inicio, mapaLocation));
+	public void construirAventura(String path) {
+		try {
+			JSONParser parserJSON = new JSONParser();
+			JSONObject archivoJSON = (JSONObject) parserJSON.parse(new FileReader(path));
+			JSONObject settingJSON = (JSONObject) archivoJSON.get("settings");
+			this.welcome = (String) settingJSON.get("welcome");
+	
+			JSONArray npcsJSON = (JSONArray) archivoJSON.get("npcs");
+			JSONArray itemsJSON = (JSONArray) archivoJSON.get("items");
+			JSONArray endsGameJSON = (JSONArray) archivoJSON.get("endgames");
+	
+			JSONArray locationsJSON = (JSONArray) archivoJSON.get("locations");
+			String inicio = (String) ((JSONObject) locationsJSON.get(0)).get("name");
+	
+			crearFinales(endsGameJSON);
+			crearItemMap(itemsJSON);
+			crearNPCMap(npcsJSON);
+			Map<String, Location> mapaLocation = crearLocationMap(locationsJSON);
+	
+			String name = (String) settingJSON.get("character");
+			this.jugador = new Player(name, new Mundo(inicio, mapaLocation));
+		
+		} catch (FileNotFoundException e) {
+			System.out.println("ERROR: No se pudo encontrar el archivo.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("ERROR: Error con el archivo.");
+			e.printStackTrace();
+		} catch (ParseException e) {
+			System.out.println("ERROR: No se pudo parsear correctamente el archivo.");
+			e.printStackTrace();
+		}
 	}
 
 	private void crearFinales(JSONArray endsGameJSON) {
