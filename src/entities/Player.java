@@ -84,7 +84,7 @@ public class Player {
 		}
 
 		if (!posicionActual.contieneNPC(where))
-			return "No hay " + where + " en " + posicionActual.getName()+".";
+			return "No existe el NPC contra el que lo quieres usar!.";
 
 		acciones = item.usarEnNPC(posicionActual.getNPC(where));
 
