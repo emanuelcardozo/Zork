@@ -6,7 +6,7 @@ public class App {
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
 		String comando;
-		Aventura miAventura = new Aventura("Aventuras/escenario1.json");
+		Aventura miAventura = new Aventura("Aventuras/escenario2.json");
 		Player jugador = miAventura.getJugador();
 		while (true) {
 			comando = teclado.nextLine();
@@ -47,10 +47,10 @@ public class App {
 			}
 			break;
 		case "usar":
-			if(a.length < 2) {
+			if(a.length < 3) {
 				System.out.println("Que queres usar? Contra quien?(USAR ITEM NPC)");
 			}else {
-				Usar useOrder = new Usar(ac, a[1], a[2]);
+				Usar useOrder = new Usar(ac, a[1], a[3]);
 			broker.takeOrder(useOrder);
 			}
 			break;

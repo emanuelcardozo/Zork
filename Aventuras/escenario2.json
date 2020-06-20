@@ -16,12 +16,12 @@
           "number": "singular",
           "items": [
             "barreta",
-            "rociador con cerveza de raiz",
+            "rociador",
             "espejo"
           ]
         }
       ],
-      "npcs": ["pirata fantasma"],
+      "npcs": ["pirata"],
       "connections": [
         {
           "direction": "south",
@@ -54,7 +54,7 @@
       "triggers": [
         {
           "type": "item",
-          "thing": "rociador con cerveza de raiz",
+          "thing": "rociador",
           "on_trigger": "Me encanta la cerveza de raiz!'(El pirata fantasma se veía entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr).",
           "after_trigger": "remove"
         }

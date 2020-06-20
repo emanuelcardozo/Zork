@@ -17,9 +17,6 @@ public class Item extends Noun {
 
 	public Item(JSONObject itemJSON) {
 		super((String) itemJSON.get("name"), (String) itemJSON.get("gender"), (String) itemJSON.get("number"));
-
-		this.endGame = endGame;
-
 		if (itemJSON.containsKey("actions")) {
 			buildActions((JSONArray) itemJSON.get("actions"));
 		}

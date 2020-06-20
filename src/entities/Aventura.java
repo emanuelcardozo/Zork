@@ -73,9 +73,19 @@ public class Aventura {
 		for (Object endGameObj : endsGameJSON) {
 			end = new EndGame((JSONObject) endGameObj);
 			endGameByThingMap.put(end.getThing(), end);
+			//System.out.println(end.getThing()+" "+end.getAction());
 		}
 	}
-
+	
+//	public String isEndGame(String verbo, String objeto) {
+//		if(endGameByThingMap.containsKey(verbo)) {
+//			if(endGameByThingMap.get(verbo).getAction().equals(objeto)) {
+//				return endGameByThingMap.get(verbo).getDescription();
+//			}
+//		}
+//		return null;
+//	}
+	
 	private void crearItemMap(JSONArray itemsJSON) {
 		this.itemsMap = new HashMap<String, Item>();
 		Item item;

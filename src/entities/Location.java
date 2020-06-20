@@ -17,7 +17,6 @@ public class Location extends Noun {
 	public Location(String name, String gender, String number, String description, HashMap<String, Place> places,
 			HashMap<String, NPC> npcs) {
 		super(name, gender, number);
-
 		this.description = description;
 		this.placesMap = places;
 		this.npcsMap = npcs;
