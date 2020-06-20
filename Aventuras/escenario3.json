@@ -18,6 +18,14 @@
           "items": [
             "llave"
           ]
+        },
+		{
+          "name": "arbol",
+          "gender": "male",
+          "number": "singular",
+          "items": [
+			"cinta"
+          ]
         }
       ],
          "connections":[
@@ -35,6 +43,22 @@
          "description":"Estas en el living. Hay muchas personas dentro de la casa con quien interactuar.",
 		 "npcs":["colega", "vecino"],
 		 "places": [
+		 {
+          "name": "mesa",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+		   "papel"
+          ]
+        },
+		{
+          "name": "pared",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "manchas"
+          ]
+        }
       ],
          "connections":[
             {
@@ -63,7 +87,24 @@
          "name":"sala",
          "gender":"female",
          "number":"singular",
-		 "places": [],
+		 "places": [
+		 	{
+          "name": "pared",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "manchas"
+          ]
+		}, 
+		{
+          "name": "suelo",
+          "gender": "male",
+          "number": "singular",
+          "items": [
+            "casette"
+          ]
+        }
+		],
          "npcs":["detective", "victima", "perro"],
          "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente.",
          "connections":[
@@ -94,15 +135,7 @@
           "gender": "male",
           "number": "singular",
           "items": [
-            "papel"
-          ]
-        },
-		{
-          "name": "pared",
-          "gender": "female",
-          "number": "singular",
-          "items": [
-            "manchas"
+            "papel", "manchas"
           ]
         }
       ],
@@ -234,8 +267,7 @@
          "talk":"Yo fui quien llamo a la policia. Mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se.",
          "triggers":[
          ]
-      }
-	  
+      }  
    ],
    "items":[
 	  {
@@ -269,7 +301,7 @@
 	   "effects_over": [
       ]
 	 },
-	   {
+	 {
       "name": "manchas",
       "gender": "female",
       "number": "plural",
@@ -281,11 +313,28 @@
       "gender": "female",
       "number": "singular",
       "actions": [
-        "usar"
       ],
 	   "effects_over": [
       ]
-	 }
+	},
+	{
+      "name": "casette",
+      "gender": "male",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	},
+	{
+	  "name": "cinta",
+      "gender": "female",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	}
    ],
    "inventory":[],
    "endgames":[
