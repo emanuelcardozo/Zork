@@ -12,9 +12,9 @@ import motorDeInstrucciones.actions.Mover;
 import motorDeInstrucciones.actions.Usar;
 
 public class Motor {
-	Scanner teclado;
-	Accion accion;
-	Broker broker;
+	private Scanner teclado;
+	private Accion accion;
+	private Broker broker;
 	
 	public Motor( Player player ) {
 		this.broker = new Broker();
@@ -30,16 +30,9 @@ public class Motor {
 			comando = teclado.nextLine();
 		}
 		
-		mensajeDeSalida();
+		teclado.close();
 	}
 	
-	
-
-	private void mensajeDeSalida() {
-		System.out.println("Gracias por jugar a Zork, hasta luego!");
-		
-	}
-
 	public void ejecutarCommand(String comando) {
 		String[] comandoArray = comando.toLowerCase().split(" ");
 		 		
