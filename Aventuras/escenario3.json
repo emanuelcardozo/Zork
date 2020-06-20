@@ -9,12 +9,22 @@
          "gender":"male",
          "number":"singular",
          "description":"Estas frente a la casa.",
-		 "places": [],
+		 "npcs":["puerta"],
+		 "places": [
+        {
+          "name": "suelo",
+          "gender": "male",
+          "number": "singular",
+          "items": [
+            "llave"
+          ]
+        }
+      ],
          "connections":[
             {
                "direction":"north",
                "location":"living",
-			   "obstacles": "puerta"
+			   "obstacles":"puerta"
             }
          ]
       },
@@ -22,7 +32,7 @@
          "name":"living",
          "gender":"male",
          "number":"singular",
-         "description":"Estas en el centro living, parado frente a una mesa. Esta tiene un cuchillo apoyado encima con manchas rojas. Ademas tiene una hoja de papel con la frase 'Yo soy Alpharius' escrito con tinta negra",
+         "description":"Estas en el living. Hay muchas personas dentro de la casa con quien interactuar.",
 		 "npcs":["mujer"],
 		 "places": [],
          "connections":[
@@ -53,8 +63,8 @@
          "gender":"female",
          "number":"singular",
 		 "places": [],
-         "npcs":["detective"],
-         "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente",
+         "npcs":["detective", "victima"],
+         "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente.",
          "connections":[
             {
                "direction":"west",
@@ -81,6 +91,7 @@
          "name":"cocina",
          "gender":"female",
          "number":"singular",
+		   "npcs":["anciana"],
          "description":"Estas en la cocina.",
          "places":[
             {
@@ -158,7 +169,7 @@
          "gender":"male",
          "number":"singular",
          "description":"Este es un caso muy raro no? Sigamos investigando!",
-         "talk":"Esto me esta dando miedo..espero que resolvamos esto rapido!",
+         "talk":"Esto me esta dando miedo..espero que lo resolvamos rapido!",
          "triggers":[
             {
                "type":"location",
@@ -184,8 +195,49 @@
          "gender":"female",
          "number":"singular",
          "decription":"El anciano se encuentra pálido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
-         "talk":"El anciano no responde"
+         "talk":"El anciano esta muerto!"
+      },
+	    {
+         "name":"anciana",
+         "gender":"female",
+         "number":"singular",
+         "description":"Este es un caso muy raro no? Sigamos investigando!",
+         "talk":"Quien puede ser tran cruel para cometer terrible crimen!",
+         "triggers":[
+            {
+               "type":"location",
+               "action":"move",
+               "thing":"east",
+               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
+            },
+            {
+               "type":"action",
+               "action":"responder si",
+               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
+            },
+            {
+               "type":"action",
+               "action":"responder no",
+               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
+            }
+         ]
+      },
+	     {
+         "name":"puerta",
+         "gender":"female",
+         "number":"singular",
+         "description":"La puerta esta cerrada.",
+         "talk":"No puedes hablar con una puerta!",
+         "triggers":[
+		  {
+               "type":"item",
+               "thing": "llave",
+               "on_trigger": "La puerta esta abierta.",
+			   "after_trigger": "remove"
+           }
+         ]
       }
+	  
    ],
    "items":[
       {
@@ -259,7 +311,18 @@
          "effects_over":[
             "self"
          ]
-      }
+      },
+	  {
+      "name": "llave",
+      "gender": "female",
+      "number": "singular",
+      "actions": [
+        "usar"
+      ],
+	   "effects_over": [
+        "npcs"
+      ]
+	 }
    ],
    "inventory":[],
    "endgames":[
