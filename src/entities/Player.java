@@ -119,6 +119,10 @@ public class Player {
 		return npc != null ? npc.hablar() : message;
 	}
 	
+	public String golpear(NPC np) {
+		return name;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -134,4 +138,5 @@ public class Player {
 	public void setPosicionActual(Location posicionActual) {
 		this.posicionActual = posicionActual;
 	}
+
 }

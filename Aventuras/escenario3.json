@@ -33,7 +33,7 @@
          "gender":"male",
          "number":"singular",
          "description":"Estas en el living. Hay muchas personas dentro de la casa con quien interactuar.",
-		 "npcs":["mujer"],
+		 "npcs":["colega", "vecino"],
 		 "places": [],
          "connections":[
             {
@@ -63,7 +63,7 @@
          "gender":"female",
          "number":"singular",
 		 "places": [],
-         "npcs":["detective", "victima"],
+         "npcs":["detective", "victima", "perro"],
          "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente.",
          "connections":[
             {
@@ -91,19 +91,34 @@
          "name":"cocina",
          "gender":"female",
          "number":"singular",
-		   "npcs":["anciana"],
+		 "npcs":["anciana"],
          "description":"Estas en la cocina.",
-         "places":[
-            {
-               "name":"heladera",
-               "gender":"female",
-               "number":"singular",
-               "items":[
-                  "frasco de membrillo",
-                  "frasco de pastillas"
-               ]
-            }
-         ],
+		"places": [
+		{
+          "name": "suelo",
+          "gender": "male",
+          "number": "plural",
+          "items": [
+            "vidrios"
+          ]
+        },
+		{
+          "name": "mesada",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "papel"
+          ]
+        },
+		{
+          "name": "pared",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "manchas"
+          ]
+        }
+      ],
          "connections":[
             {
                "direction":"south",
@@ -115,28 +130,13 @@
    ],
    "npcs":[
       {
-         "name":"mujer",
+         "name":"colega",
          "gender":"female",
          "number":"singular",
          "description":"Este asesino si que hizo bien las cosas.. Debemos encontrar alguna pista!",
          "talk":"Este asesino si que hizo bien las cosas.. Debemos encontrar alguna pista!",
          "triggers":[
-            {
-               "type":"location",
-               "action":"move",
-               "thing":"east",
-               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
-            },
-            {
-               "type":"action",
-               "action":"responder si",
-               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
-            },
-            {
-               "type":"action",
-               "action":"responder no",
-               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
-            }
+  
          ]
       },
 	     {
@@ -146,23 +146,7 @@
          "description":"Este es un caso muy raro no? Sigamos investigando!",
          "talk":"Este es un caso muy raro no? Sigamos investigando!",
          "triggers":[
-            {
-               "type":"location",
-               "action":"move",
-               "thing":"east",
-               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
-            },
-            {
-               "type":"action",
-               "action":"responder si",
-               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
-            },
-            {
-               "type":"action",
-               "action":"responder no",
-               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
-            }
-         ]
+           ]
       },
 	   {
          "name":"policia",
@@ -171,22 +155,6 @@
          "description":"Este es un caso muy raro no? Sigamos investigando!",
          "talk":"Esto me esta dando miedo..espero que lo resolvamos rapido!",
          "triggers":[
-            {
-               "type":"location",
-               "action":"move",
-               "thing":"east",
-               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
-            },
-            {
-               "type":"action",
-               "action":"responder si",
-               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
-            },
-            {
-               "type":"action",
-               "action":"responder no",
-               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
-            }
          ]
       },
 	  
@@ -204,29 +172,13 @@
          "description":"Este es un caso muy raro no? Sigamos investigando!",
          "talk":"Quien puede ser tran cruel para cometer terrible crimen!",
          "triggers":[
-            {
-               "type":"location",
-               "action":"move",
-               "thing":"east",
-               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
-            },
-            {
-               "type":"action",
-               "action":"responder si",
-               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
-            },
-            {
-               "type":"action",
-               "action":"responder no",
-               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
-            }
          ]
       },
 	     {
          "name":"puerta",
          "gender":"female",
          "number":"singular",
-         "description":"La puerta esta cerrada.",
+         "description":"La puerta esta cerrada. Deberias usar una llave para abrirla.",
          "talk":"No puedes hablar con una puerta!",
          "triggers":[
 		  {
@@ -234,84 +186,37 @@
                "thing": "llave",
                "on_trigger": "La puerta esta abierta.",
 			   "after_trigger": "remove"
-           }
+           },
+		   {
+               "condition": "action",
+			   "action": "golpear",
+               "thing": "puerta",
+               "on_trigger": "No creo que nadie te escuche. Deben estar muy ocupados."
+           },
+		   
+         ]
+      },
+	      {
+         "name":"perro",
+         "gender":"male",
+         "number":"singular",
+         "description":"Es un simple perro.",
+         "talk":"Guaf Guaf!",
+         "triggers":[
+         ]
+      },
+	  	{
+         "name":"vecino",
+         "gender":"male",
+         "number":"singular",
+         "description":"Es un venino de la zona.",
+         "talk":"Yo fui quien llamo a la policia. Mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se.",
+         "triggers":[
          ]
       }
 	  
    ],
    "items":[
-      {
-         "name":"control remoto",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "usar"
-         ],
-         "effects_over":[
-            "npcs"
-         ]
-      },
-      {
-         "name":"cuchillo",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "usar"
-         ],
-         "effects_over":[
-            "npcs",
-            "self",
-            "items"
-         ]
-      },
-      {
-         "name":"frasco de membrillo",
-         "gender":"male",
-         "number":"singular",
-         "effects_over":[
-            "items"
-         ]
-      },
-      {
-         "name":"frasada",
-         "gender":"female",
-         "number":"singular"
-      },
-      {
-         "name":"frasco de pastillas",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "revisar"
-         ],
-         "effects_over":[
-            "self"
-         ]
-      },
-      {
-         "name":"cuaderno",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "leer",
-            "usar"
-         ],
-         "effects_over":[
-            "self"
-         ]
-      },
-      {
-         "name":"hoja de papel",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "leer",
-            "usar"
-         ],
-         "effects_over":[
-            "self"
-         ]
-      },
 	  {
       "name": "llave",
       "gender": "female",
@@ -322,7 +227,34 @@
 	   "effects_over": [
         "npcs"
       ]
-	 }
+	 },
+	   {
+      "name": "papel",
+      "gender": "male",
+      "number": "singular",
+      "actions": [
+        "leer"
+      ],
+	   "effects_over": [
+        "npcs"
+      ]
+	 },
+	   {
+      "name": "vidrios",
+      "gender": "male",
+      "number": "plural",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	 },
+	   {
+      "name": "manchas",
+      "gender": "female",
+      "number": "plural",
+      "actions": [
+      ],
+	  }
    ],
    "inventory":[],
    "endgames":[

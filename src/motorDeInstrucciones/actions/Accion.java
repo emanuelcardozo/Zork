@@ -38,6 +38,11 @@ public class Accion {
 		System.out.println(jugador.hablarCon(np));
 	}
 	
+	public void golpear() {
+		NPC np = jugador.buscarNpc(where);
+		System.out.println(jugador.golpear(np));
+	}
+	
 	public void defaultAccion() {
 		System.out.println("No entiendo esa instruccion.");
 	}
