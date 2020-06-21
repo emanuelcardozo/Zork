@@ -21,11 +21,7 @@ public class Accion {
 			return jugador.listarInventario();
 
 		NPC npc = jugador.buscarNpc(accionPart1);
-
-		if(npc != null)
 			return jugador.mirarNpc(npc);
-
-		return defaultAccion();
 	}
 
 	public String agarrar() {

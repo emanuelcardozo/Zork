@@ -70,19 +70,6 @@ public class Player {
 		return "No existe ese item!.";
 	}
 
-	public String listarInventario() {
-		return inventario.listarInventario();
-	}
-
-	public Item getItem(String item) {
-		return inventario.getItem(item);
-	}
-
-	public Item buscarItemInventario(String name) {
-		Item item = inventario.getItem(name);
-		return item;
-	}
-	
 	public String usarItem(Item item, String where) {
 		
 		String[] acciones;
@@ -96,7 +83,7 @@ public class Player {
 		}
 
 		if (!posicionActual.contieneNPC(where))
-			return "No existe el NPC contra el que lo quieres usar!.";
+			return "No es posible usar este item contra lo que tu quieres usarlo.";
 
 		acciones = item.usarEnNPC(posicionActual.getNPC(where));
 
@@ -106,7 +93,20 @@ public class Player {
 
 		return acciones[0];
 	}
+	
+	public String listarInventario() {
+		return inventario.listarInventario();
+	}
 
+	public Item getItem(String item) {
+		return inventario.getItem(item);
+	}
+
+	public Item buscarItemInventario(String name) {
+		Item item = inventario.getItem(name);
+		return item;
+	}
+	
 	public NPC buscarNpc(String objectName) {
 		NPC npc = posicionActual.getNPC(objectName);
 		return npc;
@@ -114,13 +114,13 @@ public class Player {
 	
 	public String hablarCon(NPC objectName) {
 		NPC npc = objectName;
-		String message = "No existe ese NPC con el que quieres hablar.";
+		String message = "No hay nadie para hablar con ese nombre.";
 		return npc != null ? npc.hablar() : message;
 	}
 	
 	public String mirarNpc(NPC objectName) {
 		NPC npc = objectName;
-		String message = "No existe ese NPC con el que quieres hablar.";
+		String message = "No hay nadie para mirar con ese nombre.";
 		return npc != null ? npc.mirar() : message;
 	}
 	
