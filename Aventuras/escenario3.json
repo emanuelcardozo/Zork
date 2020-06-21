@@ -16,7 +16,7 @@
           "gender": "male",
           "number": "singular",
           "items": [
-            "llave"
+            "cinta"
           ]
         },
 		{
@@ -24,7 +24,7 @@
           "gender": "male",
           "number": "singular",
           "items": [
-			"cinta"
+			"llave"
           ]
         }
       ],
@@ -292,7 +292,7 @@
         "npcs"
       ]
 	 },
-	   {
+	 {
       "name": "vidrios",
       "gender": "male",
       "number": "plural",

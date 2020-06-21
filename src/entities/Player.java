@@ -60,12 +60,13 @@ public class Player {
 
 		for (String key : places.keySet()) {
 			Place place = places.get(key);
-			item = place.extractItem(itemName);
-		}
+			System.out.println(place.getName());
 
-		if (item != null) {
-			inventario.agregarItem(item);
-			return "Item agregado a tu inventario!";
+			item = place.extractItem(itemName);
+			if (item != null) {
+				inventario.agregarItem(item);
+				return "Item agregado a tu inventario!";
+			}
 		}
 
 		return "No existe ese item!.";
