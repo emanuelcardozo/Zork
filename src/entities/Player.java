@@ -60,8 +60,6 @@ public class Player {
 
 		for (String key : places.keySet()) {
 			Place place = places.get(key);
-			System.out.println(place.getName());
-
 			item = place.extractItem(itemName);
 			if (item != null) {
 				inventario.agregarItem(item);
