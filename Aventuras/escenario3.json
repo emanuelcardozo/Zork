@@ -16,7 +16,7 @@
           "gender": "male",
           "number": "singular",
           "items": [
-            "cinta"
+            "cinta", "naipe"
           ]
         },
 		{
@@ -48,7 +48,7 @@
           "gender": "female",
           "number": "singular",
           "items": [
-		   "papel"
+		   "papel", "radio", "celular"
           ]
         },
 		{
@@ -56,7 +56,7 @@
           "gender": "female",
           "number": "singular",
           "items": [
-            "manchas"
+			"foto"
           ]
         }
       ],
@@ -93,7 +93,7 @@
           "gender": "female",
           "number": "singular",
           "items": [
-            "manchas"
+			"foto"
           ]
 		}, 
 		{
@@ -101,12 +101,12 @@
           "gender": "male",
           "number": "singular",
           "items": [
-            "casette"
+            "casette", "cuchillo"
           ]
         }
 		],
          "npcs":["detective", "victima", "perro"],
-         "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente.",
+         "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente. En la pared notas unas manchas de color raro.",
          "connections":[
             {
                "direction":"west",
@@ -135,7 +135,7 @@
           "gender": "male",
           "number": "singular",
           "items": [
-            "papel", "manchas"
+            "papel"
           ]
         }
       ],
@@ -152,14 +152,13 @@
          "gender":"female",
          "number":"singular",
 		 "npcs":["anciana"],
-         "description":"Estas en la cocina.",
+         "description":"Estas en la cocina. Hay muchos vidrios rotos en el suelo.",
 		"places": [
 		{
           "name": "suelo",
           "gender": "male",
           "number": "plural",
           "items": [
-            "vidrios"
           ]
         },
 		{
@@ -175,7 +174,7 @@
           "gender": "female",
           "number": "singular",
           "items": [
-            "manchas"
+          
           ]
         }
       ],
@@ -245,7 +244,7 @@
 		  {
                "type":"item",
                "thing": "llave",
-               "on_trigger": "La puerta esta abierta.",
+               "on_trigger": "La puerta esta abierta. Al norte tenes el living.",
 			   "after_trigger": "remove"
            },   
          ]
@@ -292,22 +291,6 @@
         "npcs"
       ]
 	 },
-	 {
-      "name": "vidrios",
-      "gender": "male",
-      "number": "plural",
-      "actions": [
-      ],
-	   "effects_over": [
-      ]
-	 },
-	 {
-      "name": "manchas",
-      "gender": "female",
-      "number": "plural",
-      "actions": [
-      ],
-	},
 	{
       "name": "casetera",
       "gender": "female",
@@ -334,7 +317,52 @@
       ],
 	   "effects_over": [
       ]
-	}
+	},
+	{
+	  "name": "celular",
+      "gender": "male",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	},
+	{
+	  "name": "radio",
+      "gender": "female",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	},
+	{
+	  "name": "cuchillo",
+      "gender": "male",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	},
+	{
+	  "name": "foto",
+      "gender": "female",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	},
+	{
+	  "name": "naipe",
+      "gender": "male",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	},
    ],
    "inventory":[],
    "endgames":[
