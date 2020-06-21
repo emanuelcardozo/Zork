@@ -34,8 +34,12 @@ public class Accion {
 
 	public String usar() {
 		Item item = jugador.buscarItemInventario(accionPart1);
-
-		return jugador.usarItem(item, accionPart2);
+		if(accionPart2.contentEquals("mi")) {
+			return jugador.usarItemEnMi(item);
+		}else {
+		NPC np = jugador.buscarNpc(accionPart2);
+		return jugador.usarItemEnNpc(item, np);
+		}
 	}
 
 	public String hablar() {

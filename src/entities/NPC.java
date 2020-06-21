@@ -56,28 +56,18 @@ public class NPC extends Noun {
 	public String getTalk() {
 		return talk;
 	}
-
-	public boolean reaccionaConItem(String itemName) {
-		for (Trigger trigger : triggers) {
-			if (trigger.getThing().equals(itemName))
-				return true;
-		}
-		return false;
-	}
-
-	public String[] ejecutarTrigger(String itemName) {
-		String[] response = new String[2];// = null, afterTrigger = null;
-
-		for (Trigger trigger : triggers) {
-			if (trigger.getThing().equals(itemName)) {
-				response[0] = trigger.getOn_trigger();
-				response[1] = trigger.getAfter_trigger();
+	
+	public String[] reaccionAItem(Item item) {
+		String[] reaccion = new String[2];
+		for (Trigger t : triggers) {
+			if (t.getThing().equals(item.getName())) {
+				reaccion[0] = t.getOn_trigger();
+				reaccion[1] = t.getAfter_trigger();
 			}
 		}
-
-		return response;
+		return reaccion;
 	}
-
+	
 	public String hablar() {
 		return getTalk();
 	}

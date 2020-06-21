@@ -70,28 +70,30 @@ public class Player {
 		return "No existe ese item!.";
 	}
 
-	public String usarItem(Item item, String where) {
-		
+	//Falta arreglar pq toma el endgame como accion
+	public String usarItemEnMi(Item item) {
 		String[] acciones;
-
-		if (item == null)
-			return "No se encontro el item en tu inventario.";
-
-		if (where.equals("mi")) {
-			acciones = item.usarEnMi();
-			return acciones[0];
-		}
-
-		if (!posicionActual.contieneNPC(where))
-			return "No es posible usar este item contra lo que tu quieres usarlo.";
-
-		acciones = item.usarEnNPC(posicionActual.getNPC(where));
-
-		if (acciones.length > 1 && acciones[1].equals("remove")) {
-			posicionActual.eliminarObstaculo(where);
-		}
-
+		if(item == null)
+			return "El item no se encuentra en tu inventario";
+		acciones = item.usarEnMi();
+		if(acciones[0] != null)
 		return acciones[0];
+		else
+			return "Eso no ha servido de nada.";
+	}
+	
+	public String usarItemEnNpc(Item item, NPC npc) {
+		if(item == null)
+			return "El item no se encuentra en tu inventario.";
+		if(npc == null)
+			return "No puedes usarlo contra lo que deseas.";
+		String[] reaccion = npc.reaccionAItem(item);
+		if(item != null && npc != null && reaccion[0] != null) {
+			if(reaccion[1] != null && reaccion[1].equals("remove"))
+				posicionActual.eliminarObstaculo(npc.getName());
+			return reaccion[0];
+		}
+		return "Eso no ha servido de nada.";
 	}
 	
 	public String acariciar(NPC np) {
