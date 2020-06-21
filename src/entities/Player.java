@@ -95,10 +95,13 @@ public class Player {
 		}
 		return "Eso no ha servido de nada.";
 	}
-	
+
 	public String acariciar(NPC np) {
-		if(np != null)
-		return np.serAcariciado();
+		Trigger t;
+		if(np != null) {
+		t =  np.serAcariciado();
+		return t.getOn_trigger();
+		}
 		return "No es posible hacer eso.";
 	}
 	
