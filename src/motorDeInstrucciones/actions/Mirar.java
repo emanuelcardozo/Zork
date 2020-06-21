@@ -7,11 +7,11 @@ public class Mirar implements Order {
 
 	public Mirar(Accion st, String where) {
 		this.ac = st;
-		st.setWhere(where);
+		st.setAccionPart1(where);
 	}
 
 	@Override
-	public void execute() {
-		ac.mirar();
+	public String execute() {
+		return ac.mirar();
 	}
 }

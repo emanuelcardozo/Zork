@@ -6,10 +6,10 @@ public class Hablar implements Order {
 	private Accion ac;
 	public Hablar(Accion st, String where) {
 		this.ac = st;
-		ac.setWhere(where);
+		ac.setAccionPart1(where);
 	}
 	@Override
-	public void execute() {
-		ac.hablar();		
+	public String execute() {
+		return ac.hablar();		
 	}
 }

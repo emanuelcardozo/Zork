@@ -7,11 +7,11 @@ public class Mover implements Order{
 	
 	public Mover(Accion st, String where) {
 		this.ac = st;
-		this.ac.setWhere(where);
+		this.ac.setAccionPart1(where);
 	}
 
 	@Override
-	public void execute() {
-		ac.mover();
+	public String execute() {
+		return ac.mover();
 	}
 }

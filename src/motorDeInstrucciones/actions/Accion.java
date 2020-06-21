@@ -6,48 +6,53 @@ import entities.Player;
 
 public class Accion {
 	private Player jugador;
-	private String where;
-	private String where2;
+	private String accionPart1;
+	private String accionPart2;
 
 	public Accion(Player jugador) {
 		this.jugador = jugador;
 	}
 	
-	public void mirar() {
-		if(where.equals("alrededor")) System.out.println(jugador.mirarAlrededor());
-		else if(where.equals("inventario")) System.out.println(jugador.listarInventario());
-		else System.out.println("No entiendo esa instruccion.");
+	public String mirar() {
+		if(accionPart1.equals("alrededor")) 
+			return jugador.mirarAlrededor(); 
+		
+		if(accionPart1.equals("inventario")) 
+			return jugador.listarInventario();
+		
+		return defaultAccion();
 	}
 
-	public void agarrar() {
-		System.out.println(jugador.agarrarItem(where));
+	public String agarrar() {
+		return jugador.agarrarItem(accionPart1);
 	}
 	
-	public void mover() {
-		System.out.println(jugador.moverHacia(where));
+	public String mover() {
+		return jugador.moverHacia(accionPart1);
 	}
 	
-	public void usar() {
-		Item item;
-		item = jugador.buscarItemInventario(where);
-		System.out.println(jugador.usarItem(item, where2));
+	public String usar() {
+		Item item = jugador.buscarItemInventario(accionPart1);
+		
+		return jugador.usarItem(item, accionPart2);
 	}
 
-	public void hablar() {
-		NPC np = jugador.buscarNpc(where);
-		System.out.println(jugador.hablarCon(np));
+	public String hablar() {
+		NPC npc = jugador.buscarNpc(accionPart1);
+		
+		return jugador.hablarCon(npc);
 	}
 	
-	public void defaultAccion() {
-		System.out.println("No entiendo esa instruccion.");
+	public String defaultAccion() {
+		return "No entiendo esa instruccion.";
 	}
 	
-	public void setWhere(String where) {
-		this.where = where;
+	public void setAccionPart1(String accionPart1) {
+		this.accionPart1 = accionPart1;
 	}
 	
-	public void setWhere2(String where2) {
-		this.where2 = where2;
+	public void setAccionPart2(String accionPart2) {
+		this.accionPart2 = accionPart2;
 	}
 
 }

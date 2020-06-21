@@ -26,49 +26,56 @@ public class Motor {
 		String comando = teclado.nextLine();
 		
 		while ( !comando.equalsIgnoreCase("salir")) {			
-			ejecutarCommand(comando);
+			ejecutarComando(comando);
 			comando = teclado.nextLine();
 		}
 		
 		teclado.close();
 	}
 	
-	public void ejecutarCommand(String comando) {
+	public void ejecutarComando(String comando) {
 		String[] comandoArray = comando.toLowerCase().split(" ");
+		String message;
 		 		
 		switch (comandoArray[0]) {
 			case "agarrar":
-				if(comandoArray.length<2) { System.out.println("Que quieres agarrar?(COMANDO: AGARRAR ITEM)");}else {
-				Agarrar takeOrder = new Agarrar(accion, comandoArray[1]);
-				broker.takeOrder(takeOrder);
+				if(comandoArray.length<2) { 
+					System.out.println("Que quieres agarrar?(COMANDO: AGARRAR ITEM)");
+				} else {
+					Agarrar takeOrder = new Agarrar(accion, comandoArray[1]);
+					broker.takeOrder(takeOrder);
 				}
 				break;
 			case "mirar":
-				if(comandoArray.length<2) { System.out.println("Que quieres mirar?(COMANDO: MIRAR INVENTARIO O MIRAR ALREDEDOR)");}else {
-				Mirar seeOrder = new Mirar(accion, comandoArray[1]);
-				broker.takeOrder(seeOrder);
+				if(comandoArray.length<2) { 
+					System.out.println("Que quieres mirar?(COMANDO: MIRAR INVENTARIO O MIRAR ALREDEDOR)");
+				} else {
+					Mirar seeOrder = new Mirar(accion, comandoArray[1]);
+					broker.takeOrder(seeOrder);
 				}
 				break;
 			case "mover":
-				if(comandoArray.length<2) { System.out.println("Hacia donde te quieres mover?(MOVER NORTE-SUR-ESTE-OESTE)");}else {
-				Mover moveOrder = new Mover(accion, comandoArray[1]);
-				broker.takeOrder(moveOrder);
+				if(comandoArray.length<2) { 
+					System.out.println("Hacia donde te quieres mover?(MOVER NORTE-SUR-ESTE-OESTE)");
+				} else {
+					Mover moveOrder = new Mover(accion, comandoArray[1]);
+					broker.takeOrder(moveOrder);
 				}
 				break;
 			case "usar":
 				if(comandoArray.length < 3) {
 					System.out.println("Que queres usar? Contra quien?(USAR ITEM NPC)");
-				}else {
+				} else {
 					Usar useOrder = new Usar(accion, comandoArray[1], comandoArray[3]);
-				broker.takeOrder(useOrder);
+					broker.takeOrder(useOrder);
 				}
 				break;
 			case "hablar":
 				if(comandoArray.length < 3) {
 					System.out.println("Con quien quieres hablar?(COMANDO: HABLAR CON PIRATA FANTASMA)");
-				}else {
+				} else {
 					Hablar talkOrder = new Hablar(accion, comandoArray[2]);
-				broker.takeOrder(talkOrder);
+					broker.takeOrder(talkOrder);
 				}
 				break;
 			default:

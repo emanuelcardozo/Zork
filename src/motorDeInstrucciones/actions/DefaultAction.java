@@ -9,7 +9,7 @@ public class DefaultAction implements Order{
 	}
 
 	@Override
-	public void execute() {
-		ac.defaultAccion();
+	public String execute() {
+		return ac.defaultAccion();
 	}
 }
