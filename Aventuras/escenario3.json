@@ -18,6 +18,14 @@
           "items": [
             "llave"
           ]
+        },
+		{
+          "name": "arbol",
+          "gender": "male",
+          "number": "singular",
+          "items": [
+			"cinta"
+          ]
         }
       ],
          "connections":[
@@ -33,8 +41,25 @@
          "gender":"male",
          "number":"singular",
          "description":"Estas en el living. Hay muchas personas dentro de la casa con quien interactuar.",
-		 "npcs":["mujer"],
-		 "places": [],
+		 "npcs":["colega", "vecino"],
+		 "places": [
+		 {
+          "name": "mesa",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+		   "papel"
+          ]
+        },
+		{
+          "name": "pared",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "manchas"
+          ]
+        }
+      ],
          "connections":[
             {
                "direction":"south",
@@ -62,8 +87,25 @@
          "name":"sala",
          "gender":"female",
          "number":"singular",
-		 "places": [],
-         "npcs":["detective", "victima"],
+		 "places": [
+		 	{
+          "name": "pared",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "manchas"
+          ]
+		}, 
+		{
+          "name": "suelo",
+          "gender": "male",
+          "number": "singular",
+          "items": [
+            "casette"
+          ]
+        }
+		],
+         "npcs":["detective", "victima", "perro"],
          "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente.",
          "connections":[
             {
@@ -79,6 +121,24 @@
          "number":"singular",
          "npcs":["policia"],
          "description":"Estas dentro de la ducha.",
+		 "places": [
+        {
+          "name": "tina",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "casetera"
+          ]
+        },
+		 {
+          "name": "suelo",
+          "gender": "male",
+          "number": "singular",
+          "items": [
+            "papel", "manchas"
+          ]
+        }
+      ],
          "connections":[
             {
                "direction":"east",
@@ -91,19 +151,34 @@
          "name":"cocina",
          "gender":"female",
          "number":"singular",
-		   "npcs":["anciana"],
+		 "npcs":["anciana"],
          "description":"Estas en la cocina.",
-         "places":[
-            {
-               "name":"heladera",
-               "gender":"female",
-               "number":"singular",
-               "items":[
-                  "frasco de membrillo",
-                  "frasco de pastillas"
-               ]
-            }
-         ],
+		"places": [
+		{
+          "name": "suelo",
+          "gender": "male",
+          "number": "plural",
+          "items": [
+            "vidrios"
+          ]
+        },
+		{
+          "name": "mesada",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "papel"
+          ]
+        },
+		{
+          "name": "pared",
+          "gender": "female",
+          "number": "singular",
+          "items": [
+            "manchas"
+          ]
+        }
+      ],
          "connections":[
             {
                "direction":"south",
@@ -115,118 +190,56 @@
    ],
    "npcs":[
       {
-         "name":"mujer",
+         "name":"colega",
          "gender":"female",
          "number":"singular",
-         "description":"Este asesino si que hizo bien las cosas.. Debemos encontrar alguna pista!",
+         "description":"Una chica atractiva, ojala algun dia acepte salir conmigo.",
          "talk":"Este asesino si que hizo bien las cosas.. Debemos encontrar alguna pista!",
          "triggers":[
-            {
-               "type":"location",
-               "action":"move",
-               "thing":"east",
-               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
-            },
-            {
-               "type":"action",
-               "action":"responder si",
-               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
-            },
-            {
-               "type":"action",
-               "action":"responder no",
-               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
-            }
+  
          ]
       },
 	     {
          "name":"detective",
          "gender":"male",
          "number":"singular",
-         "description":"Este es un caso muy raro no? Sigamos investigando!",
+         "description":"Es un detective anciano, pero con mucha experiencia en el tema.",
          "talk":"Este es un caso muy raro no? Sigamos investigando!",
          "triggers":[
-            {
-               "type":"location",
-               "action":"move",
-               "thing":"east",
-               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
-            },
-            {
-               "type":"action",
-               "action":"responder si",
-               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
-            },
-            {
-               "type":"action",
-               "action":"responder no",
-               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
-            }
-         ]
+           ]
       },
 	   {
          "name":"policia",
          "gender":"male",
          "number":"singular",
-         "description":"Este es un caso muy raro no? Sigamos investigando!",
+         "description":"El policia esta palido, se nota que es novato en la profesion.",
          "talk":"Esto me esta dando miedo..espero que lo resolvamos rapido!",
          "triggers":[
-            {
-               "type":"location",
-               "action":"move",
-               "thing":"east",
-               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
-            },
-            {
-               "type":"action",
-               "action":"responder si",
-               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
-            },
-            {
-               "type":"action",
-               "action":"responder no",
-               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
-            }
          ]
       },
-	  
       {
          "name":"victima",
          "gender":"female",
          "number":"singular",
-         "decription":"El anciano se encuentra pálido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
-         "talk":"El anciano esta muerto!"
+         "description":"El anciano se encuentra palido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
+         "talk":"El anciano esta muerto!",
+		 "triggers":[
+         ]
       },
 	    {
          "name":"anciana",
          "gender":"female",
          "number":"singular",
-         "description":"Este es un caso muy raro no? Sigamos investigando!",
+         "description":"Se nota que esta deprimida por el suceso.",
          "talk":"Quien puede ser tran cruel para cometer terrible crimen!",
          "triggers":[
-            {
-               "type":"location",
-               "action":"move",
-               "thing":"east",
-               "on_trigger":"Acordate que necesitamos evidencia, cuando sepas quien fue el culpable, presentáme la evidencia y listo."
-            },
-            {
-               "type":"action",
-               "action":"responder si",
-               "on_trigger":"Ok, tenemos al hijo, un chef novato; una enfermera, suponemos que cuidaba de la víctima y uno de sus vecinos. Cuando intentamos cuestionar al vecino, solamente decía incoherencias como 'Yo soy Alpharius' o algo parecido."
-            },
-            {
-               "type":"action",
-               "action":"responder no",
-               "on_trigger":"Como prefieras, cuando estes listo, por favor entra."
-            }
          ]
       },
 	     {
          "name":"puerta",
          "gender":"female",
          "number":"singular",
-         "description":"La puerta esta cerrada.",
+         "description":"La puerta esta cerrada. Deberias usar una llave para abrirla.",
          "talk":"No puedes hablar con una puerta!",
          "triggers":[
 		  {
@@ -234,84 +247,29 @@
                "thing": "llave",
                "on_trigger": "La puerta esta abierta.",
 			   "after_trigger": "remove"
-           }
+           },   
          ]
-      }
-	  
+      },
+	      {
+         "name":"perro",
+         "gender":"male",
+         "number":"singular",
+         "description":"Es Goofi el perro policia que trabaja con nosotros.",
+         "talk":"Guaf Guaf!",
+         "triggers":[
+         ]
+      },
+	  	{
+         "name":"vecino",
+         "gender":"male",
+         "number":"singular",
+         "description":"Un vecino con cara rara. Pero no puedo acusarlo de nada si no investigo antes.",
+         "talk":"Yo fui quien llamo a la policia. Mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se.",
+         "triggers":[
+         ]
+      }  
    ],
    "items":[
-      {
-         "name":"control remoto",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "usar"
-         ],
-         "effects_over":[
-            "npcs"
-         ]
-      },
-      {
-         "name":"cuchillo",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "usar"
-         ],
-         "effects_over":[
-            "npcs",
-            "self",
-            "items"
-         ]
-      },
-      {
-         "name":"frasco de membrillo",
-         "gender":"male",
-         "number":"singular",
-         "effects_over":[
-            "items"
-         ]
-      },
-      {
-         "name":"frasada",
-         "gender":"female",
-         "number":"singular"
-      },
-      {
-         "name":"frasco de pastillas",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "revisar"
-         ],
-         "effects_over":[
-            "self"
-         ]
-      },
-      {
-         "name":"cuaderno",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "leer",
-            "usar"
-         ],
-         "effects_over":[
-            "self"
-         ]
-      },
-      {
-         "name":"hoja de papel",
-         "gender":"male",
-         "number":"singular",
-         "actions":[
-            "leer",
-            "usar"
-         ],
-         "effects_over":[
-            "self"
-         ]
-      },
 	  {
       "name": "llave",
       "gender": "female",
@@ -322,7 +280,61 @@
 	   "effects_over": [
         "npcs"
       ]
-	 }
+	 },
+	   {
+      "name": "papel",
+      "gender": "male",
+      "number": "singular",
+      "actions": [
+        "leer"
+      ],
+	   "effects_over": [
+        "npcs"
+      ]
+	 },
+	   {
+      "name": "vidrios",
+      "gender": "male",
+      "number": "plural",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	 },
+	 {
+      "name": "manchas",
+      "gender": "female",
+      "number": "plural",
+      "actions": [
+      ],
+	},
+	{
+      "name": "casetera",
+      "gender": "female",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	},
+	{
+      "name": "casette",
+      "gender": "male",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	},
+	{
+	  "name": "cinta",
+      "gender": "female",
+      "number": "singular",
+      "actions": [
+      ],
+	   "effects_over": [
+      ]
+	}
    ],
    "inventory":[],
    "endgames":[

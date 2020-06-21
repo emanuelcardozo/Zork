@@ -81,4 +81,9 @@ public class NPC extends Noun {
 	public String hablar() {
 		return getTalk();
 	}
+	
+	public String mirar() {
+		return getDescription();
+	}
+	
 }
