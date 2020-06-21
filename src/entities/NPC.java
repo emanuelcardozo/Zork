@@ -57,15 +57,12 @@ public class NPC extends Noun {
 		return talk;
 	}
 	
-	public String[] reaccionAItem(Item item) {
-		String[] reaccion = new String[2];
+	public Trigger reaccionAItem(Item item) {
 		for (Trigger t : triggers) {
-			if (t.getThing().equals(item.getName())) {
-				reaccion[0] = t.getOn_trigger();
-				reaccion[1] = t.getAfter_trigger();
-			}
+			if (t.getThing().equals(item.getName()))
+				return t;
 		}
-		return reaccion;
+		return null;
 	}
 	
 	public String hablar() {
@@ -76,12 +73,12 @@ public class NPC extends Noun {
 		return getDescription();
 	}
 
-	public String serAcariciado() {
+	public Trigger serAcariciado() {
 		for(Trigger t : triggers) {
 			if(t.getType().equals("acariciar"))
-				return t.getOn_trigger();
+				return t;
 		}
-		return "Eso no esta permitido.";
+		return null;
 	}
 	
 }

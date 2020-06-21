@@ -83,22 +83,25 @@ public class Player {
 	}
 	
 	public String usarItemEnNpc(Item item, NPC npc) {
-		if(item == null)
+		if (item == null)
 			return "El item no se encuentra en tu inventario.";
-		if(npc == null)
+		if (npc == null)
 			return "No puedes usarlo contra lo que deseas.";
-		String[] reaccion = npc.reaccionAItem(item);
-		if(item != null && npc != null && reaccion[0] != null) {
-			if(reaccion[1] != null && reaccion[1].equals("remove"))
+		Trigger reaccion = npc.reaccionAItem(item);
+		if (item != null && npc != null && reaccion != null) {
+			if (reaccion.getAfter_trigger().equals("remove"))
 				posicionActual.eliminarObstaculo(npc.getName());
-			return reaccion[0];
+			return reaccion.getOn_trigger();
 		}
 		return "Eso no ha servido de nada.";
 	}
-	
+
 	public String acariciar(NPC np) {
-		if(np != null)
-		return np.serAcariciado();
+		Trigger t;
+		if(np != null) {
+		t =  np.serAcariciado();
+		return t.getOn_trigger();
+		}
 		return "No es posible hacer eso.";
 	}
 	
