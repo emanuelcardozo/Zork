@@ -85,5 +85,13 @@ public class NPC extends Noun {
 	public String mirar() {
 		return getDescription();
 	}
+
+	public String serAcariciado() {
+		for(Trigger t : triggers) {
+			if(t.getType().equals("acariciar"))
+				return t.getOn_trigger();
+		}
+		return "Eso no esta permitido.";
+	}
 	
 }

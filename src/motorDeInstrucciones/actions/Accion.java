@@ -50,8 +50,12 @@ public class Accion {
 
 	public String golpear() {
 		NPC npc = jugador.buscarNpc(accionPart1);
-
 		return jugador.golpear(npc);
+	}
+	
+	public String acariciar() {
+		NPC npc = jugador.buscarNpc(accionPart1);
+		return jugador.acariciar(npc);
 	}
 
 	public void setAccionPart1(String accionPart1) {

@@ -94,6 +94,12 @@ public class Player {
 		return acciones[0];
 	}
 	
+	public String acariciar(NPC np) {
+		if(np != null)
+		return np.serAcariciado();
+		return "No es posible hacer eso.";
+	}
+	
 	public String listarInventario() {
 		return inventario.listarInventario();
 	}

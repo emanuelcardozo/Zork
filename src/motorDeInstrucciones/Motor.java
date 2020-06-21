@@ -3,6 +3,7 @@ package motorDeInstrucciones;
 import java.util.Scanner;
 
 import entities.Player;
+import motorDeInstrucciones.actions.Acariciar;
 import motorDeInstrucciones.actions.Accion;
 import motorDeInstrucciones.actions.Agarrar;
 import motorDeInstrucciones.actions.DefaultAction;
@@ -57,7 +58,7 @@ public class Motor {
 				break;
 			case "mover":
 				if(comandoArray.length != 2) { 
-					System.out.println("Hacia donde te quieres mover?(MOVER NORTE-SUR-ESTE-OESTE)");
+					System.out.println("Hacia donde te quieres mover?(COMANDO: MOVER NORTE-SUR-ESTE-OESTE)");
 				} else {
 					Mover moveOrder = new Mover(accion, comandoArray[1]);
 					broker.takeOrder(moveOrder);
@@ -65,7 +66,7 @@ public class Motor {
 				break;
 			case "usar":
 				if(comandoArray.length != 4) {
-					System.out.println("Que queres usar? Contra quien?(USAR ITEM NPC)");
+					System.out.println("Que queres usar? Contra quien?(COMANDO: USAR ITEM NPC)");
 				} else {
 					Usar useOrder = new Usar(accion, comandoArray[1], comandoArray[3]);
 					broker.takeOrder(useOrder);
@@ -81,10 +82,18 @@ public class Motor {
 				break;
 			case "golpear":
 				if(comandoArray.length != 2) {
-					System.out.println("A que o quien queres golpear?(GOLPEAR PUERTA");
+					System.out.println("A que o quien queres golpear?(COMANDO: GOLPEAR PUERTA");
 				}else {
 					Golpear hitOrder = new Golpear(accion, comandoArray[1]);
 				broker.takeOrder(hitOrder);
+				}
+				break;
+			case "acariciar":
+				if(comandoArray.length != 2) {
+					System.out.println("A que o quien queres acariciar?(COMANDO: ACARICIAR PERRO");
+				}else {
+					Acariciar acariciarOrder = new Acariciar(accion, comandoArray[1]);
+				broker.takeOrder(acariciarOrder);
 				}
 				break;
 			default:

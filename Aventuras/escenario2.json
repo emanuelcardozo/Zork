@@ -49,13 +49,13 @@
       "name": "pirata",
       "gender": "male",
       "number": "singular",
-      "description": "No puedes pasar!(El pirata fantasma no te dejara pasar).",
+      "description": "No puedes pasar!(El pirata no te dejara pasar).",
       "talk": "No hay nada que me digas que me haga cambiar de opinion!",
       "triggers": [
         {
           "type": "item",
           "thing": "rociador",
-          "on_trigger": "Me encanta la cerveza de raiz!'(El pirata fantasma se veía entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr).",
+          "on_trigger": "Me encanta la cerveza de raiz!'(El pirata se veía entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr).",
           "after_trigger": "remove"
         }
       ]
@@ -114,7 +114,7 @@
       "condition": "action",
       "action": "look",
       "thing": "espejo",
-      "description": "Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!"
+      "description": "Oh, no! Acabas de descubrir que tú también eres un pirata... ¡el horror!"
     }
   ]
 }

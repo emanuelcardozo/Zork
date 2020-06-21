@@ -195,6 +195,10 @@
          "description":"Una chica atractiva, ojala algun dia acepte salir conmigo.",
          "talk":"Este asesino si que hizo bien las cosas.. Debemos encontrar alguna pista!",
          "triggers":[
+		   {
+               "type":"acariciar",
+               "on_trigger": "Por favor sigamos con nuestro trabajo!"
+         }
   
          ]
       },
@@ -205,7 +209,11 @@
          "description":"Es un detective anciano, pero con mucha experiencia en el tema.",
          "talk":"Este es un caso muy raro no? Sigamos investigando!",
          "triggers":[
-           ]
+		 {
+               "type":"acariciar",
+               "on_trigger": "Asi que eres romantico no? JA JA!"
+         }
+        ]
       },
 	   {
          "name":"policia",
@@ -214,6 +222,10 @@
          "description":"El policia esta palido, se nota que es novato en la profesion.",
          "talk":"Esto me esta dando miedo..espero que lo resolvamos rapido!",
          "triggers":[
+		   {
+               "type":"acariciar",
+               "on_trigger": "Alejese!"
+         }
          ]
       },
       {
@@ -223,6 +235,10 @@
          "description":"El anciano se encuentra palido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
          "talk":"El anciano esta muerto!",
 		 "triggers":[
+		   {
+               "type":"acariciar",
+               "on_trigger": "Este cuerpo esta helado!"
+         }
          ]
       },
 	    {
@@ -232,6 +248,10 @@
          "description":"Se nota que esta deprimida por el suceso.",
          "talk":"Quien puede ser tran cruel para cometer terrible crimen!",
          "triggers":[
+			{
+			"type":"acariciar",
+            "on_trigger": "La anciana esta agradecida por tu consuelo."
+			}
          ]
       },
 	     {
@@ -241,12 +261,12 @@
          "description":"La puerta esta cerrada. Deberias usar una llave para abrirla.",
          "talk":"No puedes hablar con una puerta!",
          "triggers":[
-		  {
+			{
                "type":"item",
                "thing": "llave",
                "on_trigger": "La puerta esta abierta. Al norte tenes el living.",
 			   "after_trigger": "remove"
-           },   
+			}	   
          ]
       },
 	      {
@@ -256,6 +276,10 @@
          "description":"Es Goofi el perro policia que trabaja con nosotros.",
          "talk":"Guaf Guaf!",
          "triggers":[
+			{
+               "type":"acariciar",
+               "on_trigger": "Goofi esta contento por tu actitud."
+            }
          ]
       },
 	  	{
@@ -265,7 +289,11 @@
          "description":"Un vecino con cara rara. Pero no puedo acusarlo de nada si no investigo antes.",
          "talk":"Yo fui quien llamo a la policia. Mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se.",
          "triggers":[
-         ]
+			{
+               "type":"acariciar",
+               "on_trigger": "Que esta haciendo? Alejese!"
+			}
+        ]
       }  
    ],
    "items":[
@@ -285,7 +313,6 @@
       "gender": "male",
       "number": "singular",
       "actions": [
-        "leer"
       ],
 	   "effects_over": [
         "npcs"
