@@ -3,14 +3,14 @@ package motorDeInstrucciones.actions;
 import motorDeInstrucciones.Order;
 
 public class Acariciar implements Order{
-	private Accion ac;
+	private Accion accion;
 	
 	public Acariciar(Accion st, String where) {
-		this.ac = st;
-		ac.setAccionPart1(where);
+		this.accion = st;
+		accion.setAccionPart1(where);
 	}
 	@Override
 	public String execute() {
-		return ac.acariciar();	
+		return accion.acariciar();	
 	}
 }

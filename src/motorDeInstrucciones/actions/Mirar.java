@@ -3,15 +3,15 @@ package motorDeInstrucciones.actions;
 import motorDeInstrucciones.Order;
 
 public class Mirar implements Order {
-	private Accion ac;
+	private Accion accion;
 
 	public Mirar(Accion st, String where) {
-		this.ac = st;
+		this.accion = st;
 		st.setAccionPart1(where);
 	}
 
 	@Override
 	public String execute() {
-		return ac.mirar();
+		return accion.mirar();
 	}
 }

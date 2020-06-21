@@ -3,13 +3,14 @@ package motorDeInstrucciones.actions;
 import motorDeInstrucciones.Order;
 
 public class DefaultAction implements Order{
-	private Accion ac;
+	private Accion accion;
+	
 	public DefaultAction(Accion st) {
-		this.ac = st;
+		this.accion = st;
 	}
 
 	@Override
 	public String execute() {
-		return ac.defaultAccion();
+		return accion.defaultAccion();
 	}
 }

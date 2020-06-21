@@ -21,7 +21,7 @@ public class Accion {
 			return jugador.listarInventario();
 
 		NPC npc = jugador.buscarNpc(accionPart1);
-			return jugador.mirarNpc(npc);
+		return jugador.mirarNpc(npc);
 	}
 
 	public String agarrar() {

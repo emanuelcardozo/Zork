@@ -37,7 +37,6 @@ public class Motor {
 
 	public void ejecutarComando(String comando) {
 		String[] comandoArray = comando.toLowerCase().split(" ");
-		String message;
 
 		switch (comandoArray[0]) {
 			case "agarrar":
