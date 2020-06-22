@@ -105,6 +105,18 @@ public class Player {
 		}
 		return "No es posible hacer eso.";
 	}
+	
+	public String correr(NPC np) {
+		Trigger t;
+		if (np != null) {
+			t = np.serCorrido();
+			if (t != null)
+				return t.getOn_trigger();
+		}
+
+		return "No es posible hacer eso.";
+	}
+
 
 	public String listarInventario() {
 		return inventario.listarInventario();

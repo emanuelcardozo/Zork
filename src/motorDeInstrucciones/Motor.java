@@ -6,6 +6,7 @@ import motorDeInstrucciones.actions.Acariciar;
 import motorDeInstrucciones.actions.Accion;
 import motorDeInstrucciones.actions.Acuchillar;
 import motorDeInstrucciones.actions.Agarrar;
+import motorDeInstrucciones.actions.Correr;
 import motorDeInstrucciones.actions.DefaultAction;
 import motorDeInstrucciones.actions.Golpear;
 import motorDeInstrucciones.actions.Hablar;
@@ -106,10 +107,18 @@ public class Motor {
 				break;
 			case "acuchillar":
 				if(comandoArray.length != 2) {
-					System.out.println("A quien queres acuchillar?(COMANDO: ACUCHILLAR LLAVE");
+					System.out.println("A quien queres acuchillar?(COMANDO: ACUCHILLAR COLEGA");
 				}else {
 					Acuchillar killOrder = new Acuchillar(accion, comandoArray[1]);
 				broker.takeOrder(killOrder);
+				}
+				break;
+			case "correr":
+				if(comandoArray.length != 2) {
+					System.out.println("Que queres correr?(COMANDO: CORRER MUEBLE");
+				}else {
+					Correr correrOrder = new Correr(accion, comandoArray[1]);
+				broker.takeOrder(correrOrder);
 				}
 				break;
 			default:

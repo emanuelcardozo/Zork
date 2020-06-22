@@ -88,4 +88,13 @@ public class NPC extends Noun {
 		}
 		return null;
 	}
+	
+	public Trigger serCorrido() {
+		for(Trigger t : triggers) {
+			if(t.getType().equals("correr"))
+				return t;
+		}
+		return null;
+	}
+	
 }

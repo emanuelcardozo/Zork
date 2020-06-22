@@ -71,6 +71,12 @@ public class Accion {
 		return jugador.acuchillar(np);
 	}
 	
+	public String correr() {
+		NPC np = jugador.buscarNpc(accionPart1);
+		if(np == null)
+			return "No existe nadie con ese nombre.";
+		return jugador.correr(np);
+	}
 	public String defaultAccion() {
 		return "No entiendo esa instruccion.";
 	}

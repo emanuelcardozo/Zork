@@ -112,7 +112,7 @@
 	  ]
 	}
 	],
-	 "npcs":["detective", "victima", "perro"],
+	 "npcs":["detective", "victima", "perro", "mueble"],
 	 "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente. En la pared notas unas manchas de color raro.",
 	 "connections":[
 		{
@@ -251,7 +251,7 @@
 		   "on_trigger": "Este cuerpo esta helado!"
 		}
 	 ]
-  },
+	},
 	{
 	 "name":"anciana",
 	 "gender":"female",
@@ -265,8 +265,8 @@
 		"on_trigger": "La anciana esta agradecida por tu consuelo."
 		}
 	 ]
-  },
-	 {
+	},
+	{
 	 "name":"puerta",
 	 "gender":"female",
 	 "number":"singular",
@@ -280,7 +280,7 @@
 		   "after_trigger": "remove"
 		}	   
 	 ]
-  },
+	},
 	  {
 	 "name":"perro",
 	 "gender":"male",
@@ -313,7 +313,21 @@
 		   "on_trigger": "Oh no! Por que hizo eso?.. El hombre muere al instante. Todos te culpan a ti y saben que eres el asesino."
 		}
 	]
-    }  
+    },
+	{
+	 "name":"mueble",
+	 "gender":"male",
+	 "number":"singular",
+	 "description":"Parece ser un mueble pesado y viejo. Pero detras de el hay algo que me llama la atencion. Deberia correrlo para ver que hay detras.",
+	 "talk":"Te estas volviendo loco ya? No puedes hablarle a un mueble!",
+	 "triggers":[
+		{
+		   "type":"correr",
+		   "thing": "",
+		   "on_trigger": "Oh no! Al intentar correr el mueble este cae arriba tuyo y mueres al instante.",
+		}	   
+	 ]
+	}
 ],
 "items":[
   {
