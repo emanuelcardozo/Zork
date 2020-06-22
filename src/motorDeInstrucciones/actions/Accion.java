@@ -82,8 +82,13 @@ public class Accion {
 	}
 
 	public String golpear() {
-		NPC npc = jugador.buscarNpc(accionPart1);
-		return jugador.golpear(npc);
+		Item item = jugador.buscarItemInventario(accionPart1);
+		NPC np = jugador.buscarNpc(accionPart2);
+		if(np == null)
+			return "No existe nadie con ese nombre.";
+		if(item == null)
+			return "No existe ese item en tu inventario.";
+		return jugador.golpear(item, np);
 	}
 	
 	public void setAccionPart1(String accionPart1) {

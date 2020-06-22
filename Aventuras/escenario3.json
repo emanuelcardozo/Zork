@@ -325,7 +325,12 @@
 		   "type":"correr",
 		   "thing": "",
 		   "on_trigger": "Oh no! Al intentar correr el mueble este cae arriba tuyo y mueres al instante.",
-		}	   
+		},
+		{
+		   "type":"golpear",
+		   "thing": "radio",
+		   "on_trigger": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Mi asesino esta en la casa tienes que hacer justicia por esto'."
+		}
 	 ]
 	}
 ],

@@ -175,8 +175,14 @@ public class Player {
 		return "Ni lo intentes!";
 	}
 	
-	public String golpear(NPC np) {
-		return name;
+	public String golpear(Item item, NPC np) {
+		Trigger t;
+		if(np != null) {
+		t =  np.serGolpeadoCon(item);
+		if(t != null)
+		return t.getOn_trigger();
+		}
+		return "No es posible hacer eso.";
 	}
 	
 	public String getName() {
