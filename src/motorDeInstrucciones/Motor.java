@@ -10,6 +10,7 @@ import motorDeInstrucciones.actions.Golpear;
 import motorDeInstrucciones.actions.Hablar;
 import motorDeInstrucciones.actions.Mirar;
 import motorDeInstrucciones.actions.Mover;
+import motorDeInstrucciones.actions.Tirar;
 import motorDeInstrucciones.actions.Usar;
 
 public class Motor {
@@ -92,6 +93,14 @@ public class Motor {
 				}else {
 					Acariciar acariciarOrder = new Acariciar(accion, comandoArray[1]);
 				broker.takeOrder(acariciarOrder);
+				}
+				break;
+			case "tirar":
+				if(comandoArray.length != 2) {
+					System.out.println("Que queres tirar?(COMANDO: TIRAR LLAVE");
+				}else {
+					Tirar dropOrder = new Tirar(accion, comandoArray[1]);
+				broker.takeOrder(dropOrder);
 				}
 				break;
 			default:

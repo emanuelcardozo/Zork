@@ -69,6 +69,7 @@ public class Player {
 
 		return "No existe ese item!.";
 	}
+	
 
 	//Falta arreglar pq toma el endgame como accion
 	public String usarItemEnMi(Item item) {
@@ -138,6 +139,19 @@ public class Player {
 	public String mirarItem(Item itemName) {
 		return itemName.serObservado();
 	}
+	
+	public String tirarItem(String itemName) {
+		Item item;
+		item = this.buscarItemInventario(itemName);
+		if(item == null)
+			return "Ese item no se encuentra en tu inventario.";
+		else {
+			posicionActual.getPlace("suelo").addItem(item);
+			inventario.eliminarItem(itemName);
+			return "Has tirado el item.";
+		}
+	}
+
 	
 	
 	public String golpear(NPC np) {

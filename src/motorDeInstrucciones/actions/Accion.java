@@ -34,7 +34,7 @@ public class Accion {
 	public String agarrar() {
 		return jugador.agarrarItem(accionPart1);
 	}
-
+	
 	public String mover() {
 		return jugador.moverHacia(accionPart1);
 	}
@@ -58,6 +58,10 @@ public class Accion {
 	public String acariciar() {
 		NPC npc = jugador.buscarNpc(accionPart1);
 		return jugador.acariciar(npc);
+	}
+	
+	public String tirar() {
+		return jugador.tirarItem(accionPart1);
 	}
 	
 	public String defaultAccion() {

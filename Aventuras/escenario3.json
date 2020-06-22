@@ -58,6 +58,13 @@
 	  "items": [
 		"foto"
 	  ]
+	},
+	{
+	  "name": "suelo",
+	  "gender": "male",
+	  "number": "singular",
+	  "items": [
+	  ]
 	}
   ],
 	 "connections":[
