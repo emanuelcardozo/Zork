@@ -177,6 +177,8 @@ public class Player {
 	
 	public String golpear(Item item, NPC np) {
 		Trigger t;
+		if(!item.tieneAccion("golpear"))
+			return "No es posible hacer eso.";
 		if(np != null) {
 		t =  np.serGolpeadoCon(item);
 		if(t != null)

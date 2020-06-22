@@ -73,4 +73,15 @@ public class Item extends Noun {
 	public String serObservado() {
 		return this.description;
 	}
+	
+	public boolean tieneAccion(String accion) {
+		for (String a : actions) {
+			if (a.equals(accion)) {
+				for (String npc : effects_over)
+					if (npc.equals("npc"))
+						return true;
+			}
+		}
+		return false;
+	}
 }

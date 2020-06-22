@@ -353,7 +353,6 @@
   "number": "singular",
   "description": "'Mi muerte sera todo un misterio.Jonh'. La victima sabia que iba a morir?.",
   "actions": [
-	"leer"
   ],
    "effects_over": [
   ]
@@ -372,7 +371,7 @@
   "name": "casette",
   "gender": "male",
   "number": "singular",
-  "description": "Seria buena idea poder saber que tiene grabado esto dentro.",
+  "description": "Esta roto, no creo que tenga nada dentro.",
   "actions": [
   ],
    "effects_over": [
@@ -404,8 +403,10 @@
   "number": "singular",
   "description": "Se nota que fue usada hace poco. Todavia esta caliente.",
   "actions": [
+   "golpear"
   ],
    "effects_over": [
+   "npc"
   ]
 },
 {
@@ -414,7 +415,7 @@
   "number": "singular",
   "description": "Sera una pista? Lo veremos mas tarde.",
   "actions": [
-	"usar"
+	"acuchillar"
   ],
    "effects_over": [
     "npc"
