@@ -64,6 +64,13 @@ public class Accion {
 		return jugador.tirarItem(accionPart1);
 	}
 	
+	public String acuchillar() {
+		NPC np = jugador.buscarNpc(accionPart1);
+		if(np == null)
+			return "No existe nadie con ese nombre.";
+		return jugador.acuchillar(np);
+	}
+	
 	public String defaultAccion() {
 		return "No entiendo esa instruccion.";
 	}

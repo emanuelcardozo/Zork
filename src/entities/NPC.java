@@ -79,5 +79,13 @@ public class NPC extends Noun {
 				return t;
 		}
 		return null;
-	}	
+	}
+	
+	public Trigger serAcuchillado() {
+		for(Trigger t : triggers) {
+			if(t.getType().equals("atacar") && t.getThing().equals("cuchillo") )
+				return t;
+		}
+		return null;
+	}
 }

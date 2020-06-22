@@ -4,6 +4,7 @@ import java.util.Scanner;
 import entities.Player;
 import motorDeInstrucciones.actions.Acariciar;
 import motorDeInstrucciones.actions.Accion;
+import motorDeInstrucciones.actions.Acuchillar;
 import motorDeInstrucciones.actions.Agarrar;
 import motorDeInstrucciones.actions.DefaultAction;
 import motorDeInstrucciones.actions.Golpear;
@@ -101,6 +102,14 @@ public class Motor {
 				}else {
 					Tirar dropOrder = new Tirar(accion, comandoArray[1]);
 				broker.takeOrder(dropOrder);
+				}
+				break;
+			case "acuchillar":
+				if(comandoArray.length != 2) {
+					System.out.println("A quien queres acuchillar?(COMANDO: ACUCHILLAR LLAVE");
+				}else {
+					Acuchillar killOrder = new Acuchillar(accion, comandoArray[1]);
+				broker.takeOrder(killOrder);
 				}
 				break;
 			default:

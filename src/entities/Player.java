@@ -152,7 +152,16 @@ public class Player {
 		}
 	}
 
-	
+	public String acuchillar(NPC np) {
+		Trigger t;
+		t = np.serAcuchillado();
+		if(!inventario.estaEnInventario("cuchillo"))
+			return "No tienes al cuchillo en tu inventario.";
+		if( t != null)
+			return t.getOn_trigger();
+			
+		return "Ni lo intentes!";
+	}
 	
 	public String golpear(NPC np) {
 		return name;

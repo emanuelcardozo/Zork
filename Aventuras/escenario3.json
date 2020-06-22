@@ -306,9 +306,14 @@
 		   "type":"acariciar",
 		   "thing":"",
 		   "on_trigger": "Que esta haciendo? Alejese!"
+		},
+		{
+		   "type":"atacar",
+		   "thing":"cuchillo",
+		   "on_trigger": "Oh no! Por que hizo eso?.. El hombre muere al instante. Todos te culpan a ti y saben que eres el asesino."
 		}
 	]
-  }  
+    }  
 ],
 "items":[
   {
@@ -390,8 +395,10 @@
   "number": "singular",
   "description": "Sera una pista? Lo veremos mas tarde.",
   "actions": [
+	"usar"
   ],
    "effects_over": [
+    "npc"
   ]
 },
 {
