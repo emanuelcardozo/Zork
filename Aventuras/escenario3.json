@@ -308,6 +308,7 @@
   "name": "llave",
   "gender": "female",
   "number": "singular",
+  "description": "Una vieja llave media oxidada.",
   "actions": [
 	"usar"
   ],
@@ -319,7 +320,9 @@
   "name": "papel",
   "gender": "male",
   "number": "singular",
+  "description": "'Mi muerte sera todo un misterio.Jonh'. La victima sabia que iba a morir?.",
   "actions": [
+	"leer"
   ],
    "effects_over": [
   ]
@@ -328,6 +331,7 @@
   "name": "casetera",
   "gender": "female",
   "number": "singular",
+  "description": "Pareceria ser de 1980, la victima sera un aficionado a las reliquias?",
   "actions": [
   ],
    "effects_over": [
@@ -337,6 +341,7 @@
   "name": "casette",
   "gender": "male",
   "number": "singular",
+  "description": "Seria buena idea poder saber que tiene grabado esto dentro.",
   "actions": [
   ],
    "effects_over": [
@@ -346,6 +351,7 @@
   "name": "cinta",
   "gender": "female",
   "number": "singular",
+  "description": "Una simple cinta verde. No creo que sea de ayuda.",
   "actions": [
   ],
    "effects_over": [
@@ -355,6 +361,7 @@
   "name": "celular",
   "gender": "male",
   "number": "singular",
+  "description": "El ultimo whatsapp enviado fue al vecino.",
   "actions": [
   ],
    "effects_over": [
@@ -364,6 +371,7 @@
   "name": "radio",
   "gender": "female",
   "number": "singular",
+  "description": "Se nota que fue usada hace poco. Todavia esta caliente.",
   "actions": [
   ],
    "effects_over": [
@@ -373,6 +381,7 @@
   "name": "cuchillo",
   "gender": "male",
   "number": "singular",
+  "description": "Sera una pista? Lo veremos mas tarde.",
   "actions": [
   ],
    "effects_over": [
@@ -382,6 +391,7 @@
   "name": "foto",
   "gender": "female",
   "number": "singular",
+  "description": "Es una foto de la victima con la anciana.",
   "actions": [
   ],
    "effects_over": [
@@ -391,6 +401,7 @@
   "name": "naipe",
   "gender": "male",
   "number": "singular",
+  "description": "Aficionado a las cartas? Mmm..lo veremos.",
   "actions": [
   ],
    "effects_over": [

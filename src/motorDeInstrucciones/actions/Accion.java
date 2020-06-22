@@ -21,7 +21,14 @@ public class Accion {
 			return jugador.listarInventario();
 
 		NPC npc = jugador.buscarNpc(accionPart1);
-		return jugador.mirarNpc(npc);
+		if(npc != null)
+		 return jugador.mirarNpc(npc);
+		
+		Item item = jugador.buscarItemInventario(accionPart1);
+		if(item != null)
+		 return jugador.mirarItem(item);
+		
+		return "No puedes mirar hacia alli.";
 	}
 
 	public String agarrar() {
@@ -48,6 +55,11 @@ public class Accion {
 		return jugador.hablarCon(npc);
 	}
 
+	public String acariciar() {
+		NPC npc = jugador.buscarNpc(accionPart1);
+		return jugador.acariciar(npc);
+	}
+	
 	public String defaultAccion() {
 		return "No entiendo esa instruccion.";
 	}
@@ -57,11 +69,6 @@ public class Accion {
 		return jugador.golpear(npc);
 	}
 	
-	public String acariciar() {
-		NPC npc = jugador.buscarNpc(accionPart1);
-		return jugador.acariciar(npc);
-	}
-
 	public void setAccionPart1(String accionPart1) {
 		this.accionPart1 = accionPart1;
 	}
@@ -69,5 +76,4 @@ public class Accion {
 	public void setAccionPart2(String accionPart2) {
 		this.accionPart2 = accionPart2;
 	}
-
 }

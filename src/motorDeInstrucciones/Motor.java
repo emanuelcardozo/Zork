@@ -1,7 +1,6 @@
 package motorDeInstrucciones;
 
 import java.util.Scanner;
-
 import entities.Player;
 import motorDeInstrucciones.actions.Acariciar;
 import motorDeInstrucciones.actions.Accion;

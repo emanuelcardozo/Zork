@@ -104,7 +104,7 @@ public class Player {
 		}
 		return "No es posible hacer eso.";
 	}
-	
+
 	public String listarInventario() {
 		return inventario.listarInventario();
 	}
@@ -133,6 +133,10 @@ public class Player {
 		NPC npc = objectName;
 		String message = "No hay nadie para mirar con ese nombre.";
 		return npc != null ? npc.mirar() : message;
+	}
+	
+	public String mirarItem(Item itemName) {
+		return itemName.serObservado();
 	}
 	
 	

@@ -79,6 +79,5 @@ public class NPC extends Noun {
 				return t;
 		}
 		return null;
-	}
-	
+	}	
 }

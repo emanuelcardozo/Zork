@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 public class Item extends Noun {
 	private ArrayList<String> actions = new ArrayList<String>();
 	private ArrayList<String> effects_over = new ArrayList<String>();
+	private String description;
 	private EndGame endGame;
 
 	public Item(String name, String gender, String number) {
@@ -17,6 +18,7 @@ public class Item extends Noun {
 
 	public Item(JSONObject itemJSON) {
 		super((String) itemJSON.get("name"), (String) itemJSON.get("gender"), (String) itemJSON.get("number"));
+		this.description = (String) itemJSON.get("description");
 		if (itemJSON.containsKey("actions")) {
 			buildActions((JSONArray) itemJSON.get("actions"));
 		}
@@ -66,5 +68,9 @@ public class Item extends Noun {
 		}
 		
 		return message;
+	}
+	
+	public String serObservado() {
+		return this.description;
 	}
 }
