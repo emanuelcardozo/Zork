@@ -21,7 +21,11 @@ public class Inventory {
 	public boolean isEmpty() {
 		return items.isEmpty();
 	}
-
+	
+	public boolean estaEnInventario(String item) {
+		return items.containsKey(item);
+	}
+	
 	public String listarInventario() {
 		String[] palabras = new String[items.size()];
 		Item item;

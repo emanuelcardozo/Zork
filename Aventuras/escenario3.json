@@ -58,6 +58,13 @@
 	  "items": [
 		"foto"
 	  ]
+	},
+	{
+	  "name": "suelo",
+	  "gender": "male",
+	  "number": "singular",
+	  "items": [
+	  ]
 	}
   ],
 	 "connections":[
@@ -105,7 +112,7 @@
 	  ]
 	}
 	],
-	 "npcs":["detective", "victima", "perro"],
+	 "npcs":["detective", "victima", "perro", "mueble"],
 	 "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente. En la pared notas unas manchas de color raro.",
 	 "connections":[
 		{
@@ -244,7 +251,7 @@
 		   "on_trigger": "Este cuerpo esta helado!"
 		}
 	 ]
-  },
+	},
 	{
 	 "name":"anciana",
 	 "gender":"female",
@@ -258,8 +265,8 @@
 		"on_trigger": "La anciana esta agradecida por tu consuelo."
 		}
 	 ]
-  },
-	 {
+	},
+	{
 	 "name":"puerta",
 	 "gender":"female",
 	 "number":"singular",
@@ -273,7 +280,7 @@
 		   "after_trigger": "remove"
 		}	   
 	 ]
-  },
+	},
 	  {
 	 "name":"perro",
 	 "gender":"male",
@@ -299,15 +306,40 @@
 		   "type":"acariciar",
 		   "thing":"",
 		   "on_trigger": "Que esta haciendo? Alejese!"
+		},
+		{
+		   "type":"atacar",
+		   "thing":"cuchillo",
+		   "on_trigger": "Oh no! Por que hizo eso?.. El hombre muere al instante. Todos te culpan a ti y saben que eres el asesino."
 		}
 	]
-  }  
+    },
+	{
+	 "name":"mueble",
+	 "gender":"male",
+	 "number":"singular",
+	 "description":"Parece ser un mueble pesado y viejo. Pero detras de el hay algo que me llama la atencion. Deberia correrlo para ver que hay detras.",
+	 "talk":"Te estas volviendo loco ya? No puedes hablarle a un mueble!",
+	 "triggers":[
+		{
+		   "type":"correr",
+		   "thing": "",
+		   "on_trigger": "Oh no! Al intentar correr el mueble este cae arriba tuyo y mueres al instante.",
+		},
+		{
+		   "type":"golpear",
+		   "thing": "radio",
+		   "on_trigger": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Mi asesino esta en la casa tienes que hacer justicia por esto'."
+		}
+	 ]
+	}
 ],
 "items":[
   {
   "name": "llave",
   "gender": "female",
   "number": "singular",
+  "description": "Una vieja llave media oxidada.",
   "actions": [
 	"usar"
   ],
@@ -319,6 +351,7 @@
   "name": "papel",
   "gender": "male",
   "number": "singular",
+  "description": "'Mi muerte sera todo un misterio.Jonh'. La victima sabia que iba a morir?.",
   "actions": [
   ],
    "effects_over": [
@@ -328,6 +361,7 @@
   "name": "casetera",
   "gender": "female",
   "number": "singular",
+  "description": "Pareceria ser de 1980, la victima sera un aficionado a las reliquias?",
   "actions": [
   ],
    "effects_over": [
@@ -337,6 +371,7 @@
   "name": "casette",
   "gender": "male",
   "number": "singular",
+  "description": "Esta roto, no creo que tenga nada dentro.",
   "actions": [
   ],
    "effects_over": [
@@ -346,6 +381,7 @@
   "name": "cinta",
   "gender": "female",
   "number": "singular",
+  "description": "Una simple cinta verde. No creo que sea de ayuda.",
   "actions": [
   ],
    "effects_over": [
@@ -355,6 +391,7 @@
   "name": "celular",
   "gender": "male",
   "number": "singular",
+  "description": "El ultimo whatsapp enviado fue al vecino.",
   "actions": [
   ],
    "effects_over": [
@@ -364,24 +401,31 @@
   "name": "radio",
   "gender": "female",
   "number": "singular",
+  "description": "Se nota que fue usada hace poco. Todavia esta caliente.",
   "actions": [
+   "golpear"
   ],
    "effects_over": [
+   "npc"
   ]
 },
 {
   "name": "cuchillo",
   "gender": "male",
   "number": "singular",
+  "description": "Sera una pista? Lo veremos mas tarde.",
   "actions": [
+	"acuchillar"
   ],
    "effects_over": [
+    "npc"
   ]
 },
 {
   "name": "foto",
   "gender": "female",
   "number": "singular",
+  "description": "Es una foto de la victima con la anciana.",
   "actions": [
   ],
    "effects_over": [
@@ -391,6 +435,7 @@
   "name": "naipe",
   "gender": "male",
   "number": "singular",
+  "description": "Aficionado a las cartas? Mmm..lo veremos.",
   "actions": [
   ],
    "effects_over": [

@@ -63,6 +63,7 @@ public class Player {
 
 		return "No existe ese item!.";
 	}
+	
 
 	//Falta arreglar pq toma el endgame como accion
 	public String usarItemEnMi(Item item) {
@@ -99,6 +100,18 @@ public class Player {
 		return "No es posible hacer eso.";
 	}
 	
+	public String correr(NPC np) {
+		Trigger t;
+		if (np != null) {
+			t = np.serCorrido();
+			if (t != null)
+				return t.getOn_trigger();
+		}
+
+		return "No es posible hacer eso.";
+	}
+
+
 	public String listarInventario() {
 		return inventario.listarInventario();
 	}
@@ -129,9 +142,43 @@ public class Player {
 		return npc != null ? npc.mirar() : message;
 	}
 	
+	public String mirarItem(Item itemName) {
+		return itemName.serObservado();
+	}
 	
-	public String golpear(NPC np) {
-		return name;
+	public String tirarItem(String itemName) {
+		Item item;
+		item = this.buscarItemInventario(itemName);
+		if(item == null)
+			return "Ese item no se encuentra en tu inventario.";
+		else {
+			posicionActual.getPlace("suelo").addItem(item);
+			inventario.eliminarItem(itemName);
+			return "Has tirado el item.";
+		}
+	}
+
+	public String acuchillar(NPC np) {
+		Trigger t;
+		t = np.serAcuchillado();
+		if(!inventario.estaEnInventario("cuchillo"))
+			return "No tienes al cuchillo en tu inventario.";
+		if( t != null)
+			return t.getOn_trigger();
+			
+		return "Ni lo intentes!";
+	}
+	
+	public String golpear(Item item, NPC np) {
+		Trigger t;
+		if(!item.tieneAccion("golpear"))
+			return "No es posible hacer eso.";
+		if(np != null) {
+		t =  np.serGolpeadoCon(item);
+		if(t != null)
+		return t.getOn_trigger();
+		}
+		return "No es posible hacer eso.";
 	}
 	
 	public String getName() {

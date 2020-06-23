@@ -21,13 +21,20 @@ public class Accion {
 			return jugador.listarInventario();
 
 		NPC npc = jugador.buscarNpc(accionPart1);
-		return jugador.mirarNpc(npc);
+		if(npc != null)
+		 return jugador.mirarNpc(npc);
+		
+		Item item = jugador.buscarItemInventario(accionPart1);
+		if(item != null)
+		 return jugador.mirarItem(item);
+		
+		return "No puedes mirar hacia alli.";
 	}
 
 	public String agarrar() {
 		return jugador.agarrarItem(accionPart1);
 	}
-
+	
 	public String mover() {
 		return jugador.moverHacia(accionPart1);
 	}
@@ -48,20 +55,42 @@ public class Accion {
 		return jugador.hablarCon(npc);
 	}
 
+	public String acariciar() {
+		NPC npc = jugador.buscarNpc(accionPart1);
+		return jugador.acariciar(npc);
+	}
+	
+	public String tirar() {
+		return jugador.tirarItem(accionPart1);
+	}
+	
+	public String acuchillar() {
+		NPC np = jugador.buscarNpc(accionPart1);
+		if(np == null)
+			return "No existe nadie con ese nombre.";
+		return jugador.acuchillar(np);
+	}
+	
+	public String correr() {
+		NPC np = jugador.buscarNpc(accionPart1);
+		if(np == null)
+			return "No existe nadie con ese nombre.";
+		return jugador.correr(np);
+	}
 	public String defaultAccion() {
 		return "No entiendo esa instruccion.";
 	}
 
 	public String golpear() {
-		NPC npc = jugador.buscarNpc(accionPart1);
-		return jugador.golpear(npc);
+		Item item = jugador.buscarItemInventario(accionPart1);
+		NPC np = jugador.buscarNpc(accionPart2);
+		if(np == null)
+			return "No existe nadie con ese nombre.";
+		if(item == null)
+			return "No existe ese item en tu inventario.";
+		return jugador.golpear(item, np);
 	}
 	
-	public String acariciar() {
-		NPC npc = jugador.buscarNpc(accionPart1);
-		return jugador.acariciar(npc);
-	}
-
 	public void setAccionPart1(String accionPart1) {
 		this.accionPart1 = accionPart1;
 	}
@@ -69,5 +98,4 @@ public class Accion {
 	public void setAccionPart2(String accionPart2) {
 		this.accionPart2 = accionPart2;
 	}
-
 }

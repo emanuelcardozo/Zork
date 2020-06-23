@@ -1,16 +1,18 @@
 package motorDeInstrucciones;
 
 import java.util.Scanner;
-
 import entities.Player;
 import motorDeInstrucciones.actions.Acariciar;
 import motorDeInstrucciones.actions.Accion;
+import motorDeInstrucciones.actions.Acuchillar;
 import motorDeInstrucciones.actions.Agarrar;
+import motorDeInstrucciones.actions.Correr;
 import motorDeInstrucciones.actions.DefaultAction;
 import motorDeInstrucciones.actions.Golpear;
 import motorDeInstrucciones.actions.Hablar;
 import motorDeInstrucciones.actions.Mirar;
 import motorDeInstrucciones.actions.Mover;
+import motorDeInstrucciones.actions.Tirar;
 import motorDeInstrucciones.actions.Usar;
 
 public class Motor {
@@ -82,20 +84,44 @@ public class Motor {
 					broker.takeOrder(talkOrder);
 				}
 				break;
-			case "golpear":
-				if(comandoArray.length != 2) {
-					System.out.println("A que o quien queres golpear?(COMANDO: GOLPEAR PUERTA");
-				}else {
-					Golpear hitOrder = new Golpear(accion, comandoArray[1]);
-				broker.takeOrder(hitOrder);
-				}
-				break;
 			case "acariciar":
 				if(comandoArray.length != 2) {
 					System.out.println("A que o quien queres acariciar?(COMANDO: ACARICIAR PERRO");
 				}else {
 					Acariciar acariciarOrder = new Acariciar(accion, comandoArray[1]);
 				broker.takeOrder(acariciarOrder);
+				}
+				break;
+			case "tirar":
+				if(comandoArray.length != 2) {
+					System.out.println("Que queres tirar?(COMANDO: TIRAR LLAVE");
+				}else {
+					Tirar dropOrder = new Tirar(accion, comandoArray[1]);
+				broker.takeOrder(dropOrder);
+				}
+				break;
+			case "acuchillar":
+				if(comandoArray.length != 2) {
+					System.out.println("A quien queres acuchillar?(COMANDO: ACUCHILLAR COLEGA");
+				}else {
+					Acuchillar killOrder = new Acuchillar(accion, comandoArray[1]);
+				broker.takeOrder(killOrder);
+				}
+				break;
+			case "correr":
+				if(comandoArray.length != 2) {
+					System.out.println("Que queres correr?(COMANDO: CORRER MUEBLE");
+				}else {
+					Correr correrOrder = new Correr(accion, comandoArray[1]);
+				broker.takeOrder(correrOrder);
+				}
+				break;
+			case "golpear":
+				if(comandoArray.length != 4) {
+					System.out.println("Que queres golpear? Contra que?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE");
+				}else {
+					Golpear hitOrder = new Golpear(accion, comandoArray[1], comandoArray[3]);
+				broker.takeOrder(hitOrder);
 				}
 				break;
 			default:
