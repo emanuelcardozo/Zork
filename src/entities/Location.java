@@ -6,26 +6,32 @@ import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class Location extends Noun {
+public class Location extends Noun implements Triggerable {
 	private String description;
 	private Map<String, Place> placesMap = new HashMap<String, Place>();
 	private Map<String, NPC> npcsMap = new HashMap<String, NPC>();
 	private Map<String, Connection> connectionByDirectionMap = new HashMap<String, Connection>();
 	private Map<String, Connection> connectionByLocationMap = new HashMap<String, Connection>();
-	private EndGame endGame;
+	
+	private boolean hasTrigger;
+	private Aventura aventura;
 
 	public Location(String name, String gender, String number, String description, HashMap<String, Place> places,
-			HashMap<String, NPC> npcs) {
+			HashMap<String, NPC> npcs, boolean hasTrigger, Aventura aventura) {
 		super(name, gender, number);
 		this.description = description;
 		this.placesMap = places;
 		this.npcsMap = npcs;
+		this.hasTrigger = hasTrigger;
+		this.aventura = aventura;
 	}
 
-	public Location(JSONObject locationJSON, Map<String, Item> itemsMap, Map<String, NPC> npcsMap) {
+	public Location(JSONObject locationJSON, Map<String, Item> itemsMap, Map<String, NPC> npcsMap, boolean hasTrigger, Aventura aventura) {
 		super((String) locationJSON.get("name"), (String) locationJSON.get("gender"),
 				(String) locationJSON.get("number"));
 		this.description = (String) locationJSON.get("description");
+		this.hasTrigger = hasTrigger;
+		this.aventura = aventura;
 
 		if (locationJSON.containsKey("places"))
 			buildPlaces((JSONArray) locationJSON.get("places"), itemsMap);
@@ -82,13 +88,13 @@ public class Location extends Noun {
 	public boolean contieneNPC(String NPCname) {
 		return npcsMap.containsKey(NPCname);
 	}
-
-	public EndGame getEndGame() {
-		return endGame;
+	
+	public void setHasTrigger(boolean hasTrigger) {
+		this.hasTrigger = hasTrigger;
 	}
-
-	public void setEndGame(EndGame endGame) {
-		this.endGame = endGame;
+	
+	public boolean hasTrigger() {
+		return hasTrigger;
 	}
 
 	@Override
@@ -150,6 +156,12 @@ public class Location extends Noun {
 
 		return connection.getLocation();
 	}
+	
+	public String moverA(String where) {
+		if( hasTrigger ) return executeTrigger();
+		
+		return description;
+	}
 
 	public boolean sePuedeMoverHacia(String where) {
 
@@ -189,7 +201,7 @@ public class Location extends Noun {
 		}
 
 		if (connection == null)
-			return "No puedes moverte hacia esa ubicación.";
+			return "No puedes moverte hacia esa ubicaciï¿½n.";
 
 		obstaculo = npcsMap.get(connection.getObstacle());
 
@@ -202,6 +214,11 @@ public class Location extends Noun {
 
 	public void eliminarObstaculo(String npcName) {
 		npcsMap.remove(npcName);
+	}
+
+	@Override
+	public String executeTrigger() {
+		return aventura.ejecutarFinal(new Trigger( "location", name, null, null ));
 	}
 
 }

@@ -17,6 +17,7 @@ public class Motor {
 	private Scanner teclado;
 	private Accion accion;
 	private Broker broker;
+	private boolean running;
 
 	public Motor( Player player ) {
 		this.broker = new Broker();
@@ -26,10 +27,12 @@ public class Motor {
 
 	public void start() {
 		String comando = teclado.nextLine();
+		running = true;
 
-		while ( !comando.equalsIgnoreCase("salir")) {
+		while ( !comando.equalsIgnoreCase("salir") && running) {
 			ejecutarComando(comando);
-			comando = teclado.nextLine();
+			if( running )
+				comando = teclado.nextLine();
 		}
 
 		teclado.close();
@@ -102,5 +105,9 @@ public class Motor {
 		}
 
 		broker.placeOrders();
+	}
+
+	public void stop() {
+		running = false;
 	}
 }

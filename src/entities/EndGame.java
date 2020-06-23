@@ -7,12 +7,14 @@ public class EndGame {
 	private String action;
 	private String thing;
 	private String description;
+	private EndGame nextEndGame;
 
-	public EndGame(String condition, String action, String thing, String description) {
+	public EndGame(String condition, String action, String thing, String description, EndGame nextEndGame ) {
 		this.condition = condition;
 		this.action = action;
 		this.thing = thing;
 		this.description = description;
+		this.nextEndGame = nextEndGame;
 	}
 
 	public EndGame(JSONObject endGameJSON) {
@@ -28,6 +30,10 @@ public class EndGame {
 
 	public void setCondition(String condition) {
 		this.condition = condition;
+	}
+	
+	public void setNextEndGame(EndGame nextEndGame) {
+		this.nextEndGame = nextEndGame;
 	}
 
 	public String getAction() {
@@ -52,5 +58,15 @@ public class EndGame {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String execute(Trigger trigger) {
+		
+		if( trigger.getThing().equals(thing) && 
+				(trigger.getType().equals( condition ) || 
+						trigger.getType().equals("item") && condition.equals("action")) )
+			return description;
+		
+		return nextEndGame != null ? nextEndGame.execute(trigger) : null;
 	}
 }

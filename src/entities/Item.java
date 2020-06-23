@@ -5,18 +5,24 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class Item extends Noun {
+public class Item extends Noun implements Triggerable {
 	private ArrayList<String> actions = new ArrayList<String>();
 	private ArrayList<String> effects_over = new ArrayList<String>();
-	private EndGame endGame;
+	
+	private boolean hasTrigger;
+	private Aventura aventura;
 
-	public Item(String name, String gender, String number) {
+	public Item(String name, String gender, String number, Aventura aventura, boolean hasTrigger) {
 		super(name, gender, number);
 
+		this.aventura = aventura;
+		this.hasTrigger = hasTrigger;
 	}
 
-	public Item(JSONObject itemJSON) {
+	public Item(JSONObject itemJSON, Aventura aventura) {
 		super((String) itemJSON.get("name"), (String) itemJSON.get("gender"), (String) itemJSON.get("number"));
+		this.aventura = aventura;
+		
 		if (itemJSON.containsKey("actions")) {
 			buildActions((JSONArray) itemJSON.get("actions"));
 		}
@@ -30,12 +36,12 @@ public class Item extends Noun {
 		return effects_over.contains(targetName);
 	}
 
-	public EndGame getEndGame() {
-		return endGame;
+	public boolean hasTrigger() {
+		return hasTrigger;
 	}
 
-	public void setEndGame(EndGame endGame) {
-		this.endGame = endGame;
+	public void setHastrigger(boolean hasTrigger) {
+		this.hasTrigger = hasTrigger;
 	}
 
 	private void buildEffectsOver(JSONArray effectsJSON) {
@@ -61,10 +67,18 @@ public class Item extends Noun {
 
 	public String[] usarEnMi() {
 		String[] message = { "Eso no ha servido de nada. " };
+		
 		if (afectaA("self")) {
-			message[0] = getEndGame().getDescription();
+			String endDescription = executeTrigger();
+			
+			if( endDescription != null) message[0] = endDescription;
 		}
 		
 		return message;
+	}
+
+	@Override
+	public String executeTrigger() {
+		return aventura.ejecutarFinal(new Trigger( "action", name, null, null ));
 	}
 }

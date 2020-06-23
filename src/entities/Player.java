@@ -37,21 +37,15 @@ public class Player {
 	}
 	
 	public String moverHacia(String where) {
-		String locationName;
-		String message = null;
-
+		
 		if (posicionActual.sePuedeMoverHacia(where)) {
-			locationName = posicionActual.moverHacia(where);
+			String locationName = posicionActual.moverHacia(where);
 			posicionActual = mundo.getLocation(locationName);
-
-			if (posicionActual.getEndGame() != null)
-				message = posicionActual.getEndGame().getDescription();
-			else
-				message = posicionActual.getDescription();
-		} else {
-			message = posicionActual.porqueNoPuedoIrHacia(where);
+			
+			return posicionActual.moverA(where);
 		}
-		return message;
+		
+		return posicionActual.porqueNoPuedoIrHacia(where);
 	}
 
 	public String agarrarItem(String itemName) {

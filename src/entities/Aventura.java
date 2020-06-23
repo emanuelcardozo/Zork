@@ -17,14 +17,14 @@ import motorDeInstrucciones.Motor;
 
 public class Aventura {
 
-	private ArrayList<EndGame> finales;
+	private EndGame endGame;
 	private Motor motorInstrucciones;
 	private Player jugador;
 	private String welcome;
 	
 	private Map<String, Item> itemsMap;
 	private Map<String, NPC> npcsMap;
-	private Map<String, EndGame> endGameByThingMap;
+	private Map<String, EndGame> triggerEndGameMap; // Key: Thing, Value: EndGame
 
 	public Aventura(String path) {				
 		initialize(path);
@@ -92,35 +92,31 @@ public class Aventura {
 	}
 
 	private void crearFinales(JSONArray endsGameJSON) {
-		endGameByThingMap = new HashMap<String, EndGame>();
-		EndGame end;
+		triggerEndGameMap = new HashMap<String, EndGame>();
+		EndGame endPrev = null, endNext;
 
 		for (Object endGameObj : endsGameJSON) {
-			end = new EndGame((JSONObject) endGameObj);
-			endGameByThingMap.put(end.getThing(), end);
-			//System.out.println(end.getThing()+" "+end.getAction());
+			endNext = new EndGame((JSONObject) endGameObj);
+			triggerEndGameMap.put(endNext.getThing(), endNext);
+			
+			if( endPrev != null )
+				endPrev.setNextEndGame( endNext );
+			else
+				endGame = endNext;
+			
+			endPrev = endNext;
 		}
 	}
-	
-//	public String isEndGame(String verbo, String objeto) {
-//		if(endGameByThingMap.containsKey(verbo)) {
-//			if(endGameByThingMap.get(verbo).getAction().equals(objeto)) {
-//				return endGameByThingMap.get(verbo).getDescription();
-//			}
-//		}
-//		return null;
-//	}
 	
 	private void crearItemMap(JSONArray itemsJSON) {
 		this.itemsMap = new HashMap<String, Item>();
 		Item item;
-		EndGame end;
 
 		for (Object itemObj : itemsJSON) {
-			item = new Item((JSONObject) itemObj);
+			item = new Item((JSONObject) itemObj, this);
 
-			if (endGameByThingMap.containsKey(item.getName()))
-				item.setEndGame(endGameByThingMap.get(item.getName()));
+			if (triggerEndGameMap.containsKey(item.getName()))
+				item.setHastrigger(true);
 
 			itemsMap.put(item.getName(), item);
 		}
@@ -141,10 +137,11 @@ public class Aventura {
 		Location location;
 
 		for (Object locationObj : locationsJSON) {
-			location = new Location((JSONObject) locationObj, itemsMap, npcsMap);
+			location = new Location((JSONObject) locationObj, itemsMap, npcsMap, false, this);
 
-			if (endGameByThingMap.containsKey(location.getName()))
-				location.setEndGame(endGameByThingMap.get(location.getName()));
+			if (triggerEndGameMap.containsKey(location.getName())) {
+				location.setHasTrigger(true);
+			}
 
 			mapa.put(location.getName(), location);
 		}
@@ -158,6 +155,14 @@ public class Aventura {
 
 	public void setJugador(Player jugador) {
 		this.jugador = jugador;
+	}
+	
+	public String ejecutarFinal(Trigger trigger) {
+		String message = endGame.execute(trigger);
+		
+		if( message != null) motorInstrucciones.stop();
+		
+		return message;
 	}
 
 }
