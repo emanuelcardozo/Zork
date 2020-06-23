@@ -1,6 +1,8 @@
 package motorDeInstrucciones;
 
 import java.util.Scanner;
+
+import diccionario.Diccionario;
 import entities.Player;
 import motorDeInstrucciones.actions.Acariciar;
 import motorDeInstrucciones.actions.Accion;
@@ -20,11 +22,13 @@ public class Motor {
 	private Accion accion;
 	private Broker broker;
 	private boolean running;
+	private Diccionario diccionario;
 
 	public Motor( Player player ) {
 		this.broker = new Broker();
 		this.accion = new Accion(player);
 		this.teclado = new Scanner(System.in);
+		this.diccionario = new Diccionario();
 	}
 
 	public void start() {
@@ -42,9 +46,11 @@ public class Motor {
 
 	public void ejecutarComando(String comando) {
 		String[] comandoArray = comando.toLowerCase().split(" ");
+		String verbo = diccionario.buscarVerbo(comandoArray[0]).toString();
+		
 
-		switch (comandoArray[0]) {
-			case "agarrar":
+		switch (verbo) {
+			case "RECOGER":
 				if(comandoArray.length != 2) {
 					System.out.println("Que quieres agarrar?(COMANDO: AGARRAR ITEM)");
 				} else {
@@ -52,7 +58,7 @@ public class Motor {
 					broker.takeOrder(takeOrder);
 				}
 				break;
-			case "mirar":
+			case "OBSERVAR":
 				if(comandoArray.length != 2) {
 					System.out.println("Que quieres mirar?(COMANDO: MIRAR INVENTARIO O MIRAR ALREDEDOR)");
 				} else {
@@ -60,7 +66,7 @@ public class Motor {
 					broker.takeOrder(seeOrder);
 				}
 				break;
-			case "mover":
+			case "MOVER":
 				if(comandoArray.length != 2) { 
 					System.out.println("Hacia donde te quieres mover?(COMANDO: MOVER NORTE-SUR-ESTE-OESTE)");
 				} else {
@@ -68,7 +74,7 @@ public class Motor {
 					broker.takeOrder(moveOrder);
 				}
 				break;
-			case "usar":
+			case "USAR":
 				if(comandoArray.length != 4) {
 					System.out.println("Que queres usar? Contra quien?(COMANDO: USAR ITEM NPC)");
 				} else {
@@ -76,7 +82,7 @@ public class Motor {
 					broker.takeOrder(useOrder);
 				}
 				break;
-			case "hablar":
+			case "HABLAR":
 				if(comandoArray.length != 3) {
 					System.out.println("Con quien quieres hablar?(COMANDO: HABLAR CON PIRATA FANTASMA)");
 				} else {
@@ -84,7 +90,7 @@ public class Motor {
 					broker.takeOrder(talkOrder);
 				}
 				break;
-			case "acariciar":
+			case "ACARICIAR":
 				if(comandoArray.length != 2) {
 					System.out.println("A que o quien queres acariciar?(COMANDO: ACARICIAR PERRO");
 				}else {
@@ -92,7 +98,7 @@ public class Motor {
 				broker.takeOrder(acariciarOrder);
 				}
 				break;
-			case "tirar":
+			case "TIRAR":
 				if(comandoArray.length != 2) {
 					System.out.println("Que queres tirar?(COMANDO: TIRAR LLAVE");
 				}else {
@@ -100,7 +106,7 @@ public class Motor {
 				broker.takeOrder(dropOrder);
 				}
 				break;
-			case "acuchillar":
+			case "ACUCHILLAR":
 				if(comandoArray.length != 2) {
 					System.out.println("A quien queres acuchillar?(COMANDO: ACUCHILLAR COLEGA");
 				}else {
@@ -108,7 +114,7 @@ public class Motor {
 				broker.takeOrder(killOrder);
 				}
 				break;
-			case "correr":
+			case "CORRER":
 				if(comandoArray.length != 2) {
 					System.out.println("Que queres correr?(COMANDO: CORRER MUEBLE");
 				}else {
@@ -116,7 +122,7 @@ public class Motor {
 				broker.takeOrder(correrOrder);
 				}
 				break;
-			case "golpear":
+			case "ATACAR":
 				if(comandoArray.length != 4) {
 					System.out.println("Que queres golpear? Contra que?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE");
 				}else {
