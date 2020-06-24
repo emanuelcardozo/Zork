@@ -1,4 +1,4 @@
-package diccionario;
+package motorDeInstrucciones.diccionario;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 public enum Modificador {
 	// ACCIONES
 	
-	ARTICULO("la", "las", "el", "los", "al"),
+	ARTICULO("la", "las", "el", "los", "al", "del"), // se incluyen "al" y "del" aunque sean una combinacion de articulo y preposicion
     PREPOSICION("a", "ante", "bajo", "con", "contra", "de", "desde", "en", "entre", "hacia", "hasta", "para", "por", "segun", "sin", "sobre", "tras");
 	
 	// FIN ACCIONES

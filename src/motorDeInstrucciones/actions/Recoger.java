@@ -2,16 +2,17 @@ package motorDeInstrucciones.actions;
 
 import motorDeInstrucciones.Order;
 
-public class Mirar implements Order {
+public class Recoger implements Order {
 	private Accion accion;
-
-	public Mirar(Accion st, String where) {
+	private String item;
+	
+	public Recoger(Accion st, String item) {
 		this.accion = st;
-		st.setAccionPart1(where);
+		this.item = item;
 	}
 
 	@Override
 	public String execute() {
-		return accion.mirar();
+		return accion.recoger(item);
 	}
 }

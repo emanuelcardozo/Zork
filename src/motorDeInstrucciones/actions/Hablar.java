@@ -4,13 +4,14 @@ import motorDeInstrucciones.Order;
 
 public class Hablar implements Order {
 	private Accion accion;
+	private String objetivo;
 	
-	public Hablar(Accion st, String where) {
+	public Hablar(Accion st, String objetivo) {
 		this.accion = st;
-		accion.setAccionPart1(where);
+		this.objetivo = objetivo;
 	}
 	@Override
 	public String execute() {
-		return accion.hablar();		
+		return accion.hablar(objetivo);		
 	}
 }

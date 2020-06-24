@@ -4,14 +4,14 @@ import motorDeInstrucciones.Order;
 
 public class Mover implements Order{
 	private Accion accion;
+	private String objetivo;
 	
-	public Mover(Accion st, String where) {
+	public Mover(Accion st, String objetivo) {
 		this.accion = st;
-		this.accion.setAccionPart1(where);
+		this.objetivo = objetivo;
 	}
-
 	@Override
 	public String execute() {
-		return accion.mover();
+		return accion.mover(objetivo);	
 	}
 }

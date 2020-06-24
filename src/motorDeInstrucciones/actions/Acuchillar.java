@@ -4,14 +4,15 @@ import motorDeInstrucciones.Order;
 
 public class Acuchillar implements Order {
 	private Accion accion;
+	private String objetivo;
 
-	public Acuchillar(Accion st, String where) {
+	public Acuchillar(Accion st, String objetivo) {
 		this.accion = st;
-		accion.setAccionPart1(where);
+		this.objetivo = objetivo;
 	}
 
 	@Override
 	public String execute() {
-		return accion.acuchillar();
+		return accion.acuchillar(objetivo);
 	}
 }

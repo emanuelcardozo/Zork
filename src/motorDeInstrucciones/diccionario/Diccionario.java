@@ -1,4 +1,4 @@
-package diccionario;
+package motorDeInstrucciones.diccionario;
 
 public class Diccionario {
 	
@@ -15,8 +15,6 @@ public class Diccionario {
 	}
 	
 	public boolean esSustantivo(String alias) {
-		// TODO 
-		// return esItem || esLocation || esPlace || esNPC
-		return false;
+		return !esVerbo(alias) && !esArticulo(alias);
 	}
 }

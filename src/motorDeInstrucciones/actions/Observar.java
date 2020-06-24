@@ -2,15 +2,17 @@ package motorDeInstrucciones.actions;
 
 import motorDeInstrucciones.Order;
 
-public class Correr implements Order{
+public class Observar implements Order {
 	private Accion accion;
-	
-	public Correr(Accion st, String where) {
+	private String donde;
+
+	public Observar(Accion st, String donde) {
 		this.accion = st;
-		accion.setAccionPart1(where);
+		this.donde = donde;
 	}
+
 	@Override
 	public String execute() {
-		return accion.correr();	
+		return accion.observar(donde);
 	}
 }

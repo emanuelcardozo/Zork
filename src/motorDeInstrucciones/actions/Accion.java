@@ -3,99 +3,214 @@ package motorDeInstrucciones.actions;
 import entities.Item;
 import entities.NPC;
 import entities.Player;
+import motorDeInstrucciones.Order;
 
 public class Accion {
 	private Player jugador;
-	private String accionPart1;
-	private String accionPart2;
+	private String verbo;
+	private String[] sustantivos;
 
 	public Accion(Player jugador) {
 		this.jugador = jugador;
 	}
+	
+	public String acariciar(String quien) {
+		NPC npc = jugador.buscarNpc(quien);
+		return jugador.acariciar(npc);
+	}
+	
+	
+	public String acuchillar(String objetivo) {
+		if( objetivo == null )
+			return "A quien queres acuchillar?(COMANDO: ACUCHILLAR COLEGA";
+		
+		NPC npc = jugador.buscarNpc(objetivo);
+		
+		if(npc == null)
+			return "No existe nadie con ese nombre.";
+		
+		return jugador.acuchillar(npc);
+	}
+	
+	
+	public String golpear(String itemName, String objetivo) {
+		if( itemName == null )
+			return "Que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE";
+		
+		if( objetivo == null )
+			return "Contra que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE";
+		
+		Item item = jugador.buscarItemInventario(itemName);
+		NPC npc = jugador.buscarNpc(objetivo);
+		
+		if(npc == null)
+			return "No existe nadie con ese nombre.";
+		
+		if(item == null)
+			return "No existe ese item en tu inventario.";
+		
+		return jugador.golpear(item, npc);
+	}
+	
+	
+	public String hablar(String quien) {
+		if( quien == null ) 
+			return "Con quien quieres hablar?(COMANDO: HABLAR CON PIRATA FANTASMA)";
+		
+		NPC npc = jugador.buscarNpc(quien);
 
-	public String mirar() {
-		if(accionPart1.equals("alrededor"))
+		return jugador.hablarCon(npc);
+	}
+	
+	
+	public String ir(String hacia) {
+		if( hacia == null )
+			return "Hacia donde te quieres mover?(COMANDO: MOVER NORTE-SUR-ESTE-OESTE)";
+		
+		return jugador.moverHacia(hacia);
+	}
+	
+	
+	public String mover(String objetivo) {
+		if( objetivo == null )
+			return "Que quieres mover";
+		
+		NPC npc = jugador.buscarNpc(objetivo);
+		
+		if(npc == null)
+			return "No existe nadie con ese nombre.";
+		
+		return jugador.correr(npc);
+	}
+	
+
+	public String observar(String donde) {
+		if( donde == null )
+			return "Que quieres mirar?(COMANDO: MIRAR INVENTARIO O MIRAR ALREDEDOR)";
+		
+		if(donde.equals("alrededor"))
 			return jugador.mirarAlrededor();
 
-		if(accionPart1.equals("inventario"))
+		if(donde.equals("inventario"))
 			return jugador.listarInventario();
 
-		NPC npc = jugador.buscarNpc(accionPart1);
-		if(npc != null)
-		 return jugador.mirarNpc(npc);
+		NPC npc = jugador.buscarNpc(donde);
 		
-		Item item = jugador.buscarItemInventario(accionPart1);
+		if(npc != null)
+			return jugador.mirarNpc(npc);
+		
+		Item item = jugador.buscarItemInventario(donde);
+		
 		if(item != null)
-		 return jugador.mirarItem(item);
+			return jugador.mirarItem(item);
 		
 		return "No puedes mirar hacia alli.";
 	}
 
-	public String agarrar() {
-		return jugador.agarrarItem(accionPart1);
+	
+	public String recoger(String item) {
+		if( item == null )
+			return "Que quieres agarrar?(COMANDO: AGARRAR ITEM)";
+		
+		return jugador.agarrarItem(item);
 	}
 	
-	public String mover() {
-		return jugador.moverHacia(accionPart1);
+	public String tirar(String item) {
+		if(item == null ) 
+			return "Que queres tirar?(COMANDO: TIRAR LLAVE";
+		
+		return jugador.tirarItem(item);
 	}
-
-	public String usar() {
-		Item item = jugador.buscarItemInventario(accionPart1);
-		if(accionPart2.contentEquals("mi")) {
+	
+	
+	public String usar(String itemName, String objetivo) {		
+		if( itemName == null )
+			return "Que queres usar?(COMANDO: USAR ITEM NPC)";
+		
+		Item item = jugador.buscarItemInventario(itemName);
+		
+		if( objetivo == null )
+			return "Contra quien queres usar " + item.getArticulo() + " " + item.getName() + "?(COMANDO: USAR ITEM NPC)";						
+		
+		if(objetivo.contentEquals("mi"))
 			return jugador.usarItemEnMi(item);
-		}else {
-		NPC np = jugador.buscarNpc(accionPart2);
-		return jugador.usarItemEnNpc(item, np);
-		}
+		
+		NPC npc = jugador.buscarNpc(objetivo);
+		
+		return jugador.usarItemEnNpc(item, npc);
 	}
 
-	public String hablar() {
-		NPC npc = jugador.buscarNpc(accionPart1);
-
-		return jugador.hablarCon(npc);
-	}
-
-	public String acariciar() {
-		NPC npc = jugador.buscarNpc(accionPart1);
-		return jugador.acariciar(npc);
-	}
 	
-	public String tirar() {
-		return jugador.tirarItem(accionPart1);
-	}
-	
-	public String acuchillar() {
-		NPC np = jugador.buscarNpc(accionPart1);
-		if(np == null)
-			return "No existe nadie con ese nombre.";
-		return jugador.acuchillar(np);
-	}
-	
-	public String correr() {
-		NPC np = jugador.buscarNpc(accionPart1);
-		if(np == null)
-			return "No existe nadie con ese nombre.";
-		return jugador.correr(np);
-	}
 	public String defaultAccion() {
 		return "No entiendo esa instruccion.";
 	}
 
-	public String golpear() {
-		Item item = jugador.buscarItemInventario(accionPart1);
-		NPC np = jugador.buscarNpc(accionPart2);
-		if(np == null)
-			return "No existe nadie con ese nombre.";
-		if(item == null)
-			return "No existe ese item en tu inventario.";
-		return jugador.golpear(item, np);
-	}
-	
-	public void setAccionPart1(String accionPart1) {
-		this.accionPart1 = accionPart1;
+
+	public String getVerbo() {
+		return verbo;
 	}
 
-	public void setAccionPart2(String accionPart2) {
-		this.accionPart2 = accionPart2;
+	public void setVerbo(String verbo) {
+		this.verbo = verbo;
+	}
+
+	public String[] getSustantivos() {
+		return sustantivos;
+	}
+
+	public void setSustantivos(String[] sustantivos) {
+		this.sustantivos = sustantivos;
+	}
+
+
+	public Order createOrder() {
+		
+		if(verbo == null) return new DefaultAction(this);
+		
+		Order order = null;
+		
+		switch(verbo) {
+			case "ACARICIAR":
+				order = new Acariciar(this, sustantivos[0]);
+				break;
+			
+			case "ACUCHILLAR":
+				order = new Acuchillar(this, sustantivos[0]);
+				break;
+			
+			case "GOLPEAR":
+				order = new Golpear(this, sustantivos[0], sustantivos[1]);
+				break;
+			
+			case "HABLAR":
+				order = new Hablar(this, sustantivos[0]);
+				break;
+			
+			case "IR":
+				order = new Ir(this, sustantivos[0]);
+				break;
+			
+			case "MOVER":
+				order = new Mover(this, sustantivos[0]);
+				break;
+			
+			case "OBSERVAR":
+				order = new Observar(this, sustantivos[0]);
+				break;
+			
+			case "RECOGER":
+				order = new Recoger(this, sustantivos[0]);
+				break;
+						
+			case "USAR":
+				order = new Usar(this, sustantivos[0], sustantivos[1]);
+				break;			
+			
+			case "TIRAR":
+				order = new Tirar(this, sustantivos[0]);
+				break;			
+		}
+		
+		return order;
 	}
 }

@@ -1,4 +1,4 @@
-package diccionario;
+package motorDeInstrucciones.diccionario;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,13 +7,15 @@ public enum Verbo {
 	// VERBOS ( A - Z)
 	
 	ACARICIAR("acariciar", "tocar"),
-	ACUCHILLAR("acuchillar", "apunalar", "apunialar"),
-	ATACAR("atacar", "golpear", "pegar", "agredir"),
+	ACUCHILLAR("acuchillar", "apunalar", "apunialar"),		
+//	CORRER("correr", "trotar", "sprintar"), se pisan mover y correr en significados
 	
-	CORRER("correr", "trotar", "sprintar"),
-	
+	GOLPEAR("golpear", "atacar", "pegar", "agredir"),
 	HABLAR("hablar", "conversar", "dialogar", "charlar"),
-	MOVER("mover", "ir", "desplazar", "caminar"),
+	IR("ir", "dirigir", "caminar"),
+	
+	MOSTRAR("mostrar", "listar", "ensenar", "enseniar", "presentar"),
+	MOVER("mover", "correr", "desplazar"),
 	OBSERVAR("observar", "mirar", "ver"),
 	
 	RECOGER("recoger", "tomar", "levantar", "agarrar"),

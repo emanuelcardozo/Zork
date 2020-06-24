@@ -3,14 +3,16 @@ import motorDeInstrucciones.Order;
 
 public class Golpear implements Order {
 	private Accion accion;
+	private String item;
+	private String objetivo;
 	
-	public Golpear(Accion st, String where, String where2) {
+	public Golpear(Accion st, String item, String objetivo) {
 		this.accion = st;
-		accion.setAccionPart1(where);
-		accion.setAccionPart2(where2);
+		this.item = item;
+		this.objetivo = objetivo;
 	}
 	@Override
 	public String execute() {
-		return accion.golpear();		
+		return accion.golpear(item, objetivo);		
 	}
 }

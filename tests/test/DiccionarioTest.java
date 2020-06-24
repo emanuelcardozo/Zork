@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import diccionario.Diccionario;
+import motorDeInstrucciones.diccionario.Diccionario;
 
 public class DiccionarioTest {
 

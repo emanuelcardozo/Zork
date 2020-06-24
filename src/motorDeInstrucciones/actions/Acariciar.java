@@ -4,13 +4,14 @@ import motorDeInstrucciones.Order;
 
 public class Acariciar implements Order{
 	private Accion accion;
+	private String quien;
 	
-	public Acariciar(Accion st, String where) {
+	public Acariciar(Accion st, String quien) {
 		this.accion = st;
-		accion.setAccionPart1(where);
+		this.quien = quien;
 	}
 	@Override
 	public String execute() {
-		return accion.acariciar();	
+		return accion.acariciar(quien);	
 	}
 }
