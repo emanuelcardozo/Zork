@@ -83,6 +83,13 @@ public class Accion {
 		return jugador.correr(npc);
 	}
 	
+	public String mostrar(String que) {
+		if(que.equals("inventario"))
+			return jugador.listarInventario();
+		
+		return "No puedes mostrar " + que + ".";
+	}
+	
 
 	public String observar(String donde) {
 		if( donde == null )
@@ -90,9 +97,6 @@ public class Accion {
 		
 		if(donde.equals("alrededor"))
 			return jugador.mirarAlrededor();
-
-		if(donde.equals("inventario"))
-			return jugador.listarInventario();
 
 		NPC npc = jugador.buscarNpc(donde);
 		
@@ -194,6 +198,10 @@ public class Accion {
 				order = new Mover(this, sustantivos[0]);
 				break;
 			
+			case "MOSTRAR":
+				order = new Mostrar(this, sustantivos[0]);
+				break;
+				
 			case "OBSERVAR":
 				order = new Observar(this, sustantivos[0]);
 				break;
