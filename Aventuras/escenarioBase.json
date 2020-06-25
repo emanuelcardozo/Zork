@@ -21,12 +21,12 @@
           ]
         }
       ],
-      "npcs": ["pirata"],
+      "npcs": ["pirata fantasma"],
       "connections": [
         {
           "direction": "south",
           "location": "taberna",
-          "obstacles": "pirata"
+          "obstacles": "pirata fantasma"
         }
       ]
     },
@@ -46,7 +46,7 @@
   ],
   "npcs": [
     {
-      "name": "pirata",
+      "name": "pirata fantasma",
       "gender": "male",
       "number": "singular",
       "description": "No puedes pasar!(El pirata no te dejara pasar).",
