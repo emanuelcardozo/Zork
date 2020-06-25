@@ -21,7 +21,8 @@ public enum Verbo {
 	RECOGER("recoger", "tomar", "levantar", "agarrar"),
     
 	TIRAR("tirar", "descartar", "eliminar"),
-	USAR("usar", "utilizar", "emplear");
+	USAR("usar", "utilizar", "emplear"),
+	AYUDA("ayuda", "help");
     	
 	// FIN ACCIONES
 

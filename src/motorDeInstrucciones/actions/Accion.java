@@ -143,7 +143,11 @@ public class Accion {
 		
 		return jugador.usarItemEnNpc(item, npc);
 	}
-
+	
+	//Falta desarrollar la salida de ayuda..
+	public String ayuda() {
+		return "Soy la ayuda";
+	}
 	
 	public String defaultAccion() {
 		return "No entiendo esa instruccion.";
@@ -212,7 +216,10 @@ public class Accion {
 			
 			case "TIRAR":
 				order = new Tirar(this, sustantivos[0]);
-				break;			
+				break;
+			case "AYUDA":
+				order = new Ayuda(this);
+				break;
 		}
 		
 		return order;
