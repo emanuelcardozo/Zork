@@ -106,8 +106,12 @@ public class Accion {
 		Item item = jugador.buscarItemInventario(donde);
 		
 		if(item != null)
-			return jugador.mirarItem(item);
-		
+		{String respuesta = jugador.mirarItem(item);
+			if(respuesta != null)
+				return respuesta;
+			else return "No hay nada que decir.";
+		}
+			
 		return "No puedes mirar hacia alli.";
 	}
 
