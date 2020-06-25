@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Modificador {
-	// ACCIONES
+	// MODIFICADORES (A - Z)
 	
 	ARTICULO("la", "las", "el", "los", "al", "del"), // se incluyen "al" y "del" aunque sean una combinacion de articulo y preposicion
     PREPOSICION("a", "ante", "bajo", "con", "contra", "de", "desde", "en", "entre", "hacia", "hasta", "para", "por", "segun", "sin", "sobre", "tras");
