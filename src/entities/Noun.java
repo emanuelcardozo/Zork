@@ -1,5 +1,8 @@
 package entities;
 
+import constantes.Genero;
+import constantes.Numero;
+
 public class Noun {
 	protected String name;
 	Genero genero;
@@ -7,8 +10,8 @@ public class Noun {
 
 	public Noun(String name, String genero, String numero) {
 		this.name = name;
-		this.genero = Enum.valueOf(Genero.class, genero.toUpperCase());
-		this.numero = Enum.valueOf(Numero.class, numero.toUpperCase());
+		this.genero = Genero.get(genero);
+		this.numero = Numero.get(numero);
 	}
 
 	public String getName() {
@@ -20,17 +23,17 @@ public class Noun {
 	}
 
 	public String getArticulo() {
-		if (this.numero.name().equals("SINGULAR"))
-			return this.genero.name().equals("FEMALE") ? "la" : "el";
+		if (numero.equals("SINGULAR"))
+			return genero.equals("FEMALE") ? "la" : "el";
 
-		return this.genero.name().equals("FEMALE") ? "las" : "los";
+		return genero.equals("FEMALE") ? "las" : "los";
 	}
 
 	public String getCantidad() {
-		if (this.numero.name().equals("SINGULAR"))
-			return this.genero.name().equals("FEMALE") ? "una" : "un";
+		if (numero.equals("SINGULAR"))
+			return genero.equals("FEMALE") ? "una" : "un";
 
-		return this.genero.name().equals("FEMALE") ? "unas" : "unos";
+		return genero.equals("FEMALE") ? "unas" : "unos";
 	}
 
 	public String listarPalabras(String[] palabras) {
