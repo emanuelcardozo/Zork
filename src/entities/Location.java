@@ -201,7 +201,7 @@ public class Location extends Noun implements Triggerable {
 		}
 
 		if (connection == null)
-			return "No puedes moverte hacia esa ubicaci�n.";
+			return "No puedes moverte hacia esa ubicacion.";
 
 		obstaculo = npcsMap.get(connection.getObstacle());
 

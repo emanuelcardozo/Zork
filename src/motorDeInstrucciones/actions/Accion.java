@@ -22,7 +22,7 @@ public class Accion {
 	
 	public String acuchillar(String objetivo) {
 		if( objetivo == null )
-			return "A quien queres acuchillar?(COMANDO: ACUCHILLAR COLEGA";
+			return "A quien queres acuchillar?(COMANDO: ACUCHILLAR ______)";
 		
 		NPC npc = jugador.buscarNpc(objetivo);
 		
@@ -35,10 +35,10 @@ public class Accion {
 	
 	public String golpear(String itemName, String objetivo) {
 		if( itemName == null )
-			return "Que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE";
+			return "Que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE)";
 		
 		if( objetivo == null )
-			return "Contra que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE";
+			return "Contra que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE)";
 		
 		Item item = jugador.buscarItemInventario(itemName);
 		NPC npc = jugador.buscarNpc(objetivo);
@@ -55,7 +55,7 @@ public class Accion {
 	
 	public String hablar(String quien) {
 		if( quien == null ) 
-			return "Con quien quieres hablar?(COMANDO: HABLAR CON PIRATA FANTASMA)";
+			return "Con quien quieres hablar?(COMANDO: HABLAR CON ______)";
 		
 		NPC npc = jugador.buscarNpc(quien);
 
@@ -65,7 +65,7 @@ public class Accion {
 	
 	public String ir(String hacia) {
 		if( hacia == null )
-			return "Hacia donde te quieres mover?(COMANDO: MOVER NORTE-SUR-ESTE-OESTE)";
+			return "Hacia donde quieres ir?(COMANDO: IR (NORTE-SUR-ESTE-OESTE))";
 		
 		return jugador.moverHacia(hacia);
 	}
@@ -78,7 +78,7 @@ public class Accion {
 		NPC npc = jugador.buscarNpc(objetivo);
 		
 		if(npc == null)
-			return "No existe nadie con ese nombre.";
+			return "No existe nada con ese nombre.";
 		
 		return jugador.correr(npc);
 	}
@@ -86,7 +86,7 @@ public class Accion {
 
 	public String observar(String donde) {
 		if( donde == null )
-			return "Que quieres mirar?(COMANDO: MIRAR INVENTARIO O MIRAR ALREDEDOR)";
+			return "Que quieres mirar?(COMANDO: MIRAR ______)";
 		
 		if(donde.equals("alrededor"))
 			return jugador.mirarAlrededor();
@@ -110,7 +110,7 @@ public class Accion {
 	
 	public String recoger(String item) {
 		if( item == null )
-			return "Que quieres agarrar?(COMANDO: AGARRAR ITEM)";
+			return "Que quieres agarrar?(COMANDO: AGARRAR ______)";
 		
 		return jugador.agarrarItem(item);
 	}
@@ -125,12 +125,12 @@ public class Accion {
 	
 	public String usar(String itemName, String objetivo) {		
 		if( itemName == null )
-			return "Que queres usar?(COMANDO: USAR ITEM NPC)";
+			return "Que queres usar?(COMANDO: USAR ______ EN ______)";
 		
 		Item item = jugador.buscarItemInventario(itemName);
 		
 		if( objetivo == null )
-			return "Contra quien queres usar " + item.getArticulo() + " " + item.getName() + "?(COMANDO: USAR ITEM NPC)";						
+			return "Contra quien queres usar " + item.getArticulo() + " " + item.getName() + "?(COMANDO: USAR ______ EN ______)";						
 		
 		if(objetivo.contentEquals("mi"))
 			return jugador.usarItemEnMi(item);
