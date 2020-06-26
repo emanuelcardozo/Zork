@@ -131,11 +131,15 @@ public class Accion {
 	}
 	
 	
-	public String usar(String itemName, String objetivo) {		
+	public String usar(String itemName, String objetivo) {
+		
 		if( itemName == null )
 			return "Que queres usar?(COMANDO: USAR ______ EN ______)";
 		
 		Item item = jugador.buscarItemInventario(itemName);
+		
+		if( item == null )
+			return "Que queres usar?(COMANDO: USAR ______ EN ______)";
 		
 		if( objetivo == null )
 			return "Contra quien queres usar " + item.getArticulo() + " " + item.getName() + "?(COMANDO: USAR ______ EN ______)";						

@@ -8,7 +8,7 @@
       "name": "muelle",
       "gender": "male",
       "number": "singular",
-      "description": "Estas en un muelle",
+      "description": "Estás en un muelle",
       "places": [
         {
           "name": "suelo",
@@ -16,7 +16,7 @@
           "number": "singular",
           "items": [
             "barreta",
-            "rociador",
+            "rociador con cerveza de raiz",
             "espejo"
           ]
         }
@@ -34,7 +34,7 @@
       "name": "taberna",
       "gender": "female",
       "number": "singular",
-      "description": "Estas en una sucia taberna",
+      "description": "Estás en una sucia taberna",
       "connections": [
         {
           "direction": "north",
@@ -42,20 +42,20 @@
         }
       ]
     }
-    
+
   ],
   "npcs": [
     {
       "name": "pirata fantasma",
       "gender": "male",
       "number": "singular",
-      "description": "No puedes pasar!(El pirata no te dejara pasar).",
-      "talk": "No hay nada que me digas que me haga cambiar de opinion!",
+      "description": "- '¡No puedes pasar!' El pirata fantasma no te dejará pasar",
+      "talk": "¡No hay nada que me digas que me haga cambiar de opinión!",
       "triggers": [
         {
           "type": "item",
-          "thing": "rociador",
-          "on_trigger": "Me encanta la cerveza de raiz!'(El pirata se veía entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr).",
+          "thing": "rociador con cerveza de raiz",
+          "on_trigger": "- '¡Me encanta la cerveza de raiz!' El pirata fantasma se veía entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzó a desintegrarse. La mitad de arriba de su cuerpo se desvaneció, y las piernas inmediatamente echaron a correr.",
           "after_trigger": "remove"
         }
       ]
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "name": "rociador",
+      "name": "rociador con cerveza de raiz",
       "gender": "male",
       "number": "singular",
       "actions": [
@@ -108,13 +108,13 @@
       "condition": "location",
       "action": "move",
       "thing": "taberna",
-      "description": "Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."
+      "description": "¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas."
     },
     {
       "condition": "action",
       "action": "look",
       "thing": "espejo",
-      "description": "Oh, no! Acabas de descubrir que tú también eres un pirata... ¡el horror!"
+      "description": "¡Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!"
     }
   ]
 }

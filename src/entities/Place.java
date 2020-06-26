@@ -45,7 +45,16 @@ public class Place extends Noun {
 	}
 
 	public Item extractItem(String name) {
-		Item item = itemsMap.get(name);
+		String keyName = null;
+		
+		for(String key : itemsMap.keySet()) {
+			if( key.startsWith(name) ) {
+				keyName = key;
+				break;
+			}				
+		}
+		
+		Item item = itemsMap.get(keyName);
 		if(item != null)
 			itemsMap.remove(name);
 		return item;

@@ -31,12 +31,13 @@ public class ComandoParser {
 				i++;
 				if( i < palabrasComando.length ) {
 					palabra = palabrasComando[i];
-					sustantivoEncontrado = diccionario.esSustantivo(palabra);
+					boolean extiendeSustantivo = palabra.equalsIgnoreCase("con") || palabra.equalsIgnoreCase("de");
+					sustantivoEncontrado = extiendeSustantivo || diccionario.esSustantivo(palabra);
 				} else
 					sustantivoEncontrado = false;
 			}
 			
-			if(sustantivos[nroSustantivo] != null) nroSustantivo++;
+			if(sustantivos[nroSustantivo] != null && nroSustantivo < 1) nroSustantivo++;
 			i++;
 		}
 		

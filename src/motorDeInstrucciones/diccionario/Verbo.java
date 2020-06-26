@@ -14,7 +14,7 @@ public enum Verbo {
 	HABLAR("hablar", "conversar", "dialogar", "charlar"),
 	IR("ir", "dirigir", "caminar"),
 	
-	//MOSTRAR("mostrar", "listar", "ensenar", "enseniar", "presentar"),
+	MOSTRAR("mostrar", "listar", "ensenar", "enseniar", "presentar"),
 	MOVER("mover", "correr", "desplazar"),
 	OBSERVAR("observar", "mirar", "ver", "listar"),
 	

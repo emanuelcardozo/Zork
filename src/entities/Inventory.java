@@ -53,6 +53,15 @@ public class Inventory {
 	}
 	
 	public Item getItem(String itemName) {
-		return items.get(itemName);
+		String keyName = null;
+		
+		for(String key : items.keySet()) {
+			if( key.startsWith(itemName) ) {
+				keyName = key;
+				break;
+			}				
+		}
+		
+		return items.get(keyName);
 	}
 }

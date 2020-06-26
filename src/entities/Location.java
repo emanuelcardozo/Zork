@@ -81,8 +81,17 @@ public class Location extends Noun implements Triggerable {
 		return placesMap.get(placeNmae);
 	}
 
-	public NPC getNPC(String NPCname) {
-		return npcsMap.get(NPCname);
+	public NPC getNPC(String NPCname) {		
+		String keyName = null;
+		
+		for(String key : npcsMap.keySet()) {
+			if( key.startsWith(NPCname) ) {
+				keyName = key;
+				break;
+			}				
+		}
+		
+		return npcsMap.get(keyName);
 	}
 
 	public boolean contieneNPC(String NPCname) {
