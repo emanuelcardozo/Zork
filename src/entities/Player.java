@@ -104,8 +104,11 @@ public class Player {
 		Trigger t;
 		if (np != null) {
 			t = np.serCorrido();
-			if (t != null)
+			if (t != null) {
+				if(t.getAfter_trigger().equals("remove"))
+					posicionActual.eliminarObstaculo(np.getName());
 				return t.getOn_trigger();
+			}
 		}
 
 		return "No es posible hacer eso.";
