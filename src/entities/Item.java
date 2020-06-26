@@ -103,4 +103,8 @@ public class Item extends Noun implements Triggerable {
 		}
 		return false;
 	}
+
+	public String serGolpeado() {		
+		return executeTrigger( new Trigger( "golpear", name, null,null ));
+	}
 }

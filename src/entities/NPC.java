@@ -59,10 +59,10 @@ public class NPC extends Noun implements Triggerable {
 		return talk;
 	}
 
-	public String reaccionAItem(Item item) {
+	public Trigger reaccionAItem(Item item) {
 		for (Trigger t : triggers) {
 			if (t.getThing().equals(item.getName()))
-				return executeTrigger( t );
+				return t;
 		}
 		return null;
 	}
@@ -72,7 +72,14 @@ public class NPC extends Noun implements Triggerable {
 	}
 
 	public String mirar() {
-		return getDescription();
+		String message = getDescription();
+		
+		for (Trigger t : triggers) {
+			if (t.getType().equals("observar"))
+				return message + "\n" + executeTrigger(t);
+		}
+		
+		return message;
 	}
 
 	public String serAcariciado() {
@@ -100,10 +107,10 @@ public class NPC extends Noun implements Triggerable {
 		return null;
 	}
 
-	public String serCorrido() {
+	public Trigger serCorrido() {
 		for(Trigger t : triggers) {
 			if(t.getType().equals("correr"))
-				return executeTrigger( t );
+				return t;
 		}
 		return null;
 	}

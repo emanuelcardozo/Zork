@@ -31,7 +31,7 @@ public class EndGame {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
-	
+
 	public void setNextEndGame(EndGame nextEndGame) {
 		this.nextEndGame = nextEndGame;
 	}
@@ -59,14 +59,13 @@ public class EndGame {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public String execute(Trigger trigger) {
-		
-		if( trigger.getThing().equals(thing) && 
-				(trigger.getType().equals( condition ) || 
+		if( trigger.getThing().equals(thing) &&
+				(trigger.getType().equals( condition ) ||
 						trigger.getType().equals("item") && condition.equals("action")) )
 			return description;
-		
+
 		return nextEndGame != null ? nextEndGame.execute(trigger) : null;
 	}
 }

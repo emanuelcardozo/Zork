@@ -408,6 +408,10 @@
 	 "description":"Se logra ver la grabacion de las camaras de seguridad. Justo logras ver la parte en la que el vecino entra a la casa por la ventana y pone un liquido dentro del vaso de la victima. La grabacion termina con el anciano quieto en su sillon y el vaso roto en el suelo.",
 	 "talk":"Te estas volviendo loco ya? No puedes hablarle a un televisor!",
 	 "triggers":[
+     {
+       "type":"observar",
+		   "thing": "televisor"
+     }
 	 ]
 	}
 ],
@@ -553,19 +557,22 @@
 "inventory":[],
 "endgames":[
 		{
+       "condition": "golpear",
 		   "action":"golpear",
 		   "thing": "radio",
-		   "on_trigger": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Si alguien logra escuchar esta grabacion es porque yo estoy muerto. Tengo videos que incriminan a Frank y a sus negocios. Estos videos estan en la justicia. Has descubierto que el vecino es el asesino! Debes llevar esto a la justicia para que de fin al caso.'."
+		   "description": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Si alguien logra escuchar esta grabacion es porque yo estoy muerto. Tengo videos que incriminan a Frank y a sus negocios. Estos videos estan en la justicia. Has descubierto que el vecino es el asesino! Debes llevar esto a la justicia para que de fin al caso.'."
 		},
 		{
+       "condition": "observar",
 		   "action":"observar",
 		   "thing": "televisor",
-		   "on_trigger": "Has logrado descubrir su muerte, ahora esto debes llevarlo a la justicia!",
+		   "description": "Enhorabuena! Has logrado descubrir su muerte, ahora con esto ya puedes llevarlo a la justicia!",
 		},
 		{
-		   "action":"acuchillar",
-		   "thing": "vecino",
-		   "on_trigger": "Has matado al vecino. Si bien era el culpable, ahora tu eres un asesino como el!",
+       "condition": "atacar",
+		   "action":"atacar",
+		   "thing": "cuchillo",
+		   "description": "Has matado al vecino. Si bien era el culpable, ahora tu eres un asesino como el!",
 		},
 	]
 }

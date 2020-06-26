@@ -43,14 +43,7 @@ public class Accion {
 		if( itemName == null )
 			return "Que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE)";
 
-//		if( objetivo == null )
-//			return "Contra que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE)";
-
 		Item item = jugador.buscarItemInventario(itemName);
-//		NPC npc = jugador.buscarNpc(objetivo);
-
-//		if(npc == null)
-//			return "No existe nadie con ese nombre.";
 
 		if(item == null)
 			return "No existe ese item en tu inventario.";
@@ -104,7 +97,7 @@ public class Accion {
 		if(donde.equals("alrededor"))
 			return jugador.mirarAlrededor();
 
-		NPC npc = jugador.buscarNpc(donde);
+ 	 	NPC npc = jugador.buscarNpc(donde);
 
 		if(npc != null)
 			return jugador.mirarNpc(npc);
@@ -239,3 +232,13 @@ public class Accion {
 		return order;
 	}
 }
+
+/*
+tomar llave
+usar llave en puerta
+ir norte
+ir este
+tomar cuchillo
+ir oeste
+acuchillar vecino
+*/

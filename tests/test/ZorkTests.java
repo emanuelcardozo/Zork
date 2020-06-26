@@ -20,8 +20,7 @@ public class ZorkTests {
 	@Test
 	public void testCreacion() {
 		config();
-		System.out.println(miAventura.getJugador().toString());
-		//System.out.println(jugador.mirar());
+		System.out.println(miAventura.getJugador());
 	}
 }
 
@@ -71,7 +70,7 @@ public class ZorkTests {
 //		//Ahora solo se muestra un item en la descripcion.
 //		assertEquals("Estas en un muelle. En el suelo hay un rociador con cerveza de raiz. Hay un pirata fantasma. Al sur se puede ir hacia taberna.",jugador.mirar());
 //	}
-//	
+//
 //	@Test
 //	public void testAgarrar() {
 //		// Agarra un item.
@@ -81,7 +80,7 @@ public class ZorkTests {
 //		// Intento agarrar un item que no existe.
 //		assertEquals("No existe ese item!.", jugador.agarrarItem("espada"));
 //	}
-//	
+//
 //	@Test
 //	public void testHablarCon() {
 //		// Intento hablar con un NPC que no existe.
@@ -89,7 +88,7 @@ public class ZorkTests {
 //		// Hablo con un NPC existente.
 //		assertEquals("No hay nada que me digas que me haga cambiar de opinion!",jugador.hablarCon("pirata fantasma"));
 //	}
-//	
+//
 //	@Test
 //	public void testUsarEn() {
 //		// Intento usar un item que no tengo.
@@ -100,19 +99,19 @@ public class ZorkTests {
 //		assertEquals("No hay conejo en muelle.",jugador.usarItem("barreta", "conejo"));
 //		// Agarro otro item.
 //		jugador.agarrarItem("rociador con cerveza de raiz");
-//		// Intento usar item contra NPC existente pero no le hace da�o.
+//		// Intento usar item contra NPC existente pero no le hace da�o.
 //		assertEquals("Eso no ha servido de nada. ",jugador.usarItem("barreta", "pirata fantasma"));
-//		// Uso item existente contra NPC existente y si le hace da�o.
+//		// Uso item existente contra NPC existente y si le hace da�o.
 //		assertEquals("Me encanta la cerveza de raiz!'(El pirata fantasma se veía entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecio, y las piernas inmediatamente echaron a correr).",jugador.usarItem("rociador con cerveza de raiz", "pirata fantasma"));
 //	}
-//	
+//
 //	@Test
 //	public void testEndGameEspejo() {
 //		jugador.agarrarItem("espejo");
 //		// Detecta final al mirar espejo.
 //		assertEquals("Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!",jugador.usarItem("espejo", "mi"));
 //	}
-//	
+//
 //	@Test
 //	public void testEndGameTaberna() {
 //		// Detecta final a llegar a la taberna.

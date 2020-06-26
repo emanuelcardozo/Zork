@@ -26,6 +26,6 @@ public class Mundo {
 	}
 
 	public void ejecutarAfterTrigger(String triggerResponse, NPC npc) {
-		System.out.println("aca el mundo deberia hacer algo con el npc");
-	}	
+		// aca el mundo deberia hacer algo con el npc
+	}
 }

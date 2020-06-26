@@ -81,7 +81,9 @@ public class Player {
 			return "El item no se encuentra en tu inventario.";
 		if (npc == null)
 			return "No puedes usarlo contra lo que deseas.";
+		
 		Trigger reaccion = npc.reaccionAItem(item);
+		
 		if (item != null && npc != null && reaccion != null) {
 			if (reaccion.getAfter_trigger().equals("remove"))
 				posicionActual.eliminarObstaculo(npc.getName());
@@ -90,27 +92,26 @@ public class Player {
 		return "Eso no ha servido de nada.";
 	}
 
-	public String acariciar(NPC np) {
-		Trigger t;
-		if(np != null) {
-		t =  np.serAcariciado();
-		return t.getOn_trigger();
-		}
+	public String acariciar(NPC npc) {
+		if(npc != null)
+			return npc.serAcariciado();
+		
 		return "No es posible hacer eso.";
 	}
 
 	public String correr(NPC npc) {
-		Trigger t;
-		if (np != null) {
-			t = np.serCorrido();
-			if (t != null) {
-				if(t.getAfter_trigger().equals("remove"))
-					posicionActual.eliminarObstaculo(np.getName());
-				return t.getOn_trigger();
-			}
-		}
-
-		return "No es posible hacer eso.";
+		if( npc == null )
+			return "No es posible hacer eso.";
+		
+		Trigger t = npc.serCorrido();
+		
+		if( t == null )
+			return "No es posible hacer eso.";
+		
+		if(t.getAfter_trigger().equals("remove"))
+			posicionActual.eliminarObstaculo(npc.getName());
+		
+		return t.getOn_trigger();		
 	}
 
 
@@ -170,15 +171,9 @@ public class Player {
 	}
 
 	public String golpear(Item item) {
-//		Trigger t;
-		if(!item.tieneAccion("golpear"))
-			return "No es posible hacer eso.";
-//		if(np != null) {
-//		t =  np.serGolpeadoCon(item);
-//		if(t != null)
-//		return t.getOn_trigger();
-//		}
-		return "El golpe funciono!";
+		String message = item.serGolpeado();
+		
+		return message != null ? message : "No es posible hacer eso.";		
 	}
 
 	public String getName() {
