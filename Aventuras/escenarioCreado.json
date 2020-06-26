@@ -56,7 +56,7 @@
 	  "gender": "female",
 	  "number": "singular",
 	  "items": [
-		"foto vieja"
+		"foto rota"
 	  ]
 	},
 	{
@@ -100,7 +100,7 @@
 	  "gender": "female",
 	  "number": "singular",
 	  "items": [
-		"foto rota", "papel rojo"
+		"foto vieja"
 	  ]
 	}, 
 	{
@@ -108,7 +108,7 @@
 	  "gender": "male",
 	  "number": "singular",
 	  "items": [
-		"casette", "cuchillo"
+		"casette", "cuchillo", "papel rojo"
 	  ]
 	}
 	],
@@ -139,7 +139,7 @@
 	  "gender": "female",
 	  "number": "singular",
 	  "items": [
-		"casetera"
+		"naipe"
 	  ]
 	},
 	 {
@@ -202,19 +202,27 @@
 	 "name":"sala oculta",
 	 "gender":"female",
 	 "number":"singular",
-	 "npcs":[],
-	 "description":"Estas en la sala oculta. Por que alguien tendria algo asi en su casa?",
+	 "npcs":["televisor"],
+	 "description":"Estas en la sala oculta. Un lugar muy lujoso. Por que esto esta oculto?",
 	"places": [
 	{
-	  "name": "suelo",
-	  "gender": "male",
-	  "number": "plural",
-	  "items": [
+	  "name": "mesa",
+	  "gender": "female",
+	  "number": "singular",
+	  "items": [ "carta"
 	  ]
 	},
 	{
 	  "name": "pared",
 	  "gender": "female",
+	  "number": "singular",
+	  "items": [ "foto vieja", "pintura"
+	  
+	  ]
+	},
+	{
+	  "name": "suelo",
+	  "gender": "male",
 	  "number": "singular",
 	  "items": [
 	  
@@ -387,7 +395,7 @@
 	 "name":"mueble",
 	 "gender":"male",
 	 "number":"singular",
-	 "description":"No puedes pasar.Hay un mueble delante y este parece ser pesado y viejo.",
+	 "description":"No puedes pasar.Hay un mueble delante y este parece ser pesado y viejo.Deberias moverlo.",
 	 "talk":"Te estas volviendo loco ya? No puedes hablarle a un mueble!",
 	 "triggers":[
 		{
@@ -399,7 +407,22 @@
 		{
 		   "type":"golpear",
 		   "thing": "radio",
-		   "on_trigger": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Mi asesino esta en la casa tienes que hacer justicia por esto'."
+		   "on_trigger": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Si alguien logra escuchar esta grabacion es porque yo estoy muerto. Tengo videos que incriminan a Frank y a sus negocios. Estos videos estan en la justicia. Has descubierto que el vecino es el asesino! Debes llevar esto a la justicia para que de fin al caso.'."
+		}
+	 ]
+	},
+	{
+	 "name":"televisor",
+	 "gender":"male",
+	 "number":"singular",
+	 "description":"Un lujoso televisor.Se podria usar para ver un casette.",
+	 "talk":"Te estas volviendo loco ya? No puedes hablarle a un televisor!",
+	 "triggers":[
+		{
+		   "type":"item",
+		   "thing": "casette",
+		   "on_trigger": "La grabacion empieza a verse. Lo ves al vecino entrando a la casa por la ventana y poniendo veneno dentro de un vaso. Luego la victima se lleva el vaso a la sala, se reposa en su sillon y se queda totalmente quieto.Has logrado descubrir su muerte, ahora esto debes llevarlo a la justicia!",
+		   "after_trigger": ""
 		}
 	 ]
 	}
@@ -448,20 +471,10 @@
   ]
  },
 {
-  "name": "casetera",
-  "gender": "female",
-  "number": "singular",
-  "description": "Pareceria ser de 1980, la victima sera un aficionado a las reliquias?",
-  "actions": [
-  ],
-   "effects_over": [
-  ]
-},
-{
   "name": "casette",
   "gender": "male",
   "number": "singular",
-  "description": "Esta roto, no creo que tenga nada dentro.",
+  "description": "Parece ser la grabacion de las camaras de seguridad de la casa. Debo usar esto en un televisor para ver su contenido.",
   "actions": [
   ],
    "effects_over": [
@@ -481,7 +494,7 @@
   "name": "radio",
   "gender": "female",
   "number": "singular",
-  "description": "Se nota que fue usada hace poco. Todavia esta caliente.",
+  "description": "Se escucha que esta reproduciendo algo. Deberia golpearla contra algo que sea fuerte para hacerla funcionar.",
   "actions": [
    "golpear"
   ],
@@ -492,6 +505,28 @@
 {
   "name": "cuchillo",
   "gender": "male",
+  "number": "singular",
+  "description": "Sera una pista? Lo veremos mas tarde.",
+  "actions": [
+	"acuchillar"
+  ],
+   "effects_over": [
+    "npc"
+  ]
+},
+{
+  "name": "carta",
+  "gender": "female",
+  "number": "singular",
+  "description": "<Si revelas la verdad de esto te matare y nadie se dara cuenta del hecho. No juegues conmigo Jonh.'Frank'>. El vecino podria ser el asesino entonces? Debo buscar mas pruebas!",
+  "actions": [
+  ],
+   "effects_over": [
+  ]
+},
+{
+  "name": "pintura",
+  "gender": "female",
   "number": "singular",
   "description": "Sera una pista? Lo veremos mas tarde.",
   "actions": [
