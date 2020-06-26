@@ -193,6 +193,10 @@ public class Accion {
 			case "ACUCHILLAR":
 				order = new Acuchillar(this, sustantivos[0]);
 				break;
+				
+//			case "AYUDA":
+//				order = new Ayuda(this);
+//				break;
 			
 			case "GOLPEAR":
 				order = new Golpear(this, sustantivos[0], sustantivos[1]);
@@ -228,9 +232,6 @@ public class Accion {
 			
 			case "TIRAR":
 				order = new Tirar(this, sustantivos[0]);
-				break;
-			case "AYUDA":
-				order = new Ayuda(this);
 				break;
 		}
 		
