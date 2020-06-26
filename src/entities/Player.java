@@ -65,7 +65,6 @@ public class Player {
 	}
 	
 
-	//Falta arreglar pq toma el endgame como accion
 	public String usarItemEnMi(Item item) {
 		String[] acciones;
 		if(item == null)
@@ -172,16 +171,16 @@ public class Player {
 		return "Ni lo intentes!";
 	}
 	
-	public String golpear(Item item, NPC np) {
-		Trigger t;
+	public String golpear(Item item) {
+//		Trigger t;
 		if(!item.tieneAccion("golpear"))
 			return "No es posible hacer eso.";
-		if(np != null) {
-		t =  np.serGolpeadoCon(item);
-		if(t != null)
-		return t.getOn_trigger();
-		}
-		return "No es posible hacer eso.";
+//		if(np != null) {
+//		t =  np.serGolpeadoCon(item);
+//		if(t != null)
+//		return t.getOn_trigger();
+//		}
+		return "El golpe funciono!";
 	}
 	
 	public String getName() {

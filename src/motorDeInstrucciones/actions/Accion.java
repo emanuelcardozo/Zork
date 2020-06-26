@@ -33,23 +33,23 @@ public class Accion {
 	}
 	
 	
-	public String golpear(String itemName, String objetivo) {
+	public String golpear(String itemName) {
 		if( itemName == null )
 			return "Que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE)";
 		
-		if( objetivo == null )
-			return "Contra que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE)";
+//		if( objetivo == null )
+//			return "Contra que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE)";
 		
 		Item item = jugador.buscarItemInventario(itemName);
-		NPC npc = jugador.buscarNpc(objetivo);
+//		NPC npc = jugador.buscarNpc(objetivo);
 		
-		if(npc == null)
-			return "No existe nadie con ese nombre.";
+//		if(npc == null)
+//			return "No existe nadie con ese nombre.";
 		
 		if(item == null)
 			return "No existe ese item en tu inventario.";
 		
-		return jugador.golpear(item, npc);
+		return jugador.golpear(item);
 	}
 	
 	
@@ -199,7 +199,7 @@ public class Accion {
 //				break;
 			
 			case "GOLPEAR":
-				order = new Golpear(this, sustantivos[0], sustantivos[1]);
+				order = new Golpear(this, sustantivos[0]);
 				break;
 			
 			case "HABLAR":

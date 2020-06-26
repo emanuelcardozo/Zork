@@ -16,7 +16,7 @@
 	  "gender": "male",
 	  "number": "singular",
 	  "items": [
-		"papel verde", "naipe"
+		"papel rojo", "naipe"
 	  ]
 	},
 	{
@@ -48,7 +48,7 @@
 	  "gender": "female",
 	  "number": "singular",
 	  "items": [
-	   "papel blanco", "radio", "celular"
+		"radio", "celular"
 	  ]
 	},
 	{
@@ -113,7 +113,7 @@
 	}
 	],
 	 "npcs":["detective", "victima", "perro", "mueble"],
-	 "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente. En la pared notas unas manchas de color raro.",
+	 "description":"Estas dentro de la sala. Se siente un olor raro en el ambiente. En la pared notas unas manchas de color raro y al lado del sillon hay vidrios rotos.",
 	 "connections":[
 		{
 		   "direction":"west",
@@ -139,7 +139,7 @@
 	  "gender": "female",
 	  "number": "singular",
 	  "items": [
-		"naipe"
+		"naipe", "papel verde"
 	  ]
 	},
 	 {
@@ -164,7 +164,7 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "npcs":["anciana", "joven"],
-	 "description":"Estas en la cocina. Hay muchos vidrios rotos en el suelo.",
+	 "description":"Estas en la cocina.",
 	"places": [
 	{
 	  "name": "suelo",
@@ -354,7 +354,7 @@
 		{
 		   "type":"atacar",
 		   "thing":"cuchillo",
-		   "on_trigger": "Oh no! Por que hizo eso?.. El hombre muere al instante. Todos te culpan a ti y saben que eres el asesino."
+		   "on_trigger": "Oh no! Por que hizo eso?.. El hombre muere al instante."
 		}
 	]
     },
@@ -383,11 +383,6 @@
 		   "type":"acariciar",
 		   "thing":"",
 		   "on_trigger": "Que hace!"
-		},
-		{
-		   "type":"atacar",
-		   "thing":"cuchillo",
-		   "on_trigger": "Oh no! Por que hizo eso?.. El hombre muere al instante. Todos te culpan a ti y saben que eres el asesino."
 		}
 	]
     },
@@ -403,11 +398,6 @@
 		   "thing": "",
 		   "on_trigger": "Luego de tanto esfuerzo pudiste correrlo, ahora te queda descubrir que hay del otro lado.",
 		   "after_trigger":"remove"
-		},
-		{
-		   "type":"golpear",
-		   "thing": "radio",
-		   "on_trigger": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Si alguien logra escuchar esta grabacion es porque yo estoy muerto. Tengo videos que incriminan a Frank y a sus negocios. Estos videos estan en la justicia. Has descubierto que el vecino es el asesino! Debes llevar esto a la justicia para que de fin al caso.'."
 		}
 	 ]
 	},
@@ -415,15 +405,9 @@
 	 "name":"televisor",
 	 "gender":"male",
 	 "number":"singular",
-	 "description":"Un lujoso televisor.Se podria usar para ver un casette.",
+	 "description":"Se logra ver la grabacion de las camaras de seguridad. Justo logras ver la parte en la que el vecino entra a la casa por la ventana y pone un liquido dentro del vaso de la victima. La grabacion termina con el anciano quieto en su sillon y el vaso roto en el suelo.",
 	 "talk":"Te estas volviendo loco ya? No puedes hablarle a un televisor!",
 	 "triggers":[
-		{
-		   "type":"item",
-		   "thing": "casette",
-		   "on_trigger": "La grabacion empieza a verse. Lo ves al vecino entrando a la casa por la ventana y poniendo veneno dentro de un vaso. Luego la victima se lleva el vaso a la sala, se reposa en su sillon y se queda totalmente quieto.Has logrado descubrir su muerte, ahora esto debes llevarlo a la justicia!",
-		   "after_trigger": ""
-		}
 	 ]
 	}
 ],
@@ -434,7 +418,7 @@
   "number": "singular",
   "description": "Una vieja llave media oxidada.",
   "actions": [
-	"usar"
+	"usar", "observar"
   ],
    "effects_over": [
 	"npcs"
@@ -444,8 +428,8 @@
   "name": "papel verde",
   "gender": "male",
   "number": "singular",
-  "description": "'Mi muerte sera todo un misterio.Jonh'. La victima sabia que iba a morir?.",
-  "actions": [
+  "description": "Golpea una radio y descubriras la verdad.'Jonh'.",
+  "actions": ["observar"
   ],
    "effects_over": [
   ]
@@ -454,8 +438,8 @@
   "name": "papel amarillo",
   "gender": "male",
   "number": "singular",
-  "description": "La verdad esta a la vuelta de una habitacion.'Jonh'",
-  "actions": [
+  "description": "La verdad esta a la vuelta de una habitacion.'Jonh'.",
+  "actions": ["observar"
   ],
    "effects_over": [
   ]
@@ -464,8 +448,8 @@
   "name": "papel rojo",
   "gender": "male",
   "number": "singular",
-  "description": "Si estas lleyendo esto, creo que vas a llegar a resolver esto. Una equivocacion te podria llevar al fracaso ten cuidado.'Jonh'",
-  "actions": [
+  "description": "Si estas leyendo este papel. Creo que vas a llegar a resolver esto.Pero ten cuidado, una equivocacion te podria llevar al fracaso ten cuidado.'Jonh'",
+  "actions": ["observar"
   ],
    "effects_over": [
   ]
@@ -474,8 +458,8 @@
   "name": "casette",
   "gender": "male",
   "number": "singular",
-  "description": "Parece ser la grabacion de las camaras de seguridad de la casa. Debo usar esto en un televisor para ver su contenido.",
-  "actions": [
+  "description": "Un casette viejo. No creo que guarde nada importante dentro.",
+  "actions": [ "observar"
   ],
    "effects_over": [
   ]
@@ -485,7 +469,7 @@
   "gender": "male",
   "number": "singular",
   "description": "El ultimo whatsapp enviado fue al vecino.",
-  "actions": [
+  "actions": ["observar"
   ],
    "effects_over": [
   ]
@@ -494,9 +478,9 @@
   "name": "radio",
   "gender": "female",
   "number": "singular",
-  "description": "Se escucha que esta reproduciendo algo. Deberia golpearla contra algo que sea fuerte para hacerla funcionar.",
+  "description": "Se escucha que esta reproduciendo algo.",
   "actions": [
-   "golpear"
+   "golpear", "observar"
   ],
    "effects_over": [
    "npc"
@@ -506,9 +490,9 @@
   "name": "cuchillo",
   "gender": "male",
   "number": "singular",
-  "description": "Sera una pista? Lo veremos mas tarde.",
+  "description": "Es un cuchillo filoso. Podria matar a cualquiera rapidamente!",
   "actions": [
-	"acuchillar"
+	"acuchillar", "observar"
   ],
    "effects_over": [
     "npc"
@@ -519,7 +503,7 @@
   "gender": "female",
   "number": "singular",
   "description": "<Si revelas la verdad de esto te matare y nadie se dara cuenta del hecho. No juegues conmigo Jonh.'Frank'>. El vecino podria ser el asesino entonces? Debo buscar mas pruebas!",
-  "actions": [
+  "actions": ["observar"
   ],
    "effects_over": [
   ]
@@ -529,8 +513,7 @@
   "gender": "female",
   "number": "singular",
   "description": "Sera una pista? Lo veremos mas tarde.",
-  "actions": [
-	"acuchillar"
+  "actions": [ "observar"
   ],
    "effects_over": [
     "npc"
@@ -541,7 +524,7 @@
   "gender": "female",
   "number": "singular",
   "description": "Parece ser una foto de la victima con la anciana.",
-  "actions": [
+  "actions": [ "observar"
   ],
    "effects_over": [
   ]
@@ -551,7 +534,7 @@
   "gender": "female",
   "number": "singular",
   "description": "La foto esta rota pero se logra ver a la anciana, a la victima y a un tercero que no logro detectar debido al deterioro de la foto.",
-  "actions": [
+  "actions": [ "observar"
   ],
    "effects_over": [
   ]
@@ -561,7 +544,7 @@
   "gender": "male",
   "number": "singular",
   "description": "Aficionado a las cartas? Mmm..lo veremos.",
-  "actions": [
+  "actions": [ "observar"
   ],
    "effects_over": [
   ]
@@ -569,6 +552,20 @@
 ],
 "inventory":[],
 "endgames":[
-
-]
+		{
+		   "action":"golpear",
+		   "thing": "radio",
+		   "on_trigger": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Si alguien logra escuchar esta grabacion es porque yo estoy muerto. Tengo videos que incriminan a Frank y a sus negocios. Estos videos estan en la justicia. Has descubierto que el vecino es el asesino! Debes llevar esto a la justicia para que de fin al caso.'."
+		},
+		{
+		   "action":"observar",
+		   "thing": "televisor",
+		   "on_trigger": "Has logrado descubrir su muerte, ahora esto debes llevarlo a la justicia!",
+		},
+		{
+		   "action":"acuchillar",
+		   "thing": "vecino",
+		   "on_trigger": "Has matado al vecino. Si bien era el culpable, ahora tu eres un asesino como el!",
+		},
+	]
 }

@@ -80,15 +80,15 @@ public class NPC extends Noun {
 		}
 		return null;
 	}
-	
-	public Trigger serGolpeadoCon(Item item) {
-		for(Trigger t : triggers) {
-			if(t.getType().equals("golpear") && t.getThing().equals(item.getName()))
-				return t;
-		}
-		return null;
-	}
-	
+//	
+//	public Trigger serGolpeadoCon(Item item) {
+//		for(Trigger t : triggers) {
+//			if(t.getType().equals("golpear") && t.getThing().equals(item.getName()))
+//				return t;
+//		}
+//		return null;
+//	}
+//	
 	
 	public Trigger serAcuchillado() {
 		for(Trigger t : triggers) {

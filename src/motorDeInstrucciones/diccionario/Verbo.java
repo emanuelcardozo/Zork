@@ -16,7 +16,7 @@ public enum Verbo {
 	
 	MOSTRAR("mostrar", "listar", "ensenar", "enseniar", "presentar"),
 	MOVER("mover", "correr", "desplazar"),
-	OBSERVAR("observar", "mirar", "ver", "listar"),
+	OBSERVAR("observar", "mirar", "ver"),
 	
 	RECOGER("recoger", "tomar", "levantar", "agarrar"),
     
