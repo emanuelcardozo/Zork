@@ -14,7 +14,7 @@ public class Player {
 		this.name = name;
 		this.inventario = new Inventory();
 	}
-	
+
 	public String mirarAlrededor() {
 		String observacion = "";
 		boolean hay = false;
@@ -35,16 +35,16 @@ public class Player {
 			observacion += posicionActual.describirConnections();
 		return observacion;
 	}
-	
+
 	public String moverHacia(String where) {
-		
+
 		if (posicionActual.sePuedeMoverHacia(where)) {
 			String locationName = posicionActual.moverHacia(where);
 			posicionActual = mundo.getLocation(locationName);
-			
+
 			return posicionActual.moverA(where);
 		}
-		
+
 		return posicionActual.porqueNoPuedoIrHacia(where);
 	}
 
@@ -63,7 +63,7 @@ public class Player {
 
 		return "No existe ese item!.";
 	}
-	
+
 
 	public String usarItemEnMi(Item item) {
 		String[] acciones;
@@ -75,7 +75,7 @@ public class Player {
 		else
 			return "Eso no ha servido de nada.";
 	}
-	
+
 	public String usarItemEnNpc(Item item, NPC npc) {
 		if (item == null)
 			return "El item no se encuentra en tu inventario.";
@@ -98,8 +98,8 @@ public class Player {
 		}
 		return "No es posible hacer eso.";
 	}
-	
-	public String correr(NPC np) {
+
+	public String correr(NPC npc) {
 		Trigger t;
 		if (np != null) {
 			t = np.serCorrido();
@@ -126,28 +126,28 @@ public class Player {
 		Item item = inventario.getItem(name);
 		return item;
 	}
-	
+
 	public NPC buscarNpc(String objectName) {
 		NPC npc = posicionActual.getNPC(objectName);
 		return npc;
 	}
-	
+
 	public String hablarCon(NPC objectName) {
 		NPC npc = objectName;
 		String message = "No hay nadie para hablar con ese nombre.";
 		return npc != null ? npc.hablar() : message;
 	}
-	
+
 	public String mirarNpc(NPC objectName) {
 		NPC npc = objectName;
 		String message = "No hay nadie para mirar con ese nombre.";
 		return npc != null ? npc.mirar() : message;
 	}
-	
+
 	public String mirarItem(Item itemName) {
 		return itemName.serObservado();
 	}
-	
+
 	public String tirarItem(String itemName) {
 		Item item;
 		item = this.buscarItemInventario(itemName);
@@ -161,16 +161,14 @@ public class Player {
 	}
 
 	public String acuchillar(NPC np) {
-		Trigger t;
-		t = np.serAcuchillado();
 		if(!inventario.estaEnInventario("cuchillo"))
 			return "No tienes al cuchillo en tu inventario.";
-		if( t != null)
-			return t.getOn_trigger();
-			
-		return "Ni lo intentes!";
+
+		String message = np.serAcuchillado();
+
+		return message != null ? message : "Ni lo intentes!";
 	}
-	
+
 	public String golpear(Item item) {
 //		Trigger t;
 		if(!item.tieneAccion("golpear"))
@@ -182,7 +180,7 @@ public class Player {
 //		}
 		return "El golpe funciono!";
 	}
-	
+
 	public String getName() {
 		return name;
 	}

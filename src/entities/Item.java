@@ -83,6 +83,11 @@ public class Item extends Noun implements Triggerable {
 	public String executeTrigger() {
 		return aventura.ejecutarFinal(new Trigger( "action", name, null, null ));
 	}
+	
+	@Override
+	public String executeTrigger(Trigger trigger) {		
+		return aventura.ejecutarFinal(trigger);
+	}
 
 	public String serObservado() {
 		return this.description;

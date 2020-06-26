@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class NPC extends Noun {
+public class NPC extends Noun implements Triggerable {
 	private String description;
 	private String talk;
+	private Aventura aventura;
 	private ArrayList<Trigger> triggers = new ArrayList<Trigger>();
 
 	public NPC(String name, String gender, String number, String description, String talk) {
@@ -16,10 +17,11 @@ public class NPC extends Noun {
 		this.talk = talk;
 	}
 
-	public NPC(JSONObject npcJSON) {
+	public NPC(JSONObject npcJSON, Aventura aventura) {
 		super((String) npcJSON.get("name"), (String) npcJSON.get("gender"), (String) npcJSON.get("number"));
 		description = (String) npcJSON.get("description");
 		talk = (String) npcJSON.get("talk");
+		this.aventura = aventura;
 
 		if (npcJSON.containsKey("triggers")) {
 			buildTriggers((JSONArray) npcJSON.get("triggers"));
@@ -56,54 +58,64 @@ public class NPC extends Noun {
 	public String getTalk() {
 		return talk;
 	}
-	
-	public Trigger reaccionAItem(Item item) {
+
+	public String reaccionAItem(Item item) {
 		for (Trigger t : triggers) {
 			if (t.getThing().equals(item.getName()))
-				return t;
+				return executeTrigger( t );
 		}
 		return null;
 	}
-	
+
 	public String hablar() {
 		return getTalk();
 	}
-	
+
 	public String mirar() {
 		return getDescription();
 	}
 
-	public Trigger serAcariciado() {
+	public String serAcariciado() {
 		for(Trigger t : triggers) {
 			if(t.getType().equals("acariciar"))
-				return t;
+				return executeTrigger( t );
 		}
 		return null;
 	}
-//	
-//	public Trigger serGolpeadoCon(Item item) {
-//		for(Trigger t : triggers) {
-//			if(t.getType().equals("golpear") && t.getThing().equals(item.getName()))
-//				return t;
-//		}
-//		return null;
-//	}
-//	
-	
-	public Trigger serAcuchillado() {
+
+	public String serGolpeadoCon(Item item) {
+		for(Trigger t : triggers) {
+			if(t.getType().equals("golpear") && t.getThing().equals(item.getName()))
+				return executeTrigger( t );
+		}
+		return null;
+	}
+
+
+	public String serAcuchillado() {
 		for(Trigger t : triggers) {
 			if(t.getType().equals("atacar") && t.getThing().equals("cuchillo") )
-				return t;
+				return executeTrigger( t );
 		}
 		return null;
 	}
-	
-	public Trigger serCorrido() {
+
+	public String serCorrido() {
 		for(Trigger t : triggers) {
 			if(t.getType().equals("correr"))
-				return t;
+				return executeTrigger( t );
 		}
 		return null;
 	}
-	
+
+	@Override
+	public String executeTrigger(Trigger trigger) {
+		return aventura.ejecutarFinal(trigger);
+	}
+
+	@Override
+	public String executeTrigger() {
+		return aventura.ejecutarFinal(new Trigger("action", name, null, null));
+	}
+
 }

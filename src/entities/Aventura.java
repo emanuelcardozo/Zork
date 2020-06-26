@@ -104,7 +104,7 @@ public class Aventura {
 				endGame = endNext;
 			
 			endPrev = endNext;
-		}
+		}		
 	}
 	
 	private void crearItemMap(JSONArray itemsJSON) {
@@ -126,7 +126,7 @@ public class Aventura {
 		NPC npc;
 
 		for (Object npcObj : npcsJSON) {
-			npc = new NPC((JSONObject) npcObj);
+			npc = new NPC((JSONObject) npcObj, this);
 			npcsMap.put(npc.getName(), npc);
 		}
 	}
@@ -157,6 +157,7 @@ public class Aventura {
 	}
 	
 	public String ejecutarFinal(Trigger trigger) {
+		System.out.println(trigger.getThing() + " " + trigger.getType());
 		String message = endGame.execute(trigger);
 		
 		if( message != null) motorInstrucciones.stop();

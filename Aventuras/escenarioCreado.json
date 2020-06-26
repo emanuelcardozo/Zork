@@ -102,7 +102,7 @@
 	  "items": [
 		"foto vieja"
 	  ]
-	}, 
+	},
 	{
 	  "name": "suelo",
 	  "gender": "male",
@@ -186,7 +186,7 @@
 	  "gender": "female",
 	  "number": "singular",
 	  "items": [
-	  
+
 	  ]
 	}
   ],
@@ -217,7 +217,7 @@
 	  "gender": "female",
 	  "number": "singular",
 	  "items": [ "foto vieja", "pintura"
-	  
+
 	  ]
 	},
 	{
@@ -225,7 +225,7 @@
 	  "gender": "male",
 	  "number": "singular",
 	  "items": [
-	  
+
 	  ]
 	}
   ],
@@ -322,7 +322,7 @@
 		   "thing": "llave",
 		   "on_trigger": "La puerta esta abierta. Al norte tenes el living.",
 		   "after_trigger": "remove"
-		}	   
+		}
 	 ]
 	},
 	  {
