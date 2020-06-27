@@ -85,7 +85,7 @@ public class NPC extends Noun implements Triggerable {
 	public String serAcariciado() {
 		for(Trigger t : triggers) {
 			if(t.getType().equals("acariciar"))
-				return executeTrigger( t );
+				return t.getOn_trigger();
 		}
 		return null;
 	}

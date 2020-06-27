@@ -188,9 +188,9 @@ public class Accion {
 				order = new Acuchillar(this, sustantivos[0]);
 				break;
 
-//			case "AYUDA":
-//				order = new Ayuda(this);
-//				break;
+			case "AYUDA":
+				order = new Ayuda(this);
+				break;
 
 			case "GOLPEAR":
 				order = new Golpear(this, sustantivos[0]);

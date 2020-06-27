@@ -4,6 +4,6 @@ import entities.Aventura;
 
 public class App {
 	public static void main(String[] args) {
-		new Aventura("Aventuras/escenarioBase.json");
+		new Aventura("Aventuras/escenarioCreado.json");
 	}
 }
