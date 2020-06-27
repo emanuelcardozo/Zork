@@ -35,13 +35,15 @@ public class Accion {
 
 	//Falta desarrollar la salida de ayuda..
 	public String ayuda() {
-		return "Soy la ayuda";
+		return "            Comandos del juego\n" + "Golpear: (GOLPEAR _____)\n"+ "Hablar: (COMANDO: HABLAR CON ______)\n"+"Ir: (COMANDO:IR (NORTE-SUR-ESTE-OESTE))\n"+ 
+				"Mover: (COMANDO: MOVER _______)\n"+"Mostrar: (COMANDO: MOSTRAR _______)\n"+ "Mirar: (COMANDO: MIRAR ______)\n"+"Agarrar (COMANDO: AGARRAR ______)\n"+
+				"Tirar: (COMANDO: TIRAR ______)\n"+ "Usar: (COMANDO: USAR ______ EN ______)\n"+ "Acuchillar (COMANDO: ACUCHILLAR ______)\n"+"Acariciar: (COMANDO: ACARICIAR ______)\n";
 	}
 
 
 	public String golpear(String itemName) {
 		if( itemName == null )
-			return "Que queres golpear?(COMANDO: GOLPEAR RADIO CONTRA MUEBLE)";
+			return "Que queres golpear?(COMANDO: GOLPEAR RADIO)";
 
 		Item item = jugador.buscarItemInventario(itemName);
 
@@ -72,7 +74,7 @@ public class Accion {
 
 	public String mover(String objetivo) {
 		if( objetivo == null )
-			return "Que quieres mover";
+			return "Que quieres mover? (COMANDO: MOVER _______)";
 
 		NPC npc = jugador.buscarNpc(objetivo);
 
