@@ -56,7 +56,7 @@ public class Place extends Noun {
 		
 		Item item = itemsMap.get(keyName);
 		if(item != null)
-			itemsMap.remove(name);
+			itemsMap.remove(item.getName());
 		return item;
 	}
 	

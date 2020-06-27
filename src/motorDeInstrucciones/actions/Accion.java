@@ -33,7 +33,6 @@ public class Accion {
 	}
 
 
-	//Falta desarrollar la salida de ayuda..
 	public String ayuda() {
 		return "            Comandos del juego\n" + "Golpear: (GOLPEAR _____)\n"+ "Hablar: (COMANDO: HABLAR CON ______)\n"+"Ir: (COMANDO:IR (NORTE-SUR-ESTE-OESTE))\n"+ 
 				"Mover: (COMANDO: MOVER _______)\n"+"Mostrar: (COMANDO: MOSTRAR _______)\n"+ "Mirar: (COMANDO: MIRAR ______)\n"+"Agarrar (COMANDO: AGARRAR ______)\n"+
