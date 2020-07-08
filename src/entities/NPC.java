@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -9,7 +10,9 @@ public class NPC extends Noun implements Triggerable {
 	private String description;
 	private String talk;
 	private Aventura aventura;
+	private ArrayList<Talk> talks = new ArrayList<Talk>();
 	private ArrayList<Trigger> triggers = new ArrayList<Trigger>();
+	private Scanner teclado;
 
 	public NPC(String name, String gender, String number, String description, String talk) {
 		super(name, gender, number);
@@ -22,10 +25,10 @@ public class NPC extends Noun implements Triggerable {
 		description = (String) npcJSON.get("description");
 		talk = (String) npcJSON.get("talk");
 		this.aventura = aventura;
-
-		if (npcJSON.containsKey("triggers")) {
+		if(npcJSON.containsKey("talks"))
+			buildTalks((JSONArray) npcJSON.get("talks"));
+		if (npcJSON.containsKey("triggers"))
 			buildTriggers((JSONArray) npcJSON.get("triggers"));
-		}
 	}
 
 	private void buildTriggers(JSONArray triggersJSON) {
@@ -35,6 +38,13 @@ public class NPC extends Noun implements Triggerable {
 		}
 	}
 
+	private void buildTalks(JSONArray talksJSON) {
+		for (Object talk : talksJSON) {
+			JSONObject talkJSON = (JSONObject) talk;
+			talks.add(new Talk(talkJSON));
+		}
+	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -68,7 +78,20 @@ public class NPC extends Noun implements Triggerable {
 	}
 
 	public String hablar() {
-		return getTalk();
+		int numero = talks.size();
+		if (talks.isEmpty())
+			return getTalk();
+		else {
+			for (int i = 0; i < talks.size(); i++) {
+				System.out.println(i + "- " + talks.get(i).getYou());
+			}
+			while(numero >= talks.size()) {
+			teclado = new Scanner(System.in);
+			numero = teclado.nextInt();
+			if(numero >= talks.size()) System.out.println("Ingresa un numero valido por favor");
+			}
+			return talks.get(numero).getNpc();
+		}
 	}
 
 	public String mirar() {
