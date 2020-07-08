@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.FileNotFoundException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,12 +15,12 @@ public class ZorkTests {
 	private Player jugador;
 
 	@Before
-	public void config() {
+	public void config() throws FileNotFoundException {
 		miAventura = new Aventura("Aventuras/escenario1.json");
 		jugador = miAventura.getJugador();
 	}
 	@Test
-	public void testCreacion() {
+	public void testCreacion() throws FileNotFoundException {
 		config();
 		System.out.println(miAventura.getJugador());
 	}

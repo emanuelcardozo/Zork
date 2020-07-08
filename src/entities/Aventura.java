@@ -25,11 +25,11 @@ public class Aventura {
 	private Map<String, NPC> npcsMap;
 	private Map<String, EndGame> triggerEndGameMap; // Key: Thing, Value: EndGame
 
-	public Aventura(String path) {
+	public Aventura(String path) throws FileNotFoundException {
 		initialize(path);
 	}
 
-	private void initialize(String path){
+	private void initialize(String path) throws FileNotFoundException{
 		construirAventura(path);
 		pedirNombreUsuario();
 		saludar();

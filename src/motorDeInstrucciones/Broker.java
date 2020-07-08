@@ -9,10 +9,15 @@ public class Broker {
 	   orderList.add(order);
    }
    
-   public void placeOrders() {
+   public String placeOrders() {
+	   String orderExecuted = "";
 	   for(Order order : orderList) {
-		   System.out.println(order.execute());
+		   orderExecuted = "";
+		   orderExecuted =  order.execute();
+		   System.out.println(orderExecuted);
+		   
 	   }
 	   orderList.clear();
+	   return orderExecuted;
    }	   
 }
