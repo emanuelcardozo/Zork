@@ -34,12 +34,16 @@ public class Aventura {
 	private void initialize() throws FileNotFoundException{
 		String escenario = "";
 		escenario = seleccionDeEscenario();
+		if(escenario == null)
+			System.out.println("No hay ninguna aventura para jugar");
+		else {
 		construirAventura("./Aventuras/"+escenario);
 		pedirNombreUsuario();
 		saludar();
 		motorInstrucciones = new Motor(jugador);
 		motorInstrucciones.start();
 		despedir();
+		}
 	}
 
 	private void pedirNombreUsuario() {
@@ -172,27 +176,26 @@ public class Aventura {
 	private String seleccionDeEscenario() {
 		String[] escenarios = obtenerEscenarios();
 		int numero = 1000000000;
-		if (escenarios.length == 0)
-			return "";
-
+		if (escenarios == null)
+			return null;
 		@SuppressWarnings("resource")
 		Scanner teclado = new Scanner(System.in);
-		while (numero > escenarios.length - 1) {
+		while (numero > escenarios.length - 1 ) {
 			System.out.println("Seleccione un escenario valido del 0 al "+(escenarios.length-1)+" por favor: ");
 			numero = teclado.nextInt();
 		}
 		return escenarios[numero];
 	}
 	
-	private String[] obtenerEscenarios(){
+	private String[] obtenerEscenarios() {
 		File carpeta = new File("./Aventuras");
 		String[] listado = carpeta.list();
-		if (listado == null)
-			  System.out.println("No hay ficheros en el directorio especificado");
-			else { 
-			  for (int x=0;x<listado.length;x++)
-			    System.out.println(x+"- "+listado[x]);
-			}
+		if (listado.length == 0)
+			return null;
+		else {
+			for (int i = 0; i < listado.length; i++)
+				System.out.println(i + "- " + listado[i]);
+		}
 		return listado;
 	}
 
