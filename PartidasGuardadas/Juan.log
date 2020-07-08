@@ -1,35 +1,25 @@
 Juan dice: mirar alrededor
 Respuesta: En el arbol hay una llave.En el suelo hay un papel rojo y un naipe. Hay una puerta y un jardinero. Al norte se puede ir hacia living.
+Juan dice: mirar jardinero
+Respuesta: Un hombre de mediana edad con la ropa toda sucia, es algo normal ya que se nota que esta trabajando.
+Juan dice: usar llave en puerta
+Respuesta: Que queres usar?(COMANDO: USAR ______ EN ______)
+Juan dice: usar llave en puerta
+Respuesta: Que queres usar?(COMANDO: USAR ______ EN ______)
 Juan dice: agarrar llave
 Respuesta: Item agregado a tu inventario!
 Juan dice: usar llave en puerta
 Respuesta: La puerta esta abierta. Al norte tenes el living.
-Juan dice: mirar alrededor
-Respuesta: En el suelo hay un papel rojo y un naipe. Hay un jardinero. Al norte se puede ir hacia living.
-Juan dice: ir este
-Respuesta: No puedes moverte hacia esa ubicacion.
 Juan dice: ir norte
 Respuesta: Estas en el living. Hay muchas personas dentro de la casa con quien interactuar.
 Juan dice: ir este
 Respuesta: Estas dentro de la sala. Se siente un olor raro en el ambiente. En la pared notas unas manchas de color raro y al lado del sillon hay vidrios rotos.
+Juan dice: ir este
+Respuesta: No puedes moverte hacia esa ubicacion.
 Juan dice: mover mueble
 Respuesta: Luego de tanto esfuerzo pudiste correrlo, ahora te queda descubrir que hay del otro lado.
-Juan dice: mirar televisor
-Respuesta: No puedes mirar hacia alli.
-Juan dice: asd
-Respuesta: No entiendo esa instruccion.
-Juan dice: mirar television
-Respuesta: No puedes mirar hacia alli.
 Juan dice: ir norte
 Respuesta: Estas en la sala oculta. Un lugar muy lujoso. Por que esto esta oculto?
-Juan dice: mirar alrdedeor
-Respuesta: No puedes mirar hacia alli.
-Juan dice: mirar alredededor
-Respuesta: No puedes mirar hacia alli.
-Juan dice: listar inventario
-Respuesta: Tienes una llave
-Juan dice: mirar alrededor
-Respuesta: En la mesa hay una carta.En la pared hay una foto vieja y una pintura. Hay un televisor. Al sur se puede ir hacia sala.
 Juan dice: mirar televisor
 Respuesta: Se logra ver la grabacion de las camaras de seguridad. Justo logras ver la parte en la que el vecino entra a la casa por la ventana y pone un liquido dentro del vaso de la victima. La grabacion termina con el anciano quieto en su sillon y el vaso roto en el suelo.
 Enhorabuena! Has logrado descubrir su muerte, ahora con esto ya puedes llevarlo a la justicia!

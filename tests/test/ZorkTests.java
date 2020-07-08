@@ -16,7 +16,7 @@ public class ZorkTests {
 
 	@Before
 	public void config() throws FileNotFoundException {
-		miAventura = new Aventura("Aventuras/escenario1.json");
+		miAventura = new Aventura();
 		jugador = miAventura.getJugador();
 	}
 	@Test

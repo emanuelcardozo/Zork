@@ -1,8 +1,10 @@
 package entities;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -25,12 +27,14 @@ public class Aventura {
 	private Map<String, NPC> npcsMap;
 	private Map<String, EndGame> triggerEndGameMap; // Key: Thing, Value: EndGame
 
-	public Aventura(String path) throws FileNotFoundException {
-		initialize(path);
+	public Aventura() throws FileNotFoundException {
+		initialize();
 	}
 
-	private void initialize(String path) throws FileNotFoundException{
-		construirAventura(path);
+	private void initialize() throws FileNotFoundException{
+		String escenario = "";
+		escenario = seleccionDeEscenario();
+		construirAventura("./Aventuras/"+escenario);
 		pedirNombreUsuario();
 		saludar();
 		motorInstrucciones = new Motor(jugador);
@@ -162,6 +166,34 @@ public class Aventura {
 		if( message != null) motorInstrucciones.stop();
 
 		return message;
+	}
+	
+	
+	private String seleccionDeEscenario() {
+		String[] escenarios = obtenerEscenarios();
+		int numero = 1000000000;
+		if (escenarios.length == 0)
+			return "";
+
+		@SuppressWarnings("resource")
+		Scanner teclado = new Scanner(System.in);
+		while (numero > escenarios.length - 1) {
+			System.out.println("Seleccione un escenario valido del 0 al "+(escenarios.length-1)+" por favor: ");
+			numero = teclado.nextInt();
+		}
+		return escenarios[numero];
+	}
+	
+	private String[] obtenerEscenarios(){
+		File carpeta = new File("./Aventuras");
+		String[] listado = carpeta.list();
+		if (listado == null)
+			  System.out.println("No hay ficheros en el directorio especificado");
+			else { 
+			  for (int x=0;x<listado.length;x++)
+			    System.out.println(x+"- "+listado[x]);
+			}
+		return listado;
 	}
 
 }
