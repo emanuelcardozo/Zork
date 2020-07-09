@@ -77,36 +77,40 @@ public class NPC extends Noun implements Triggerable {
 		return null;
 	}
 
-	public String hablar() {
+	public String hablar(String playerName) {
 		int numero = talks.size();
 		boolean salir = false;
-		if (talks.isEmpty())
-			return getTalk();
-		else {
-			System.out.println("----------------------------------------");
-			for (int i = 0; i < talks.size(); i++) {
-				System.out.println(i + "- " + talks.get(i).getYou());
-			}
-			System.out.println(7 + "- " + "Salir");
-			System.out.println("----------------------------------------");
-			while (!salir) {
-				numero = talks.size();
-				teclado = new Scanner(System.in);
-				if (!teclado.hasNextInt())
+		if (talks.isEmpty()) return getTalk();
+		
+		while (!salir) {
+			mostrarDialogos();
+			numero = talks.size();
+			teclado = new Scanner(System.in);
+			
+			if (!teclado.hasNextInt())
+				System.out.println("No es posible esa respuesta.");
+			else {
+				numero = teclado.nextInt();
+				
+				if (numero >= 0 && numero < talks.size()) {
+					System.out.println( playerName.toUpperCase() + ": " + talks.get(numero).getYou());
+					System.out.println( name.toUpperCase() + ": " + talks.get(numero).getNpc());
+				} else if (numero == 7)
+					salir = true;
+				else
 					System.out.println("No es posible esa respuesta.");
-				else {
-					numero = teclado.nextInt();
-					if (numero >= 0 && numero < talks.size())
-						System.out.println(talks.get(numero).getNpc());
-					else if (numero == 7)
-						salir = true;
-					else
-						System.out.println("No es posible esa respuesta.");
-				}
-
 			}
-			return "Has terminado la charla. Sigue investigando!";
 		}
+		return "Has terminado la charla. Sigue investigando!";
+	}
+
+	private void mostrarDialogos() {
+		System.out.println("\n-------- SELECCIONA UN DIALOGO ---------");
+		for (int i = 0; i < talks.size(); i++) {
+			System.out.println(i + " - " + talks.get(i).getYou());
+		}
+		System.out.println(7 + " - " + "Salir");
+		System.out.println("----------------------------------------");		
 	}
 
 	public String mirar() {

@@ -136,7 +136,7 @@ public class Player {
 	public String hablarCon(NPC objectName) {
 		NPC npc = objectName;
 		String message = "No hay nadie para hablar con ese nombre.";
-		return npc != null ? npc.hablar() : message;
+		return npc != null ? npc.hablar(name) : message;
 	}
 
 	public String mirarNpc(NPC objectName) {
