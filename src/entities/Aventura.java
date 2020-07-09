@@ -16,6 +16,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import motorDeInstrucciones.Motor;
+import visual.Ventana;
 
 public class Aventura {
 
@@ -23,6 +24,7 @@ public class Aventura {
 	private Motor motorInstrucciones;
 	private Player jugador;
 	private String welcome;
+	private Ventana ventana;
 
 	private Map<String, Item> itemsMap;
 	private Map<String, NPC> npcsMap;
@@ -33,11 +35,13 @@ public class Aventura {
 	}
 
 	private void initialize() throws FileNotFoundException{
+		ventana = new Ventana();
 		String escenario = "";
 		escenario = seleccionDeEscenario();
-		if(escenario == null)
-			System.out.println("No hay ninguna aventura para jugar");
-		else {
+		if(escenario == null) {
+			ventana.setText("No hay ninguna aventura para jugar");
+			System.out.println("No hay ninguna aventura para jugar");	
+		} else {
 		construirAventura("./Aventuras/"+escenario);
 		pedirNombreUsuario();
 		saludar();
@@ -175,31 +179,35 @@ public class Aventura {
 	
 	
 	private String seleccionDeEscenario() {
-		String[] escenarios = obtenerEscenarios();
+		File carpeta = new File("./Aventuras");
+		String[] escenarios = carpeta.list();
 		int numero = 1000000000;
+		
 		if (escenarios == null)
 			return null;
 		@SuppressWarnings("resource")
 		Scanner teclado = new Scanner(System.in);
+		
 		while (numero > escenarios.length - 1  || numero < 0) {
+			ventana.setText("Seleccione un escenario valido del 0 al "+(escenarios.length-1)+" por favor: ");
 			System.out.println("Seleccione un escenario valido del 0 al "+(escenarios.length-1)+" por favor: ");
+			mostrarEscenarios(escenarios);
+			
 			if(teclado.hasNextInt())
-			numero = teclado.nextInt();
-			else teclado = new Scanner(System.in);
+				numero = teclado.nextInt();
+			else 
+				teclado = new Scanner(System.in);
 		}
 		return escenarios[numero];
 	}
 	
-	private String[] obtenerEscenarios() {
-		File carpeta = new File("./Aventuras");
-		String[] listado = carpeta.list();
-		if (listado.length == 0)
-			return null;
-		else {
-			for (int i = 0; i < listado.length; i++)
-				System.out.println(i + "- " + listado[i]);
+	private void mostrarEscenarios(String[] escenarios) {
+		if (escenarios.length == 0) return;
+		
+		for (int i = 0; i < escenarios.length; i++) {
+			ventana.setText(i + " - " + escenarios[i]);
+			System.out.println(i + " - " + escenarios[i]);
 		}
-		return listado;
 	}
 
 }

@@ -7,7 +7,6 @@ import visual.Ventana;
 
 public class App {
 	public static void main(String[] args) throws FileNotFoundException {
-//		new Aventura();
-		new Ventana();
+		new Aventura();
 	}
 }

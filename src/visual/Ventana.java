@@ -11,7 +11,9 @@ import javax.swing.JTextField;
 public class Ventana {
 
 	private JFrame ventanaFrame;
+	private JTextArea mainTextArea;
 	private JTextField comandoTextInput;
+	private JTextArea inventarioTextArea;
 
 //	/**
 //	 * Launch the application.
@@ -36,6 +38,14 @@ public class Ventana {
 		initialize();
 		ventanaFrame.setVisible(true);
 	}
+	
+	public void setText(String text) {
+		mainTextArea.append(text +"\n");
+	}
+	
+	public void setInventario(String item) {
+		inventarioTextArea.append(item +"\n");
+	}
 
 	private void initialize() {
 		ventanaFrame = new JFrame();
@@ -54,7 +64,7 @@ public class Ventana {
 		enviarButton.setBounds(489, 337, 105, 35);
 		ventanaFrame.getContentPane().add(enviarButton);
 
-		JTextArea mainTextArea = new JTextArea();
+		mainTextArea = new JTextArea();
 		mainTextArea.setLineWrap(true);
 		mainTextArea.setColumns(45);
 		mainTextArea.setRows(10000);
@@ -62,7 +72,7 @@ public class Ventana {
 		ventanaFrame.getContentPane().add(mainTextArea);
 		mainTextArea.setAutoscrolls(true);
 
-		JTextArea inventarioTextArea = new JTextArea();
+		inventarioTextArea = new JTextArea();
 		inventarioTextArea.setEditable(false);
 		inventarioTextArea.setBounds(360, 59, 234, 243);
 		ventanaFrame.getContentPane().add(inventarioTextArea);
