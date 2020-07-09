@@ -77,20 +77,52 @@ public class NPC extends Noun implements Triggerable {
 		return null;
 	}
 
+//	public String hablar() {
+//		int numero = talks.size();
+//		if (talks.isEmpty())
+//			return getTalk();
+//		else {
+//			for (int i = 0; i < talks.size(); i++) {
+//				System.out.println(i + "- " + talks.get(i).getYou());
+//			}
+//			while(numero >= talks.size()) {
+//			teclado = new Scanner(System.in);
+//			numero = teclado.nextInt();
+//			if(numero >= talks.size()) System.out.println("Ingresa un numero valido por favor");
+//			}
+//			return talks.get(numero).getNpc();
+//		}
+//	}
+
 	public String hablar() {
 		int numero = talks.size();
+		boolean salir = false;
 		if (talks.isEmpty())
 			return getTalk();
 		else {
+			System.out.println("----------------------------------------");
 			for (int i = 0; i < talks.size(); i++) {
 				System.out.println(i + "- " + talks.get(i).getYou());
 			}
-			while(numero >= talks.size()) {
-			teclado = new Scanner(System.in);
-			numero = teclado.nextInt();
-			if(numero >= talks.size()) System.out.println("Ingresa un numero valido por favor");
+			System.out.println(7 + "- " + "Salir");
+			System.out.println("----------------------------------------");
+			while (!salir) {
+				numero = talks.size();
+				teclado = new Scanner(System.in);
+				if (!teclado.hasNextInt())
+					System.out.println("No es posible esa respuesta.");
+				else {
+					numero = teclado.nextInt();
+					if (numero >= 0 && numero < talks.size())
+						System.out.println(talks.get(numero).getNpc());
+					else if (numero == 7)
+						salir = true;
+					else
+						System.out.println("No es posible esa respuesta.");
+				}
+
 			}
-			return talks.get(numero).getNpc();
+			return "Has terminado la charla. Sigue investigando!";
 		}
 	}
 

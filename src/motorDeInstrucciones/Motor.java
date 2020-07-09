@@ -39,7 +39,6 @@ public class Motor {
 		ComandoParser parser = new ComandoParser(comando);
 		String respuesta = "";
 		Order order;
-
 		accion.setVerbo(parser.getVerbo());
 		accion.setSustantivos(parser.getSustantivos());
 		order = accion.createOrder();

@@ -244,7 +244,7 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"Una chica muy atractiva.Ojala algun dia acepte salir conmigo.",
-	 "talks":[{"you":"Hola como estas?", "npc":"Esta casa tiene muchas trampas asi que ten cuidado."}],
+	 "talks":[{"you":"Disculpa la tardanza, ya llegué.", "npc":"Te tomaste tu tiempo, eh?"},{"you":"¿Cómo se vé?","npc":"Nada bien, por desgracia."},{"you":"¿Algún avance?","npc":"No, por ahora no llegamos a nada concreto..."}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -259,12 +259,12 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un detective anciano, pero con mucha experiencia en el tema.",
-	 "talks":[{"you":"Hola como estas?", "npc":"Este es un caso muy raro no? Yo presiento que el asesino esta entre nosotros. Sigamos investigando!"}],
+	 "talks":[{"you":"Buenas tardes.", "npc":"Eh?... ah, buenas tardes."},{"you":"¿Cree que el culpable haya huido?","npc":"Puede ser, el señor lleva un largo rato muerto....pero huír no es la única opción...."},{"you":"¿Usted que piensa?","npc":"Se me ocurre algo, pero no estoy del todo seguro todavía...."}],
 	 "triggers":[
 	 {
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "Asi que eres romantico no? JA JA!"
+		   "on_trigger": "...?"
 	 }
 	]
   },
@@ -273,12 +273,12 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"El policia esta asustado, se nota que es novato en la profesion.",
-	 "talks": [{"you":"Hola como estas?", "npc":"Esto me esta dando miedo..espero que lo resolvamos rapido!"}],
+	 "talks": [{"you":"¿Te sentís bien?", "npc":"Bastante nervioso!...no esperaba meterme en algo tan complicado como esto...."},{"you":"¿Primer día?","npc":"Jajaja...ja.....si...."},{"you":"Fuerza, amigo. Con el tiempo se vuelve tolerable","npc":"Gracias...?"}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "Alejese!"
+		   "on_trigger": "oiga no haga eso...."
 		}
 	 ]
 	},
@@ -287,12 +287,12 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"El anciano se encuentra palido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
-	 "talks":[{"you":"Hola como estas?", "npc":"El anciano esta muerto!"}],
+	 "talks":[{"you":"Hola?", "npc":"..."}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "Este cuerpo esta helado!"
+		   "on_trigger": "No hay respuesta...."
 		}
 	 ]
 	},
@@ -301,7 +301,7 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"Se nota que esta deprimida por el suceso.",
-	 "talks":[{"you":"Hola como estas?","npc":"Soy Marta la esposa de la victima. Quien puede ser tran cruel para cometer terrible crimen!"}],
+	 "talks":[{"you":"Si no me equivoco usted es Marta, no?","npc":"Si, soy la esposa de la victima."},{"you":"¿Pudiste ver algo de lo que pasó?","npc":"No....no.... no pude...."},{"you":"Mis mas sinceras condolencias...","npc":"Muchas gracias..."}],
 	 "triggers":[
 		{
 		"type":"acariciar",
@@ -315,7 +315,7 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"La puerta esta cerrada. Deberias usar una llave para abrirla.",
-	 "talks":[{"you":"Hola como estas?", "npc":"No puedes hablar con una puerta!"}],
+	 "talks":[{"you":"Hola", "npc":"No puedes hablar con una puerta!"}],
 	 "triggers":[
 		{
 		   "type":"item",
@@ -330,12 +330,12 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Es el perro policia que trabaja con nosotros.",
-	 "talks":[{"you":"Hola como estas?", "npc":"Guaf Guaf!"}],
+	 "talks":[{"you":"Hola Max, te estas portando bien?", "npc":"Guaf Guaf!"},{"you":"¿Quién es un buen muchacho?","npc":"Guaf!"},{"you":"A ver Max,sentado!","npc":"?"}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "Max esta contento por tu actitud."
+		   "on_trigger": "Max mueve la cola contento."
 		},
 	 ]
   },
@@ -344,7 +344,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"El es el vecino que aviso del suceso a la policia.",
-	 "talks":[{"you":"Hola como estas?", "npc":"Soy Frank.Yo fui quien llamo a la policia. Mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se."}],
+	 "talks":[{"you":"¿Quién es usted?", "npc":"Soy Frank, soy el vecino de la víctima."},{"you":"¿Pudiste ver algo de lo que pasó?","npc":"No,mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se."},{"you":"¿Fuiste tú quien llamó?","npc":"Si, fui yo quien llamo a la policia."}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -363,7 +363,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Tiene cara de buen chico.Deberia hablar con el.",
-	 "talks":[{"you":"Hola como estas?", "npc":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste."}],
+	 "talks":[{"you":"Hola,buen caballero, ¿quién es usted?.", "npc":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste."},{"you":"¿Pudiste ver algo de lo que paso?","npc":"No. Disculpe, señor"},{"you":"Anda con tu abuela, hacele compania","npc":"Si, señor"}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -377,8 +377,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un hombre de mediana edad con la ropa toda sucia, es algo normal ya que se nota que esta trabajando.",
-	 "talks":[{"you":"Hola como estas?", "npc":"Soy Milton,el jardinero de la casa.La verdad estoy sorprendido por el suceso."},
-				{"you":"Hi", "npc":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste."}],
+	 "talks":[{"you":"¿Usted es el jardinero?", "npc":"Asi es, me llamo Milton"},{"you":"¿Se encuentra bien?","npc":"La verdad estoy sorprendido por el suceso."},{"you":"¿Pudo ver algo de lo que pasó?","npc":"No, llegué hace unos minutos, no me avisaron que había pasado algo como esto...."}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -392,7 +391,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"No puedes pasar.Hay un mueble delante y este parece ser pesado y viejo.Deberias moverlo.",
-	 "talks":[{"you":"Hola como estas?", "npc":"Te estas volviendo loco ya? No puedes hablarle a un mueble!"}],
+	 "talks":[{"you":"Hola?", "npc":"Estas loco ? No puedes hablarle a un mueble!"}],
 	 "triggers":[
 		{
 		   "type":"correr",
@@ -407,7 +406,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Se logra ver la grabacion de las camaras de seguridad. Justo logras ver la parte en la que el vecino entra a la casa por la ventana y pone un liquido dentro del vaso de la victima. La grabacion termina con el anciano quieto en su sillon y el vaso roto en el suelo.",
-	 "talks":[{"you":"Hola como estas?", "npc":"Te estas volviendo loco ya? No puedes hablarle a un televisor!"}],
+	 "talks":[{"you":"Hola?", "npc":"Estas loco ? No puedes hablarle a un televisor!"}],
 	 "triggers":[
      {
        "type":"observar",
