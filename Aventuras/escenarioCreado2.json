@@ -244,7 +244,7 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"Una chica muy atractiva.Ojala algun dia acepte salir conmigo.",
-	 "talks":[{"you":"Disculpa la tardanza, ya llegué.", "npc":"Te tomaste tu tiempo, eh?"},{"you":"¿Cómo se vé?","npc":"Nada bien, por desgracia."},{"you":"¿Algún avance?","npc":"No, por ahora no llegamos a nada concreto..."}],
+	 "talks":[{"you":"Disculpa la tardanza.", "npc":"Te tomaste tu tiempo, eh?"},{"you":"Como se ve?","npc":"Nada bien, por desgracia."},{"you":"Algun avance?","npc":"No, por ahora no llegamos a nada concreto..."}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -259,7 +259,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un detective anciano, pero con mucha experiencia en el tema.",
-	 "talks":[{"you":"Buenas tardes.", "npc":"Eh?... ah, buenas tardes."},{"you":"¿Cree que el culpable haya huido?","npc":"Puede ser, el señor lleva un largo rato muerto....pero huír no es la única opción...."},{"you":"¿Usted que piensa?","npc":"Se me ocurre algo, pero no estoy del todo seguro todavía...."}],
+	 "talks":[{"you":"Esto esta cada vez peor", "npc":"Si, es el tercero este mes..."},{"you":"Cree que el culpable haya huido?","npc":"Puede ser, el senior lleva un largo rato muerto....pero huir no es la unica opcion...."},{"you":"Usted que piensa?","npc":"Hay muchas camaras de seguridad en la casa, quizas tengamos informacion a traves de ellas."}],
 	 "triggers":[
 	 {
 		   "type":"acariciar",
@@ -273,7 +273,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"El policia esta asustado, se nota que es novato en la profesion.",
-	 "talks": [{"you":"¿Te sentís bien?", "npc":"Bastante nervioso!...no esperaba meterme en algo tan complicado como esto...."},{"you":"¿Primer día?","npc":"Jajaja...ja.....si...."},{"you":"Fuerza, amigo. Con el tiempo se vuelve tolerable","npc":"Gracias...?"}],
+	 "talks": [{"you":"Te sentis bien?", "npc":"Bastante nervioso!...no esperaba meterme en algo tan complicado como esto...."},{"you":"Primer dia?","npc":"Jajaja...ja.....si...."},{"you":"Fuerza, amigo. Con el tiempo se vuelve tolerable","npc":"Gracias...?"}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -301,7 +301,7 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"Se nota que esta deprimida por el suceso.",
-	 "talks":[{"you":"Si no me equivoco usted es Marta, no?","npc":"Si, soy la esposa de la victima."},{"you":"¿Pudiste ver algo de lo que pasó?","npc":"No....no.... no pude...."},{"you":"Mis mas sinceras condolencias...","npc":"Muchas gracias..."}],
+	 "talks":[{"you":"Si no me equivoco usted es Marta, no?","npc":"Si, soy la esposa de la victima."},{"you":"Pudiste ver algo de lo que paso?","npc":"No....no.... no pude...."},{"you":"Mis mas sinceras condolencias...","npc":"Muchas gracias..."}],
 	 "triggers":[
 		{
 		"type":"acariciar",
@@ -330,7 +330,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Es el perro policia que trabaja con nosotros.",
-	 "talks":[{"you":"Hola Max, te estas portando bien?", "npc":"Guaf Guaf!"},{"you":"¿Quién es un buen muchacho?","npc":"Guaf!"},{"you":"A ver Max,sentado!","npc":"?"}],
+	 "talks":[{"you":"Hola Max, te estas portando bien?", "npc":"Guaf Guaf!"},{"you":"Quien es un buen muchacho?","npc":"Guaf!"},{"you":"A ver Max,sentado!","npc":"?"}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -344,7 +344,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"El es el vecino que aviso del suceso a la policia.",
-	 "talks":[{"you":"¿Quién es usted?", "npc":"Soy Frank, soy el vecino de la víctima."},{"you":"¿Pudiste ver algo de lo que pasó?","npc":"No,mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se."},{"you":"¿Fuiste tú quien llamó?","npc":"Si, fui yo quien llamo a la policia."}],
+	 "talks":[{"you":"Quien es usted?", "npc":"Soy Frank, soy el vecino de la victima."},{"you":"Pudo ver algo de lo que paso?","npc":"No,mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se."},{"you":"Fue usted quien llamo?","npc":"Si, fui yo quien llamo a la policia."}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -363,7 +363,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Tiene cara de buen chico.Deberia hablar con el.",
-	 "talks":[{"you":"Hola,buen caballero, ¿quién es usted?.", "npc":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste."},{"you":"¿Pudiste ver algo de lo que paso?","npc":"No. Disculpe, señor"},{"you":"Anda con tu abuela, hacele compania","npc":"Si, señor"}],
+	 "talks":[{"you":"Hola,buen caballero, quien es usted?.", "npc":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste."},{"you":"Pudiste ver algo de lo que paso?","npc":"No. Disculpe, senior"},{"you":"Anda con tu abuela, hacele compania","npc":"Si, senior"}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -377,7 +377,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un hombre de mediana edad con la ropa toda sucia, es algo normal ya que se nota que esta trabajando.",
-	 "talks":[{"you":"¿Usted es el jardinero?", "npc":"Asi es, me llamo Milton"},{"you":"¿Se encuentra bien?","npc":"La verdad estoy sorprendido por el suceso."},{"you":"¿Pudo ver algo de lo que pasó?","npc":"No, llegué hace unos minutos, no me avisaron que había pasado algo como esto...."}],
+	 "talks":[{"you":"Usted es el jardinero?", "npc":"Asi es, me llamo Milton"},{"you":"Se encuentra bien?","npc":"La verdad estoy sorprendido por el suceso."},{"you":"Pudo ver algo de lo que paso?","npc":"No, llegue hace unos minutos, no me avisaron que habia pasado algo como esto...."}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
