@@ -2,6 +2,9 @@ package motorDeInstrucciones;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import entities.Player;
 import motorDeInstrucciones.actions.Accion;
@@ -22,7 +25,20 @@ public class Motor {
 	}
 
 	public void start() throws FileNotFoundException {
-		PrintWriter pw = new PrintWriter(new File("PartidasGuardadas/"+player.getName()+".log"));
+		boolean valido = false;
+		int i = 1;
+		PrintWriter pw = null;
+		Path path = Paths.get("PartidasGuardadas/" + player.getName() + "-" + i + ".log");
+		while (!valido) {
+
+			if (Files.exists(path)) {
+				i++;
+				path = Paths.get("PartidasGuardadas/" + player.getName() + "-" + i + ".log");
+			} else if (Files.notExists(path)) {
+				pw = new PrintWriter(new File("PartidasGuardadas/" + player.getName() + "-" + i + ".log"));
+				valido = true;
+			}
+		}
 		String comando = teclado.nextLine();
 		running = true;
 		while ( !comando.equalsIgnoreCase("salir") && running) {
