@@ -259,7 +259,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un detective anciano, pero con mucha experiencia en el tema.",
-	 "talks":[{"you":"Esto esta cada vez peor", "npc":"Si, es el tercero este mes..."},{"you":"Cree que el culpable haya huido?","npc":"Puede ser, el senior lleva un largo rato muerto....pero huir no es la unica opcion...."},{"you":"Usted que piensa?","npc":"Hay muchas camaras de seguridad en la casa, quizas tengamos informacion a traves de ellas."}],
+	 "talks":[{"you":"Esto esta cada vez peor", "npc":"Si, es el tercero este mes..."},{"you":"Cree que el culpable haya huido?","npc":"Puede ser, el senior lleva un largo rato muerto....pero huir no es la unica opcion...."},{"you":"Usted que piensa?","npc":"Se me ocurre algo, pero no estoy del todo seguro todavia...."}],
 	 "triggers":[
 	 {
 		   "type":"acariciar",
@@ -363,7 +363,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Tiene cara de buen chico.Deberia hablar con el.",
-	 "talks":[{"you":"Hola,buen caballero, quien es usted?.", "npc":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste."},{"you":"Pudiste ver algo de lo que paso?","npc":"No. Disculpe, senior"},{"you":"Anda con tu abuela, hacele compania","npc":"Si, senior"}],
+	 "talks":[{"you":"Quien es usted?", "npc":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste."},{"you":"Pudiste ver algo de lo que paso?","npc":"No. Disculpe, senior"},{"you":"Anda con tu abuela, hacele compania","npc":"Si, senior"}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
