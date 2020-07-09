@@ -180,9 +180,11 @@ public class Aventura {
 			return null;
 		@SuppressWarnings("resource")
 		Scanner teclado = new Scanner(System.in);
-		while (numero > escenarios.length - 1 ) {
+		while (numero > escenarios.length - 1  || numero < 0) {
 			System.out.println("Seleccione un escenario valido del 0 al "+(escenarios.length-1)+" por favor: ");
+			if(teclado.hasNextInt())
 			numero = teclado.nextInt();
+			else teclado = new Scanner(System.in);
 		}
 		return escenarios[numero];
 	}

@@ -77,23 +77,6 @@ public class NPC extends Noun implements Triggerable {
 		return null;
 	}
 
-//	public String hablar() {
-//		int numero = talks.size();
-//		if (talks.isEmpty())
-//			return getTalk();
-//		else {
-//			for (int i = 0; i < talks.size(); i++) {
-//				System.out.println(i + "- " + talks.get(i).getYou());
-//			}
-//			while(numero >= talks.size()) {
-//			teclado = new Scanner(System.in);
-//			numero = teclado.nextInt();
-//			if(numero >= talks.size()) System.out.println("Ingresa un numero valido por favor");
-//			}
-//			return talks.get(numero).getNpc();
-//		}
-//	}
-
 	public String hablar() {
 		int numero = talks.size();
 		boolean salir = false;
