@@ -1,9 +1,12 @@
 package io;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -54,15 +57,17 @@ public class Ventana implements InOutputable {
 	private void initialize() {
 		Ventana self = this;
 		ventanaFrame = new JFrame();
-		ventanaFrame.setTitle("miZork");
+		ventanaFrame.setIconImage (new ImageIcon("./images/cobit-19.png").getImage());
+		ventanaFrame.setTitle("Zork COBIT-19");
 		ventanaFrame.setBounds(100, 100, 620, 420);
 		ventanaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventanaFrame.getContentPane().setLayout(null);
 		ventanaFrame.setLocationRelativeTo(null);
 		ventanaFrame.setResizable(false);
-		ventanaFrame.setTitle("Zork COBIT-19");
+		ventanaFrame.getContentPane().setBackground(Color.BLACK);
 
 		JButton enviarButton = new JButton("Enviar");
+		enviarButton.setBackground(java.awt.Color.green);
 		enviarButton.setBounds(489, 337, 105, 35);
 		ventanaFrame.getContentPane().add(enviarButton);
 
@@ -90,6 +95,7 @@ public class Ventana implements InOutputable {
 				    }
 				}
 			}
+	
 		});
 		ventanaFrame.getContentPane().add(comandoTextInput);
 		comandoTextInput.setColumns(100);
@@ -100,10 +106,14 @@ public class Ventana implements InOutputable {
 		ventanaFrame.getContentPane().add(inventarioTextArea);
 
 		JLabel inventarioLabel = new JLabel("Inventario:");
+		inventarioLabel.setForeground(Color.white);
+		inventarioLabel.setFont(new Font("Serif", Font.PLAIN, 18));
 		inventarioLabel.setBounds(360, 33, 91, 16);
 		ventanaFrame.getContentPane().add(inventarioLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Instruccion:");
+		lblNewLabel_1.setForeground(Color.white);
+		lblNewLabel_1.setFont(new Font("Serif", Font.PLAIN, 18));
 		lblNewLabel_1.setBounds(6, 314, 99, 16);
 		ventanaFrame.getContentPane().add(lblNewLabel_1);
 		comandoTextInput.requestFocus();
