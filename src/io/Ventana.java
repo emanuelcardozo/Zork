@@ -2,8 +2,15 @@ package io;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,9 +30,9 @@ public class Ventana implements InOutputable {
 	private JTextField comandoTextInput;
 	private JTextArea inventarioTextArea;
 	private FileLogger fileLogger;
-	private JPanel panelImagen;
+	private JPanelConFondo panelImagen;
 
-	public Ventana() {
+	public Ventana() throws MalformedURLException, IOException {
 		initialize();
 		ventanaFrame.setVisible(true);
 	}
@@ -53,7 +60,7 @@ public class Ventana implements InOutputable {
 		return text;
 	}
 
-	private void initialize() {
+	private void initialize() throws MalformedURLException, IOException {
 		Ventana self = this;
 		ventanaFrame = new JFrame();
 		ventanaFrame.setIconImage(new ImageIcon("./images/cobit-19.png").getImage());
@@ -83,9 +90,12 @@ public class Ventana implements InOutputable {
 
 		ventanaFrame.getContentPane().add(scrollPane);
 
-		panelImagen = new JPanel();
+		panelImagen = new JPanelConFondo();
+		File input = new File("frenteCasa.jpg");
+	    Image image = ImageIO.read(input);
 		panelImagen.setBounds(20, 10, 593, 230);
 		panelImagen.setBackground(Color.ORANGE);
+		panelImagen.setImagen(image);
 		ventanaFrame.getContentPane().add(panelImagen);
 
 		comandoTextInput = new JTextField();

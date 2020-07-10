@@ -1,0 +1,16 @@
+Estas son las aventuras disponibles:
+0 - escenarioBase.json
+1 - escenarioCreado2.json
+2 - escenarioCreado.json
+Seleccione un escenario del 0 al 2 por favor:
+  >> 1
+Ingrese su nombre por favor:
+  >> Ema
+
+Bienvenido a Zork Ema!
+
+Te encuentras en el frente de la casa. Las demas personas ya comenzaron su trabajo dentro.
+  >> Tomar llave
+Item agregado a tu inventario!
+  >> salir
+Gracias por jugar a Zork Ema, hasta luego!
