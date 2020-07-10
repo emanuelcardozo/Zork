@@ -1,0 +1,47 @@
+Estas son las aventuras disponibles:
+0 - escenarioBase.json
+1 - escenarioCreado2.json
+2 - escenarioCreado.json
+Seleccione un escenario del 0 al 2 por favor:
+  >> 1
+Ingrese su nombre por favor:
+  >> Ema
+
+Bienvenido a Zork Ema!
+
+Te encuentras en el frente de la casa. Las demas personas ya comenzaron su trabajo dentro.
+  >> tomar llave
+Item agregado a tu inventario!
+  >> usar llave en puerta
+La puerta esta abierta. Al norte tenes el living.
+  >> ir al living
+Estas en el living. Hay muchas personas dentro de la casa con quien interactuar.
+  >> ir a la sala
+Estas dentro de la sala. Se siente un olor raro en el ambiente. En la pared notas unas manchas de color raro y al lado del sillon hay vidrios rotos.
+  >> tomar cuchillo
+Item agregado a tu inventario!
+  >> ir al living
+Estas en el living. Hay muchas personas dentro de la casa con quien interactuar.
+  >> hablar con colega
+
+-------- SELECCIONA UN DIALOGO ---------
+0 - Disculpa la tardanza.
+1 - Como se ve?
+2 - Algun avance?
+7 - Salir
+----------------------------------------
+  >> 0
+EMA: Disculpa la tardanza.
+COLEGA: Te tomaste tu tiempo, eh?
+
+-------- SELECCIONA UN DIALOGO ---------
+0 - Disculpa la tardanza.
+1 - Como se ve?
+2 - Algun avance?
+7 - Salir
+----------------------------------------
+  >> 7
+Has terminado la charla. Sigue investigando!
+  >> acuchillar vecino
+Has matado al vecino. Si bien era el culpable, ahora tu eres un asesino como el!
+Gracias por jugar a Zork Ema, hasta luego!

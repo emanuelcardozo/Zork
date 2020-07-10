@@ -20,6 +20,7 @@ public class Ventana implements InOutputable {
 	private JTextArea mainTextArea;
 	private JTextField comandoTextInput;
 	private JTextArea inventarioTextArea;
+	private FileLogger fileLogger;
 
 	public Ventana() {
 		initialize();
@@ -124,12 +125,26 @@ public class Ventana implements InOutputable {
 
 	@Override
 	public void showMessage(String message) {
-		if(message != null)
+		if(message != null) {
+			fileLogger.juegoDice(message);
 			mainTextArea.append(message + "\n");
+		}
+			
 	}
 
 	@Override
 	public void showError(String errorMessage) {
 		mainTextArea.append("ERROR" + errorMessage + "\n");
+	}
+
+	@Override
+	public void addFileLogger(FileLogger fileLogger) {
+		this.fileLogger = fileLogger;
+	}
+	
+	@Override
+	public void showEnd(String endMessage) {
+		showMessage(endMessage);
+		fileLogger.terminarLog();
 	}
 }

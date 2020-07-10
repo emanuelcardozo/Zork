@@ -7,6 +7,7 @@ import entities.Aventura;
 public class Consola implements InOutputable {
 
 	private Scanner teclado;
+	private FileLogger fileLogger;
 	
 	public Consola() {
 		 teclado = new Scanner(System.in);
@@ -15,17 +16,34 @@ public class Consola implements InOutputable {
 	@Override
 	public String getValue(String message) {
 		showMessage(message);
-		return teclado.nextLine();
+		String input = teclado.nextLine();
+		
+		fileLogger.jugadorDice("  >>" + input);
+		
+		return input;
 	}
 
 	@Override
 	public void showMessage(String message) {
-		if(message != null)
-			System.out.println(message);		
+		if(message != null) {
+			fileLogger.juegoDice(message);
+			System.out.println(message);
+		}					
 	}
 
 	@Override
 	public void showError(String errorMessage) {
 		System.err.println(errorMessage);		
+	}
+
+	@Override
+	public void addFileLogger(FileLogger fileLogger) {
+		this.fileLogger = fileLogger;		
+	}
+
+	@Override
+	public void showEnd(String endMessage) {
+		showMessage(endMessage);
+		fileLogger.terminarLog();
 	}
 }

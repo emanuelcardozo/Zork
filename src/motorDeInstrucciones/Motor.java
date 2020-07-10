@@ -27,28 +27,13 @@ public class Motor {
 		this.teclado = new Scanner(System.in);
 	}
 
-	public void start() throws FileNotFoundException {
-//		boolean valido = false;
-//		int i = 1;
-//		PrintWriter pw = null;
-//		Path path = Paths.get("PartidasGuardadas/" + player.getName() + "-" + i + ".log");
-//		
-//		while (!valido) {
-//			if (Files.exists(path)) {
-//				i++;
-//				path = Paths.get("PartidasGuardadas/" + player.getName() + "-" + i + ".log");
-//			} else if (Files.notExists(path)) {
-//				pw = new PrintWriter(new File("PartidasGuardadas/" + player.getName() + "-" + i + ".log"));
-//				valido = true;
-//			}
-//		}
+	public void start() {
 		
 		String comando = io.getValue(null);
 		running = true;
 		
 		while ( !comando.equalsIgnoreCase("salir") && running) {
-//			pw.println(player.getName()+" dice: "+comando);
-//			pw.println("Respuesta: "+ejecutarComando(comando));
+
 			
 			io.showMessage(ejecutarComando(comando));
 			
@@ -56,7 +41,6 @@ public class Motor {
 				comando = io.getValue(null);
 		}
 		
-//		pw.close();
 		teclado.close();
 	}
 

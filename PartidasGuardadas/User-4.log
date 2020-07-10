@@ -1,0 +1,21 @@
+Estas son las aventuras disponibles:
+0 - escenarioBase.json
+1 - escenarioCreado2.json
+2 - escenarioCreado.json
+Seleccione un escenario del 0 al 2 por favor:
+  >>0
+Ingrese su nombre por favor:
+  >>Ema
+
+Bienvenido a Zork Ema!
+
+Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.
+  >>tomar rociador
+Item agregado a tu inventario!
+  >>usar rociador en fantasma
+No puedes usarlo contra lo que deseas.
+  >>usar rociador en pirata fantasma
+- '¡Me encanta la cerveza de raiz!' El pirata fantasma se veía entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzó a desintegrarse. La mitad de arriba de su cuerpo se desvaneció, y las piernas inmediatamente echaron a correr.
+  >>ir a la taberna
+¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.
+Gracias por jugar a Zork Ema, hasta luego!

@@ -12,6 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import io.FileLogger;
 import io.InOutputable;
 import motorDeInstrucciones.Motor;
 
@@ -34,6 +35,7 @@ public class Aventura {
 
 	public void initialize(){
 		try {
+			this.ioComponent.addFileLogger(new FileLogger("User"));
 			String nombreEscenario = seleccionarEscenario();
 			construirAventura("./Aventuras/"+ nombreEscenario );
 			pedirNombreUsuario();
@@ -84,7 +86,7 @@ public class Aventura {
 	}
 
 	private void despedir() {
-		ioComponent.showMessage("Gracias por jugar a Zork " + jugador.getName() + ", hasta luego!");
+		ioComponent.showEnd("Gracias por jugar a Zork " + jugador.getName() + ", hasta luego!");
 	}
 
 	public void construirAventura(String path) {
