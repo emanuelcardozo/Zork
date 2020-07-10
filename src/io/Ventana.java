@@ -55,9 +55,12 @@ public class Ventana implements InOutputable {
 		Ventana self = this;
 		ventanaFrame = new JFrame();
 		ventanaFrame.setTitle("miZork");
-		ventanaFrame.setBounds(100, 100, 600, 400);
+		ventanaFrame.setBounds(100, 100, 620, 420);
 		ventanaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventanaFrame.getContentPane().setLayout(null);
+		ventanaFrame.setLocationRelativeTo(null);
+		ventanaFrame.setResizable(false);
+		ventanaFrame.setTitle("Zork COBIT-19");
 
 		JButton enviarButton = new JButton("Enviar");
 		enviarButton.setBounds(489, 337, 105, 35);
@@ -100,7 +103,7 @@ public class Ventana implements InOutputable {
 		inventarioLabel.setBounds(360, 33, 91, 16);
 		ventanaFrame.getContentPane().add(inventarioLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Instrucción:");
+		JLabel lblNewLabel_1 = new JLabel("Instruccion:");
 		lblNewLabel_1.setBounds(6, 314, 99, 16);
 		ventanaFrame.getContentPane().add(lblNewLabel_1);
 		comandoTextInput.requestFocus();
