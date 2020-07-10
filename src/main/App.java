@@ -8,7 +8,7 @@ import io.Ventana;
 
 public class App {
 	public static void main(String[] args) throws FileNotFoundException {
-		new Aventura(new Consola());
-//		new Aventura(new Ventana());
+//		new Aventura(new Consola());
+		new Aventura(new Ventana());
 	}
 }

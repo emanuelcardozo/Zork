@@ -9,23 +9,24 @@ import org.junit.Test;
 
 import entities.Aventura;
 import entities.Player;
+import io.Consola;
+import io.FileLogger;
 
 public class ZorkTests {
-	private Aventura miAventura;
-	private Player jugador;
-
-	@Before
-	public void config() throws FileNotFoundException {
-		miAventura = new Aventura();
-		jugador = miAventura.getJugador();
-	}
-	@Test
-	public void testCreacion() throws FileNotFoundException {
-		config();
-		System.out.println(miAventura.getJugador());
-	}
-}
-
+//	private Aventura miAventura;
+//	private Player jugador;
+//
+//	@Before
+//	public void config() throws FileNotFoundException {
+//		miAventura = new Aventura(new Consola());
+//		jugador = miAventura.getJugador();
+//	}
+//	@Test
+//	public void testCreacion() throws FileNotFoundException {
+//		config();
+//		System.out.println(miAventura.getJugador());
+//	}
+//	
 //	@Test
 //	public void testInventario() {
 //		// Estos son los elementos que hay en el lugar.
@@ -122,3 +123,5 @@ public class ZorkTests {
 //		assertEquals("Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.",jugador.moverHacia("sur"));
 //	}
 //}
+
+}
