@@ -1,10 +1,14 @@
 package entities;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.junit.runners.ParentRunner;
+
+import io.InOutputable;
 
 public class NPC extends Noun implements Triggerable {
 	private String description;
@@ -77,40 +81,41 @@ public class NPC extends Noun implements Triggerable {
 		return null;
 	}
 
-	public String hablar(String playerName) {
+	public String hablar(String playerName, InOutputable io) {
 		int numero = talks.size();
 		boolean salir = false;
 		if (talks.isEmpty()) return getTalk();
 		
 		while (!salir) {
-			mostrarDialogos();
-			numero = talks.size();
-			teclado = new Scanner(System.in);
+			mostrarDialogos(io);
 			
-			if (!teclado.hasNextInt())
-				System.out.println("No es posible esa respuesta.");
-			else {
-				numero = teclado.nextInt();
+			try {
+				numero = Integer.parseInt(io.getValue(null));
 				
-				if (numero >= 0 && numero < talks.size()) {
-					System.out.println( playerName.toUpperCase() + ": " + talks.get(numero).getYou());
-					System.out.println( name.toUpperCase() + ": " + talks.get(numero).getNpc());
-				} else if (numero == 7)
+				if (numero == 7) 
 					salir = true;
 				else
-					System.out.println("No es posible esa respuesta.");
-			}
+					if (numero >= 0 && numero < talks.size()) {
+						io.showMessage( playerName.toUpperCase() + ": " + talks.get(numero).getYou());
+						io.showMessage( name.toUpperCase() + ": " + talks.get(numero).getNpc());
+					} else {
+						throw new NumberFormatException();
+					}				
+				
+			} catch (NumberFormatException e) {
+				io.showError("No es posible esa respuesta.");
+			}			
 		}
 		return "Has terminado la charla. Sigue investigando!";
 	}
 
-	private void mostrarDialogos() {
-		System.out.println("\n-------- SELECCIONA UN DIALOGO ---------");
+	private void mostrarDialogos(InOutputable io) {
+		io.showMessage("\n-------- SELECCIONA UN DIALOGO ---------");
 		for (int i = 0; i < talks.size(); i++) {
-			System.out.println(i + " - " + talks.get(i).getYou());
+			io.showMessage(i + " - " + talks.get(i).getYou());
 		}
-		System.out.println(7 + " - " + "Salir");
-		System.out.println("----------------------------------------");		
+		io.showMessage(7 + " - " + "Salir");
+		io.showMessage("----------------------------------------");		
 	}
 
 	public String mirar() {

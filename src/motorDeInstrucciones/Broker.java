@@ -11,13 +11,12 @@ public class Broker {
    
    public String placeOrders() {
 	   String orderExecuted = "";
+	   
 	   for(Order order : orderList) {
-		   orderExecuted = "";
-		   orderExecuted =  order.execute();
-		   System.out.println(orderExecuted);
-		   
+		   orderExecuted = order.execute();
 	   }
 	   orderList.clear();
+	   
 	   return orderExecuted;
    }	   
 }

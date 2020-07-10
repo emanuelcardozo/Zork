@@ -4,19 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import io.InOutputable;
 import motorDeInstrucciones.Motor;
-import visual.Ventana;
 
 public class Aventura {
 
@@ -24,49 +21,70 @@ public class Aventura {
 	private Motor motorInstrucciones;
 	private Player jugador;
 	private String welcome;
-	private Ventana ventana;
+	private InOutputable ioComponent;
 
 	private Map<String, Item> itemsMap;
 	private Map<String, NPC> npcsMap;
 	private Map<String, EndGame> triggerEndGameMap; // Key: Thing, Value: EndGame
 
-	public Aventura() throws FileNotFoundException {
+	public Aventura( InOutputable ioComponent ){
+		this.ioComponent = ioComponent;
 		initialize();
 	}
 
-	private void initialize() throws FileNotFoundException{
-		ventana = new Ventana();
-		String escenario = "";
-		escenario = seleccionDeEscenario();
-		if(escenario == null) {
-			ventana.setText("No hay ninguna aventura para jugar");
-			System.out.println("No hay ninguna aventura para jugar");	
-		} else {
-		construirAventura("./Aventuras/"+escenario);
-		pedirNombreUsuario();
-		saludar();
-		motorInstrucciones = new Motor(jugador);
-		motorInstrucciones.start();
-		despedir();
+	public void initialize(){
+		try {
+			String nombreEscenario = seleccionarEscenario();
+			construirAventura("./Aventuras/"+ nombreEscenario );
+			pedirNombreUsuario();
+			saludar();
+			motorInstrucciones = new Motor( ioComponent, jugador);
+			motorInstrucciones.start();
+		} catch (FileNotFoundException e) {
+			ioComponent.showError("No se ha encontrado el archivo");
+			e.printStackTrace();
 		}
+		despedir();
+	}
+	
+	private String seleccionarEscenario() {
+		File carpeta = new File("./Aventuras");
+		String[] escenarios = carpeta.list();
+		
+		if (escenarios == null) {
+			ioComponent.showError("No hay ninguna aventura para jugar");
+			return null;
+		}
+		
+		ioComponent.showMessage("Estas son las aventuras disponibles:");
+		
+		for (int i = 0; i < escenarios.length; i++) {
+			ioComponent.showMessage(i + " - " + escenarios[i]);
+		}
+		String escenarioString = ioComponent.getValue("Seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:");
+		int nroEscenario = Integer.parseInt(escenarioString);
+		
+		while( nroEscenario < 0 || nroEscenario >= escenarios.length ) {
+			escenarioString = ioComponent.getValue("Opcion Incorrecta. Por favor, seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:");
+			nroEscenario = Integer.parseInt(escenarioString);
+		} 
+			
+		return escenarios[nroEscenario];
 	}
 
 	private void pedirNombreUsuario() {
-		System.out.println("Ingrese su nombre por favor:");
-		@SuppressWarnings("resource")
-		Scanner teclado = new Scanner(System.in);
-		String nombre = teclado.nextLine();
+		String nombre = ioComponent.getValue("Ingrese su nombre por favor:");
 
 		jugador.setName(nombre);
 	}
 
 	private void saludar() {
-		System.out.println("Bienvenido a Zork " + jugador.getName() + "!");
-		System.out.println(welcome);
+		ioComponent.showMessage("\nBienvenido a Zork " + jugador.getName() + "!\n");
+		ioComponent.showMessage(welcome);
 	}
 
 	private void despedir() {
-		System.out.println("Gracias por jugar a Zork " + jugador.getName() + ", hasta luego!");
+		ioComponent.showMessage("Gracias por jugar a Zork " + jugador.getName() + ", hasta luego!");
 	}
 
 	public void construirAventura(String path) {
@@ -92,13 +110,13 @@ public class Aventura {
 			this.jugador = new Player(name, new Mundo(inicio, mapaLocation));
 
 		} catch (FileNotFoundException e) {
-			System.out.println("ERROR: No se pudo encontrar el archivo.");
+			ioComponent.showMessage("ERROR: No se pudo encontrar el archivo.");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("ERROR: Error con el archivo.");
+			ioComponent.showMessage("ERROR: No se pudo parsear correctamente el archivo.");
 			e.printStackTrace();
 		} catch (ParseException e) {
-			System.out.println("ERROR: No se pudo parsear correctamente el archivo.");
+			ioComponent.showMessage("ERROR: No se pudo parsear correctamente el archivo.");
 			e.printStackTrace();
 		}
 	}
@@ -176,38 +194,4 @@ public class Aventura {
 
 		return message;
 	}
-	
-	
-	private String seleccionDeEscenario() {
-		File carpeta = new File("./Aventuras");
-		String[] escenarios = carpeta.list();
-		int numero = 1000000000;
-		
-		if (escenarios == null)
-			return null;
-		@SuppressWarnings("resource")
-		Scanner teclado = new Scanner(System.in);
-		
-		while (numero > escenarios.length - 1  || numero < 0) {
-			ventana.setText("Seleccione un escenario valido del 0 al "+(escenarios.length-1)+" por favor: ");
-			System.out.println("Seleccione un escenario valido del 0 al "+(escenarios.length-1)+" por favor: ");
-			mostrarEscenarios(escenarios);
-			
-			if(teclado.hasNextInt())
-				numero = teclado.nextInt();
-			else 
-				teclado = new Scanner(System.in);
-		}
-		return escenarios[numero];
-	}
-	
-	private void mostrarEscenarios(String[] escenarios) {
-		if (escenarios.length == 0) return;
-		
-		for (int i = 0; i < escenarios.length; i++) {
-			ventana.setText(i + " - " + escenarios[i]);
-			System.out.println(i + " - " + escenarios[i]);
-		}
-	}
-
 }

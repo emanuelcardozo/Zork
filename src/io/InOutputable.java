@@ -1,0 +1,8 @@
+package io;
+
+public interface InOutputable {
+	
+	public String getValue(String message);
+	public void showMessage(String message);
+	public void showError(String errorMessage);
+}

@@ -3,15 +3,18 @@ package motorDeInstrucciones.actions;
 import entities.Item;
 import entities.NPC;
 import entities.Player;
+import io.InOutputable;
 import motorDeInstrucciones.Order;
 
 public class Accion {
 	private Player jugador;
 	private String verbo;
 	private String[] sustantivos;
+	private InOutputable io;
 
-	public Accion(Player jugador) {
+	public Accion(Player jugador, InOutputable io) {
 		this.jugador = jugador;
+		this.io = io;
 	}
 
 	public String acariciar(String quien) {
@@ -53,13 +56,13 @@ public class Accion {
 	}
 
 
-	public String hablar(String quien) {
+	public String hablar(String quien, InOutputable io) {
 		if( quien == null )
 			return "Con quien quieres hablar?(COMANDO: HABLAR CON ______)";
 
 		NPC npc = jugador.buscarNpc(quien);
 
-		return jugador.hablarCon(npc);
+		return jugador.hablarCon(npc, io);
 	}
 
 
@@ -198,7 +201,7 @@ public class Accion {
 				break;
 
 			case "HABLAR":
-				order = new Hablar(this, sustantivos[0]);
+				order = new Hablar(this, sustantivos[0], io);
 				break;
 
 			case "IR":

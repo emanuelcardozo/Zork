@@ -2,6 +2,8 @@ package entities;
 
 import java.util.Map;
 
+import io.InOutputable;
+
 public class Player {
 	private String name;
 	private Inventory inventario;
@@ -133,15 +135,13 @@ public class Player {
 		return npc;
 	}
 
-	public String hablarCon(NPC objectName) {
-		NPC npc = objectName;
-		String message = "No hay nadie para hablar con ese nombre.";
-		return npc != null ? npc.hablar(name) : message;
+	public String hablarCon(NPC npc, InOutputable io) {
+		String message = "No hay nadie para hablar con ese nombre.";		
+		return npc != null ? npc.hablar(name, io) : message;
 	}
 
-	public String mirarNpc(NPC objectName) {
-		NPC npc = objectName;
-		String message = "No hay nadie para mirar con ese nombre.";
+	public String mirarNpc(NPC npc) {
+		String message = "No hay nadie para mirar con ese nombre.";		
 		return npc != null ? npc.mirar() : message;
 	}
 
