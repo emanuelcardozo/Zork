@@ -63,7 +63,7 @@ public class Ventana implements InOutputable {
 	private void initialize() throws MalformedURLException, IOException {
 		Ventana self = this;
 		ventanaFrame = new JFrame();
-		ventanaFrame.setIconImage(new ImageIcon("./images/cobit-19.png").getImage());
+		ventanaFrame.setIconImage(new ImageIcon("./images/icono/cobit-19.png").getImage());
 		ventanaFrame.setTitle("Zork COBIT-19");
 		ventanaFrame.setBounds(100, 100, 650, 680);
 		ventanaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,7 +91,7 @@ public class Ventana implements InOutputable {
 		ventanaFrame.getContentPane().add(scrollPane);
 
 		panelImagen = new JPanelConFondo();
-		File input = new File("frenteCasa.jpg");
+		File input = new File("./images/fondos/escenarioCreado/frente.jpg");
 	    Image image = ImageIO.read(input);
 		panelImagen.setBounds(20, 10, 593, 230);
 		panelImagen.setBackground(Color.ORANGE);
