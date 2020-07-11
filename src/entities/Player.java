@@ -62,7 +62,7 @@ public class Player {
 			item = place.extractItem(itemName);
 			if (item != null) {
 				inventario.agregarItem(item);
-				return "Item agregado a tu inventario!";
+				return "* Item agregado a tu inventario!";
 			}
 		}
 
@@ -73,7 +73,7 @@ public class Player {
 	public String usarItemEnMi(Item item) {
 		String[] acciones;
 		if(item == null)
-			return "El item no se encuentra en tu inventario";
+			return "* El item no se encuentra en tu inventario";
 		acciones = item.usarEnMi();
 		if(acciones[0] != null)
 		return acciones[0];
@@ -83,7 +83,7 @@ public class Player {
 
 	public String usarItemEnNpc(Item item, NPC npc) {
 		if (item == null)
-			return "El item no se encuentra en tu inventario.";
+			return "* El item no se encuentra en tu inventario.";
 		if (npc == null)
 			return "No puedes usarlo contra lo que deseas.";
 		
@@ -156,17 +156,17 @@ public class Player {
 		Item item;
 		item = this.buscarItemInventario(itemName);
 		if(item == null)
-			return "Ese item no se encuentra en tu inventario.";
+			return "* Ese item no se encuentra en tu inventario.";
 		else {
 			posicionActual.getPlace("suelo").addItem(item);
 			inventario.eliminarItem(itemName);
-			return "Has tirado el item.";
+			return "* Has tirado el item.";
 		}
 	}
 
 	public String acuchillar(NPC np) {
 		if(!inventario.estaEnInventario("cuchillo"))
-			return "No tienes al cuchillo en tu inventario.";
+			return "* No tienes al cuchillo en tu inventario.";
 
 		String message = np.serAcuchillado();
 

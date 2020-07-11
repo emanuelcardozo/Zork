@@ -32,9 +32,7 @@ public class Motor {
 		String comando = io.getValue(null);
 		running = true;
 		
-		while ( !comando.equalsIgnoreCase("salir") && running) {
-
-			
+		while ( !comando.equalsIgnoreCase("salir") && running) {			
 			io.showMessage(ejecutarComando(comando));
 			
 			if( running )

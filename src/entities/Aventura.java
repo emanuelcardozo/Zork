@@ -52,18 +52,22 @@ public class Aventura {
 	private String seleccionarEscenario() {
 		File carpeta = new File("./Aventuras");
 		String[] escenarios = carpeta.list();
+		String message = "";
 		
 		if (escenarios == null) {
 			ioComponent.showError("No hay ninguna aventura para jugar");
 			return null;
 		}
 		
-		ioComponent.showMessage("Estas son las aventuras disponibles:");
+		message += "Estas son las aventuras disponibles:\n";
 		
 		for (int i = 0; i < escenarios.length; i++) {
-			ioComponent.showMessage(i + " - " + escenarios[i]);
+			message += i + " - " + escenarios[i] + "\n";
 		}
-		String escenarioString = ioComponent.getValue("Seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:");
+		
+		message += "Seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:";
+		
+		String escenarioString = ioComponent.getValue(message);
 		int nroEscenario = Integer.parseInt(escenarioString);
 		
 		while( nroEscenario < 0 || nroEscenario >= escenarios.length) {
@@ -81,8 +85,7 @@ public class Aventura {
 	}
 
 	private void saludar() {
-		ioComponent.showMessage("\nBienvenido a Zork " + jugador.getName() + "!\n");
-		ioComponent.showMessage(welcome);
+		ioComponent.showMessage("Bienvenido a Zork " + jugador.getName() + "!\n" + welcome);
 	}
 
 	private void despedir() {

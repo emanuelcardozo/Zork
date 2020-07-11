@@ -84,6 +84,7 @@ public class NPC extends Noun implements Triggerable {
 	public String hablar(String playerName, InOutputable io) {
 		int numero = talks.size();
 		boolean salir = false;
+		String message ="";
 		if (talks.isEmpty()) return getTalk();
 		
 		while (!salir) {
@@ -96,8 +97,9 @@ public class NPC extends Noun implements Triggerable {
 					salir = true;
 				else
 					if (numero >= 0 && numero < talks.size()) {
-						io.showMessage( playerName.toUpperCase() + ": " + talks.get(numero).getYou());
-						io.showMessage( name.toUpperCase() + ": " + talks.get(numero).getNpc());
+						message += playerName.toUpperCase() + ": " + talks.get(numero).getYou() + "\n";
+						message += name.toUpperCase() + ": " + talks.get(numero).getNpc();
+						io.showMessage( message );
 					} else {
 						throw new NumberFormatException();
 					}				
@@ -110,12 +112,13 @@ public class NPC extends Noun implements Triggerable {
 	}
 
 	private void mostrarDialogos(InOutputable io) {
-		io.showMessage("\n-------- SELECCIONA UN DIALOGO ---------");
+		String message = "-------- SELECCIONA UN DIALOGO ---------\n"; 
 		for (int i = 0; i < talks.size(); i++) {
-			io.showMessage(i + " - " + talks.get(i).getYou());
+			message += i + " - " + talks.get(i).getYou() + "\n";
 		}
-		io.showMessage(7 + " - " + "Salir");
-		io.showMessage("----------------------------------------");		
+		message += 7 + " - " + "Salir\n";
+		message += "----------------------------------------";
+		io.showMessage(message);		
 	}
 
 	public String mirar() {
