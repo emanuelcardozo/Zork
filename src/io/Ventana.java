@@ -83,7 +83,7 @@ public class Ventana implements InOutputable {
 		mainTextArea.setRows(15);
 		mainTextArea.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(mainTextArea);
-		scrollPane.setBounds(20, 250, 342, 296);
+		scrollPane.setBounds(20, 250, 593, 296);
 		mainTextArea.setAutoscrolls(true);
 		DefaultCaret caret = (DefaultCaret) mainTextArea.getCaret();
 		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
@@ -114,18 +114,6 @@ public class Ventana implements InOutputable {
 
 		ventanaFrame.getContentPane().add(comandoTextInput);
 		comandoTextInput.setColumns(100);
-
-		inventarioTextArea = new JTextArea();
-		inventarioTextArea.setEditable(false);
-		inventarioTextArea.setBounds(380, 302, 234, 243);
-		ventanaFrame.getContentPane().add(inventarioTextArea);
-
-		JLabel inventarioLabel = new JLabel("Inventario:");
-		inventarioLabel.setForeground(Color.white);
-		inventarioLabel.setFont(new Font("Serif", Font.PLAIN, 18));
-		inventarioLabel.setBounds(380, 283, 91, 16);
-		ventanaFrame.getContentPane().add(inventarioLabel);
-
 		JLabel lblNewLabel_1 = new JLabel("Instruccion:");
 		lblNewLabel_1.setForeground(Color.white);
 		lblNewLabel_1.setFont(new Font("Serif", Font.PLAIN, 18));

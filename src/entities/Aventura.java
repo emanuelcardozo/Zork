@@ -66,7 +66,7 @@ public class Aventura {
 		String escenarioString = ioComponent.getValue("Seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:");
 		int nroEscenario = Integer.parseInt(escenarioString);
 		
-		while( nroEscenario < 0 || nroEscenario >= escenarios.length ) {
+		while( nroEscenario < 0 || nroEscenario >= escenarios.length) {
 			escenarioString = ioComponent.getValue("Opcion Incorrecta. Por favor, seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:");
 			nroEscenario = Integer.parseInt(escenarioString);
 		} 
