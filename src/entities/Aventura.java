@@ -77,6 +77,9 @@ public class Aventura {
 			} catch (NumberFormatException e) {
 				ioComponent.showError("Opcion Invalida.");
 			}
+			
+			if(nroEscenario < 0 || nroEscenario >= escenarios.length)
+				ioComponent.showError("No existe la opcion " + nroEscenario);
 		} 
 			
 		return escenarios[nroEscenario];
