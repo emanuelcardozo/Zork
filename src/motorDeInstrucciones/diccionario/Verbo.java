@@ -12,11 +12,11 @@ public enum Verbo {
 	
 	GOLPEAR("golpear", "atacar", "pegar", "agredir"),
 	HABLAR("hablar", "conversar", "dialogar", "charlar"),
-	IR("ir", "dirigir", "caminar"),
+	IR("ir", "dirigir", "caminar", "entrar"),
 	
 	MOSTRAR("mostrar", "listar", "ensenar", "enseniar", "presentar"),
 	MOVER("mover", "correr", "desplazar"),
-	OBSERVAR("observar", "mirar", "ver"),
+	OBSERVAR("observar", "mirar", "ver", "leer", "explorar"),
 	
 	RECOGER("recoger", "tomar", "levantar", "agarrar"),
     
