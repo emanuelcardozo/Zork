@@ -67,12 +67,16 @@ public class Aventura {
 		
 		message += "Seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:";
 		
-		String escenarioString = ioComponent.getValue(message);
-		int nroEscenario = Integer.parseInt(escenarioString);
+		String escenarioString = "";
+		int nroEscenario = -1;
 		
 		while( nroEscenario < 0 || nroEscenario >= escenarios.length) {
-			escenarioString = ioComponent.getValue("Opcion Incorrecta. Por favor, seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:");
-			nroEscenario = Integer.parseInt(escenarioString);
+			try {
+				escenarioString = ioComponent.getValue(message);
+				nroEscenario = Integer.parseInt(escenarioString);
+			} catch (NumberFormatException e) {
+				ioComponent.showError("Opcion Invalida.");
+			}
 		} 
 			
 		return escenarios[nroEscenario];

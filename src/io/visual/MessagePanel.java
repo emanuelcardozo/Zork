@@ -50,10 +50,11 @@ public class MessagePanel extends JPanel {
 		case "Error":
 			pane.setBackground(Color.RED);
 			pane.setForeground(Color.WHITE);
+			pane.setFont(new Font("Sans Serif", Font.BOLD, 14));
 			break;
 		case "User":
 			pane.setForeground(Color.BLUE);
-			pane.setFont(new Font("MONOSPACED", Font.BOLD, 14));
+			pane.setFont(new Font("Monospaced", Font.BOLD, 14));
 			break;
 		case "Alert":
 			pane.setForeground(Color.BLACK);
