@@ -1,12 +1,9 @@
 package entities;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.junit.runners.ParentRunner;
 
 import io.InOutputable;
 
@@ -16,7 +13,6 @@ public class NPC extends Noun implements Triggerable {
 	private Aventura aventura;
 	private ArrayList<Talk> talks = new ArrayList<Talk>();
 	private ArrayList<Trigger> triggers = new ArrayList<Trigger>();
-	private Scanner teclado;
 
 	public NPC(String name, String gender, String number, String description, String talk) {
 		super(name, gender, number);
@@ -84,11 +80,12 @@ public class NPC extends Noun implements Triggerable {
 	public String hablar(String playerName, InOutputable io) {
 		int numero = talks.size();
 		boolean salir = false;
-		String message ="";
+		String message;
 		if (talks.isEmpty()) return getTalk();
 		
 		while (!salir) {
 			mostrarDialogos(io);
+			message = "";
 			
 			try {
 				numero = Integer.parseInt(io.getValue(null));
