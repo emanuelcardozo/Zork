@@ -18,13 +18,11 @@ public class Historial {
 		instruccion.add(currentIndex, command);
 	}
 	
-	public String getPrevious() {
-		System.out.println(currentIndex);
+	public String getPrevious() {  
 		return currentIndex < instruccion.size() ? instruccion.get(currentIndex++) : "";
 	}
 	
 	public String getNext() {
-		System.out.println(currentIndex);
 		return currentIndex > 0 ? instruccion.get(--currentIndex) : "";
 	}
 
