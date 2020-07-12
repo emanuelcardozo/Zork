@@ -7,21 +7,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultCaret;
-
-import entities.Aventura;
 
 public class Ventana implements InOutputable {
 
@@ -33,7 +28,7 @@ public class Ventana implements InOutputable {
 	private JPanelConFondo panelImagen;
 	private Historial historial;
 
-	public Ventana() throws MalformedURLException, IOException {
+	public Ventana() {
 		this.historial = new Historial();
 		initialize();
 		ventanaFrame.setVisible(true);
@@ -62,7 +57,7 @@ public class Ventana implements InOutputable {
 		return text;
 	}
 
-	private void initialize() throws MalformedURLException, IOException {
+	private void initialize() {
 		Ventana self = this;
 		ventanaFrame = new JFrame();
 		ventanaFrame.setIconImage(new ImageIcon("./images/icono/cobit-19.png").getImage());
@@ -91,14 +86,20 @@ public class Ventana implements InOutputable {
 		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
 		ventanaFrame.getContentPane().add(scrollPane);
-
-		panelImagen = new JPanelConFondo();
-		File input = new File("./images/fondos/escenarioCreado/frente.jpg");
-	    Image image = ImageIO.read(input);
-		panelImagen.setBounds(20, 10, 593, 230);
-		panelImagen.setBackground(Color.ORANGE);
-		panelImagen.setImagen(image);
-		ventanaFrame.getContentPane().add(panelImagen);
+		
+		try {
+			File input = new File("./images/fondos/escenarioCreado/frente.jpg");
+		    Image image = ImageIO.read(input);
+		    
+		    panelImagen = new JPanelConFondo();
+		    panelImagen.setBounds(20, 10, 593, 230);
+			panelImagen.setBackground(Color.ORANGE);
+			panelImagen.setImagen(image);
+			ventanaFrame.getContentPane().add(panelImagen);
+		} catch (IOException e1) {
+			System.out.println("No se pudo leer la imagen");
+			e1.printStackTrace();
+		}
 
 		comandoTextInput = new JTextField();
 		comandoTextInput.setToolTipText("Ingrese HELP para recibir ayuda.");
