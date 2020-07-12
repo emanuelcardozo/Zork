@@ -31,8 +31,10 @@ public class Ventana implements InOutputable {
 	private JTextArea inventarioTextArea;
 	private FileLogger fileLogger;
 	private JPanelConFondo panelImagen;
+	private Historial historial;
 
 	public Ventana() throws MalformedURLException, IOException {
+		this.historial = new Historial();
 		initialize();
 		ventanaFrame.setVisible(true);
 	}
@@ -104,9 +106,20 @@ public class Ventana implements InOutputable {
 		comandoTextInput.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				synchronized (self) {
-					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					switch( e.getKeyCode() ) {
+					case KeyEvent.VK_ENTER:
 						self.notify();
+						break;
+					case KeyEvent.VK_UP:
+						self.setPreviousCommand();
+						break;
+					case KeyEvent.VK_DOWN:
+						self.setNextCommand();
+						break;
 					}
+//					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+//						self.notify();
+//					}
 				}
 			}
 
@@ -122,6 +135,14 @@ public class Ventana implements InOutputable {
 		comandoTextInput.requestFocus();
 	}
 
+	protected void setPreviousCommand() {
+		comandoTextInput.setText(historial.getPrevious());		
+	}
+	
+	protected void setNextCommand() {
+		comandoTextInput.setText(historial.getNext());		
+	}
+
 	@Override
 	public String getValue(String message) {
 		synchronized (this) {
@@ -134,6 +155,7 @@ public class Ventana implements InOutputable {
 			
 			String text = comandoTextInput.getText();
 			comandoTextInput.setText("");
+			historial.add(text);
 			showMessage("  >> " + text);
 			return text;
 		}
