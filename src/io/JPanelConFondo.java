@@ -9,8 +9,7 @@ public class JPanelConFondo extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Image imagen;
  
-    public JPanelConFondo() {
-    }
+    public JPanelConFondo() {;}
  
     public JPanelConFondo(String nombreImagen) {
         if (nombreImagen != null) {

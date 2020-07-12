@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +17,12 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.text.DefaultCaret;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 public class Ventana implements InOutputable {
 
@@ -27,6 +33,7 @@ public class Ventana implements InOutputable {
 	private FileLogger fileLogger;
 	private JPanelConFondo panelImagen;
 	private Historial historial;
+	private JTextPane ubicacion;
 
 	public Ventana() {
 		this.historial = new Historial();
@@ -100,6 +107,19 @@ public class Ventana implements InOutputable {
 			System.out.println("No se pudo leer la imagen");
 			e1.printStackTrace();
 		}
+		
+		final int N=7;
+		ubicacion = new JTextPane();
+		StyledDocument doc = ubicacion.getStyledDocument();
+		SimpleAttributeSet center = new SimpleAttributeSet();
+		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+		doc.setParagraphAttributes(0, doc.getLength(), center, false);
+		ubicacion.setBounds(30, 20, 150, 30);
+		ubicacion.setText("Ubicacion");
+		ubicacion.setEditable(false);
+		ubicacion.setFont(new Font("Courier", Font.BOLD, 16));
+		ubicacion.setBorder(BorderFactory.createEmptyBorder(N, N, N, N));
+		ventanaFrame.getContentPane().add(ubicacion);
 
 		comandoTextInput = new JTextField();
 		comandoTextInput.setToolTipText("Ingrese HELP para recibir ayuda.");
@@ -160,6 +180,11 @@ public class Ventana implements InOutputable {
 			showMessage("  >> " + text);
 			return text;
 		}
+	}
+	
+	@Override
+	public void changeLocation(String locationName) {
+		ubicacion.setText(locationName.toUpperCase());
 	}
 
 	@Override

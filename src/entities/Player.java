@@ -9,12 +9,14 @@ public class Player {
 	private Inventory inventario;
 	private Location posicionActual;
 	private Mundo mundo;
+	private Aventura aventura;
 
-	public Player(String name, Mundo mundo) {
+	public Player(String name, Mundo mundo, Aventura aventura) {
 		this.posicionActual = mundo.getInicio();
 		this.mundo = mundo;
 		this.name = name;
 		this.inventario = new Inventory();
+		this.aventura = aventura;
 	}
 
 	public String mirarAlrededor() {
@@ -43,6 +45,7 @@ public class Player {
 		if (posicionActual.sePuedeMoverHacia(where)) {
 			String locationName = posicionActual.moverHacia(where);
 			posicionActual = mundo.getLocation(locationName);
+			aventura.changeLocation(posicionActual.getName());
 
 			return posicionActual.moverA(where);
 		}

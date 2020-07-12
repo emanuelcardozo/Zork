@@ -46,4 +46,10 @@ public class Consola implements InOutputable {
 		showMessage(endMessage);
 		fileLogger.terminarLog();
 	}
+
+	@Override
+	public void changeLocation(String locationName) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -109,7 +109,8 @@ public class Aventura {
 			Map<String, Location> mapaLocation = crearLocationMap(locationsJSON);
 
 			String name = (String) settingJSON.get("character");
-			this.jugador = new Player(name, new Mundo(inicio, mapaLocation));
+			this.jugador = new Player(name, new Mundo(inicio, mapaLocation), this);
+			changeLocation(inicio);
 
 		} catch (FileNotFoundException e) {
 			ioComponent.showMessage("ERROR: No se pudo encontrar el archivo.");
@@ -179,6 +180,10 @@ public class Aventura {
 		}
 
 		return mapa;
+	}
+	
+	public void changeLocation(String locationName) {
+		ioComponent.changeLocation(locationName);
 	}
 
 	public Player getJugador() {
