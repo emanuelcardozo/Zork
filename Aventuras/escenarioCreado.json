@@ -573,6 +573,6 @@
 		   "action":"atacar",
 		   "thing": "cuchillo",
 		   "description": "Has matado al vecino. Si bien era el culpable, ahora tu eres un asesino como el!",
-		},
+		}
 	]
 }

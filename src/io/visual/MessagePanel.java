@@ -44,5 +44,6 @@ public class MessagePanel extends JPanel {
 		
 		add(Box.createVerticalStrut(padding));
 		add(message);
+		repaint();
 	}
 }

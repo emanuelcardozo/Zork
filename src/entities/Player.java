@@ -89,8 +89,8 @@ public class Player {
 		
 		Trigger reaccion = npc.reaccionAItem(item);
 		
-		if (item != null && npc != null && reaccion != null) {
-			if (reaccion.getAfter_trigger().equals("remove"))
+		if (item != null && npc != null && reaccion != null ) {
+			if (reaccion.getAfter_trigger() != null && reaccion.getAfter_trigger().equals("remove"))
 				posicionActual.eliminarObstaculo(npc.getName());
 			return reaccion.getOn_trigger();
 		}

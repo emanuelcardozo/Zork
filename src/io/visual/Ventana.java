@@ -48,10 +48,10 @@ public class Ventana implements InOutputable {
 		initialize();
 	}
 
-	public void setText(String text) {
-		messagePanel.addNewMessage(text, "User");
-//		mainTextArea.append(text + "\n");
-	}
+//	public void setText(String text) {
+//		messagePanel.addNewMessage(text, "User");
+//		verticalScrollBar.setValue( verticalScrollBar.getMaximum() + 1500 );
+//	}
 
 	public void setInventario(String item) {
 		inventarioTextArea.append(item + "\n");
