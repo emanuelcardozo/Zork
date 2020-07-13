@@ -12,6 +12,7 @@ public class Item extends Noun implements Triggerable {
 	private boolean hasTrigger;
 	private Aventura aventura;
 	private String description;
+	private Posicion posicion;
 
 	public Item(String name, String gender, String number, Aventura aventura, boolean hasTrigger) {
 		super(name, gender, number);
@@ -24,7 +25,7 @@ public class Item extends Noun implements Triggerable {
 		super((String) itemJSON.get("name"), (String) itemJSON.get("gender"), (String) itemJSON.get("number"));
 		this.aventura = aventura;
 		this.description = (String) itemJSON.get("description");
-
+		this.setPosicion(new Posicion(itemJSON.get("ejex"), itemJSON.get("ejey"), itemJSON.get("ancho"), itemJSON.get("alto")));
 		if (itemJSON.containsKey("actions")) {
 			buildActions((JSONArray) itemJSON.get("actions"));
 		}
@@ -106,5 +107,13 @@ public class Item extends Noun implements Triggerable {
 
 	public String serGolpeado() {		
 		return executeTrigger( new Trigger( "golpear", name, null,null ));
+	}
+
+	public Posicion getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(Posicion posicion) {
+		this.posicion = posicion;
 	}
 }

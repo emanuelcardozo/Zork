@@ -11,6 +11,7 @@ public class NPC extends Noun implements Triggerable {
 	private String description;
 	private String talk;
 	private Aventura aventura;
+	private Posicion posicion;
 	private ArrayList<Talk> talks = new ArrayList<Talk>();
 	private ArrayList<Trigger> triggers = new ArrayList<Trigger>();
 
@@ -25,6 +26,7 @@ public class NPC extends Noun implements Triggerable {
 		description = (String) npcJSON.get("description");
 		talk = (String) npcJSON.get("talk");
 		this.aventura = aventura;
+		this.posicion = new Posicion(npcJSON.get("ejex"), npcJSON.get("ejey"), npcJSON.get("ancho"), npcJSON.get("alto"));
 		if(npcJSON.containsKey("talks"))
 			buildTalks((JSONArray) npcJSON.get("talks"));
 		if (npcJSON.containsKey("triggers"))
@@ -67,6 +69,14 @@ public class NPC extends Noun implements Triggerable {
 
 	public String getTalk() {
 		return talk;
+	}
+	
+	public Posicion getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(Posicion posicion) {
+		this.posicion = posicion;
 	}
 
 	public Trigger reaccionAItem(Item item) {
