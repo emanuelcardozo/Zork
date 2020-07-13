@@ -16,15 +16,15 @@
 	  "gender": "male",
 	  "number": "singular",
 	  "items": [
-		"papel rojo", "naipe"
+		"papel rojo", "llave"
 	  ]
 	},
 	{
-	  "name": "arbol",
-	  "gender": "male",
+	  "name": "planta",
+	  "gender": "female",
 	  "number": "singular",
 	  "items": [
-		"llave"
+		"naipe"
 	  ]
 	}
   ],
@@ -108,7 +108,7 @@
 	  "gender": "male",
 	  "number": "singular",
 	  "items": [
-		"casette", "cuchillo", "papel rojo"
+		"casette", "cuchillo"
 	  ]
 	}
 	],
@@ -135,8 +135,8 @@
 	 "description":"Estas dentro de la ducha.",
 	 "places": [
 	{
-	  "name": "tina",
-	  "gender": "female",
+	  "name": "retrete",
+	  "gender": "male",
 	  "number": "singular",
 	  "items": [
 		"naipe", "papel verde"
@@ -147,7 +147,6 @@
 	  "gender": "male",
 	  "number": "singular",
 	  "items": [
-		"papel rojo"
 	  ]
 	}
   ],
@@ -216,7 +215,7 @@
 	  "name": "pared",
 	  "gender": "female",
 	  "number": "singular",
-	  "items": [ "foto vieja", "pintura"
+	  "items": [ "pintura"
 
 	  ]
 	},
@@ -244,7 +243,11 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"Una chica muy atractiva.Ojala algun dia acepte salir conmigo.",
-	 "talk":"Esta casa tiene muchas trampas asi que ten cuidado.",
+	 "talks":[{"you":"Disculpa la tardanza.", "npc":"Te tomaste tu tiempo, eh?"},{"you":"Como se ve?","npc":"Nada bien, por desgracia."},{"you":"Algun avance?","npc":"No, por ahora no llegamos a nada concreto..."}],
+	 "ejex": "450" ,
+     "ejey": "45",
+     "ancho": "190",
+     "alto": "190",
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -259,12 +262,16 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un detective anciano, pero con mucha experiencia en el tema.",
-	 "talk":"Este es un caso muy raro no? Yo presiento que el asesino esta entre nosotros. Sigamos investigando!",
+	 "talks":[{"you":"Esto esta cada vez peor", "npc":"Si, es el tercero este mes..."},{"you":"Cree que el culpable haya huido?","npc":"Puede ser, el senior lleva un largo rato muerto....pero huir no es la unica opcion...."},{"you":"Usted que piensa?","npc":"Se me ocurre algo, pero no estoy del todo seguro todavia...."}],
+	 "ejex": "300" ,
+     "ejey": "80",
+     "ancho": "100",
+     "alto": "100",
 	 "triggers":[
 	 {
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "Asi que eres romantico no? JA JA!"
+		   "on_trigger": "...?"
 	 }
 	]
   },
@@ -273,12 +280,16 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"El policia esta asustado, se nota que es novato en la profesion.",
-	 "talk":"Esto me esta dando miedo..espero que lo resolvamos rapido!",
+	 "talks": [{"you":"Te sentis bien?", "npc":"Bastante nervioso!...no esperaba meterme en algo tan complicado como esto...."},{"you":"Primer dia?","npc":"Jajaja...ja.....si...."},{"you":"Fuerza, amigo. Con el tiempo se vuelve tolerable","npc":"Gracias...?"}],
+	 "ejex": "340" ,
+	 "ejey": "30",
+    	 "ancho": "200",
+     	 "alto": "200",
 	 "triggers":[
 		{
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "Alejese!"
+		   "on_trigger": "oiga no haga eso...."
 		}
 	 ]
 	},
@@ -287,12 +298,16 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"El anciano se encuentra palido, con los ojos y la boca cerrada, es como si estuviera durmiendo.",
-	 "talk":"El anciano esta muerto!",
+	 "talks":[{"you":"Hola?", "npc":"..."}],
+	 "ejex": "380" ,
+	 "ejey": "30",
+     "ancho": "200",
+     "alto": "200",
 	 "triggers":[
 		{
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "Este cuerpo esta helado!"
+		   "on_trigger": "No hay respuesta...."
 		}
 	 ]
 	},
@@ -301,7 +316,11 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"Se nota que esta deprimida por el suceso.",
-	 "talk":"Soy Marta la esposa de la victima. Quien puede ser tran cruel para cometer terrible crimen!",
+	 "talks":[{"you":"Si no me equivoco usted es Marta, no?","npc":"Si, soy la esposa de la victima."},{"you":"Pudiste ver algo de lo que paso?","npc":"No....no.... no pude...."},{"you":"Mis mas sinceras condolencias...","npc":"Muchas gracias..."}],
+	 "ejex": "345" ,
+	 "ejey": "103",
+     	 "ancho": "150",
+     	 "alto": "150",
 	 "triggers":[
 		{
 		"type":"acariciar",
@@ -315,7 +334,7 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"La puerta esta cerrada. Deberias usar una llave para abrirla.",
-	 "talk":"No puedes hablar con una puerta!",
+	 "talks":[{"you":"Hola", "npc":"No puedes hablar con una puerta!"}],
 	 "triggers":[
 		{
 		   "type":"item",
@@ -330,12 +349,16 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Es el perro policia que trabaja con nosotros.",
-	 "talk":"Guaf Guaf!",
+	 "talks":[{"you":"Hola Max, te estas portando bien?", "npc":"Guaf Guaf!"},{"you":"Quien es un buen muchacho?","npc":"Guaf!"},{"you":"A ver Max,sentado!","npc":"?"}],
+	 "ejex": "355" ,
+	 "ejey": "150",
+     "ancho": "100",
+     "alto": "100",
 	 "triggers":[
 		{
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "Max esta contento por tu actitud."
+		   "on_trigger": "Max mueve la cola contento."
 		},
 	 ]
   },
@@ -344,7 +367,11 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"El es el vecino que aviso del suceso a la policia.",
-	 "talk":"Soy Frank.Yo fui quien llamo a la policia. Mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se.",
+	 "talks":[{"you":"Quien es usted?", "npc":"Soy Frank, soy el vecino de la victima."},{"you":"Pudo ver algo de lo que paso?","npc":"No,mientras estaba mirando TV escuche un ruido que venia de esta casa. Eso es todo lo que se."},{"you":"Fue usted quien llamo?","npc":"Si, fui yo quien llamo a la policia."}],
+	 "ejex": "170" ,
+     "ejey": "50",
+     "ancho": "190",
+     "alto": "190",
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -363,7 +390,11 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Tiene cara de buen chico.Deberia hablar con el.",
-	 "talk":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste.",
+	 "talks":[{"you":"Quien es usted?", "npc":"Soy el nieto de la victima. Estoy acompaniando a mi abuela en esta situacion triste."},{"you":"Pudiste ver algo de lo que paso?","npc":"No. Disculpe, senior"},{"you":"Anda con tu abuela, hacele compania","npc":"Si, senior"}],
+	 "ejex": "450" ,
+	 "ejey": "102",
+     "ancho": "150",
+     "alto": "150",
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -377,7 +408,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un hombre de mediana edad con la ropa toda sucia, es algo normal ya que se nota que esta trabajando.",
-	 "talk":"Soy Milton,el jardinero de la casa.La verdad estoy sorprendido por el suceso.",
+	 "talks":[{"you":"Usted es el jardinero?", "npc":"Asi es, me llamo Milton"},{"you":"Se encuentra bien?","npc":"La verdad estoy sorprendido por el suceso."},{"you":"Pudo ver algo de lo que paso?","npc":"No, llegue hace unos minutos, no me avisaron que habia pasado algo como esto...."}],
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -391,7 +422,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"No puedes pasar.Hay un mueble delante y este parece ser pesado y viejo.Deberias moverlo.",
-	 "talk":"Te estas volviendo loco ya? No puedes hablarle a un mueble!",
+	 "talks":[{"you":"Hola?", "npc":"Estas loco ? No puedes hablarle a un mueble!"}],
 	 "triggers":[
 		{
 		   "type":"correr",
@@ -406,11 +437,11 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Se logra ver la grabacion de las camaras de seguridad. Justo logras ver la parte en la que el vecino entra a la casa por la ventana y pone un liquido dentro del vaso de la victima. La grabacion termina con el anciano quieto en su sillon y el vaso roto en el suelo.",
-	 "talk":"Te estas volviendo loco ya? No puedes hablarle a un televisor!",
+	 "talks":[{"you":"Hola?", "npc":"Estas loco ? No puedes hablarle a un televisor!"}],
 	 "triggers":[
      {
        "type":"observar",
-		   "thing": "televisor"
+		"thing": "televisor"
      }
 	 ]
 	}
@@ -421,6 +452,10 @@
   "gender": "female",
   "number": "singular",
   "description": "Una vieja llave media oxidada.",
+  "ejex": "10" ,
+  "ejey": "185",
+  "ancho": "60",
+  "alto": "40",
   "actions": [
 	"usar", "observar"
   ],
@@ -433,6 +468,10 @@
   "gender": "male",
   "number": "singular",
   "description": "Golpea una radio y descubriras la verdad.'Jonh'.",
+  "ejex": "330" ,
+  "ejey": "125",
+  "ancho": "20",
+  "alto": "20",
   "actions": ["observar"
   ],
    "effects_over": [
@@ -443,6 +482,10 @@
   "gender": "male",
   "number": "singular",
   "description": "La verdad esta a la vuelta de una habitacion.'Jonh'.",
+  "ejex": "300" ,
+  "ejey": "155",
+  "ancho": "20",
+  "alto": "20",
   "actions": ["observar"
   ],
    "effects_over": [
@@ -452,6 +495,10 @@
   "name": "papel rojo",
   "gender": "male",
   "number": "singular",
+   "ejex": "500" ,
+  "ejey": "205",
+  "ancho": "20",
+  "alto": "20",
   "description": "Si estas leyendo este papel. Creo que vas a llegar a resolver esto.Pero ten cuidado, una equivocacion te podria llevar al fracaso ten cuidado.'Jonh'",
   "actions": ["observar"
   ],
@@ -463,6 +510,10 @@
   "gender": "male",
   "number": "singular",
   "description": "Un casette viejo. No creo que guarde nada importante dentro.",
+  "ejex": "480" ,
+  "ejey": "190",
+  "ancho": "30",
+  "alto": "30",
   "actions": [ "observar"
   ],
    "effects_over": [
@@ -473,6 +524,10 @@
   "gender": "male",
   "number": "singular",
   "description": "El ultimo whatsapp enviado fue al vecino.",
+  "ejex": "350" ,
+  "ejey": "120",
+  "ancho": "50",
+  "alto": "40",
   "actions": ["observar"
   ],
    "effects_over": [
@@ -483,6 +538,10 @@
   "gender": "female",
   "number": "singular",
   "description": "Se escucha que esta reproduciendo algo.",
+  "ejex": "400" ,
+  "ejey": "110",
+  "ancho": "50",
+  "alto": "50",
   "actions": [
    "golpear", "observar"
   ],
@@ -495,6 +554,10 @@
   "gender": "male",
   "number": "singular",
   "description": "Es un cuchillo filoso. Podria matar a cualquiera rapidamente!",
+  "ejex": "520" ,
+  "ejey": "170",
+  "ancho": "30",
+  "alto": "30",
   "actions": [
 	"acuchillar", "observar"
   ],
@@ -507,6 +570,10 @@
   "gender": "female",
   "number": "singular",
   "description": "<Si revelas la verdad de esto te matare y nadie se dara cuenta del hecho. No juegues conmigo Jonh.'Frank'>. El vecino podria ser el asesino entonces? Debo buscar mas pruebas!",
+  "ejex": "260" ,
+  "ejey": "140",
+  "ancho": "50",
+  "alto": "30",
   "actions": ["observar"
   ],
    "effects_over": [
@@ -517,6 +584,10 @@
   "gender": "female",
   "number": "singular",
   "description": "Sera una pista? Lo veremos mas tarde.",
+  "ejex": "490" ,
+  "ejey": "60",
+  "ancho": "50",
+  "alto": "50",
   "actions": [ "observar"
   ],
    "effects_over": [
@@ -528,6 +599,10 @@
   "gender": "female",
   "number": "singular",
   "description": "Parece ser una foto de la victima con la anciana.",
+  "ejex": "540" ,
+  "ejey": "50",
+  "ancho": "25",
+  "alto": "25",
   "actions": [ "observar"
   ],
    "effects_over": [
@@ -538,6 +613,10 @@
   "gender": "female",
   "number": "singular",
   "description": "La foto esta rota pero se logra ver a la anciana, a la victima y a un tercero que no logro detectar debido al deterioro de la foto.",
+  "ejex": "70" ,
+  "ejey": "30",
+  "ancho": "50",
+  "alto": "40",
   "actions": [ "observar"
   ],
    "effects_over": [
@@ -548,6 +627,10 @@
   "gender": "male",
   "number": "singular",
   "description": "Aficionado a las cartas? Mmm..lo veremos.",
+   "ejex": "300" ,
+  "ejey": "155",
+  "ancho": "20",
+  "alto": "20",
   "actions": [ "observar"
   ],
    "effects_over": [
@@ -573,6 +656,6 @@
 		   "action":"atacar",
 		   "thing": "cuchillo",
 		   "description": "Has matado al vecino. Si bien era el culpable, ahora tu eres un asesino como el!",
-		}
+		},
 	]
 }
