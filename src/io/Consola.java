@@ -48,7 +48,7 @@ public class Consola implements InOutputable {
 	}
 
 	@Override
-	public void changeLocation(String locationName) {
+	public void changeLocation(String locationName, String nombreEscenario) {
 		// TODO Auto-generated method stub
 		
 	}

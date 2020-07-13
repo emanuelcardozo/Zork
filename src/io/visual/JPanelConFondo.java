@@ -2,6 +2,10 @@ package io.visual;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
  
@@ -17,6 +21,17 @@ public class JPanelConFondo extends JPanel {
                            getClass().getResource(nombreImagen)
                            ).getImage();
         }
+    }
+    
+    public void changeImage( String escenario, String location ) {
+    	File path = new File("./images/fondos/"+ escenario +"/"+ location +".jpg");
+	    try {
+			Image image = ImageIO.read(path);
+			setImagen(image);
+		} catch (IOException e) {
+			System.out.println("No se pudo leer la imagen");
+			e.printStackTrace();
+		}
     }
  
     public JPanelConFondo(Image imagenInicial) {

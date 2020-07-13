@@ -85,21 +85,13 @@ public class Ventana implements InOutputable {
 		ventanaFrame.setLocationRelativeTo(null);
 		ventanaFrame.setResizable(false);
 		ventanaFrame.getContentPane().setBackground(Color.BLACK);
-
-		try {
-			File input = new File("./images/fondos/escenarioCreado/frente.jpg");
-		    Image image = ImageIO.read(input);
-
-		    panelImagen = new JPanelConFondo();
-		    panelImagen.setBounds(20, 10, 593, 230);
-			panelImagen.setBackground(Color.ORANGE);
-			panelImagen.setImagen(image);
-			ventanaFrame.getContentPane().add(panelImagen);
-		} catch (IOException e1) {
-			System.out.println("No se pudo leer la imagen");
-			e1.printStackTrace();
-		}
-
+	
+	    panelImagen = new JPanelConFondo();
+	    panelImagen.setBounds(20, 10, 593, 230);
+		panelImagen.setBackground(Color.BLACK);
+		panelImagen.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		ventanaFrame.getContentPane().add(panelImagen);
+	
 		final int N=7;
 		ubicacion = new JTextPane();
 		StyledDocument doc = ubicacion.getStyledDocument();
@@ -201,8 +193,9 @@ public class Ventana implements InOutputable {
 	}
 
 	@Override
-	public void changeLocation(String locationName) {
-		ubicacion.setText(locationName.toUpperCase());
+	public void changeLocation(String locationName, String nombreEscenario) {
+		panelImagen.changeImage(nombreEscenario, locationName);
+		ubicacion.setText(locationName.toUpperCase());		
 	}
 
 	@Override
@@ -219,6 +212,7 @@ public class Ventana implements InOutputable {
 	@Override
 	public void showError(String errorMessage) {
 		messagePanel.addNewMessage(errorMessage, "Error");
+		verticalScrollBar.setValue( verticalScrollBar.getMaximum() + 1500 );
 	}
 
 	@Override
@@ -232,5 +226,6 @@ public class Ventana implements InOutputable {
 		fileLogger.terminarLog();
 		comandoTextInput.setEnabled(false);
 		comandoTextInput.setBackground(Color.DARK_GRAY);
+		verticalScrollBar.setValue( verticalScrollBar.getMaximum() + 1500 );
 	}
 }

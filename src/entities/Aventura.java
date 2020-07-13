@@ -23,6 +23,7 @@ public class Aventura {
 	private Player jugador;
 	private String welcome;
 	private InOutputable ioComponent;
+	private String nombreEscenario;
 
 	private Map<String, Item> itemsMap;
 	private Map<String, NPC> npcsMap;
@@ -36,7 +37,7 @@ public class Aventura {
 	public void initialize(){
 		try {
 			this.ioComponent.addFileLogger(new FileLogger("User"));
-			String nombreEscenario = seleccionarEscenario();
+			nombreEscenario = seleccionarEscenario();
 			construirAventura("./Aventuras/"+ nombreEscenario );
 			pedirNombreUsuario();
 			saludar();
@@ -193,7 +194,7 @@ public class Aventura {
 	}
 	
 	public void changeLocation(String locationName) {
-		ioComponent.changeLocation(locationName);
+		ioComponent.changeLocation(locationName, nombreEscenario.split(".json")[0]);
 	}
 
 	public Player getJugador() {
