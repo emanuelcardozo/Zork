@@ -1,6 +1,13 @@
 package entities;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -180,6 +187,34 @@ public class NPC extends Noun implements Triggerable {
 	@Override
 	public String executeTrigger() {
 		return aventura.ejecutarFinal(new Trigger("action", name, null, null));
+	}
+
+	public void executeSound() {
+		synchronized (this) {
+			try {
+		        Clip sonido = AudioSystem.getClip();
+		        sonido.open(AudioSystem.getAudioInputStream(new File("./sound/"+ aventura.getEscenario() +"/"+getName()+".wav")));		        
+		        sonido.start();
+		        
+		        Thread.sleep(1000);
+		        
+		        while (sonido.isRunning())
+					Thread.sleep(1000);
+				
+		        sonido.close();
+			} catch (LineUnavailableException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				System.out.println("No se encontro el archivo de Sonido");
+				e.printStackTrace();
+			} catch (UnsupportedAudioFileException e) {
+				System.out.println("El archivo tiene un formato no soportado");
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				System.out.println("Error al pausar el hilo");
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

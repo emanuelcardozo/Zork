@@ -222,7 +222,8 @@ public class Location extends Noun implements Triggerable {
 	}
 
 	public void eliminarObstaculo(String npcName) {
-		npcsMap.remove(npcName);
+		NPC npc = npcsMap.remove(npcName);
+		npc.executeSound();
 	}
 
 	@Override

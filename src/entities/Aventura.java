@@ -200,6 +200,10 @@ public class Aventura {
 	public Player getJugador() {
 		return jugador;
 	}
+	
+	public String getEscenario() {
+		return nombreEscenario.split(".json")[0];
+	}
 
 	public void setJugador(Player jugador) {
 		this.jugador = jugador;
