@@ -1,4 +1,4 @@
-package io;
+package io.visual;
 
 import java.awt.Graphics;
 import java.awt.Image;

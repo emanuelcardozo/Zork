@@ -26,45 +26,28 @@ public class MessagePanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(padding, padding, padding, padding));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 	}
-
-	private JTextPane createTextPane( String text ) {
-		
-        JTextPane pane = new JTextPane();
-        pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
-        pane.setMaximumSize(new Dimension(550, 200));
-        pane.setMinimumSize(new Dimension(550, 10));
-        pane.setText( text );
-        pane.setBorder(BorderFactory.createEmptyBorder(padding, padding, padding, padding));
-        pane.setEditable(false);
-        add(Box.createVerticalStrut(padding));
-        
-        return pane;
-    }
 	
 	public void addNewMessage( String text, String type ) {
-		JTextPane pane = createTextPane(text);
+		Message message;
+		
 		if(text.charAt(0) == '*')
 			type = "Alert";
 		
 		switch( type ) {
 		case "Error":
-			pane.setBackground(Color.RED);
-			pane.setForeground(Color.WHITE);
-			pane.setFont(new Font("Sans Serif", Font.BOLD, 14));
+			message = new ErrorMessage(text);
 			break;
 		case "User":
-			pane.setForeground(Color.BLUE);
-			pane.setFont(new Font("Monospaced", Font.BOLD, 14));
+			message = new UserMessage(text);
 			break;
 		case "Alert":
-			pane.setForeground(Color.BLACK);
-			pane.setBackground(Color.YELLOW);
-			pane.setFont(new Font("Courier", Font.BOLD, 14));
+			message = new AlertMessage(text);
 			break;
 		default:
-			pane.setFont(new Font("Courier", Font.PLAIN, 16));
+			message = new Message(text);
 		}
 		
-		add(pane);
+		add(Box.createVerticalStrut(padding));
+		add(message);
 	}
 }

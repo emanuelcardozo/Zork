@@ -31,7 +31,6 @@ import javax.swing.text.StyledDocument;
 import io.FileLogger;
 import io.Historial;
 import io.InOutputable;
-import io.JPanelConFondo;
 
 public class Ventana implements InOutputable {
 
