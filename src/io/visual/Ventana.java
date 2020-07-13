@@ -1,6 +1,5 @@
 package io.visual;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -23,8 +22,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -124,7 +121,8 @@ public class Ventana implements InOutputable {
 				synchronized (self) {
 					switch( e.getKeyCode() ) {
 					case KeyEvent.VK_ENTER:
-						self.notify();
+						if( comandoTextInput.getText().length() > 0)
+							self.notify();
 						break;
 					case KeyEvent.VK_UP:
 						self.setPreviousCommand();
@@ -157,7 +155,8 @@ public class Ventana implements InOutputable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				synchronized (self) {
-					self.notify();
+					if( comandoTextInput.getText().length() > 0)
+						self.notify();
 				}
 			}
 		});

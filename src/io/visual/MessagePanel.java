@@ -1,16 +1,11 @@
 package io.visual;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 
 public class MessagePanel extends JPanel {
 	
@@ -30,7 +25,7 @@ public class MessagePanel extends JPanel {
 	public void addNewMessage( String text, String type ) {
 		Message message;
 		
-		if(text.charAt(0) == '*')
+		if( text.charAt(0) == '*')
 			type = "Alert";
 		
 		switch( type ) {
