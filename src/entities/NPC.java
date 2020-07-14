@@ -1,21 +1,16 @@
 package entities;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JPanel;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import io.InOutputable;
 
 public class NPC extends Noun implements Triggerable, Drawable {
@@ -23,6 +18,7 @@ public class NPC extends Noun implements Triggerable, Drawable {
 	private String talk;
 	private Aventura aventura;
 	private Posicion posicion;
+	private Dibujador dibujador;
 	private ArrayList<Talk> talks = new ArrayList<Talk>();
 	private ArrayList<Trigger> triggers = new ArrayList<Trigger>();
 
@@ -34,10 +30,13 @@ public class NPC extends Noun implements Triggerable, Drawable {
 
 	public NPC(JSONObject npcJSON, Aventura aventura) {
 		super((String) npcJSON.get("name"), (String) npcJSON.get("gender"), (String) npcJSON.get("number"));
-		description = (String) npcJSON.get("description");
-		talk = (String) npcJSON.get("talk");
+		
+		this.description = (String) npcJSON.get("description");
+		this.talk = (String) npcJSON.get("talk");
 		this.aventura = aventura;
 		this.posicion = new Posicion(Integer.parseInt((String)npcJSON.get("ejex")), Integer.parseInt((String)npcJSON.get("ejey")), Integer.parseInt((String)npcJSON.get("ancho")), Integer.parseInt((String)npcJSON.get("alto")));
+		this.dibujador = new Dibujador();
+		
 		if(npcJSON.containsKey("talks"))
 			buildTalks((JSONArray) npcJSON.get("talks"));
 		if (npcJSON.containsKey("triggers"))
@@ -225,20 +224,7 @@ public class NPC extends Noun implements Triggerable, Drawable {
 	@Override
 	public void draw(Graphics g, JPanel panel) {
     	String path = "./Aventuras/"+ aventura.getEscenario() +"/images/npcs/" + getName() +".png";
-    	File file = new File(path);
-    	Image image = null;
-    	
-    	if( !file.exists() ) return;
-    	
-    	try {
-			image = ImageIO.read(file);
-		} catch (IOException e) {
-			System.out.println("No se pudo leer la imagen: " + file.getPath());
-		}    	
-		
-		if ( image != null ) {
-            g.drawImage(image, posicion.getX(), posicion.getY(), posicion.getAncho(), posicion.getAlto(), panel);
-		}		
+    	dibujador.dibujar(g, panel, path, posicion);		
 	}
 
 }

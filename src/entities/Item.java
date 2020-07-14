@@ -1,12 +1,7 @@
 package entities;
 
 import java.awt.Graphics;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import org.json.simple.JSONArray;
@@ -20,6 +15,7 @@ public class Item extends Noun implements Triggerable, Drawable {
 	private Aventura aventura;
 	private String description;
 	private Posicion posicion;
+	private Dibujador dibujador;
 
 	public Item(String name, String gender, String number, Aventura aventura, boolean hasTrigger) {
 		super(name, gender, number);
@@ -33,6 +29,8 @@ public class Item extends Noun implements Triggerable, Drawable {
 		this.aventura = aventura;
 		this.description = (String) itemJSON.get("description");
 		this.posicion = new Posicion(Integer.parseInt((String)itemJSON.get("ejex")), Integer.parseInt((String)itemJSON.get("ejey")), Integer.parseInt((String)itemJSON.get("ancho")), Integer.parseInt((String)itemJSON.get("alto")));
+		this.dibujador = new Dibujador();
+		
 		if (itemJSON.containsKey("actions")) {
 			buildActions((JSONArray) itemJSON.get("actions"));
 		}
@@ -127,19 +125,6 @@ public class Item extends Noun implements Triggerable, Drawable {
 	@Override
 	public void draw(Graphics g, JPanel panel) {
 		String path = "./Aventuras/"+ aventura.getEscenario() +"/images/items/" + getName() +".png";
-    	File file = new File(path);
-    	Image image = null;
-    	
-    	if( !file.exists() ) return;
-    	
-    	try {
-			image = ImageIO.read(file);
-		} catch (IOException e) {
-			System.out.println("No se pudo leer la imagen: " + file.getPath());
-		}    	
-		
-		if ( image != null ) {
-            g.drawImage(image, posicion.getX(), posicion.getY(), posicion.getAncho(), posicion.getAlto(), panel);
-		}		
+    	dibujador.dibujar(g, panel, path, posicion);		
 	}
 }

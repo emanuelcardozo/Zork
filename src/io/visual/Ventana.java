@@ -67,7 +67,6 @@ public class Ventana implements InOutputable {
 	private void initialize() {
 		Ventana self = this;
 		ventanaFrame = new JFrame();
-//		ventanaFrame.getContentPane().setLayout(new BorderLayout());
 		ventanaFrame.getContentPane().setLayout(null);
 		ventanaFrame.setIconImage(new ImageIcon("./iconos/cobit-19.png").getImage());
 		ventanaFrame.setTitle("Zork COBIT-19");
