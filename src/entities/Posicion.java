@@ -1,15 +1,49 @@
 package entities;
 
 public class Posicion {
-	private Object x;
-	private Object y;
-	private Object ancho;
-	private Object alto;
+	private int x;
+	private int y;
+	private int ancho;
+	private int alto;
 
-	public Posicion(Object x, Object y, Object ancho, Object alto) {
+	public Posicion(int x, int y, int ancho, int alto) {
 		this.x = x;
 		this.y = y;
 		this.ancho = ancho;
 		this.alto = alto;
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public int getAncho() {
+		return ancho;
+	}
+
+	public void setAncho(int ancho) {
+		this.ancho = ancho;
+	}
+
+	public int getAlto() {
+		return alto;
+	}
+
+	public void setAlto(int alto) {
+		this.alto = alto;
+	}
+	
+	
 }

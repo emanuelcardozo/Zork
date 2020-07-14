@@ -335,6 +335,10 @@
 	 "number":"singular",
 	 "description":"La puerta esta cerrada. Deberias usar una llave para abrirla.",
 	 "talks":[{"you":"Hola", "npc":"No puedes hablar con una puerta!"}],
+	 "ejex": "0" ,
+	 "ejey": "0",
+     "ancho": "0",
+     "alto": "0",
 	 "triggers":[
 		{
 		   "type":"item",
@@ -408,7 +412,12 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un hombre de mediana edad con la ropa toda sucia, es algo normal ya que se nota que esta trabajando.",
+	 "ejex": "400" ,
+	 "ejey": "120",
+     "ancho": "120",
+     "alto": "120",
 	 "talks":[{"you":"Usted es el jardinero?", "npc":"Asi es, me llamo Milton"},{"you":"Se encuentra bien?","npc":"La verdad estoy sorprendido por el suceso."},{"you":"Pudo ver algo de lo que paso?","npc":"No, llegue hace unos minutos, no me avisaron que habia pasado algo como esto...."}],
+	 
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -422,6 +431,10 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"No puedes pasar.Hay un mueble delante y este parece ser pesado y viejo.Deberias moverlo.",
+	 "ejex": "0" ,
+     "ejey": "0",
+     "ancho": "0",
+     "alto": "0",
 	 "talks":[{"you":"Hola?", "npc":"Estas loco ? No puedes hablarle a un mueble!"}],
 	 "triggers":[
 		{
@@ -437,6 +450,10 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Se logra ver la grabacion de las camaras de seguridad. Justo logras ver la parte en la que el vecino entra a la casa por la ventana y pone un liquido dentro del vaso de la victima. La grabacion termina con el anciano quieto en su sillon y el vaso roto en el suelo.",
+	  "ejex": "0" ,
+      "ejey": "0",
+      "ancho": "0",
+      "alto": "0",
 	 "talks":[{"you":"Hola?", "npc":"Estas loco ? No puedes hablarle a un televisor!"}],
 	 "triggers":[
      {

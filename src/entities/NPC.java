@@ -33,7 +33,7 @@ public class NPC extends Noun implements Triggerable {
 		description = (String) npcJSON.get("description");
 		talk = (String) npcJSON.get("talk");
 		this.aventura = aventura;
-		this.posicion = new Posicion(npcJSON.get("ejex"), npcJSON.get("ejey"), npcJSON.get("ancho"), npcJSON.get("alto"));
+		this.posicion = new Posicion(Integer.parseInt((String)npcJSON.get("ejex")), Integer.parseInt((String)npcJSON.get("ejey")), Integer.parseInt((String)npcJSON.get("ancho")), Integer.parseInt((String)npcJSON.get("alto")));
 		if(npcJSON.containsKey("talks"))
 			buildTalks((JSONArray) npcJSON.get("talks"));
 		if (npcJSON.containsKey("triggers"))

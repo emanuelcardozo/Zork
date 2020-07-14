@@ -51,6 +51,10 @@
       "number": "singular",
       "description": "- '¡No puedes pasar!' El pirata fantasma no te dejará pasar",
       "talk": "¡No hay nada que me digas que me haga cambiar de opinión!",
+	  "ejex": "360" ,
+	  "ejey": "30",
+      "ancho": "90",
+      "alto": "100",
       "triggers": [
         {
           "type": "item",
@@ -66,6 +70,10 @@
       "name": "barreta",
       "gender": "female",
       "number": "singular",
+	  "ejex": "270" ,
+      "ejey": "185",
+      "ancho": "50",
+      "alto": "50",
       "actions": [
         "usar"
       ],
@@ -79,6 +87,10 @@
       "name": "rociador con cerveza de raiz",
       "gender": "male",
       "number": "singular",
+	  "ejex": "200" ,
+      "ejey": "180",
+      "ancho": "50",
+      "alto": "50",
       "actions": [
         "usar"
       ],
@@ -92,6 +104,10 @@
       "name": "espejo",
       "gender": "male",
       "number": "singular",
+	  "ejex": "100" ,
+      "ejey": "180",
+      "ancho": "50",
+      "alto": "50",
       "actions": [
         "usar"
       ],

@@ -25,7 +25,7 @@ public class Item extends Noun implements Triggerable {
 		super((String) itemJSON.get("name"), (String) itemJSON.get("gender"), (String) itemJSON.get("number"));
 		this.aventura = aventura;
 		this.description = (String) itemJSON.get("description");
-		this.setPosicion(new Posicion(itemJSON.get("ejex"), itemJSON.get("ejey"), itemJSON.get("ancho"), itemJSON.get("alto")));
+		this.posicion = new Posicion(Integer.parseInt((String)itemJSON.get("ejex")), Integer.parseInt((String)itemJSON.get("ejey")), Integer.parseInt((String)itemJSON.get("ancho")), Integer.parseInt((String)itemJSON.get("alto")));
 		if (itemJSON.containsKey("actions")) {
 			buildActions((JSONArray) itemJSON.get("actions"));
 		}
