@@ -228,6 +228,8 @@ public class NPC extends Noun implements Triggerable, Drawable {
     	File file = new File(path);
     	Image image = null;
     	
+    	if( !file.exists() ) return;
+    	
     	try {
 			image = ImageIO.read(file);
 		} catch (IOException e) {

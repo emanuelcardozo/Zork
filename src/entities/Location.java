@@ -285,6 +285,8 @@ public class Location extends Noun implements Triggerable, Drawable {
     	File file = new File(path);
     	Image image = null;
     	
+    	if( !file.exists() ) return;
+    	
     	try {
 			image = ImageIO.read(file);
 		} catch (IOException e) {
@@ -293,8 +295,7 @@ public class Location extends Noun implements Triggerable, Drawable {
 		
 		if ( image != null ) {
             g.drawImage(image, 0, 0, panel.getWidth(), panel.getHeight(), panel);
-		}
-		
+		}		
 	}
 
 }
