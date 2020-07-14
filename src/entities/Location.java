@@ -1,12 +1,22 @@
 package entities;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class Location extends Noun implements Triggerable {
+
+public class Location extends Noun implements Triggerable, Drawable {
 	private String description;
 	private Map<String, Place> placesMap = new HashMap<String, Place>();
 	private Map<String, NPC> npcsMap = new HashMap<String, NPC>();
@@ -225,6 +235,39 @@ public class Location extends Noun implements Triggerable {
 		NPC npc = npcsMap.remove(npcName);
 		npc.executeSound();
 	}
+	
+	public NPC[] getAllNPCs() {
+		NPC[] npcs = new NPC[npcsMap.size()];
+		int i=0;
+		
+		for (Map.Entry<String, NPC> entry : npcsMap.entrySet()) {
+			npcs[i++] = entry.getValue();
+		}
+		return npcs;
+	}
+	
+	public Place[] getAllPlaces() {
+		Place[] places = new Place[placesMap.size()];
+		int i=0;
+		
+		for (Map.Entry<String, Place> entry : placesMap.entrySet()) {
+			places[i++] = entry.getValue();
+		}
+		
+		return places;
+	}
+	
+	public List<Item> getAllItems() {
+		List<Item> items = new LinkedList<Item>();
+		
+		for(Place place : getAllPlaces()) {
+			for(Item item : place.getAllItems()) {
+				items.add(item);
+			}
+		}
+		
+		return items;
+	}
 
 	@Override
 	public String executeTrigger() {
@@ -234,6 +277,24 @@ public class Location extends Noun implements Triggerable {
 	@Override
 	public String executeTrigger(Trigger trigger) {		
 		return aventura.ejecutarFinal(trigger);
+	}
+
+	@Override
+	public void draw(Graphics g, JPanel panel) {
+		String path = "./Aventuras/"+ aventura.getEscenario() +"/images/background/" + getName() +".jpg";
+    	File file = new File(path);
+    	Image image = null;
+    	
+    	try {
+			image = ImageIO.read(file);
+		} catch (IOException e) {
+			System.out.println("No se pudo leer la imagen: " + file.getPath());
+		}    	
+		
+		if ( image != null ) {
+            g.drawImage(image, 0, 0, panel.getWidth(), panel.getHeight(), panel);
+		}
+		
 	}
 
 }

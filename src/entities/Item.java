@@ -1,11 +1,18 @@
 package entities;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class Item extends Noun implements Triggerable {
+public class Item extends Noun implements Triggerable, Drawable {
 	private ArrayList<String> actions = new ArrayList<String>();
 	private ArrayList<String> effects_over = new ArrayList<String>();
 
@@ -115,5 +122,22 @@ public class Item extends Noun implements Triggerable {
 
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
+	}
+
+	@Override
+	public void draw(Graphics g, JPanel panel) {
+		String path = "./Aventuras/"+ aventura.getEscenario() +"/images/items/" + getName() +".png";
+    	File file = new File(path);
+    	Image image = null;
+    	
+    	try {
+			image = ImageIO.read(file);
+		} catch (IOException e) {
+			System.out.println("No se pudo leer la imagen: " + file.getPath());
+		}    	
+		
+		if ( image != null ) {
+            g.drawImage(image, posicion.getX(), posicion.getY(), posicion.getAncho(), posicion.getAlto(), panel);
+		}		
 	}
 }

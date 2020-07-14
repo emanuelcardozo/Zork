@@ -73,4 +73,15 @@ public class Place extends Noun {
 
 		return listarPalabras(palabras);
 	}
+	
+	public Item[] getAllItems() {
+		
+		Item[] items = new Item[itemsMap.size()];
+		int i=0;
+		
+		for (Map.Entry<String, Item> entry : itemsMap.entrySet()) {
+			items[i++] = entry.getValue();
+		}
+		return items;		
+	}
 }

@@ -1,20 +1,24 @@
 package entities;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JPanel;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import io.InOutputable;
 
-public class NPC extends Noun implements Triggerable {
+public class NPC extends Noun implements Triggerable, Drawable {
 	private String description;
 	private String talk;
 	private Aventura aventura;
@@ -216,6 +220,23 @@ public class NPC extends Noun implements Triggerable {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void draw(Graphics g, JPanel panel) {
+    	String path = "./Aventuras/"+ aventura.getEscenario() +"/images/npcs/" + getName() +".png";
+    	File file = new File(path);
+    	Image image = null;
+    	
+    	try {
+			image = ImageIO.read(file);
+		} catch (IOException e) {
+			System.out.println("No se pudo leer la imagen: " + file.getPath());
+		}    	
+		
+		if ( image != null ) {
+            g.drawImage(image, posicion.getX(), posicion.getY(), posicion.getAncho(), posicion.getAlto(), panel);
+		}		
 	}
 
 }

@@ -1,78 +1,57 @@
 package io.visual;
 
 import java.awt.Graphics;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import java.util.List;
 import javax.swing.JPanel;
-
+import entities.Item;
 import entities.Location;
+import entities.NPC;
  
 public class JPanelConFondo extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private Image imagen;
+	private Location location;
+	private NPC[] npcArray;
+	private List<Item> itemList;
  
-    public JPanelConFondo() {;}
- 
-    public JPanelConFondo(String nombreImagen) {
-        if (nombreImagen != null) {
-            imagen = new ImageIcon(
-                           getClass().getResource(nombreImagen)
-                           ).getImage();
-        }
+    public JPanelConFondo() {
+    	this.location = null;
+    	this.npcArray = null;
+    	this.itemList = null;
     }
+
     
-    public void changeImage( String escenario, Location location ) {
-    	String path = "./Aventuras/"+ escenario +"/images/background/"+ location.getName() +".jpg";
-    	File imageFile = new File(path);
- 
-	    try {
-			Image image = ImageIO.read(imageFile);
-			setImagen(image);
-		} catch (IOException e) {
-			System.out.println("No se pudo leer la imagen");
-			e.printStackTrace();
-		}
-    }
- 
-    public JPanelConFondo(Image imagenInicial) {
-        if (imagenInicial != null) {
-            imagen = imagenInicial;
-        }
-    }
- 
-    public void setImagen(String nombreImagen) {
-        if (nombreImagen != null) {
-            imagen = new ImageIcon(
-                   getClass().getResource(nombreImagen)
-                   ).getImage();
-        } else {
-            imagen = null;
-        }
- 
-        repaint();
-    }
- 
-    public void setImagen(Image nuevaImagen) {
-        imagen = nuevaImagen;
- 
-        repaint();
+    public void changeImage( String escenario, Location location ) {    	
+    	this.location = location;
+    	this.npcArray = location.getAllNPCs();
+    	this.itemList = location.getAllItems();
+	    
+	    repaint();
     }
  
     @Override
-    public void paint(Graphics g) {
-        if (imagen != null) {
-            g.drawImage(imagen, 0, 0, getWidth(), getHeight(),
-                              this);
- 
-            setOpaque(false);
-        } else {
-            setOpaque(true);
-        }
+    public void paint(Graphics g) {    	        
+    	if ( location != null ) drawBackground(g);
+    	if ( npcArray != null ) drawNPCs(g);
+    	if ( itemList != null ) drawItems(g);
+    	    	    	            	
+    	setOpaque(false);
  
         super.paint(g);
     }
+    
+    private void drawItems(Graphics g) {
+    	for(Item item : itemList) {
+    		item.draw(g, this);
+    	}		
+	}
+    
+    private void drawNPCs(Graphics g) {
+    	for(NPC npc : npcArray) {
+    		npc.draw(g, this);
+    	}		
+	}
+
+	private void drawBackground(Graphics g) {
+		location.draw(g, this);		
+	}
 }
