@@ -38,7 +38,7 @@ public class Aventura {
 		try {
 			this.ioComponent.addFileLogger(new FileLogger("User"));
 			nombreEscenario = seleccionarEscenario();
-			construirAventura("./Aventuras/"+ nombreEscenario );
+			construirAventura();
 			pedirNombreUsuario();
 			saludar();
 			motorInstrucciones = new Motor( ioComponent, jugador);
@@ -100,8 +100,9 @@ public class Aventura {
 		ioComponent.showEnd("Gracias por jugar a Zork " + jugador.getName() + ", hasta luego!");
 	}
 
-	public void construirAventura(String path) {
+	public void construirAventura() {
 		try {
+			String path = "./Aventuras/"+ nombreEscenario + "/" + nombreEscenario + ".json";
 			JSONParser parserJSON = new JSONParser();
 			JSONObject archivoJSON = (JSONObject) parserJSON.parse(new FileReader(path));
 			JSONObject settingJSON = (JSONObject) archivoJSON.get("settings");
@@ -121,7 +122,7 @@ public class Aventura {
 
 			String name = (String) settingJSON.get("character");
 			this.jugador = new Player(name, new Mundo(inicio, mapaLocation), this);
-			changeLocation(inicio);
+			changeLocation(jugador.getPosicionActual());
 
 		} catch (FileNotFoundException e) {
 			ioComponent.showMessage("ERROR: No se pudo encontrar el archivo.");
@@ -193,8 +194,8 @@ public class Aventura {
 		return mapa;
 	}
 	
-	public void changeLocation(String locationName) {
-		ioComponent.changeLocation(locationName, nombreEscenario.split(".json")[0]);
+	public void changeLocation(Location location) {
+		ioComponent.changeLocation(location, nombreEscenario);
 	}
 
 	public Player getJugador() {

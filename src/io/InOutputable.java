@@ -1,5 +1,7 @@
 package io;
 
+import entities.Location;
+
 public interface InOutputable {
 	
 	public String getValue(String message);
@@ -7,5 +9,5 @@ public interface InOutputable {
 	public void showError(String errorMessage);
 	public void addFileLogger(FileLogger filelogger);
 	public void showEnd( String endMessage );
-	public void changeLocation( String locationName, String escenario );
+	public void changeLocation( Location location, String escenario );
 }

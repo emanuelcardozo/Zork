@@ -3,15 +3,10 @@ package io.visual;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,6 +20,8 @@ import javax.swing.JTextPane;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+
+import entities.Location;
 import io.FileLogger;
 import io.Historial;
 import io.InOutputable;
@@ -47,11 +44,6 @@ public class Ventana implements InOutputable {
 		this.historial = new Historial();
 		initialize();
 	}
-
-//	public void setText(String text) {
-//		messagePanel.addNewMessage(text, "User");
-//		verticalScrollBar.setValue( verticalScrollBar.getMaximum() + 1500 );
-//	}
 
 	public void setInventario(String item) {
 		inventarioTextArea.append(item + "\n");
@@ -77,7 +69,7 @@ public class Ventana implements InOutputable {
 		ventanaFrame = new JFrame();
 //		ventanaFrame.getContentPane().setLayout(new BorderLayout());
 		ventanaFrame.getContentPane().setLayout(null);
-		ventanaFrame.setIconImage(new ImageIcon("./images/icono/cobit-19.png").getImage());
+		ventanaFrame.setIconImage(new ImageIcon("./iconos/cobit-19.png").getImage());
 		ventanaFrame.setTitle("Zork COBIT-19");
 		ventanaFrame.setBounds(100, 100, 650, 680);
 		ventanaFrame.setPreferredSize(new Dimension(650, 680));
@@ -193,9 +185,9 @@ public class Ventana implements InOutputable {
 	}
 
 	@Override
-	public void changeLocation(String locationName, String nombreEscenario) {
-		panelImagen.changeImage(nombreEscenario, locationName);
-		ubicacion.setText(locationName.toUpperCase());		
+	public void changeLocation(Location location, String nombreEscenario) {
+		panelImagen.changeImage(nombreEscenario, location);;
+		ubicacion.setText(location.getName().toUpperCase());		
 	}
 
 	@Override

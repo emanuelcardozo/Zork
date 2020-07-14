@@ -45,7 +45,7 @@ public class Player {
 		if (posicionActual.sePuedeMoverHacia(where)) {
 			String locationName = posicionActual.moverHacia(where);
 			posicionActual = mundo.getLocation(locationName);
-			aventura.changeLocation(posicionActual.getName());
+			aventura.changeLocation(posicionActual);
 
 			return posicionActual.moverA(where);
 		}

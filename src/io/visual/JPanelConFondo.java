@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import entities.Location;
  
 public class JPanelConFondo extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -23,10 +25,12 @@ public class JPanelConFondo extends JPanel {
         }
     }
     
-    public void changeImage( String escenario, String location ) {
-    	File path = new File("./images/fondos/"+ escenario +"/"+ location +".jpg");
+    public void changeImage( String escenario, Location location ) {
+    	String path = "./Aventuras/"+ escenario +"/images/background/"+ location.getName() +".jpg";
+    	File imageFile = new File(path);
+ 
 	    try {
-			Image image = ImageIO.read(path);
+			Image image = ImageIO.read(imageFile);
 			setImagen(image);
 		} catch (IOException e) {
 			System.out.println("No se pudo leer la imagen");

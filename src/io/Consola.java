@@ -2,7 +2,7 @@ package io;
 
 import java.util.Scanner;
 
-import entities.Aventura;
+import entities.Location;
 
 public class Consola implements InOutputable {
 
@@ -48,7 +48,7 @@ public class Consola implements InOutputable {
 	}
 
 	@Override
-	public void changeLocation(String locationName, String nombreEscenario) {
+	public void changeLocation(Location location, String nombreEscenario) {
 		// TODO Auto-generated method stub
 		
 	}

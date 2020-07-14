@@ -192,8 +192,9 @@ public class NPC extends Noun implements Triggerable {
 	public void executeSound() {
 		synchronized (this) {
 			try {
+				String path = "./Aventuras/"+ aventura.getEscenario() + "/sound/" + getName() + ".wav";
 		        Clip sonido = AudioSystem.getClip();
-		        sonido.open(AudioSystem.getAudioInputStream(new File("./sound/"+ aventura.getEscenario() +"/"+getName()+".wav")));		        
+		        sonido.open(AudioSystem.getAudioInputStream(new File(path)));		        
 		        sonido.start();
 		        
 		        Thread.sleep(1000);
