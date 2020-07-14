@@ -1,10 +1,4 @@
 package motorDeInstrucciones;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 import entities.Player;
 import io.InOutputable;
@@ -16,12 +10,10 @@ public class Motor {
 	private Accion accion;
 	private Broker broker;
 	private boolean running;
-	private Player player;
 	private InOutputable io;
 
 	public Motor( InOutputable io, Player player ) {
 		this.io = io;
-		this.player = player;
 		this.broker = new Broker();
 		this.accion = new Accion(player, io);
 		this.teclado = new Scanner(System.in);
