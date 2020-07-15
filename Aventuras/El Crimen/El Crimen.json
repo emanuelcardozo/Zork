@@ -263,7 +263,7 @@
 	 "number":"singular",
 	 "description":"Un detective anciano, pero con mucha experiencia en el tema.",
 	 "talks":[{"you":"Esto esta cada vez peor", "npc":"Si, es el tercero este mes..."},{"you":"Cree que el culpable haya huido?","npc":"Puede ser, el senior lleva un largo rato muerto....pero huir no es la unica opcion...."},{"you":"Usted que piensa?","npc":"Se me ocurre algo, pero no estoy del todo seguro todavia...."}],
-	 "ejex": "300" ,
+	 "ejex": "100" ,
      "ejey": "80",
      "ancho": "100",
      "alto": "100",
@@ -431,10 +431,10 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"No puedes pasar.Hay un mueble delante y este parece ser pesado y viejo.Deberias moverlo.",
-	 "ejex": "0" ,
-     "ejey": "0",
-     "ancho": "0",
-     "alto": "0",
+	 "ejex": "250" ,
+     "ejey": "80",
+     "ancho": "100",
+     "alto": "100",
 	 "talks":[{"you":"Hola?", "npc":"Estas loco ? No puedes hablarle a un mueble!"}],
 	 "triggers":[
 		{
