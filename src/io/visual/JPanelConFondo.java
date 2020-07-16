@@ -39,7 +39,6 @@ public class JPanelConFondo extends JPanel {
     	if ( itemList != null ) drawItems(g);
     	    	    	            	
     	setOpaque(false);
-    	System.out.println("repaint");
  
         super.paint(g);
     }
