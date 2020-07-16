@@ -134,6 +134,9 @@ public class Ventana extends JFrame implements InOutputable {
 		getContentPane().add(comandoTextInput);
 
 		JButton enviarButton = new JButton("Enviar");
+		enviarButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		enviarButton.setBackground(new Color(87, 227, 87));
+		enviarButton.setBounds(510, 587, 105, 35);
 		enviarButton.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -143,13 +146,13 @@ public class Ventana extends JFrame implements InOutputable {
 				}
 			}
 		});
-		enviarButton.setBackground(java.awt.Color.green);
-		enviarButton.setBounds(510, 587, 105, 35);
+		enviarButton.setOpaque(true);
+		enviarButton.setBorderPainted(false);
 		getContentPane().add(enviarButton);
 
 		JLabel labelComand = new JLabel("Instruccion:");
 		labelComand.setForeground(Color.white);
-		labelComand.setFont(new Font("Serif", Font.PLAIN, 18));
+		labelComand.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		labelComand.setBounds(20, 564, 99, 16);
 		getContentPane().add(labelComand);
 		setVisible(true);
