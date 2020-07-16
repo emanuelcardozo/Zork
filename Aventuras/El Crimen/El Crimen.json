@@ -417,7 +417,7 @@
      "ancho": "120",
      "alto": "120",
 	 "talks":[{"you":"Usted es el jardinero?", "npc":"Asi es, me llamo Milton"},{"you":"Se encuentra bien?","npc":"La verdad estoy sorprendido por el suceso."},{"you":"Pudo ver algo de lo que paso?","npc":"No, llegue hace unos minutos, no me avisaron que habia pasado algo como esto..."}],
-	 
+
 	 "triggers":[
 		{
 		   "type":"acariciar",
@@ -660,7 +660,7 @@
        "condition": "golpear",
 		   "action":"golpear",
 		   "thing": "radio",
-		   "description": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Si alguien logra escuchar esta grabacion es porque yo estoy muerto. Tengo videos que incriminan a Frank y a sus negocios. Estos videos estan en la justicia. Has descubierto que el vecino es el asesino! Debes llevar esto a la justicia para que de fin al caso.'."
+		   "description": "La radio comienza a funcionar y escuchas una voz que pareciera ser de la victima horas antes de su muerte, 'Si alguien logra escuchar esta grabacion es porque yo estoy muerto. Tengo videos que incriminan a Frank y a sus negocios. Estos videos estan en la justicia. Enhorabuena, has descubierto que el vecino es el asesino! Debes llevar esto a la justicia para que de fin al caso.'."
 		},
 		{
        "condition": "observar",

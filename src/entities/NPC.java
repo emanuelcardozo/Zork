@@ -193,32 +193,9 @@ public class NPC extends Noun implements Triggerable, Drawable {
 	}
 
 	public void executeSound() {
-		synchronized (this) {
-			try {
-				String path = "./Aventuras/"+ aventura.getEscenario() + "/sound/" + getName() + ".wav";
-		        Clip sonido = AudioSystem.getClip();
-		        sonido.open(AudioSystem.getAudioInputStream(new File(path)));		        
-		        sonido.start();
-		        
-		        Thread.sleep(1000);
-		        
-		        while (sonido.isRunning())
-					Thread.sleep(1000);
-				
-		        sonido.close();
-			} catch (LineUnavailableException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				System.out.println("No se encontro el archivo de Sonido");
-				e.printStackTrace();
-			} catch (UnsupportedAudioFileException e) {
-				System.out.println("El archivo tiene un formato no soportado");
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				System.out.println("Error al pausar el hilo");
-				e.printStackTrace();
-			}
-		}
+		String path = "./Aventuras/"+ aventura.getEscenario() + "/sound/" + getName() + ".wav";
+		Sonido sonido = new Sonido(path);
+		sonido.reproducir();
 	}
 
 	@Override

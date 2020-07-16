@@ -34,6 +34,9 @@ public class Place extends Noun {
 	public void addItem(Item item) {
 		itemsMap.put(item.getName(), item);
 		location.actualizarEscenario();
+		String path = "./General/Sound/tirar.wav";
+		Sonido sonido = new Sonido(path);
+		sonido.reproducir();
 	}
 
 	public Map<String, Item> getItemsMap() {
@@ -63,6 +66,10 @@ public class Place extends Noun {
 		if(item != null) {
 			itemsMap.remove(item.getName());
 			location.actualizarEscenario();
+			
+			String path = "./General/Sound/agarrar.wav";
+			Sonido sonido = new Sonido(path);
+			sonido.reproducir();
 		}
 			
 		return item;

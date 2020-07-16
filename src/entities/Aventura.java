@@ -3,6 +3,7 @@ package entities;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import constantes.GameState;
 import io.FileLogger;
 import io.InOutputable;
 import motorDeInstrucciones.Motor;
@@ -24,6 +26,7 @@ public class Aventura {
 	private String welcome;
 	private InOutputable ioComponent;
 	private String nombreEscenario;
+	private GameState estadoDelJuego;
 
 	private Map<String, Item> itemsMap;
 	private Map<String, NPC> npcsMap;
@@ -31,6 +34,8 @@ public class Aventura {
 
 	public Aventura( InOutputable ioComponent ){
 		this.ioComponent = ioComponent;
+		this.estadoDelJuego = GameState.JUGANDO;
+		
 		initialize();
 	}
 
@@ -52,7 +57,12 @@ public class Aventura {
 	
 	private String seleccionarEscenario() {
 		File carpeta = new File("./Aventuras");
-		String[] escenarios = carpeta.list();
+		String[] escenarios = carpeta.list(new FilenameFilter() {
+		  @Override
+		  public boolean accept(File current, String name) {
+		    return new File(current, name).isDirectory();
+		  }
+		});
 		String message = "";
 		
 		if (escenarios == null) {
@@ -97,6 +107,9 @@ public class Aventura {
 	}
 
 	private void despedir() {
+		String path = "./General/Sound/"+ this.estadoDelJuego.toString().toLowerCase() + ".wav";
+		Sonido sonidoFinal = new Sonido(path);
+		sonidoFinal.reproducir();
 		ioComponent.showEnd("Gracias por jugar a Zork " + jugador.getName() + ", hasta luego!");
 	}
 
@@ -214,7 +227,14 @@ public class Aventura {
 	public String ejecutarFinal(Trigger trigger) {
 		String message = endGame.execute(trigger);
 
-		if( message != null) motorInstrucciones.stop();
+		if( message != null) {
+			motorInstrucciones.stop();
+			
+			if( message.indexOf("Enhorabuena") != -1)
+				this.estadoDelJuego = GameState.GANADO;
+			else
+				this.estadoDelJuego = GameState.PERDIDO;
+		}
 
 		return message;
 	}
