@@ -66,16 +66,6 @@ public class Ventana extends JFrame implements InOutputable {
 
 	private void initialize() {
 		Ventana self = this;
-//		ventanaFrame = new JFrame();
-//		ventanaFrame.getContentPane().setLayout(null);
-//		ventanaFrame.setIconImage(new ImageIcon("./iconos/cobit-19.png").getImage());
-//		ventanaFrame.setTitle("Zork COBIT-19");
-//		ventanaFrame.setBounds(100, 100, 650, 680);
-//		ventanaFrame.setPreferredSize(new Dimension(650, 680));
-//		ventanaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		ventanaFrame.setLocationRelativeTo(null);
-//		ventanaFrame.setResizable(false);
-//		ventanaFrame.getContentPane().setBackground(Color.BLACK);
 		
 		getContentPane().setLayout(null);
 		setIconImage(new ImageIcon("./iconos/cobit-19.png").getImage());
@@ -91,7 +81,6 @@ public class Ventana extends JFrame implements InOutputable {
 	    panelImagen.setBounds(20, 10, 593, 230);
 		panelImagen.setBackground(Color.BLACK);
 		panelImagen.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-//		ventanaFrame.getContentPane().add(panelImagen);
 		getContentPane().add(panelImagen);
 	
 		final int N=7;
@@ -105,8 +94,7 @@ public class Ventana extends JFrame implements InOutputable {
 		ubicacion.setEditable(false);
 		ubicacion.setFont(new Font("Courier", Font.BOLD, 16));
 		ubicacion.setBorder(BorderFactory.createEmptyBorder(N, N, N, N));
-//		ventanaFrame.getContentPane().add(ubicacion);
-		getContentPane().add(ubicacion);
+		ubicacion.setVisible(false);
 
 		comandoTextInput = new JTextField();
 		comandoTextInput.setToolTipText("Ingrese HELP para recibir ayuda.");
@@ -138,13 +126,11 @@ public class Ventana extends JFrame implements InOutputable {
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPaneCreating.setBounds(20, 250, 593, 296);
 		verticalScrollBar = scrollPaneCreating.getVerticalScrollBar();
-//		ventanaFrame.getContentPane().add( scrollPaneCreating );
 		getContentPane().add( scrollPaneCreating );
 
 		comandoTextInput.setColumns(100);
 		comandoTextInput.requestFocus();
 		comandoTextInput.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
-//		ventanaFrame.getContentPane().add(comandoTextInput);
 		getContentPane().add(comandoTextInput);
 
 		JButton enviarButton = new JButton("Enviar");
@@ -159,15 +145,12 @@ public class Ventana extends JFrame implements InOutputable {
 		});
 		enviarButton.setBackground(java.awt.Color.green);
 		enviarButton.setBounds(510, 587, 105, 35);
-//		ventanaFrame.getContentPane().add(enviarButton);
 		getContentPane().add(enviarButton);
 
 		JLabel labelComand = new JLabel("Instruccion:");
 		labelComand.setForeground(Color.white);
 		labelComand.setFont(new Font("Serif", Font.PLAIN, 18));
 		labelComand.setBounds(20, 564, 99, 16);
-//		ventanaFrame.getContentPane().add(labelComand);
-//		ventanaFrame.setVisible(true);
 		getContentPane().add(labelComand);
 		setVisible(true);
 	}
@@ -241,5 +224,6 @@ public class Ventana extends JFrame implements InOutputable {
 	public void refresh() {
 		panelImagen.repaint();
 		panelImagen.add(ubicacion);
+		ubicacion.setVisible(true);
 	}
 }
