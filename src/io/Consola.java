@@ -52,4 +52,10 @@ public class Consola implements InOutputable {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -196,6 +196,7 @@ public class Aventura {
 	
 	public void changeLocation(Location location) {
 		ioComponent.changeLocation(location, nombreEscenario);
+		actualizarEscenario();
 	}
 
 	public Player getJugador() {
@@ -216,5 +217,9 @@ public class Aventura {
 		if( message != null) motorInstrucciones.stop();
 
 		return message;
+	}
+	
+	public void actualizarEscenario() {
+		ioComponent.refresh();
 	}
 }

@@ -54,7 +54,7 @@ public class Location extends Noun implements Triggerable, Drawable {
 		for (Object placeObj : placesJSON) {
 			JSONObject place = (JSONObject) placeObj;
 			String placeName = (String) place.get("name");
-			this.placesMap.put(placeName, new Place(place, itemsMap));
+			this.placesMap.put(placeName, new Place(place, itemsMap, this));
 		}
 	}
 
@@ -230,8 +230,13 @@ public class Location extends Noun implements Triggerable, Drawable {
 	public void eliminarObstaculo(String npcName) {
 		NPC npc = npcsMap.remove(npcName);
 		npc.executeSound();
+		actualizarEscenario();
 	}
 	
+	public void actualizarEscenario() {
+		aventura.actualizarEscenario();		
+	}
+
 	public NPC[] getAllNPCs() {
 		NPC[] npcs = new NPC[npcsMap.size()];
 		int i=0;

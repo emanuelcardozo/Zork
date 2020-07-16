@@ -22,19 +22,24 @@ public class JPanelConFondo extends JPanel {
     
     public void changeImage( String escenario, Location location ) {    	
     	this.location = location;
-    	this.npcArray = location.getAllNPCs();
-    	this.itemList = location.getAllItems();
-	    
+    		    
 	    repaint();
     }
  
     @Override
     public void paint(Graphics g) {    	        
-    	if ( location != null ) drawBackground(g);
+    	if ( location == null ) return;
+    	
+    	drawBackground(g);
+    	
+    	this.npcArray = location.getAllNPCs();
     	if ( npcArray != null ) drawNPCs(g);
+    	
+    	this.itemList = location.getAllItems();
     	if ( itemList != null ) drawItems(g);
     	    	    	            	
     	setOpaque(false);
+    	System.out.println("repaint");
  
         super.paint(g);
     }

@@ -262,7 +262,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"Un detective anciano, pero con mucha experiencia en el tema.",
-	 "talks":[{"you":"Esto esta cada vez peor", "npc":"Si, es el tercero este mes..."},{"you":"Cree que el culpable haya huido?","npc":"Puede ser, el senior lleva un largo rato muerto....pero huir no es la unica opcion...."},{"you":"Usted que piensa?","npc":"Se me ocurre algo, pero no estoy del todo seguro todavia...."}],
+	 "talks":[{"you":"Esto esta cada vez peor", "npc":"Si, es el tercero este mes..."},{"you":"Cree que el culpable haya huido?","npc":"Puede ser, el senior lleva un largo rato muerto...pero huir no es la unica opcion..."},{"you":"Usted que piensa?","npc":"Se me ocurre algo, pero no estoy del todo seguro todavia..."}],
 	 "ejex": "100" ,
      "ejey": "80",
      "ancho": "100",
@@ -280,7 +280,7 @@
 	 "gender":"male",
 	 "number":"singular",
 	 "description":"El policia esta asustado, se nota que es novato en la profesion.",
-	 "talks": [{"you":"Te sentis bien?", "npc":"Bastante nervioso!...no esperaba meterme en algo tan complicado como esto...."},{"you":"Primer dia?","npc":"Jajaja...ja.....si...."},{"you":"Fuerza, amigo. Con el tiempo se vuelve tolerable","npc":"Gracias...?"}],
+	 "talks": [{"you":"Te sentis bien?", "npc":"Bastante nervioso!...no esperaba meterme en algo tan complicado como esto..."},{"you":"Primer dia?","npc":"Jajaja...ja...si..."},{"you":"Fuerza, amigo. Con el tiempo se vuelve tolerable","npc":"Gracias...?"}],
 	 "ejex": "340" ,
 	 "ejey": "30",
     	 "ancho": "200",
@@ -289,7 +289,7 @@
 		{
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "oiga no haga eso...."
+		   "on_trigger": "oiga no haga eso..."
 		}
 	 ]
 	},
@@ -307,7 +307,7 @@
 		{
 		   "type":"acariciar",
 		   "thing":"",
-		   "on_trigger": "No hay respuesta...."
+		   "on_trigger": "No hay respuesta..."
 		}
 	 ]
 	},
@@ -316,7 +316,7 @@
 	 "gender":"female",
 	 "number":"singular",
 	 "description":"Se nota que esta deprimida por el suceso.",
-	 "talks":[{"you":"Si no me equivoco usted es Marta, no?","npc":"Si, soy la esposa de la victima."},{"you":"Pudiste ver algo de lo que paso?","npc":"No....no.... no pude...."},{"you":"Mis mas sinceras condolencias...","npc":"Muchas gracias..."}],
+	 "talks":[{"you":"Si no me equivoco usted es Marta, no?","npc":"Si, soy la esposa de la victima."},{"you":"Pudiste ver algo de lo que paso?","npc":"No...no... no pude..."},{"you":"Mis mas sinceras condolencias...","npc":"Muchas gracias..."}],
 	 "ejex": "345" ,
 	 "ejey": "103",
      	 "ancho": "150",
@@ -416,7 +416,7 @@
 	 "ejey": "120",
      "ancho": "120",
      "alto": "120",
-	 "talks":[{"you":"Usted es el jardinero?", "npc":"Asi es, me llamo Milton"},{"you":"Se encuentra bien?","npc":"La verdad estoy sorprendido por el suceso."},{"you":"Pudo ver algo de lo que paso?","npc":"No, llegue hace unos minutos, no me avisaron que habia pasado algo como esto...."}],
+	 "talks":[{"you":"Usted es el jardinero?", "npc":"Asi es, me llamo Milton"},{"you":"Se encuentra bien?","npc":"La verdad estoy sorprendido por el suceso."},{"you":"Pudo ver algo de lo que paso?","npc":"No, llegue hace unos minutos, no me avisaron que habia pasado algo como esto..."}],
 	 
 	 "triggers":[
 		{

@@ -219,4 +219,10 @@ public class Ventana implements InOutputable {
 		comandoTextInput.setBackground(Color.DARK_GRAY);
 		verticalScrollBar.setValue( verticalScrollBar.getMaximum() + 1500 );
 	}
+
+	@Override
+	public void refresh() {
+		panelImagen.repaint();
+		
+	}
 }

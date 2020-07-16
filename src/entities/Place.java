@@ -8,13 +8,16 @@ import org.json.simple.JSONObject;
 
 public class Place extends Noun {
 	private Map<String, Item> itemsMap = new HashMap<String, Item>();
+	private Location location;
 
 	public Place(String name, String gender, String number) {
 		super(name, gender, number);
 	}
 
-	public Place(JSONObject placeJSON, Map<String, Item> allItemsMap) {
+	public Place(JSONObject placeJSON, Map<String, Item> allItemsMap, Location location) {
 		super((String) placeJSON.get("name"), (String) placeJSON.get("gender"), (String) placeJSON.get("number"));
+		
+		this.location = location;
 
 		if (placeJSON.containsKey("items")) {
 			buildItemsMap((JSONArray) placeJSON.get("items"), allItemsMap);
@@ -30,6 +33,7 @@ public class Place extends Noun {
 
 	public void addItem(Item item) {
 		itemsMap.put(item.getName(), item);
+		location.actualizarEscenario();
 	}
 
 	public Map<String, Item> getItemsMap() {
@@ -55,8 +59,12 @@ public class Place extends Noun {
 		}
 		
 		Item item = itemsMap.get(keyName);
-		if(item != null)
+		
+		if(item != null) {
 			itemsMap.remove(item.getName());
+			location.actualizarEscenario();
+		}
+			
 		return item;
 	}
 	

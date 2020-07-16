@@ -24,8 +24,4 @@ public class Mundo {
 	public Location getLocation(String locationName) {
 		return locations.get(locationName);
 	}
-
-	public void ejecutarAfterTrigger(String triggerResponse, NPC npc) {
-		// aca el mundo deberia hacer algo con el npc
-	}
 }

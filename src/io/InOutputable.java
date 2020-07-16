@@ -10,4 +10,5 @@ public interface InOutputable {
 	public void addFileLogger(FileLogger filelogger);
 	public void showEnd( String endMessage );
 	public void changeLocation( Location location, String escenario );
+	public void refresh();
 }
