@@ -1,24 +1,14 @@
 package io.visual;
 
-import java.awt.Dimension;
-import java.awt.Font;
+import javax.swing.JLabel;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JTextPane;
-
-public class Message extends JTextPane {
-
+public class Message extends JLabel {
 	private static final long serialVersionUID = 1L;
-	private final int padding = 8;
-
+	
+	private final static String OPEN_HTML = "<html><body style='width: 430px;' >";
+	private final static String CLOSE_HTML = "</body></html>";
+	
 	public Message(String text) {
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        setMaximumSize(new Dimension(550, 200));
-        setMinimumSize(new Dimension(550, 10));
-        setText( text );
-        setBorder(BorderFactory.createEmptyBorder(padding, padding, padding, padding));
-        setEditable(false);
-        setFont(new Font("Courier", Font.PLAIN, 16));
-	} 
+		super( OPEN_HTML + "<div style='background-color: white; width: 430px;  padding: 10px; font-size: 12px; font-family: Courier'>"+ text.replaceAll("\n", "<br/>") + "</div>" + CLOSE_HTML );
+	}
 }
