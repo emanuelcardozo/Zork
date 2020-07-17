@@ -72,16 +72,16 @@ public class Aventura {
 		
 		message += "Estas son las aventuras disponibles:\n";
 		
-		for (int i = 0; i < escenarios.length; i++) {
-			message += i + " - " + escenarios[i] + "\n";
+		for (int i = 1; i <= escenarios.length; i++) {
+			message += i + " - " + escenarios[i-1] + "\n";
 		}
 		
-		message += "Seleccione un escenario del 0 al "+(escenarios.length-1)+" por favor:";
+		message += "Seleccione un escenario del 1 al "+(escenarios.length)+" por favor:";
 		
 		String escenarioString = "";
 		int nroEscenario = -1;
 		
-		while( nroEscenario < 0 || nroEscenario >= escenarios.length) {
+		while( nroEscenario < 1 || nroEscenario > escenarios.length) {
 			try {
 				escenarioString = ioComponent.getValue(message);
 				nroEscenario = Integer.parseInt(escenarioString);
@@ -89,11 +89,11 @@ public class Aventura {
 				ioComponent.showError("Opcion Invalida.");
 			}
 			
-			if(nroEscenario < 0 || nroEscenario >= escenarios.length)
+			if(nroEscenario < 1 || nroEscenario > escenarios.length)
 				ioComponent.showError("No existe la opcion " + nroEscenario);
 		} 
 			
-		return escenarios[nroEscenario];
+		return escenarios[nroEscenario-1];
 	}
 
 	private void pedirNombreUsuario() {

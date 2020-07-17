@@ -110,12 +110,12 @@ public class NPC extends Noun implements Triggerable, Drawable {
 			try {
 				numero = Integer.parseInt(io.getValue(null));
 				
-				if (numero == 7) 
+				if (numero == 0) 
 					salir = true;
 				else
-					if (numero >= 0 && numero < talks.size()) {
-						message += playerName.toUpperCase() + ": " + talks.get(numero).getYou() + "\n";
-						message += name.toUpperCase() + ": " + talks.get(numero).getNpc();
+					if (numero > 0 && numero <= talks.size()) {
+						message += playerName.toUpperCase() + ": " + talks.get(numero-1).getYou() + "\n";
+						message += name.toUpperCase() + ": " + talks.get(numero-1).getNpc();
 						io.showMessage( message );
 					} else {
 						throw new NumberFormatException();
@@ -130,10 +130,10 @@ public class NPC extends Noun implements Triggerable, Drawable {
 
 	private void mostrarDialogos(InOutputable io) {
 		String message = "-------- SELECCIONA UN DIALOGO ---------\n"; 
-		for (int i = 0; i < talks.size(); i++) {
-			message += i + " - " + talks.get(i).getYou() + "\n";
+		for (int i = 1; i < talks.size(); i++) {
+			message += i + " - " + talks.get(i-1).getYou() + "\n";
 		}
-		message += 7 + " - " + "Salir\n";
+		message += "0 - Salir\n";
 		message += "----------------------------------------";
 		io.showMessage(message);		
 	}
