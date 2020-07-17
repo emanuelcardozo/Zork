@@ -122,7 +122,7 @@ public class Ventana extends JFrame implements InOutputable {
 		messagePanel = new MessagePanel();
 		messagePanel.setMaximumSize(new Dimension(590, 100000));
 		scrollPaneCreating = new JScrollPane(messagePanel,
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPaneCreating.setBounds(20, 250, 593, 296);
 		verticalScrollBar = scrollPaneCreating.getVerticalScrollBar();
