@@ -43,6 +43,7 @@ public class Ventana extends JFrame implements InOutputable {
 	public Ventana() {
 		this.historial = new Historial();
 		initialize();
+		this.refresh();
 	}
 
 	public void setInventario(String item) {
