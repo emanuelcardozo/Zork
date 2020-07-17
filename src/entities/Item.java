@@ -79,7 +79,7 @@ public class Item extends Noun implements Triggerable, Drawable {
 		if (afectaA("self")) {
 			String endDescription = executeTrigger();
 
-			if( endDescription != null) message[0] = endDescription;
+			if( endDescription != null ) message[0] = endDescription;
 		}
 
 		return message;

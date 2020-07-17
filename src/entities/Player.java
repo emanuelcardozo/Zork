@@ -71,14 +71,14 @@ public class Player {
 
 
 	public String usarItemEnMi(Item item) {
-		String[] acciones;
 		if(item == null)
 			return "* El item no se encuentra en tu inventario";
-		acciones = item.usarEnMi();
-		if(acciones[0] != null)
-		return acciones[0];
-		else
-			return "Eso no ha servido de nada.";
+		
+		String[] acciones = item.usarEnMi();
+		
+		if(acciones[0] != null) return acciones[0];
+		
+		return "Eso no ha servido de nada.";
 	}
 
 	public String usarItemEnNpc(Item item, NPC npc) {
