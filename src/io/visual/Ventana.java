@@ -91,7 +91,7 @@ public class Ventana extends JFrame implements InOutputable {
 		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
 		doc.setParagraphAttributes(0, doc.getLength(), center, false);
 		ubicacion.setBounds(30, 20, 150, 30);
-		ubicacion.setText("Ubicacion");
+		ubicacion.setText("BIENVENIDO!");
 		ubicacion.setEditable(false);
 		ubicacion.setFont(new Font("Courier", Font.BOLD, 16));
 		ubicacion.setBorder(BorderFactory.createEmptyBorder(N, N, N, N));
@@ -202,6 +202,7 @@ public class Ventana extends JFrame implements InOutputable {
 
 		verticalScrollBar.setValue( verticalScrollBar.getMaximum() + 1500 );
 		typeMessage = "Info";
+
 	}
 
 	@Override
