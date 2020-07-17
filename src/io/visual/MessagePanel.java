@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MessagePanel extends JPanel {
@@ -23,7 +24,7 @@ public class MessagePanel extends JPanel {
 	}
 	
 	public void addNewMessage( String text, String type ) {
-		Message message;
+		JLabel message;
 		
 		if( text.charAt(0) == '*')
 			type = "Alert";
