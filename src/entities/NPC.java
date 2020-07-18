@@ -130,7 +130,7 @@ public class NPC extends Noun implements Triggerable, Drawable {
 
 	private void mostrarDialogos(InOutputable io) {
 		String message = "-------- SELECCIONA UN DIALOGO ---------\n"; 
-		for (int i = 1; i < talks.size(); i++) {
+		for (int i = 1; i <= talks.size(); i++) {
 			message += i + " - " + talks.get(i-1).getYou() + "\n";
 		}
 		message += "0 - Salir\n";

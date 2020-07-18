@@ -43,7 +43,6 @@ public class Ventana extends JFrame implements InOutputable {
 	public Ventana() {
 		this.historial = new Historial();
 		initialize();
-		this.refresh();
 	}
 
 	public void setInventario(String item) {
@@ -91,7 +90,6 @@ public class Ventana extends JFrame implements InOutputable {
 		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
 		doc.setParagraphAttributes(0, doc.getLength(), center, false);
 		ubicacion.setBounds(30, 20, 150, 30);
-		ubicacion.setText("BIENVENIDO!");
 		ubicacion.setEditable(false);
 		ubicacion.setFont(new Font("Courier", Font.BOLD, 16));
 		ubicacion.setBorder(BorderFactory.createEmptyBorder(N, N, N, N));
@@ -227,8 +225,8 @@ public class Ventana extends JFrame implements InOutputable {
 
 	@Override
 	public void refresh() {
-		panelImagen.repaint();
 		panelImagen.add(ubicacion);
 		ubicacion.setVisible(true);
+		panelImagen.repaint();
 	}
 }
