@@ -68,7 +68,7 @@ public class Ventana extends JFrame implements InOutputable {
 		Ventana self = this;
 		
 		getContentPane().setLayout(null);
-		setIconImage(new ImageIcon("./iconos/cobit-19.png").getImage());
+		setIconImage(new ImageIcon("./General/iconos/cobit-19.png").getImage());
 		setTitle("Zork COBIT-19");
 		setBounds(100, 100, 650, 680);
 		setPreferredSize(new Dimension(650, 680));
