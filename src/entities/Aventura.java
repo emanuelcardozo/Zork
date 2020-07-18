@@ -107,9 +107,11 @@ public class Aventura {
 	}
 
 	private void despedir() {
-		String path = "./General/Sound/"+ this.estadoDelJuego.toString().toLowerCase() + ".wav";
-		Sonido sonidoFinal = new Sonido(path);
-		sonidoFinal.reproducir();
+		if( estadoDelJuego != GameState.JUGANDO ) {
+			String path = "./General/Sound/"+ this.estadoDelJuego.toString().toLowerCase() + ".wav";
+			Sonido sonidoFinal = new Sonido(path);
+			sonidoFinal.reproducir();
+		}
 		ioComponent.showEnd("Gracias por jugar a Zork " + jugador.getName() + ", hasta luego!");
 	}
 
